@@ -2,12 +2,6 @@ import React from 'react';
 import Box from '@mui/material/Box';
 
 const Thumbnail = ({ product, img, style }) => {
-  // const thumbnailStyle = {
-  //   height: 'auto',
-  //   width: '15vw',
-  //   // overflow: 'hidden',
-  //   position: 'relative',
-  // };
   // return <Box style={thumbnailStyle} component='img' src={img}></Box>;
   return <img src={img}></img>;
 };

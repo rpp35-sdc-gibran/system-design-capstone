@@ -20,41 +20,6 @@ const ImageGallery = ({ products, img }) => {
   const [currentIndex, updateCurrentIndex] = useState(0);
 
   console.log('currentIndex:', currentIndex);
-  //params for main image gallery
-  // const params = {
-  //   initialSlide: 0,
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //     type: 'bullets',
-  //     clickable: true,
-  //   },
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   },
-  //   loop: true,
-  // };
-  // //params for thumbnails
-  // const params2 = {
-  //   initialSlide: 0,
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //     type: 'bullets',
-  //     clickable: true,
-  //   },
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   },
-  //   direction: 'vertical',
-  //   loop: true,
-  //   spaceBetween: 10,
-  //   navigation: true,
-  //   thumbs: { swiper: thumbsSwiper },
-  //   modules: [FreeMode, Navigation, Thumbs],
-  //   className: 'mySwiper2',
-  // };
-
   const swiperRef = useRef(null);
 
   //handles updating current slide on click next
@@ -95,12 +60,10 @@ const ImageGallery = ({ products, img }) => {
       {/* thumbnail images */}
 
       <Swiper
-        style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#fff',
-        }}
         loop={true}
         spaceBetween={10}
+        watchSlidesProgress={true}
+        //* arrows
         // navigation={true}
         // thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
@@ -108,12 +71,13 @@ const ImageGallery = ({ products, img }) => {
         slidesPerView={4}
         className='mySwiper2'
         ref={swiperRef}
+        // direction={'vertical'}
       >
-        <SwiperSlide>
-          {img.map((product) => (
-            <Thumbnail id={product.id} img={product.image} />
-          ))}
-        </SwiperSlide>
+        {img.map((product) => (
+          <SwiperSlide key={product.id}>
+            <Image id={product.id} img={product.image} product={product} />
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       {/* main image gallery */}
@@ -128,13 +92,8 @@ const ImageGallery = ({ products, img }) => {
         ref={swiperRef}
       >
         {img.map((product) => (
-          <SwiperSlide>
-            <Image
-              key={product.id}
-              id={product.id}
-              img={product.image}
-              product={product}
-            />
+          <SwiperSlide key={product.id}>
+            <Image id={product.id} img={product.image} product={product} />
           </SwiperSlide>
         ))}
       </Swiper>
