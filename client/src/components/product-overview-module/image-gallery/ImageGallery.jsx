@@ -1,65 +1,136 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import './image-gallery.css';
 import Slider from 'react-slick';
 import Box from '@mui/material/Box';
 import Image from './Image.jsx';
 import Thumbnail from './Thumbnail.jsx';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+// import required modules
+import { FreeMode, Navigation, Thumbs } from 'swiper';
 
 const ImageGallery = ({ products, img }) => {
-  //use this instead of image data
-  const [nav1, setNav1] = useState();
-  const [nav2, setNav2] = useState();
-  console.log('products:', products);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
+  const [currentIndex, updateCurrentIndex] = useState(0);
+  console.log('currentIndex:', currentIndex);
+  const params = {
+    initialSlide: 3,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    spaceBetween: 30,
+    loop: true,
+  };
+  const params2 = {
+    initialSlide: 3,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    spaceBetween: 30,
+    loop: true,
+  };
+  const swiperRef = useRef(null);
+  // Manipulate swiper from outside
+  const goNext = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideNext();
+    }
+  };
+
+  const goPrev = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slidePrev();
+    }
+  };
+  const updateIndex = useCallback(
+    () => updateCurrentIndex(swiperRef.current.swiper.realIndex),
+    []
+  );
+
+  // Add eventlisteners for swiper after initializing
+  useEffect(() => {
+    const swiperInstance = swiperRef.current.swiper;
+
+    if (swiperInstance) {
+      swiperInstance.on('slideChange', updateIndex);
+    }
+
+    return () => {
+      if (swiperInstance) {
+        swiperInstance.off('slideChange', updateIndex);
+      }
+    };
+  }, [updateIndex]);
+  // onSwiper={setThumbsSwiper}
+  //     spaceBetween={10}
+  //     slidesPerView={4}
+  //     freeMode={true}
+  //     watchSlidesProgress={true}
+  //     modules={[FreeMode, Navigation, Thumbs]}
+  //     className='mySwiper'
+
+  //  style={{
+  //     '--swiper-navigation-color': '#fff',
+  //     '--swiper-pagination-color': '#fff',
+  //   }}
+  //   slidesPerView={1}
+  //   navigation={true}
+  //   thumbs={{ swiper: thumbsSwiper }}
+  //   modules={[FreeMode, Navigation, Thumbs]}
+  //   className='mySwiper2'
   return (
-    <>
+    <Box display='flex'>
       {/* main image gallery */}
-
-      <Slider
-        asNavFor={nav2}
-        ref={(slider1) => setNav1(slider1)}
-        dots={true}
-        speed={500}
-        slidesToShow={1}
-        slidesToScroll={1}
-        lazyLoad={true}
-        swipeToSlide={true}
-        arrows={false}
-      >
-        {img.map((product) => (
-          <Image
-            key={product.id}
-            id={product.id}
-            img={product.image}
-            product={product}
-          />
-        ))}
-      </Slider>
-
       {/* thumbnail images */}
-      <Slider
-        ref={(slider2) => setNav2(slider2)}
-        asNavFor={nav1}
-        slidesToShow={3}
-        centerMode={true}
-        slidesToScroll={1}
-        vertical={true}
-        focusOnSelect={true}
-        lazyLoad={true}
-        swipeToSlide={true}
-        centerPadding={10}
-      >
+      <Swiper {...params} ref={swiperRef}>
+        <SwiperSlide>
+          {img.map((product) => (
+            <Thumbnail id={product.id} img={product.image} />
+          ))}
+        </SwiperSlide>
+      </Swiper>
+
+      <Swiper {...params2} ref={swiperRef}>
         {img.map((product) => (
-          <Thumbnail id={product.id} img={product.image} />
+          <SwiperSlide>
+            <Image
+              key={product.id}
+              id={product.id}
+              img={product.image}
+              product={product}
+            />
+          </SwiperSlide>
         ))}
-      </Slider>
-      {/* arrow buttons */}
-    </>
+      </Swiper>
+      <IconButton onClick={goPrev}>
+        <ArrowBackIcon />
+      </IconButton>
+      <IconButton onClick={goNext}>
+        <ArrowForwardIcon />
+      </IconButton>
+    </Box>
   );
 };
 

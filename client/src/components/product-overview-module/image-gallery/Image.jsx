@@ -4,10 +4,10 @@ import Box from '@mui/material/Box';
 const Image = ({ product, img, style }) => {
   const imageStyle = {
     height: 'auto',
-    width: '60vw',
+    width: '60rem',
     position: 'relative',
     // maxWidth: 500,
-    // overflow: 'hidden',
+    overflow: 'hidden',
     // width: '100%',
   };
   return <Box style={imageStyle} component='img' src={img}></Box>;
