@@ -31,7 +31,6 @@ module.exports = {
   getProductInformation: function (req, res) {
     let promise = axios.get(`${url}/${req.query.id}`);
     promise.then((response) => {
-      console.log('response:', response);
       res.send(response.data);
     });
     promise.catch((err) => {
@@ -42,7 +41,6 @@ module.exports = {
   getProductStyles: function (req, res) {
     let promise = axios.get(`${url}/${req.query.id}/styles`);
     promise.then((response) => {
-      console.log('response:', response);
       res.send(response.data);
     });
     promise.catch((err) => {
