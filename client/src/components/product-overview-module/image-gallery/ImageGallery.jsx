@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
+import './image-gallery.css';
 import Slider from 'react-slick';
 import Box from '@mui/material/Box';
 import Image from './Image.jsx';
+import Thumbnail from './Thumbnail.jsx';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -9,70 +11,55 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 const ImageGallery = ({ products, img }) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-  };
-
+  //use this instead of image data
+  const [nav1, setNav1] = useState();
+  const [nav2, setNav2] = useState();
   console.log('products:', products);
-  const slider = useRef();
-  const previous = () => {
-    slider.current.slickPrev();
-  };
-  const next = () => {
-    slider.current.slickNext();
-  };
-  //style for main image
-  const imageStyle = {
-    height: 455,
-    display: 'block',
-    position: 'relative',
-    maxWidth: 500,
-    overflow: 'hidden',
-    // width: '100%',
-  };
-  //style for thumbnails
-  const thumbnailStyle = {
-    height: 80,
-    maxWidth: 100,
-    overflow: 'hidden',
-    width: '100%',
-  };
 
   return (
-    <Box sx={{ position: 'relative' }}>
+    <>
       {/* main image gallery */}
-      <Slider ref={slider} {...settings}>
-        {products.map((product) => (
+
+      <Slider
+        asNavFor={nav2}
+        ref={(slider1) => setNav1(slider1)}
+        dots={true}
+        speed={500}
+        slidesToShow={1}
+        slidesToScroll={1}
+        lazyLoad={true}
+        swipeToSlide={true}
+        arrows={false}
+      >
+        {img.map((product) => (
           <Image
-            style={imageStyle}
             key={product.id}
             id={product.id}
-            img={img}
+            img={product.image}
             product={product}
           />
         ))}
       </Slider>
+
       {/* thumbnail images */}
-      <ImageList cols={1}>
-        {products.map((product) => (
-          <ImageListItem key={product.id}>
-            <Image id={product.id} img={img} style={thumbnailStyle} />
-          </ImageListItem>
+      <Slider
+        ref={(slider2) => setNav2(slider2)}
+        asNavFor={nav1}
+        slidesToShow={3}
+        centerMode={true}
+        slidesToScroll={1}
+        vertical={true}
+        focusOnSelect={true}
+        lazyLoad={true}
+        swipeToSlide={true}
+        centerPadding={10}
+      >
+        {img.map((product) => (
+          <Thumbnail id={product.id} img={product.image} />
         ))}
-      </ImageList>
+      </Slider>
       {/* arrow buttons */}
-      <IconButton onClick={previous}>
-        <ArrowBackIcon />
-      </IconButton>
-      <IconButton onClick={next}>
-        <ArrowForwardIcon />
-      </IconButton>
-    </Box>
+    </>
   );
 };
 

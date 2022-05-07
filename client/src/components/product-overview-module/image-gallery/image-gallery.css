@@ -1,0 +1,26 @@
+.slick-prev {
+  left: 10rem;
+  background: red;
+  z-index: 1;
+}
+.slick-next {
+  right: 30rem;
+  background: red;
+}
+
+.slick-list {
+  /* position: absolute; */
+}
+/* .slick-slide{
+
+    padding-top:25px
+    //margin-top:25px also working
+} */
+/* the slides */
+.slick-slide {
+  /* margin: 0 10px; */
+}
+/* the parent */
+.slick-list {
+  /* margin: 0 -10px; */
+}
