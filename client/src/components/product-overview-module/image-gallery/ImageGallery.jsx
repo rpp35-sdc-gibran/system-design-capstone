@@ -55,6 +55,7 @@ const ImageGallery = ({ products, img }) => {
     };
   }, [updateIndex]);
 
+  console.log('img:', img);
   return (
     <Box display='flex' sx={{ gap: '5px', width: '60rem', height: '40rem' }}>
       {/* thumbnail images */}
@@ -94,7 +95,7 @@ const ImageGallery = ({ products, img }) => {
         className='mySwiper2'
         ref={swiperRef}
       >
-        {img.map((product) => (
+        {img.results.map((product) => (
           <SwiperSlide key={product.id}>
             <Image
               currentIndex={currentIndex}

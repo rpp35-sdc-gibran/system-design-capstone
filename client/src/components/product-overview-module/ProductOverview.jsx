@@ -8,65 +8,69 @@ import axios from 'axios';
 const ProductOverview = () => {
   const [products, setProducts] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
-  const [styles, setStyles] = useState([]);
+  const [styles, setStyles] = useState();
+  const [reviews, setReviews] = useState(0);
+  const [reviewList, setReviewList] = useState([]);
 
-  //todo get product information for first product in product list
-
-  //todo get product styles for first product in product list
+  //gets all product data and styles at initial
   useEffect(() => {
     let promise = axios.get('/api/products');
     promise.then((products) => {
       setProducts(products.data);
+      //gets product information for first product in product list
       axios.get(`/api/products/${products.data[0].id}`).then((productData) => {
-        console.log('productData:', productData);
-        setProductInfo(productData);
+        setProductInfo(productData.data);
       });
+      //gets product styles for first product in product list
       axios
         .get(`/api/products/${products.data[0].id}/styles`)
         .then((productStyles) => {
           console.log('productStyles:', productStyles);
-
-          setStyles(productStyles);
+          setStyles(productStyles.data);
         });
-      console.log('products:', products);
+      //gets reviews for first product in product list
+      axios
+        .get(`/api/products/${products.data[0].id}/reviews`)
+        .then((productReviews) => {
+          let currentReviews = getAverageReviews(productReviews.data.results);
+          setReviewList(productReviews.data.results);
+          setReviews(currentReviews);
+        });
     });
     promise.catch((err) => {
       console.log('err:', err);
     });
   }, []);
 
-  const imageData = [
-    {
-      image:
-        'https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
-      id: 0,
-    },
-    {
-      image:
-        'https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
-      id: 1,
-    },
-    {
-      image:
-        'https://images.unsplash.com/photo-1479064555552-3ef4979f8908?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
-      id: 2,
-    },
-    {
-      image:
-        'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
-      id: 3,
-    },
-    {
-      image:
-        'https://images.unsplash.com/photo-1576188973526-0e5d7047b0cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2956&q=80',
-      id: 4,
-    },
-  ];
+  console.log('products:', products);
+  // console.log('reviewList:', JSON.stringify(reviewList, null, 4));
+  console.log('productInfo:', productInfo);
+
+  // helper func to get average number of reviews
+  const getAverageReviews = (arr) => {
+    let sum = 0;
+    arr.forEach((review) => {
+      sum += review.rating;
+    });
+    return sum / arr.length;
+  };
 
   return (
     <div>
       <h1>this is product overview component</h1>
-      <ImageGallery products={products} img={imageData} />
+      <ProductInformation
+        rating={reviews}
+        reviewLength={reviewList.length}
+        category={productInfo.category}
+        default_price={productInfo.default_price}
+        description={productInfo.description}
+        features={productInfo.features}
+        name={productInfo.name}
+        slogan={productInfo.slogan}
+      />
+      {/* {styles.length && <ImageGallery products={products} img={styles} />} */}
+      {styles && <StyleSelector styles={styles} />}
+      <AddToCart />
     </div>
   );
 };

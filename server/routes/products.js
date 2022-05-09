@@ -18,4 +18,8 @@ router.get('/:product_id/styles', (req, res) => {
   controllers.products.getProductStyles(req, res);
 });
 
+//handles getting product reviews for single product
+router.get('/:product_id/reviews', (req, res) => {
+  controllers.reviews.getProductReviews(req, res);
+});
 module.exports = router;
