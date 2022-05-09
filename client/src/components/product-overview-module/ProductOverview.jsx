@@ -7,11 +7,28 @@ import axios from 'axios';
 
 const ProductOverview = () => {
   const [products, setProducts] = useState([]);
+  const [productInfo, setProductInfo] = useState([]);
+  const [styles, setStyles] = useState([]);
 
+  //todo get product information for first product in product list
+
+  //todo get product styles for first product in product list
   useEffect(() => {
     let promise = axios.get('/api/products');
     promise.then((products) => {
       setProducts(products.data);
+      axios.get(`/api/products/${products.data[0].id}`).then((productData) => {
+        console.log('productData:', productData);
+        setProductInfo(productData);
+      });
+      axios
+        .get(`/api/products/${products.data[0].id}/styles`)
+        .then((productStyles) => {
+          console.log('productStyles:', productStyles);
+
+          setStyles(productStyles);
+        });
+      console.log('products:', products);
     });
     promise.catch((err) => {
       console.log('err:', err);
