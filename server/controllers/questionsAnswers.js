@@ -5,7 +5,7 @@ const axios = require('axios');
 // console.log('Hello QA');
 
 const getQuestionsByProductID = (req, res) => {
-  console.log('req.body', req.query);
+  console.log('req.query', req.query);
 
   axios.get(url, {
     headers: {

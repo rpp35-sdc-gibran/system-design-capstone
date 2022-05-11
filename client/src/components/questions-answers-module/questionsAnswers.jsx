@@ -11,7 +11,9 @@ class QuestionsAnswers extends React.Component {
     }
 
   axios.get('/api/questionsAnswers/questions', {
-    product_id: this.state.product_id
+    params: {
+      product_id: this.state.product_id
+    }
     })
     .then((results) => {
       console.log('results', results);
