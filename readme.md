@@ -1,13 +1,7 @@
 ## Setup/ Installation
 
 - Clone this repository and navigate to project directory in the terminal
-- Then, run development server:
-
-```bash
-npm run server-dev
-```
-
--Then, have webpack serve your static files:
+- Then, start development server and have webpack serve static files:
 
 ```bash
 npm start
