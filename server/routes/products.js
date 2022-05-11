@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const controllers = require('../controllers/products');
 
-console.log('controllers:', controllers);
 //handles getting all products
 router.get('/', (req, res) => {
   controllers.products.get(req, res);

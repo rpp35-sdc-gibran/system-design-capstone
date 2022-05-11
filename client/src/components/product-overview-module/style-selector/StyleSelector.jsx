@@ -2,7 +2,6 @@ import React from 'react';
 import Style from './Style.jsx';
 
 const StyleSelector = ({ styles }) => {
-  console.log('styles:', styles);
   //todo use styles.skus for dropdown menus
   //todo use styles.results[index].name when style is clicked
   return (

@@ -12,7 +12,6 @@ const ProductOverview = ({ currentProductId }) => {
   const [reviews, setReviews] = useState(0);
   const [reviewList, setReviewList] = useState([]);
 
-  console.log('currentProductId:', currentProductId);
   //gets all product data and styles at initial
 
   useEffect(() => {
@@ -27,7 +26,6 @@ const ProductOverview = ({ currentProductId }) => {
     axios
       .get(`/api/products/${currentProductId}/styles`)
       .then((productStyles) => {
-        console.log('productStyles:', productStyles);
         setStyles(productStyles.data);
       });
     //gets reviews for first product in product list
@@ -40,7 +38,6 @@ const ProductOverview = ({ currentProductId }) => {
       });
     // });
     // promise.catch((err) => {
-    //   console.log('err:', err);
     // });
   }, []);
 

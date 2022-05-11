@@ -65,7 +65,6 @@ module.exports = {
         }
       );
       promise.then((reviews) => {
-        console.log('reviews:', reviews);
         res.send(reviews.data);
       });
       promise.catch((err) => {

@@ -12,13 +12,10 @@ class App extends Component {
   componentDidMount() {
     let promise = axios.get('/api/products');
     promise.then((products) => {
-      console.log('products:', products.data);
-
       this.setState({
         products: products.data,
         currentProductId: products.data[0].id,
       });
-      console.log('this.state:', this.state);
     });
   }
   render() {

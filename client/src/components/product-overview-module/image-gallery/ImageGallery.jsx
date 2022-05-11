@@ -19,7 +19,6 @@ const ImageGallery = ({ products, img }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [currentIndex, updateCurrentIndex] = useState(0);
 
-  console.log('currentIndex:', currentIndex);
   const swiperRef = useRef(null);
 
   //handles updating current slide on click next
@@ -54,8 +53,6 @@ const ImageGallery = ({ products, img }) => {
       }
     };
   }, [updateIndex]);
-
-  console.log('img:', img);
   return (
     <Box display='flex' sx={{ gap: '5px', width: '60rem', height: '40rem' }}>
       {/* thumbnail images */}
