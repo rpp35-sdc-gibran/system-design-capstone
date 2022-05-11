@@ -5,46 +5,44 @@ import StyleSelector from './style-selector/StyleSelector.jsx';
 import AddToCart from './add-to-cart/AddToCart.jsx';
 import axios from 'axios';
 
-const ProductOverview = () => {
-  const [products, setProducts] = useState([]);
+const ProductOverview = ({ currentProductId }) => {
+  // const [products, setProducts] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
   const [styles, setStyles] = useState();
   const [reviews, setReviews] = useState(0);
   const [reviewList, setReviewList] = useState([]);
 
+  console.log('currentProductId:', currentProductId);
   //gets all product data and styles at initial
-  useEffect(() => {
-    let promise = axios.get('/api/products');
-    promise.then((products) => {
-      setProducts(products.data);
-      //gets product information for first product in product list
-      axios.get(`/api/products/${products.data[0].id}`).then((productData) => {
-        setProductInfo(productData.data);
-      });
-      //gets product styles for first product in product list
-      axios
-        .get(`/api/products/${products.data[0].id}/styles`)
-        .then((productStyles) => {
-          console.log('productStyles:', productStyles);
-          setStyles(productStyles.data);
-        });
-      //gets reviews for first product in product list
-      axios
-        .get(`/api/products/${products.data[0].id}/reviews`)
-        .then((productReviews) => {
-          let currentReviews = getAverageReviews(productReviews.data.results);
-          setReviewList(productReviews.data.results);
-          setReviews(currentReviews);
-        });
-    });
-    promise.catch((err) => {
-      console.log('err:', err);
-    });
-  }, []);
 
-  console.log('products:', products);
-  // console.log('reviewList:', JSON.stringify(reviewList, null, 4));
-  console.log('productInfo:', productInfo);
+  useEffect(() => {
+    // let promise = axios.get('/api/products');
+    // promise.then((products) => {
+    // setProducts(products.data);
+    //gets product information for first product in product list
+    axios.get(`/api/products/${currentProductId}`).then((productData) => {
+      setProductInfo(productData.data);
+    });
+    //gets product styles for first product in product list
+    axios
+      .get(`/api/products/${currentProductId}/styles`)
+      .then((productStyles) => {
+        console.log('productStyles:', productStyles);
+        setStyles(productStyles.data);
+      });
+    //gets reviews for first product in product list
+    axios
+      .get(`/api/products/${currentProductId}/reviews`)
+      .then((productReviews) => {
+        let currentReviews = getAverageReviews(productReviews.data.results);
+        setReviewList(productReviews.data.results);
+        setReviews(currentReviews);
+      });
+    // });
+    // promise.catch((err) => {
+    //   console.log('err:', err);
+    // });
+  }, []);
 
   // helper func to get average number of reviews
   const getAverageReviews = (arr) => {
