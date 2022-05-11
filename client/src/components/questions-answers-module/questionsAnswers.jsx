@@ -17,7 +17,7 @@ class QuestionsAnswers extends React.Component {
     })
     .then((results) => {
       console.log('results', results);
-      this.setState({qestions: results});
+      this.setState({questions: results.data.results});
     })
     .catch((error) => {
       console.log('error', error);

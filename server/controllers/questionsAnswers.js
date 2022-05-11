@@ -14,7 +14,15 @@ const getQuestionsByProductID = (req, res) => {
     params: {
       product_id: req.query.product_id
     }
-  })
+    })
+    .then((results) => {
+      console.log('SUCCESS getQuestionsByProductID', results);
+      res.send(results.data)
+    })
+    .catch((error) => {
+      console.log('ERROR getQuestionsByProductID', results);
+      res.send(error);
+    });
 };
 
 const getAnswersByQuestionID = (req, res) => {
