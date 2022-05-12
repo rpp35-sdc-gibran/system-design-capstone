@@ -53,11 +53,21 @@ const ProductOverview = ({ currentProductId }) => {
   console.log('styles:', styles);
   console.log('productInfo:', productInfo);
   console.log('currentStyle:', currentStyle);
-  //todo handles setting current style on click
 
+  //todo handles setting current style on click
+  //when style is selected, the current style will be changed here
+  const handleStyleClick = (style_id) => {
+    console.log('here in handle style click!!!');
+    //loop through styles and find matching style
+    console.log('style_id in handle child click:', style_id);
+    styles.results.forEach((style) => {
+      if (style.style_id === style_id) {
+        setCurrentStyle(style);
+      }
+    });
+  };
   return (
     <div>
-      <h1>this is product overview component</h1>
       <ProductInformation
         rating={reviews}
         reviewLength={reviewList.length}
@@ -71,7 +81,7 @@ const ProductOverview = ({ currentProductId }) => {
       {styles && (
         <>
           <ImageGallery currentStyle={currentStyle} />
-          <StyleSelector styles={styles} />
+          <StyleSelector styles={styles} handleStyleClick={handleStyleClick} />
         </>
       )}
       <AddToCart />

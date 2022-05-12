@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Style = ({ productId, image, style }) => {
+const Style = ({ style_id, image, handleStyleClick }) => {
+  const handleClick = () => {
+    console.log('CLICKED!!!!');
+    handleStyleClick(style_id);
+  };
   return (
-    <div>
-      <h1>this is stylecomponent</h1>
+    <div onClick={handleClick}>
       <img src={image}></img>
     </div>
   );
