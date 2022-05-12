@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Button from '@mui/material/Button';
+// import Card from '@mui/material/Card';
+import Card from '@mui/material/Card';
+
 
 class QuestionsAnswers extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      product_id: 64620,
+      product_id: 71697,
       questions: []
     }
 
@@ -21,15 +25,23 @@ class QuestionsAnswers extends React.Component {
     })
     .catch((error) => {
       console.log('error', error);
-      this.setState({qestions: error});
+      this.setState({error: error});
     })
 
   }
   render() {
     return (
       <div>
-        <div>Hello QA just changed!</div>
-        <div>{JSON.stringify(this.state.questions)}</div>
+        {this.state.questions.map((question) => {
+          return (
+            <Card variant="outlined">
+              <div>{question.question_body}</div>
+              <div>{question.question_date}</div>
+              <div>{question.asker_name}</div>
+            </Card>
+            )
+        })}
+        <Button variant="contained">Add Question</Button>
       </div>
     )
   }
