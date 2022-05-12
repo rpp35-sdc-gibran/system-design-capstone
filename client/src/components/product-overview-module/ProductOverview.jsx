@@ -6,18 +6,13 @@ import AddToCart from './add-to-cart/AddToCart.jsx';
 import axios from 'axios';
 
 const ProductOverview = ({ currentProductId }) => {
-  // const [products, setProducts] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
   const [styles, setStyles] = useState();
+  const [currentStyle, setCurrentStyle] = useState();
   const [reviews, setReviews] = useState(0);
   const [reviewList, setReviewList] = useState([]);
 
-  //gets all product data and styles at initial
-
   useEffect(() => {
-    // let promise = axios.get('/api/products');
-    // promise.then((products) => {
-    // setProducts(products.data);
     //gets product information for first product in product list
     axios.get(`/api/products/${currentProductId}`).then((productData) => {
       setProductInfo(productData.data);
@@ -27,6 +22,11 @@ const ProductOverview = ({ currentProductId }) => {
       .get(`/api/products/${currentProductId}/styles`)
       .then((productStyles) => {
         setStyles(productStyles.data);
+        console.log('productStyles:', productStyles);
+        setCurrentStyle(productStyles.data.results[0]);
+      })
+      .catch((err) => {
+        console.log('err:', err);
       });
     //gets reviews for first product in product list
     axios
@@ -35,10 +35,10 @@ const ProductOverview = ({ currentProductId }) => {
         let currentReviews = getAverageReviews(productReviews.data.results);
         setReviewList(productReviews.data.results);
         setReviews(currentReviews);
+      })
+      .catch((err) => {
+        console.log('err:', err);
       });
-    // });
-    // promise.catch((err) => {
-    // });
   }, []);
 
   // helper func to get average number of reviews
@@ -49,6 +49,11 @@ const ProductOverview = ({ currentProductId }) => {
     });
     return sum / arr.length;
   };
+
+  console.log('styles:', styles);
+  console.log('productInfo:', productInfo);
+  console.log('currentStyle:', currentStyle);
+  //todo handles setting current style on click
 
   return (
     <div>
@@ -63,8 +68,12 @@ const ProductOverview = ({ currentProductId }) => {
         name={productInfo.name}
         slogan={productInfo.slogan}
       />
-      {/* {styles.length && <ImageGallery products={products} img={styles} />} */}
-      {styles && <StyleSelector styles={styles} />}
+      {styles && (
+        <>
+          <ImageGallery currentStyle={currentStyle} />
+          <StyleSelector styles={styles} />
+        </>
+      )}
       <AddToCart />
     </div>
   );

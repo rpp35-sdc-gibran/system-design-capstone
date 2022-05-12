@@ -3,7 +3,6 @@ import './image-gallery.css';
 import Slider from 'react-slick';
 import Box from '@mui/material/Box';
 import Image from './Image.jsx';
-import Thumbnail from './Thumbnail.jsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
@@ -15,7 +14,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 
-const ImageGallery = ({ products, img }) => {
+const ImageGallery = ({ currentStyle }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [currentIndex, updateCurrentIndex] = useState(0);
 
@@ -65,14 +64,12 @@ const ImageGallery = ({ products, img }) => {
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
         className='mySwiper'
-        // loop={true}
-        // navigation={true}
         ref={swiperRef}
         direction={'vertical'}
       >
-        {img.map((product) => (
-          <SwiperSlide key={product.id}>
-            <Image id={product.id} img={product.image} product={product} />
+        {currentStyle.photos.map((photo, index) => (
+          <SwiperSlide key={index}>
+            <Image image={photo.thumbnail_url} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -92,14 +89,9 @@ const ImageGallery = ({ products, img }) => {
         className='mySwiper2'
         ref={swiperRef}
       >
-        {img.results.map((product) => (
-          <SwiperSlide key={product.id}>
-            <Image
-              currentIndex={currentIndex}
-              id={product.id}
-              img={product.image}
-              product={product}
-            />
+        {currentStyle.photos.map((photo, index) => (
+          <SwiperSlide key={index}>
+            <Image image={photo.url} />
           </SwiperSlide>
         ))}
       </Swiper>
