@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
+import CheckIcon from '@mui/icons-material/Check';
 
-const Style = ({ style_id, image, handleStyleClick }) => {
+const Style = ({ style_id, image, handleStyleClick, currentStyle }) => {
+  const [active, setActive] = useState(false);
   const handleClick = () => {
     handleStyleClick(style_id);
   };
@@ -10,9 +12,23 @@ const Style = ({ style_id, image, handleStyleClick }) => {
     height: 'auto',
     width: '10em',
   };
+  const activeStyle = {
+    border: 'red',
+  };
+  const notactiveStyle = {
+    border: 'blue',
+  };
+
   return (
-    <Box style={imageStyle} cols={4} gap={10} onClick={handleClick}>
-      <img src={image}></img>
+    <Box onClick={handleClick}>
+      {currentStyle.style_id === style_id ? (
+        <>
+          <CheckIcon />
+          <img style={activeStyle} src={image}></img>
+        </>
+      ) : (
+        <img style={imageStyle} src={image}></img>
+      )}
     </Box>
   );
 };

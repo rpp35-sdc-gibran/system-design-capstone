@@ -22,7 +22,6 @@ const ProductOverview = ({ currentProductId }) => {
       .get(`/api/products/${currentProductId}/styles`)
       .then((productStyles) => {
         setStyles(productStyles.data);
-        console.log('productStyles:', productStyles);
         setCurrentStyle(productStyles.data.results[0]);
       })
       .catch((err) => {
@@ -50,16 +49,9 @@ const ProductOverview = ({ currentProductId }) => {
     return sum / arr.length;
   };
 
-  console.log('styles:', styles);
-  console.log('productInfo:', productInfo);
-  console.log('currentStyle:', currentStyle);
-
-  //todo handles setting current style on click
-  //when style is selected, the current style will be changed here
+  //handles setting current style on click
   const handleStyleClick = (style_id) => {
-    console.log('here in handle style click!!!');
     //loop through styles and find matching style
-    console.log('style_id in handle child click:', style_id);
     styles.results.forEach((style) => {
       if (style.style_id === style_id) {
         setCurrentStyle(style);
@@ -81,7 +73,11 @@ const ProductOverview = ({ currentProductId }) => {
       {styles && (
         <>
           <ImageGallery currentStyle={currentStyle} />
-          <StyleSelector styles={styles} handleStyleClick={handleStyleClick} />
+          <StyleSelector
+            styles={styles}
+            handleStyleClick={handleStyleClick}
+            currentStyle={currentStyle}
+          />
         </>
       )}
       <AddToCart />
