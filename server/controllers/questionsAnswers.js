@@ -21,7 +21,7 @@ const getAnswersByQuestionID = (req, res) => {
     headers: {Authorization: GITHUB_API_TOKEN}
     })
     .then((results) => {
-      console.log('SUCCESS getting answers by question_id', results);
+      // console.log('SUCCESS getting answers by question_id', results);
       res.send(results.data)
     })
     .catch((error) => {

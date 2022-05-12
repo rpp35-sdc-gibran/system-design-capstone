@@ -8,7 +8,11 @@ import Answer from './Answer.jsx'
 
 
 class AnswersList extends React.Component {
-  render () {
+  constructor (props) {
+    super(props)
+    this.state = {
+      allAnswers: []
+    }
     axios.get('/api/questionsAnswers/answers', {
       params: {
         question_id: this.props.question_id
@@ -16,13 +20,16 @@ class AnswersList extends React.Component {
       })
       .then((results) => {
         console.log(`Answer list for ${this.props.question_id}`, results.data.results)
-        // results.data.results.map((answer) => {
-        //   return <Answer answer={answer}/>
-        // })
+        this.setState({allAnswers: results.data.results})
       })
       .catch((error) => {
-
+         console.log('error', error);
       })
+  }
+
+
+
+  render () {
     return (
       <Card>
         {this.props.question_id}
