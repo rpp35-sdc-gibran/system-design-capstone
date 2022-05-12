@@ -5,13 +5,17 @@ import Button from '@mui/material/Button';
 // import Card from '@mui/material/Card';
 import Card from '@mui/material/Card';
 
+import QuestionsList from './subcomponents/QuestionsList.jsx';
+
 
 class QuestionsAnswers extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      product_id: 71697,
-      questions: []
+      product_id: 71698, // set by App state
+      allQuestions: [],
+      shownQuestions: [],
+      moreQuestionsFlag: false
     }
 
   axios.get('/api/questionsAnswers/questions', {
@@ -20,8 +24,8 @@ class QuestionsAnswers extends React.Component {
     }
     })
     .then((results) => {
-      console.log('results', results);
-      this.setState({questions: results.data.results});
+      // console.log('results', results);
+      this.setState({allQuestions: results.data.results});
     })
     .catch((error) => {
       console.log('error', error);
@@ -29,19 +33,15 @@ class QuestionsAnswers extends React.Component {
     })
 
   }
+
   render() {
+     //
+     // conditionally render 'show additional questions' button
     return (
       <div>
-        {this.state.questions.map((question) => {
-          return (
-            <Card variant="outlined">
-              <div>{question.question_body}</div>
-              <div>{question.question_date}</div>
-              <div>{question.asker_name}</div>
-            </Card>
-            )
-        })}
-        <Button variant="contained">Add Question</Button>
+        <h3>Questions & Answers</h3>
+        <QuestionsList allQuestions={this.state.allQuestions}/>
+        <Button variant="contained">Add a Question</Button>
       </div>
     )
   }

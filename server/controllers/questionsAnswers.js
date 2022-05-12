@@ -8,8 +8,7 @@ const getQuestionsByProductID = (req, res) => {
     params: {product_id: req.query.product_id}
     })
     .then((results) => {
-      console.log('SUCCESS getQuestionsByProductID', results.data.results);
-      console.log('results.data.results[0]', results.data.results[0]);
+      // console.log('SUCCESS getQuestionsByProductID', results.data.results);
       res.send(results.data)
     })
     .catch((error) => {
@@ -18,7 +17,16 @@ const getQuestionsByProductID = (req, res) => {
 };
 
 const getAnswersByQuestionID = (req, res) => {
-
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.query.question_id}/answers`, {
+    headers: {Authorization: GITHUB_API_TOKEN}
+    })
+    .then((results) => {
+      console.log('SUCCESS getting answers by question_id', results);
+      res.send(results.data)
+    })
+    .catch((error) => {
+      res.status(404).send('Error getting answers', error);
+    });
 };
 
 const postQuestionByProductID = () => {};
