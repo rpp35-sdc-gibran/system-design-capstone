@@ -5,7 +5,7 @@ class RatingsAndReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.id;
+      id: this.props.id
     }
   }
   render() {
