@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <style
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": ".css-gepadz-MuiTypography-root{margin:0;font-family:\\"Roboto\\",\\"Helvetica\\",\\"Arial\\",sans-serif;font-weight:400;font-size:3rem;line-height:1.167;letter-spacing:0em;}",
+      }
+    }
+    data-emotion="css gepadz-MuiTypography-root"
+  />,
+  <h3
+    className="MuiTypography-root MuiTypography-h3 css-gepadz-MuiTypography-root"
+  />,
+  <div
+    className="MuiBox-root css-0"
+    style={
+      Object {
+        "display": "grid",
+        "gridTemplateColumns": "1fr 1fr 1fr 1fr",
+        "gridTemplateRows": "auto",
+      }
+    }
+  />,
+]
+`;

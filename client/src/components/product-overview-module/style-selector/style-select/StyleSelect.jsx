@@ -1,11 +1,10 @@
 import React from 'react';
-import Style from './Style.jsx';
+import Style from '../style-select-item/StyleSelectItem.jsx';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-const StyleSelector = ({ styles, handleStyleClick, currentStyle }) => {
+const StyleSelect = ({ styles, handleStyleClick, currentStyle }) => {
   //todo use styles.skus for dropdown menus
-  //todo use styles.results[index].name when style is clicked
   const imageListStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr 1fr',
@@ -29,4 +28,4 @@ const StyleSelector = ({ styles, handleStyleClick, currentStyle }) => {
   );
 };
 
-export default StyleSelector;
+export default StyleSelect;

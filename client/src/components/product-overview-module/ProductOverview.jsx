@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ImageGallery from './image-gallery/ImageGallery.jsx';
 import ProductInformation from './product-information/ProductInformation.jsx';
-import StyleSelector from './style-selector/StyleSelector.jsx';
+import StyleSelector from './style-selector/style-select/StyleSelect.jsx';
 import AddToCart from './add-to-cart/AddToCart.jsx';
 import axios from 'axios';
 
@@ -58,6 +58,8 @@ const ProductOverview = ({ currentProductId }) => {
       }
     });
   };
+  console.log('styles:', styles);
+  console.log('currentStyles:', currentStyle);
   return (
     <div>
       <ProductInformation
