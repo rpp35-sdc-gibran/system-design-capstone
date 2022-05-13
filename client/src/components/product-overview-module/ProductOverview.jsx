@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ImageGallery from './image-gallery/ImageGallery.jsx';
+import './ProductOverview.css';
+import ImageView from './image-gallery/image-view/ImageView.jsx';
 import ProductInformation from './product-information/ProductInformation.jsx';
 import StyleSelector from './style-selector/style-select/StyleSelect.jsx';
 import AddToCart from './add-to-cart/AddToCart.jsx';
@@ -58,31 +59,29 @@ const ProductOverview = ({ currentProductId }) => {
       }
     });
   };
-  console.log('styles:', styles);
-  console.log('currentStyles:', currentStyle);
   return (
-    <div>
-      <ProductInformation
-        rating={reviews}
-        reviewLength={reviewList.length}
-        category={productInfo.category}
-        default_price={productInfo.default_price}
-        description={productInfo.description}
-        features={productInfo.features}
-        name={productInfo.name}
-        slogan={productInfo.slogan}
-      />
-      {styles && (
-        <>
-          <ImageGallery currentStyle={currentStyle} />
+    <div className='product-overview'>
+      {styles && <ImageView currentStyle={currentStyle} />}
+      <div style={{ display: 'flex-column' }}>
+        <ProductInformation
+          rating={reviews}
+          reviewLength={reviewList.length}
+          category={productInfo.category}
+          default_price={productInfo.default_price}
+          description={productInfo.description}
+          features={productInfo.features}
+          name={productInfo.name}
+          slogan={productInfo.slogan}
+        />
+        {styles && (
           <StyleSelector
             styles={styles}
             handleStyleClick={handleStyleClick}
             currentStyle={currentStyle}
           />
-        </>
-      )}
-      <AddToCart />
+        )}
+        <AddToCart />
+      </div>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import './image-gallery.css';
+import './ImageView.css';
 import Slider from 'react-slick';
 import Box from '@mui/material/Box';
-import Image from './Image.jsx';
+import ImageViewItem from '../image-view-item/ImageViewItem.jsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
@@ -14,9 +14,10 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 
-const ImageGallery = ({ currentStyle }) => {
+const ImageView = ({ currentStyle }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [currentIndex, updateCurrentIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const swiperRef = useRef(null);
 
@@ -52,14 +53,25 @@ const ImageGallery = ({ currentStyle }) => {
       }
     };
   }, [updateIndex]);
+
+  //todo handle click of main image to zoom, based on isZoomed state
+  const handleChildZoom = () => {
+    setIsZoomed(!isZoomed);
+  };
+  let mainImageStyle = isZoomed
+    ? {
+        minWidth: '100vw',
+        height: '100%',
+      }
+    : { minWidth: '50vw', height: '100%' };
+
   return (
-    <Box display='flex' sx={{ gap: '5px', width: '60rem', height: '40rem' }}>
+    <Box display='flex' style={mainImageStyle}>
       {/* thumbnail images */}
       <Swiper
         onSwiper={setThumbsSwiper}
-        // loop={true}
         spaceBetween={10}
-        slidesPerView={5}
+        slidesPerView={7}
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
@@ -69,7 +81,7 @@ const ImageGallery = ({ currentStyle }) => {
       >
         {currentStyle.photos.map((photo, index) => (
           <SwiperSlide key={index}>
-            <Image image={photo.thumbnail_url} />
+            <ImageViewItem image={photo.thumbnail_url} mainImage={false} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -80,18 +92,20 @@ const ImageGallery = ({ currentStyle }) => {
           '--swiper-navigation-color': '#fff',
           '--swiper-pagination-color': '#fff',
         }}
-        // loop={true}
         spaceBetween={10}
+        lazy={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        // onSwiper={setThumbsSwiper}
-        // freeMode={true}
         className='mySwiper2'
         ref={swiperRef}
       >
         {currentStyle.photos.map((photo, index) => (
           <SwiperSlide key={index}>
-            <Image image={photo.url} />
+            <ImageViewItem
+              image={photo.url}
+              mainImage={true}
+              handleChildZoom={handleChildZoom}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -106,4 +120,4 @@ const ImageGallery = ({ currentStyle }) => {
   );
 };
 
-export default ImageGallery;
+export default ImageView;

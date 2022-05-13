@@ -20,7 +20,7 @@ const Style = ({ style_id, image, handleStyleClick, currentStyle }) => {
   };
 
   return (
-    <Box onClick={handleClick}>
+    <Box data-testid='style-select-item' onClick={handleClick}>
       {currentStyle.style_id === style_id ? (
         <>
           <CheckIcon />
