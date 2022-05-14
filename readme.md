@@ -8,3 +8,8 @@ npm start
 ```
 
 This opens a development server in your local browser at defined port.
+
+RULE FOR THIS BRANCH:
+
+-- needs all approval
+
