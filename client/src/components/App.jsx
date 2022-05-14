@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ProductOverview from './product-overview-module/ProductOverview.jsx';
+
+import QuestionsAnswers from './questions-answers-module/QuestionsAnswers.jsx'
 import axios from 'axios';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +24,8 @@ class App extends Component {
   render() {
     return (
       <div>
+        {/* <ProductOverview /> */}
+        <QuestionsAnswers/>
         Hello world
         {this.state.currentProductId && (
           <ProductOverview currentProductId={this.state.currentProductId} />
