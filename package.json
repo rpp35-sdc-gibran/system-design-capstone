@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server-dev": "nodemon server/server.js",
-    "start": "npx webpack serve --open",
+    "start": "nodemon server/server.js & npx webpack serve --open",
+    "serve": "npx webpack serve --open",
     "react-dev": "npx webpack --config webpack.config.js --mode development --watch"
   },
   "repository": {

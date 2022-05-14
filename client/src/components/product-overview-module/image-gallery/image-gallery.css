@@ -1,34 +1,9 @@
-/* !main image
-.mySwiper {
-  width: 100%;
-  height: 300px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* .swiper-slide {
+/* targets both image and thumbnails */
+.swiper-slide {
   background-size: cover;
   background-position: center;
-} */
-
-/* !thumbnails */
-.mySwiper2 {
-  height: auto;
-  width: 100%;
 }
 
-/* !causes opacity on main image */
-/* .mySwiper .swiper-slide {
-  width: 25%;
-  height: 100%;
-  opacity: 0.4;
-} */
-
-/* .mySwiper .swiper-slide-thumb-active {
-  opacity: 1;
-} */
-
-/* !actual image inside container */
 .swiper-slide img {
   display: block;
   width: 100%;
@@ -36,10 +11,32 @@
   object-fit: cover;
 }
 
-.swiper-slide {
-  padding: 4px;
+/* main image container */
+.mySwiper2 {
+  height: 100%;
+  width: 100%;
 }
 
-.swiper-slide-active {
-  box-shadow: inset 0 0 0 4px #000;
+/* main image */
+.mySwiper2 .swiper-slide {
+  /* width: 5vw; */
+  /* height: 100%; */
+  /* opacity: 0.4; */
+}
+/* thumbnails container */
+.mySwiper {
+  height: 600px;
+}
+
+/* thumbnails slide */
+.mySwiper .swiper-slide {
+  width: 100%;
+  /* height: 100%; */
+  opacity: 0.4;
+}
+
+/* thumbnail active slide */
+.mySwiper .swiper-slide-thumb-active {
+  border: 3px solid black;
+  opacity: 1;
 }
