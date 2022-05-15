@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ProductOverview.css';
+import './ProductOverview.scss';
 import ImageView from './image-gallery/image-view/ImageView.jsx';
 import ProductInformation from './product-information/ProductInformation.jsx';
 import StyleSelector from './style-selector/style-select/StyleSelect.jsx';
@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const ProductOverview = ({ currentProductId }) => {
   const [productInfo, setProductInfo] = useState([]);
-  const [styles, setStyles] = useState();
+  const [styleList, setStyles] = useState();
   const [currentStyle, setCurrentStyle] = useState();
   const [reviews, setReviews] = useState(0);
   const [reviewList, setReviewList] = useState([]);
@@ -18,7 +18,7 @@ const ProductOverview = ({ currentProductId }) => {
     axios.get(`/api/products/${currentProductId}`).then((productData) => {
       setProductInfo(productData.data);
     });
-    //gets product styles for first product in product list
+    //gets product styleList for first product in product list
     axios
       .get(`/api/products/${currentProductId}/styles`)
       .then((productStyles) => {
@@ -52,36 +52,46 @@ const ProductOverview = ({ currentProductId }) => {
 
   //handles setting current style on click
   const handleStyleClick = (style_id) => {
-    //loop through styles and find matching style
-    styles.results.forEach((style) => {
+    styleList.results.forEach((style) => {
       if (style.style_id === style_id) {
         setCurrentStyle(style);
       }
     });
   };
+
   return (
     <div className='product-overview'>
-      {styles && <ImageView currentStyle={currentStyle} />}
-      <div style={{ display: 'flex-column' }}>
-        <ProductInformation
-          rating={reviews}
-          reviewLength={reviewList.length}
-          category={productInfo.category}
-          default_price={productInfo.default_price}
-          description={productInfo.description}
-          features={productInfo.features}
-          name={productInfo.name}
-          slogan={productInfo.slogan}
-        />
-        {styles && (
-          <StyleSelector
-            styles={styles}
-            handleStyleClick={handleStyleClick}
-            currentStyle={currentStyle}
-          />
-        )}
-        <AddToCart />
-      </div>
+      {currentProductId && styleList ? (
+        <>
+          <div className='product-overview-image-view'>
+            <ImageView currentStylePhotos={currentStyle.photos} />
+          </div>
+          <div className='product-overview-product-info'>
+            <ProductInformation
+              rating={reviews}
+              reviewLength={reviewList.length}
+              category={productInfo.category}
+              default_price={productInfo.default_price}
+              description={productInfo.description}
+              features={productInfo.features}
+              name={productInfo.name}
+              slogan={productInfo.slogan}
+            />
+          </div>
+          <div className='product-overview-style-selector'>
+            <StyleSelector
+              styleList={styleList}
+              handleStyleClick={handleStyleClick}
+              currentStyle={currentStyle}
+            />
+          </div>
+          <div className='product-overview-add-to-cart'>
+            <AddToCart />
+          </div>
+        </>
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </div>
   );
 };

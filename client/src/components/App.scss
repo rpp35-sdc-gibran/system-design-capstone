@@ -1,0 +1,14 @@
+//to use, import into any file with this import statement:
+//            @use 'relative/file/path' as *         //
+
+//VARIABLES/////////
+$cursor-icon: zoom-in;
+
+//MIXINS////////////
+
+//sets the width and height of an element
+//use by including this line: @include box(desiredwidth, desiredheight);
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}

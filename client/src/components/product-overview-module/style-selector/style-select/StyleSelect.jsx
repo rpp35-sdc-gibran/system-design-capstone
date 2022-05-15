@@ -3,7 +3,7 @@ import StyleSelectItem from '../style-select-item/StyleSelectItem.jsx';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-const StyleSelect = ({ styles, handleStyleClick, currentStyle }) => {
+const StyleSelect = ({ styleList, handleStyleClick, currentStyle }) => {
   const imageListStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr 1fr',
@@ -13,7 +13,7 @@ const StyleSelect = ({ styles, handleStyleClick, currentStyle }) => {
     <>
       <Typography variant='h3'>{currentStyle.name}</Typography>
       <Box style={imageListStyle}>
-        {styles.results.map((style, index) => (
+        {styleList.results.map((style, index) => (
           <StyleSelectItem
             style_id={style.style_id}
             key={index}

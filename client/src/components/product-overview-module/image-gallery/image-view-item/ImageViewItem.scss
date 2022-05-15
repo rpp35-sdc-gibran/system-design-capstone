@@ -1,0 +1,16 @@
+@use '../../../App.scss' as *;
+
+.enlarged {
+  cursor: $cursor-icon;
+  @include box(100%);
+}
+
+.default {
+  cursor: $cursor-icon;
+  @include box(100%);
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+}

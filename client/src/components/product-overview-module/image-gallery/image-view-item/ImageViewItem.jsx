@@ -1,26 +1,22 @@
-import React from 'react';
-import Box from '@mui/material/Box';
+import React, { useState } from 'react';
+import './ImageViewItem.scss';
 
-const ImageViewItem = ({ image, mainImage, handleChildZoom }) => {
+const ImageViewItem = ({
+  image,
+  currentIndex,
+  handleChildZoom,
+  currentView,
+}) => {
   //handles conditionally changing pointer to zoom if main image is hovered over and clicked
   const handleClick = () => {
     handleChildZoom();
   };
+
   return (
-    <>
-      {mainImage ? (
-        <Box
-          sx={{ cursor: 'zoom-in' }}
-          component='img'
-          src={image}
-          onClick={handleClick}
-        ></Box>
-      ) : (
-        <Box component='img' src={image}></Box>
-      )}
-    </>
+    <div className={currentView ? 'enlarged' : 'default'} onClick={handleClick}>
+      <img src={image}></img>
+    </div>
   );
-  // return <img src={img}></img>;
 };
 
 export default ImageViewItem;

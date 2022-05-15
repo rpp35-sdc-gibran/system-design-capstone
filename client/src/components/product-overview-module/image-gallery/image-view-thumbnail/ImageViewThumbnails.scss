@@ -1,0 +1,7 @@
+@use '../../../App.scss' as *;
+
+.image-view-thumbnail-list {
+  @include box(5rem, auto);
+  display: 'flex';
+  flex-direction: column;
+}
