@@ -13,29 +13,42 @@ const ImageViewItem = ({
     x: 0,
     y: 0,
   });
+  const [initialImagePosition, setinitialImagePosition] = useState({
+    x: 0,
+    y: 0,
+  });
 
   //handles conditionally changing className to toggle view
   const handleClick = () => {
     handleChildZoom();
   };
 
-  const handleTransformScaleView = () => {
-    console.log('transformed!!!');
+  //handles setting initial position values for image in enlarged-zoomed mode
+  const handleTransformScaleView = (e) => {
     setIsScaled(true);
-  };
-  const handleMouseMove = (e) => {
-    console.log('e.clientX:', e.clientX);
-    console.log('e.clienty:', e.clientY);
-    //change state to equal current mouse positoin
-    setImagePosition({
+    setinitialImagePosition({
       x: e.clientX,
       y: e.clientY,
     });
   };
+  const handleMouseMove = (e) => {
+    console.log('initialImagePosition.x:', initialImagePosition);
+    // console.log('e.clienty:', e.clientY);
+    //change state to equal current mouse positoin
+
+    setImagePosition({
+      x: e.clientX,
+      y: e.clientY,
+    });
+    let topValue = initialImagePosition.y - imagePosition.y;
+    let leftValue = initialImagePosition.x - imagePosition.x;
+    console.log('topValue:', topValue);
+    console.log('leftValue:', leftValue);
+  };
 
   const imageScaledContainerStyle = {
-    top: `${imagePosition.x}px`,
-    left: `${imagePosition.y}px`,
+    top: `${initialImagePosition.y - imagePosition.y}px`,
+    left: `${initialImagePosition.x - imagePosition.x}px`,
   };
 
   //enlarged image view
