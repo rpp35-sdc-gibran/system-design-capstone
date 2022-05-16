@@ -7,6 +7,7 @@ class Answer extends React.Component {
   render () {
     return (
       <Card variant="outlined">
+        {JSON.stringify(this.props.answer)}
         {/* <div>{this.props.question.question_body}</div>
         <div>{this.props.question.question_date}</div>
         <div>{this.props.question.asker_name}</div> */}

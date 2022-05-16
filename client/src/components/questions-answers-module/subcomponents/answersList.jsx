@@ -33,7 +33,9 @@ class AnswersList extends React.Component {
     return (
       <Card>
         {this.props.question_id}
-
+        {this.state.allAnswers.map((answer) => {
+          return <Answer answer={answer}/>
+        })}
       </Card>
     )
   }

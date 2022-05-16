@@ -24,12 +24,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <ProductOverview /> */}
-        <QuestionsAnswers/>
-        Hello world
         {this.state.currentProductId && (
           <ProductOverview currentProductId={this.state.currentProductId} />
         )}
+        <QuestionsAnswers currentProductId={this.state.currentProductId}/>
         <RatingsAndReviews id={this.state.currentProductId}/>
       </div>
     );

@@ -1,4 +1,4 @@
-const GITHUB_API_TOKEN = require('../config/config.js').GITHUB_API_TOKEN.TOKEN;
+const GITHUB_API_TOKEN = require('../config/config.js').GITHUB_API_TOKEN.token;
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions';
 const axios = require('axios');
 

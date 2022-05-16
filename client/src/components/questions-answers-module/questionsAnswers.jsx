@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
-// import Card from '@mui/material/Card';
 import Card from '@mui/material/Card';
 
 import QuestionsList from './subcomponents/QuestionsList.jsx';
@@ -18,9 +17,12 @@ class QuestionsAnswers extends React.Component {
       moreQuestionsFlag: false
     }
 
+  // this.setProductId()
+
   axios.get('/api/questionsAnswers/questions', {
     params: {
       product_id: this.state.product_id
+      // product_id: this.props.currentProductId
     }
     })
     .then((results) => {
@@ -33,6 +35,10 @@ class QuestionsAnswers extends React.Component {
     })
 
   }
+
+  // setProductId () {
+  //   this.setState({product_id: this.props.currentProductId});
+  // }
 
   render() {
      //
