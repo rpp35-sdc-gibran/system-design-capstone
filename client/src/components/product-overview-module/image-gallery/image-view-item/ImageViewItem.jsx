@@ -5,18 +5,29 @@ const ImageViewItem = ({
   image,
   currentIndex,
   handleChildZoom,
-  currentView,
+  isEnlargedView,
 }) => {
-  //handles conditionally changing pointer to zoom if main image is hovered over and clicked
+  //handles conditionally changing className to switch views
   const handleClick = () => {
     handleChildZoom();
   };
 
-  return (
-    <div className={currentView ? 'enlarged' : 'default'} onClick={handleClick}>
-      <img src={image}></img>
-    </div>
-  );
+  if (isEnlargedView) {
+    return (
+      <>
+        <input type='checkbox'></input>
+        <div className='enlarged'>
+          <img src={image}></img>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <div className='default' onClick={handleClick}>
+        <img src={image}></img>
+      </div>
+    );
+  }
 };
 
 export default ImageViewItem;

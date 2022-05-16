@@ -1,16 +1,32 @@
 @use '../../../App.scss' as *;
 
+input[type='checkbox'] {
+  position: absolute; /* Force the checkbox at the start of the container */
+  cursor: pointer; /* Indicate the curtain is clickable */
+  width: 100%; /* The checkbox is as wide as the component */
+  height: 100%; /* The checkbox is as tall as the component */
+  z-index: 100; /* Make sure the checkbox is on top of everything else */
+  opacity: 0; /* Hide the checkbox */
+}
+
+input[type='checkbox']:checked ~ div.enlarged {
+  transform: scale(2.5);
+}
+
 .enlarged {
-  cursor: $cursor-icon;
-  @include box(100%);
+  cursor: $cursor-add-icon;
+  @include box(95vw, 80%);
+  position: relative;
+  z-index: 1;
 }
 
 .default {
   cursor: $cursor-icon;
-  @include box(100%);
+  @include box(50vw, 70%);
+  max-height: 75vh;
 }
 
 img {
-  max-height: 100%;
-  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
 }

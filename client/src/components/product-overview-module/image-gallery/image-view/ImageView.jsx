@@ -4,7 +4,7 @@ import ImageViewItem from '../image-view-item/ImageViewItem.jsx';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ImageViewThumbnails from '../image-view-thumbnail/ImageViewThumbnails.jsx';
+import ImageViewThumbnails from '../image-view-thumbnails/ImageViewThumbnails.jsx';
 
 const ImageView = ({ currentStylePhotos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,6 +44,7 @@ const ImageView = ({ currentStylePhotos }) => {
           photos={currentStylePhotos}
           handleThumbnailClick={handleThumbnailClick}
           currentIndex={currentIndex}
+          isEnlargedView={isEnlargedView}
         />
       </div>
       <div className='image-view-item'>
@@ -51,18 +52,18 @@ const ImageView = ({ currentStylePhotos }) => {
           image={currentStylePhotos[currentIndex].url}
           handleChildZoom={handleChildZoom}
           currentIndex={currentIndex}
-          currentView={isEnlargedView}
+          isEnlargedView={isEnlargedView}
         />
       </div>
       <div className='image-view-buttons'>
         {currentIndex !== 0 && (
           <IconButton onClick={goPrev}>
-            <ArrowBackIcon />
+            <ArrowBackIcon color='primary' fontSize='large' />
           </IconButton>
         )}
         {currentIndex !== currentStylePhotos.length - 1 && (
           <IconButton onClick={goNext}>
-            <ArrowForwardIcon />
+            <ArrowForwardIcon color='primary' fontSize='large' />
           </IconButton>
         )}
       </div>

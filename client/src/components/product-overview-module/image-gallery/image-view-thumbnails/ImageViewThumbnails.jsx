@@ -6,8 +6,8 @@ const ImageViewThumbnails = ({
   photos,
   handleThumbnailClick,
   currentIndex,
+  isEnlargedView,
 }) => {
-  console.log('photos:', photos);
   return (
     <div className='image-view-thumbnail-list'>
       {photos.map((photo, index) => (
@@ -17,6 +17,7 @@ const ImageViewThumbnails = ({
           index={index}
           currentIndex={currentIndex}
           handleThumbnailClick={handleThumbnailClick}
+          isEnlargedView={isEnlargedView}
         />
       ))}
     </div>

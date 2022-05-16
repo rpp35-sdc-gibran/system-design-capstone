@@ -1,10 +1,12 @@
 import React from 'react';
 import './imageViewThumbnailItem.scss';
+import PendingIcon from '@mui/icons-material/Pending';
 const ImageViewThumbnailItem = ({
   image,
   index,
   currentIndex,
   handleThumbnailClick,
+  isEnlargedView,
 }) => {
   const handleClick = () => {
     handleThumbnailClick(index);
@@ -19,7 +21,11 @@ const ImageViewThumbnailItem = ({
 
   return (
     <div className={currentClass} onClick={handleClick}>
-      <img src={image}></img>
+      {isEnlargedView ? (
+        <PendingIcon color='primary' />
+      ) : (
+        <img src={image}></img>
+      )}
     </div>
   );
 };

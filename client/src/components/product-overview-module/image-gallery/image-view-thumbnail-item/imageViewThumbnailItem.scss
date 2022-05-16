@@ -1,5 +1,11 @@
 @use '../../../App.scss' as *;
 
+.thumbnail-active,
+.thumbnail-default {
+  position: relative;
+  z-index: 5;
+}
+
 .thumbnail-default {
   @include box(150, auto);
   opacity: 50%;
