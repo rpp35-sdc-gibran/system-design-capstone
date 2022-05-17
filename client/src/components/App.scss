@@ -1,12 +1,12 @@
-//to use, import into any file with this import statement:
-//            @use 'relative/file/path' as *         //
+// to use, import into any file with this import statement:
+//            @use 'relative/file/path' as *
 
 //VARIABLES/////////
 
 //MIXINS////////////
+//use mixins including this line: @include box(desiredwidth, desiredheight);
 
 //sets the width and height of an element
-//use by including this line: @include box(desiredwidth, desiredheight);
 @mixin box($width, $height: $width) {
   width: $width;
   height: $height;

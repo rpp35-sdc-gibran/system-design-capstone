@@ -86,7 +86,7 @@ const ProductOverview = ({ currentProductId }) => {
             />
           </div>
           <div className='product-overview-add-to-cart'>
-            <AddToCart />
+            <AddToCart currentStyle={currentStyle} />
           </div>
         </>
       ) : (
