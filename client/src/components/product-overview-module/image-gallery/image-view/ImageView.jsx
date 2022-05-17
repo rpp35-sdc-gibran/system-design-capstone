@@ -10,6 +10,7 @@ const ImageView = ({ currentStylePhotos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [isEnlargedView, setIsEnlargedView] = useState(false);
+  const [isScaled, setIsScaled] = useState(false);
 
   //handles updating current slide on click next
   const goNext = () => {
@@ -17,6 +18,11 @@ const ImageView = ({ currentStylePhotos }) => {
       let newIndex = currentIndex;
       setCurrentIndex(newIndex + 1);
     }
+  };
+
+  //handle setting enlarged scaled view mode
+  const handleChildScale = () => {
+    setIsScaled(!isScaled);
   };
 
   //handles updating current slide on click previous
@@ -39,34 +45,40 @@ const ImageView = ({ currentStylePhotos }) => {
 
   return (
     <div className='image-view'>
-      <div className='image-view-thumbnails'>
-        <ImageViewThumbnails
-          photos={currentStylePhotos}
-          handleThumbnailClick={handleThumbnailClick}
-          currentIndex={currentIndex}
-          isEnlargedView={isEnlargedView}
-        />
-      </div>
+      {!isScaled && (
+        <div className='image-view-thumbnails'>
+          <ImageViewThumbnails
+            photos={currentStylePhotos}
+            handleThumbnailClick={handleThumbnailClick}
+            currentIndex={currentIndex}
+            isEnlargedView={isEnlargedView}
+          />
+        </div>
+      )}
       <div className='image-view-item'>
         <ImageViewItem
           image={currentStylePhotos[currentIndex].url}
           handleChildZoom={handleChildZoom}
           currentIndex={currentIndex}
           isEnlargedView={isEnlargedView}
+          handleChildScale={handleChildScale}
+          isScaled={isScaled}
         />
       </div>
-      <div className='image-view-buttons'>
-        {currentIndex !== 0 && (
-          <IconButton onClick={goPrev}>
-            <ArrowBackIcon color='primary' fontSize='large' />
-          </IconButton>
-        )}
-        {currentIndex !== currentStylePhotos.length - 1 && (
-          <IconButton onClick={goNext}>
-            <ArrowForwardIcon color='primary' fontSize='large' />
-          </IconButton>
-        )}
-      </div>
+      {!isScaled && (
+        <div className='image-view-buttons'>
+          {currentIndex !== 0 && (
+            <IconButton onClick={goPrev}>
+              <ArrowBackIcon color='primary' fontSize='large' />
+            </IconButton>
+          )}
+          {currentIndex !== currentStylePhotos.length - 1 && (
+            <IconButton onClick={goNext}>
+              <ArrowForwardIcon color='primary' fontSize='large' />
+            </IconButton>
+          )}
+        </div>
+      )}
     </div>
   );
 };

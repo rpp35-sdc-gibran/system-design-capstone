@@ -2,11 +2,16 @@
 
 input[type='checkbox'] {
   position: absolute; /* Force the checkbox at the start of the container */
-  cursor: $cursor-add-icon;
-  width: 100%;
-  height: 100%;
+  cursor: nesw-resize;
+  @include box(100%);
   z-index: 3;
   opacity: 0;
+}
+
+input[type='checkbox']:checked {
+  cursor: sw-resize;
+  // position: relative;
+  // z-index: 4;
 }
 
 input[type='checkbox']:checked ~ div.enlarged {
@@ -19,8 +24,16 @@ input[type='checkbox']:checked ~ div.enlarged {
   z-index: 1;
 }
 
+.enlarged-view-btn {
+  position: absolute;
+  z-index: 10;
+  left: 90%;
+  margin: 0;
+  padding: 0;
+}
+
 .default {
-  cursor: $cursor-icon;
+  cursor: zoom-in;
   @include box(50vw, 70%);
   max-height: 75vh;
 }
