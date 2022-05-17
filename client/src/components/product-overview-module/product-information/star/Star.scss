@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 1;
+}
+
+#star-container {
+  animation: star 1s ease;
+  transform-origin: center;
+  transform-box: fill-box;
+  fill: yellow;
+}
+
+@keyframes star {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}

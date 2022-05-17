@@ -1,8 +1,8 @@
 import React from 'react';
+import './ProductInformation.scss';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Rating from '@mui/material/Rating';
 import Link from '@mui/material/Link';
+import Star from './star/Star.jsx';
 
 const ProductInformation = ({
   rating,
@@ -15,14 +15,15 @@ const ProductInformation = ({
   slogan,
 }) => {
   return (
-    <Grid>
-      <Rating readOnly value={rating} precision={0.1} />
+    <div>
+      {/* <Rating readOnly value={rating} precision={0.1} /> */}
+      <Star currentrating={50} />
       <Link href='#'>Read all {reviewLength} reviews</Link>
-      <Typography>{category}</Typography>
-      <Typography>{name}</Typography>
-      <Typography>{default_price}</Typography>
-      <Typography>{description}</Typography>
-    </Grid>
+      <Typography variant='overline'>{category}</Typography>
+      <Typography variant='h1'>{name}</Typography>
+      <Typography variant='subtitle2'>{default_price}</Typography>
+      <Typography variant='body1'>{description}</Typography>
+    </div>
   );
 };
 

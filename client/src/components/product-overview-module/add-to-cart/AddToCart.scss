@@ -1,0 +1,18 @@
+@use '../../App.scss' as *;
+
+.form {
+  display: flex;
+  justify-content: space-evenly;
+  .form-select-size {
+    @include box(12rem, 75px);
+  }
+  .form-quantity {
+    @include box(12rem, 75px);
+  }
+  .form-button {
+    @include box(8rem, 75px);
+  }
+  option {
+    font-size: 20px;
+  }
+}

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './AddToCart.scss';
-
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 const AddToCart = ({ currentStyle }) => {
   const [currentSize, setCurrentSize] = useState('');
+  const [purchaseQuantity, setPurchaseQuantity] = useState(0);
   const [quantity, setQuantity] = useState([]);
 
   //handles turning skus into array so that they can be mapped over
@@ -14,6 +15,7 @@ const AddToCart = ({ currentStyle }) => {
 
   console.log('skus:', skus);
 
+  //handles when size is selected to get correct quantity and size options
   const handleChange = (e) => {
     setCurrentSize(e.target.value);
     let quantityArr = [];
@@ -27,12 +29,14 @@ const AddToCart = ({ currentStyle }) => {
         }
       }
     }
-    console.log('currentSize:', currentSize);
-    for (let i = 0; i < currentQuantity; i++) {
+    for (let i = 1; i < currentQuantity; i++) {
       quantityArr.push(i);
     }
     setQuantity(quantityArr);
-    console.log('quantity:', quantity);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
 
   //typo in data - has two options with XL size
@@ -41,26 +45,33 @@ const AddToCart = ({ currentStyle }) => {
   }
   ////////////////////////////////////////////
 
+  //handles changing state when choosing quantity
+  const handleSelectQuantity = (e) => {
+    setPurchaseQuantity(e.target.value);
+  };
   return (
-    <form>
+    <form className='form' onSubmit={handleSubmit}>
       {skus.length ? (
         <>
-          <select onChange={handleChange}>
-            <option>Select Size</option>
+          <select className='form-select-size' required onChange={handleChange}>
+            <option value=''>Select Size</option>
             {skus.map((itemSize, index) => (
               <option key={index} label={itemSize.size}>
                 {itemSize.size}
               </option>
             ))}
           </select>
-          <select>
-            <option>Select Quantity</option>
+          <select className='form-quantity' required>
+            {quantity.length ? <option>1</option> : <option disabled>-</option>}
             {quantity.map((number) => (
               <option key={number} label={number}>
                 {number}
               </option>
             ))}
           </select>
+          <Button className='form-button' variant='contained' type='submit'>
+            Add To Cart
+          </Button>
         </>
       ) : (
         <select disabled>
