@@ -5,12 +5,15 @@ import StyleSelect from './StyleSelect.jsx';
 
 it('renders snapshot', () => {
   const styles = { style_id: 34, results: [] };
+  const styleList = {};
+  styleList.results = [];
   const tree = renderer
     .create(
       <StyleSelect
         styles={styles}
         handleStyleClick={'test'}
         currentStyle={'test'}
+        styleList={styleList}
       />
     )
     .toJSON();

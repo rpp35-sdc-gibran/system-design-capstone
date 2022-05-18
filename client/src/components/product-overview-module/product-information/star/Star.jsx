@@ -3,24 +3,26 @@ import './Star.scss';
 
 const SvgComponent = (props) => (
   <svg
-    width={props.currentrating}
-    height={97}
-    fill='none'
+    viewBox={`0 0 ${props.rating} 50`}
     xmlns='http://www.w3.org/2000/svg'
+    id='star-container'
+    xmlSpace='preserve'
+    style={{
+      fillRule: 'evenodd',
+      clipRule: 'evenodd',
+      strokeLinejoin: 'round',
+      strokeMiterlimit: 2,
+    }}
     {...props}
   >
-    <g clipPath='url(#a)'>
-      <path
-        d='M0 37.069h102L19.492 96.99 51.041.009l31.55 96.982L0 37.069Z'
-        fill='#FF0'
-        id='star-container'
-      />
-    </g>
-    <defs>
-      <clipPath id='a'>
-        <path fill='#fff' d='M0 0h102v97H0z' />
-      </clipPath>
-    </defs>
+    <path
+      d='M0 37.069h102L19.491 96.991 51.041.009l31.55 96.982L0 37.069Z'
+      style={{
+        fill: '#ff0',
+        fillRule: 'nonzero',
+      }}
+      transform='matrix(.36274 0 0 .36274 7 6.907)'
+    />
   </svg>
 );
 

@@ -13,20 +13,41 @@ const ProductInformation = ({
   features,
   name,
   slogan,
+  sale_price,
 }) => {
+  //handle getting star ratings so it can be passed down as prop to SVG
   console.log('rating:', rating);
-  //will be the leftover star rating
-  let remainder = Math.floor((rating % 1) * 100);
-  console.log('remainder:', remainder);
+  console.log('category:', category);
+  console.log('sale_price:', sale_price);
+  let result = [];
+  let wholeStars = Math.floor(rating);
+  for (let i = 0; i < wholeStars; i++) {
+    result.push(50);
+  }
+  result.push(Math.floor(((rating % 1) * 100) / 2));
 
   return (
-    <div>
-      {/* <Rating readOnly value={rating} precision={0.1} /> */}
-      <Star currentrating={50} />
-      <Link href='#'>Read all {reviewLength} reviews</Link>
+    <div className='product-info-container'>
+      <div className='product-info-line-1'>
+        {result.map((rating, index) => (
+          <Star rating={rating} key={index} />
+        ))}
+        <Link className='product-info-link' href='#'>
+          Read all {reviewLength} reviews
+        </Link>
+      </div>
       <Typography variant='overline'>{category}</Typography>
       <Typography variant='h1'>{name}</Typography>
-      <Typography variant='subtitle2'>{default_price}</Typography>
+      {sale_price ? (
+        <>
+          <Typography variant='subtitle2'>{sale_price}</Typography>
+          <Typography className='product-info-old-price' variant='subtitle2'>
+            {default_price}
+          </Typography>
+        </>
+      ) : (
+        <Typography variant='subtitle2'>{default_price}</Typography>
+      )}
       <Typography variant='body1'>{description}</Typography>
     </div>
   );

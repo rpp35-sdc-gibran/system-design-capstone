@@ -2,9 +2,15 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import AddToCart from './AddToCart.jsx';
 
-// jest.mock('./style-select/StyleSelect.jsx', () => (props) < mock-StyleSelect { ...props } />)
-
 it('renders correctly', () => {
-  const tree = renderer.create(<AddToCart />).toJSON();
+  let currentStyle = {};
+  let skus = {
+    234: { quantity: 8, size: 'S' },
+    23444: { quantity: 2, size: 'M' },
+  };
+  currentStyle.skus = skus;
+  const tree = renderer
+    .create(<AddToCart currentStyle={currentStyle} />)
+    .toJSON();
   expect(tree).toMatchSnapshot();
 });

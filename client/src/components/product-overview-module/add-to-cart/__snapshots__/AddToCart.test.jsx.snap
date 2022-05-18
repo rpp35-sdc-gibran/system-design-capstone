@@ -1,10 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div>
-  <h1>
-    this is AddToCart component
-  </h1>
-   
-</div>
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <select
+    className="form-select-size"
+    onChange={[Function]}
+    required={true}
+  >
+    <option
+      value=""
+    >
+      Select Size
+    </option>
+    <option
+      label="S"
+    >
+      S
+    </option>
+    <option
+      label="XXL"
+    >
+      XXL
+    </option>
+  </select>
+  <select
+    className="form-quantity"
+    required={true}
+  >
+    <option
+      disabled={true}
+    >
+      -
+    </option>
+  </select>
+  <button
+    className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root form-button css-sghohy-MuiButtonBase-root-MuiButton-root"
+    disabled={false}
+    onBlur={[Function]}
+    onContextMenu={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="submit"
+  >
+    Add To Cart
+  </button>
+</form>
 `;

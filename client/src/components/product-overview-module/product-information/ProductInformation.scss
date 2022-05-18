@@ -1,0 +1,22 @@
+@use '../../App.scss' as *;
+
+.product-info-container {
+  padding: 0;
+  margin: 0;
+}
+
+.product-info-line-1 {
+  display: flex;
+  height: 4rem;
+  width: 100%;
+  // @include set-size(2rem, auto);
+}
+
+.product-info-link {
+  @include set-size(100%);
+  width: 100%;
+}
+
+.product-info-old-price {
+  text-decoration: line-through;
+}

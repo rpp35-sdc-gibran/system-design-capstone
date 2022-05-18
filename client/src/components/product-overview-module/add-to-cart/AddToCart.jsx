@@ -13,8 +13,6 @@ const AddToCart = ({ currentStyle }) => {
     return currentStyle.skus[key];
   });
 
-  console.log('skus:', skus);
-
   //handles when size is selected to get correct quantity and size options
   const handleChange = (e) => {
     setCurrentSize(e.target.value);

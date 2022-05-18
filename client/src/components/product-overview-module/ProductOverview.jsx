@@ -59,6 +59,12 @@ const ProductOverview = ({ currentProductId }) => {
     });
   };
 
+  if (currentStyle) {
+    currentStyle.sale_price = '120.00';
+  }
+
+  console.log('currentStyle:', currentStyle);
+  console.log('productInfo:', productInfo);
   return (
     <div className='product-overview'>
       {currentProductId && styleList ? (
@@ -76,6 +82,7 @@ const ProductOverview = ({ currentProductId }) => {
               features={productInfo.features}
               name={productInfo.name}
               slogan={productInfo.slogan}
+              sale_price={currentStyle.sale_price}
             />
           </div>
           <div className='product-overview-style-selector'>

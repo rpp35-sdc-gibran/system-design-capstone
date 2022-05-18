@@ -13,11 +13,7 @@
 }
 
 //sets display as flex and centers children
-@mixin flex-center(
-  $display: flex,
-  $justifyContent: center,
-  $align-items: center
-) {
+@mixin set-flex($display: flex, $justifyContent: center, $align-items: center) {
   display: $display;
   justify-content: $justifyContent;
   align-items: $align-items;
