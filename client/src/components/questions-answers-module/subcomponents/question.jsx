@@ -12,6 +12,7 @@ class Question extends React.Component {
       <Card variant="outlined">
         <div>Q: {this.props.question.question_body}</div>
         <div>by {this.props.question.asker_name} {this.props.question.question_date}</div>
+        <div>Helpfulness: {this.props.question.question_helpfulness}</div>
         <Button variant="contained">Add an Answer</Button>
         <AnswerList question_id={this.props.question.question_id}/>
       </Card>
