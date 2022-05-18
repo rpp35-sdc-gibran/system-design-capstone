@@ -63,7 +63,7 @@ const ImageViewItem = ({
         {/* scaled image view with inline style  */}
         {isScaled ? (
           <div style={imageScaledContainerStyle} className='enlarged'>
-            <img src={image}></img>
+            <img alt='main image scaled view' src={image}></img>
           </div>
         ) : (
           <>
@@ -71,7 +71,7 @@ const ImageViewItem = ({
               <CloseIcon color='primary' fontSize='large' />
             </IconButton>
             <div className='enlarged'>
-              <img src={image}></img>
+              <img alt='main image enlarged view' src={image}></img>
             </div>
           </>
         )}
@@ -81,7 +81,11 @@ const ImageViewItem = ({
     //default image view
     return (
       <div className='default' onClick={handleClick}>
-        <img style={{ top: -50, left: -70 }} src={image}></img>
+        <img
+          alt='main image default view'
+          style={{ top: -50, left: -70 }}
+          src={image}
+        ></img>
       </div>
     );
   }

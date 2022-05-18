@@ -30,7 +30,6 @@
     "nodemon": "^2.0.16",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-slick": "^0.29.0",
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
@@ -38,6 +37,7 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^14.2.0",
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
@@ -55,6 +55,7 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
+    "collectCoverage": true,
     "verbose": true,
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",

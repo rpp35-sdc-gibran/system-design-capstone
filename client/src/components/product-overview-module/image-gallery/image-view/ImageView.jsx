@@ -12,6 +12,7 @@ const ImageView = ({ currentStylePhotos }) => {
   const [isEnlargedView, setIsEnlargedView] = useState(false);
   const [isScaled, setIsScaled] = useState(false);
 
+  console.log('currentStylePhotos:', currentStylePhotos);
   //handles updating current slide on click next
   const goNext = () => {
     if (currentIndex < currentStylePhotos.length - 1) {
@@ -68,12 +69,12 @@ const ImageView = ({ currentStylePhotos }) => {
       {!isScaled && (
         <div className='image-view-buttons'>
           {currentIndex !== 0 && (
-            <IconButton onClick={goPrev}>
+            <IconButton data-testid='icon-prev' onClick={goPrev}>
               <ArrowBackIcon color='primary' fontSize='large' />
             </IconButton>
           )}
           {currentIndex !== currentStylePhotos.length - 1 && (
-            <IconButton onClick={goNext}>
+            <IconButton data-testid='icon-next' onClick={goNext}>
               <ArrowForwardIcon color='primary' fontSize='large' />
             </IconButton>
           )}

@@ -51,7 +51,12 @@ const AddToCart = ({ currentStyle }) => {
     <form className='form' onSubmit={handleSubmit}>
       {skus.length ? (
         <>
-          <select className='form-select-size' required onChange={handleChange}>
+          <select
+            data-testid='selectSize'
+            className='form-select-size'
+            required
+            onChange={handleChange}
+          >
             <option value=''>Select Size</option>
             {skus.map((itemSize, index) => (
               <option key={index} label={itemSize.size}>
@@ -59,8 +64,18 @@ const AddToCart = ({ currentStyle }) => {
               </option>
             ))}
           </select>
-          <select className='form-quantity' required>
-            {quantity.length ? <option>1</option> : <option disabled>-</option>}
+          <select
+            data-testid='selectQuantity'
+            className='form-quantity'
+            required
+          >
+            {quantity.length ? (
+              <option>1</option>
+            ) : (
+              <option data-testid='defaultQuantity' disabled={true}>
+                -
+              </option>
+            )}
             {quantity.map((number) => (
               <option key={number} label={number}>
                 {number}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './StyleSelectItem.scss';
 import Box from '@mui/material/Box';
 import CheckIcon from '@mui/icons-material/Check';
 
@@ -8,26 +9,15 @@ const Style = ({ style_id, image, handleStyleClick, currentStyle }) => {
     handleStyleClick(style_id);
   };
 
-  const imageStyle = {
-    height: 'auto',
-    width: '10em',
-  };
-  const activeStyle = {
-    border: 'red',
-  };
-  const notactiveStyle = {
-    border: 'blue',
-  };
-
   return (
     <Box data-testid='style-select-item' onClick={handleClick}>
       {currentStyle.style_id === style_id ? (
         <>
           <CheckIcon />
-          <img style={activeStyle} src={image}></img>
+          <img className='style-item-active-image' src={image}></img>
         </>
       ) : (
-        <img style={imageStyle} src={image}></img>
+        <img className='style-item-inactive-image' src={image}></img>
       )}
     </Box>
   );

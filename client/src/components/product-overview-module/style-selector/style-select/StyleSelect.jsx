@@ -1,18 +1,15 @@
 import React from 'react';
+import './StyleSelect.scss';
 import StyleSelectItem from '../style-select-item/StyleSelectItem.jsx';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 const StyleSelect = ({ styleList, handleStyleClick, currentStyle }) => {
-  const imageListStyle = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr 1fr',
-    gridTemplateRows: 'auto',
-  };
   return (
     <>
-      <Typography variant='h3'>{currentStyle.name}</Typography>
-      <Box style={imageListStyle}>
+      <Typography data-testid='styleContainer' variant='h3'>
+        {currentStyle.name}
+      </Typography>
+      <div className='style-image-list'>
         {styleList.results.map((style, index) => (
           <StyleSelectItem
             style_id={style.style_id}
@@ -20,10 +17,10 @@ const StyleSelect = ({ styleList, handleStyleClick, currentStyle }) => {
             image={style.photos[0].thumbnail_url}
             handleStyleClick={handleStyleClick}
             currentStyle={currentStyle}
-            test-id='style-select-item'
+            data-testid='style-select-item'
           />
         ))}
-      </Box>
+      </div>
     </>
   );
 };

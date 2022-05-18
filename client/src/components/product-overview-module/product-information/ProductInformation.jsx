@@ -32,12 +32,16 @@ const ProductInformation = ({
         {result.map((rating, index) => (
           <Star rating={rating} key={index} />
         ))}
-        <Link className='product-info-link' href='#'>
+        <Link data-testid='reviewLink' className='product-info-link' href='#'>
           Read all {reviewLength} reviews
         </Link>
       </div>
-      <Typography variant='overline'>{category}</Typography>
-      <Typography variant='h1'>{name}</Typography>
+      <Typography data-testid='product-info-category' variant='overline'>
+        {category}
+      </Typography>
+      <Typography data-testid='product-info-name' variant='h1'>
+        {name}
+      </Typography>
       {sale_price ? (
         <>
           <Typography variant='subtitle2'>{sale_price}</Typography>
