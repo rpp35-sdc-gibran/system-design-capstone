@@ -4,13 +4,13 @@
   display: flex;
   justify-content: space-evenly;
   .form-select-size {
-    @include box(12rem, 75px);
+    @include set-size(75px, 12rem);
   }
   .form-quantity {
-    @include box(12rem, 75px);
+    @include set-size(75px, 12rem);
   }
   .form-button {
-    @include box(8rem, 75px);
+    @include set-size(75px, 8rem);
   }
   option {
     font-size: 20px;

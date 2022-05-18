@@ -14,6 +14,11 @@ const ProductInformation = ({
   name,
   slogan,
 }) => {
+  console.log('rating:', rating);
+  //will be the leftover star rating
+  let remainder = Math.floor((rating % 1) * 100);
+  console.log('remainder:', remainder);
+
   return (
     <div>
       {/* <Rating readOnly value={rating} precision={0.1} /> */}

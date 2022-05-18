@@ -6,8 +6,19 @@
 //MIXINS////////////
 //use mixins including this line: @include box(desiredwidth, desiredheight);
 
-//sets the width and height of an element
-@mixin box($width, $height: $width) {
-  width: $width;
+//sets width and height
+@mixin set-size($height, $width: $height) {
   height: $height;
+  width: $width;
+}
+
+//sets display as flex and centers children
+@mixin flex-center(
+  $display: flex,
+  $justifyContent: center,
+  $align-items: center
+) {
+  display: $display;
+  justify-content: $justifyContent;
+  align-items: $align-items;
 }
