@@ -27,7 +27,9 @@ const AddToCart = ({ currentStyle }) => {
         }
       }
     }
-    for (let i = 1; i < currentQuantity; i++) {
+
+    for (let i = 1; i <= currentQuantity; i++) {
+      console.log('i:', i);
       quantityArr.push(i);
     }
     setQuantity(quantityArr);
@@ -52,35 +54,43 @@ const AddToCart = ({ currentStyle }) => {
       {skus.length ? (
         <>
           <select
-            data-testid='selectSize'
+            data-testid='select-size'
             className='form-select-size'
             required
             onChange={handleChange}
           >
             <option value=''>Select Size</option>
             {skus.map((itemSize, index) => (
-              <option key={index} label={itemSize.size}>
+              <option
+                data-testid='select-size-option'
+                key={index}
+                value={itemSize.size}
+                label={itemSize.size}
+              >
                 {itemSize.size}
               </option>
             ))}
           </select>
           <select
-            data-testid='selectQuantity'
+            data-testid='select-quantity'
             className='form-quantity'
             required
           >
             {quantity.length ? (
-              <option>1</option>
+              quantity.map((number) => (
+                <option
+                  data-testid='select-quantity-option'
+                  key={number}
+                  label={number}
+                >
+                  {number}
+                </option>
+              ))
             ) : (
-              <option data-testid='defaultQuantity' disabled={true}>
+              <option data-testid='default-quantity' disabled={true}>
                 -
               </option>
             )}
-            {quantity.map((number) => (
-              <option key={number} label={number}>
-                {number}
-              </option>
-            ))}
           </select>
           <Button className='form-button' variant='contained' type='submit'>
             Add To Cart

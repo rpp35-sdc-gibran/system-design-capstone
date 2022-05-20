@@ -63,13 +63,14 @@ const ProductOverview = ({ currentProductId }) => {
     currentStyle.sale_price = '120.00';
   }
 
-  console.log('currentStyle:', currentStyle);
-  console.log('productInfo:', productInfo);
   return (
     <div className='product-overview'>
       {currentProductId && styleList ? (
         <>
-          <div className='product-overview-image-view'>
+          <div
+            data-testid='product-overview-image'
+            className='product-overview-image-view'
+          >
             <ImageView currentStylePhotos={currentStyle.photos} />
           </div>
           <div className='product-overview-product-info'>

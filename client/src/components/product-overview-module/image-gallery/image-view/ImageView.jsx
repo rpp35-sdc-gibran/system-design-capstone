@@ -12,7 +12,6 @@ const ImageView = ({ currentStylePhotos }) => {
   const [isEnlargedView, setIsEnlargedView] = useState(false);
   const [isScaled, setIsScaled] = useState(false);
 
-  console.log('currentStylePhotos:', currentStylePhotos);
   //handles updating current slide on click next
   const goNext = () => {
     if (currentIndex < currentStylePhotos.length - 1) {

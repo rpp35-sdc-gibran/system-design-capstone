@@ -16,9 +16,6 @@ const ProductInformation = ({
   sale_price,
 }) => {
   //handle getting star ratings so it can be passed down as prop to SVG
-  console.log('rating:', rating);
-  console.log('category:', category);
-  console.log('sale_price:', sale_price);
   let result = [];
   let wholeStars = Math.floor(rating);
   for (let i = 0; i < wholeStars; i++) {
