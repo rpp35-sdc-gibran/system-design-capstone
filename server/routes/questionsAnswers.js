@@ -10,4 +10,12 @@ router.get('/answers', (req, res) => {
   controllers.getAnswersByQuestionID(req, res);
 })
 
+router.put('/markQuestionHelpful', (req, res) => {
+  controllers.markQuestionHelpfulByQuestionID(req, res);
+})
+
+router.put('/markAnswerHelpful', (req, res) => {
+  controllers.markAnswerHelpfulByAnswerID(req, res);
+})
+
 module.exports = router;
