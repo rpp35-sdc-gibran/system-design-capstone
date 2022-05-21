@@ -42,6 +42,22 @@ const ImageView = ({ currentStylePhotos }) => {
   const handleThumbnailClick = (index) => {
     setCurrentIndex(index);
   };
+  console.log('currentStylePhotos:', currentStylePhotos);
+
+  // let updatedStylePhotos;
+  // if (currentStylePhotos.length > 7) {
+  //   if (currentIndex + 6 <= currentStylePhotos.length) {
+  //     updatedStylePhotos = currentStylePhotos.slice(
+  //       currentIndex,
+  //       currentIndex + 6
+  //     );
+  //   } else if (currentIndex - 6 >= 0) {
+  //     updatedStylePhotos = currentStylePhotos.slice(
+  //       currentIndex - 6,
+  //       currentIndex
+  //     );
+  //   }
+  // }
 
   return (
     <div className='image-view'>

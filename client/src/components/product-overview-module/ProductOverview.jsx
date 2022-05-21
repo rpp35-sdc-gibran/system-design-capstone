@@ -50,7 +50,7 @@ const ProductOverview = ({ currentProductId }) => {
     return sum / arr.length;
   };
 
-  //handles setting current style on click
+  //handles setting current style on click, updating images in image gallery
   const handleStyleClick = (style_id) => {
     styleList.results.forEach((style) => {
       if (style.style_id === style_id) {
@@ -59,9 +59,25 @@ const ProductOverview = ({ currentProductId }) => {
     });
   };
 
+  //?# test data to test crosses out price and thumbnail scrolling
   if (currentStyle) {
     currentStyle.sale_price = '120.00';
+    let testImages1 = {
+      thumbnail_url:
+        'https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+      url: 'https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+    };
+    let testImages2 = {
+      thumbnail_url:
+        'https://images.unsplash.com/photo-1556304653-cba65c59b3c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+      url: 'https://images.unsplash.com/photo-1556304653-cba65c59b3c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2761&q=80',
+    };
+    if (currentStyle.photos.length < 7) {
+      currentStyle.photos.push(testImages1);
+      currentStyle.photos.push(testImages2);
+    }
   }
+  //# end test data///////////////////////////////////
 
   return (
     <div className='product-overview'>
