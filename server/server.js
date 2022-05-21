@@ -4,11 +4,8 @@ const bodyParser = require('body-parser');
 const port = 1128;
 const app = express();
 const products = require('./routes/products');
-<<<<<<< HEAD
 const questionsAnswers = require('./routes/questionsAnswers');
-=======
 const reviews = require('./routes/ratingsAndReviews');
->>>>>>> shengnan
 
 app.use(express.static(path.join(__dirname, '/client/dist')));
 

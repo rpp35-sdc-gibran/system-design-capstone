@@ -92,3 +92,13 @@
     }
   ]
 }
+
+/*
+{answer_id: 5897225,
+body: "The rubber on the bottom wears thin quickly",
+"date": "2019-02-18T00:00:00.000Z",
+"answerer_name": "marcanthony",
+"helpfulness": 9,
+"photos":[]
+}
+*/

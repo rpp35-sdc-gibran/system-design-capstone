@@ -19,7 +19,7 @@ class AnswersList extends React.Component {
       }
       })
       .then((results) => {
-        console.log(`Answer list for ${this.props.question_id}`, results.data.results)
+        // console.log(`Answer list for ${this.props.question_id}`, results.data.results)
         this.setState({allAnswers: results.data.results})
       })
       .catch((error) => {
@@ -27,13 +27,14 @@ class AnswersList extends React.Component {
       })
   }
 
-
+// ternary statement for not mapping undefined
 
   render () {
     return (
       <Card>
-        {this.props.question_id}
-
+        {this.state.allAnswers.map((answer) => {
+          return <Answer answer={answer}/>
+        })}
       </Card>
     )
   }
