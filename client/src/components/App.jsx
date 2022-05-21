@@ -33,7 +33,7 @@ class App extends Component {
           <ProductOverview currentProductId={this.state.currentProductId} />
         )}
         <QuestionsAnswers currentProductId={this.state.currentProductId} />
-        <RatingsAndReviews currentProductId={this.state.currentProductId} reviews={this.state.currentReviews} {...this.props} />
+        {/* <RatingsAndReviews currentProductId={this.state.currentProductId} reviews={this.state.currentReviews} {...this.props} /> */}
       </div>
     );
   }

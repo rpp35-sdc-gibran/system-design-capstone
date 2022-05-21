@@ -28,7 +28,7 @@ class Question extends React.Component {
           Q: {this.props.question.question_body}
           <div>
             Helpful?
-            <a class="helpful" onClick={this.isHelpful.bind(this)} style={{cursor: 'pointer'}}>Yes</a>
+            <a class="helpful" onClick={this.isHelpful.bind(this)} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Yes</a>
             ({this.props.question.question_helpfulness})
           </div>
         </div>

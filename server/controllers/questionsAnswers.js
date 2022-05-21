@@ -22,7 +22,7 @@ const getAnswersByQuestionID = (req, res) => {
     headers: {Authorization: GITHUB_API_TOKEN},
     })
     .then((results) => {
-      console.log('SUCCESS getting answers by question_id', results);
+      // console.log('SUCCESS getting answers by question_id', results);
       res.send(results.data)
     })
     .catch((error) => {
@@ -38,26 +38,15 @@ const markQuestionHelpfulByQuestionID = (req, res) => {
       data: {data: null}
       })
       .then((results) => {
-        console.log('Success marking answer heplful', results);
+        // console.log('Success marking question heplful', results);
         res.status(201)
       })
       .catch((error) => {
-        console.log('Error marking answer helpful', error);
+        console.log('Error marking question helpful', error);
       })
 };
 
 const markAnswerHelpfulByAnswerID = (req, res) => {
-  // axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.answer_id}/helpful`, {
-  //   headers: {Authorization: GITHUB_API_TOKEN}
-  //   })
-  // .then((results) => {
-  //   console.log('Success marking answer heplful', results);
-  //   res.status(201)
-  // })
-  // .catch((error) => {
-  //   console.log('Error marking answer helpful', error);
-  // })
-
   axios({
     method: 'put',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.answer_id}/helpful`,

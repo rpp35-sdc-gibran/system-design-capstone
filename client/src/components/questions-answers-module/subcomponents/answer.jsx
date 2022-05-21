@@ -4,9 +4,11 @@ import axios from 'axios';
 import Card from '@mui/material/Card';
 
 class Answer extends React.Component {
+
+
   isHelpful () {
     axios.put('/api/questionsAnswers/markAnswerHelpful', {
-      question_id: this.props.answer.answer_id
+      answer_id: this.props.answer.answer_id
       })
       .then((results) => {
         console.log('SUCCESS PUT /api/questionsAnswers/markAnswerHelpful', results);
@@ -23,8 +25,8 @@ class Answer extends React.Component {
         <div>
           A: {this.props.answer.body}
           Helpful?
-          <a class="helpful" onClick={this.isHelpful.bind(this)} style={{cursor: 'pointer'}}>Yes</a>
-          {this.props.answer.helpfulness}
+          <a class="helpful" onClick={this.isHelpful.bind(this)} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Yes</a>
+          ({this.props.answer.helpfulness})
         </div>
       </Card>
       )
