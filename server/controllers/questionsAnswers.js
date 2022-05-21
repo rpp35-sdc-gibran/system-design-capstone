@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-const GITHUB_API_TOKEN = require('../config/tylersConfig.js').GITHUB_API_TOKEN
-  .TOKEN;
-=======
 const GITHUB_API_TOKEN = require('../config/config.js').GITHUB_API_TOKEN.token;
->>>>>>> 355f07f3e19f0f67ccbb3eea683579d1f0a89765
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions';
 const axios = require('axios');
 
@@ -14,11 +9,7 @@ const getQuestionsByProductID = (req, res) => {
       params: { product_id: req.query.product_id },
     })
     .then((results) => {
-<<<<<<< HEAD
       res.send(results.data);
-=======
-      res.send(results.data)
->>>>>>> 355f07f3e19f0f67ccbb3eea683579d1f0a89765
     })
     .catch((error) => {
       res.status(404).send('Error getting questions', error);
@@ -26,7 +17,6 @@ const getQuestionsByProductID = (req, res) => {
 };
 
 const getAnswersByQuestionID = (req, res) => {
-<<<<<<< HEAD
   axios
     .get(
       `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.query.question_id}/answers`,
@@ -36,13 +26,6 @@ const getAnswersByQuestionID = (req, res) => {
     )
     .then((results) => {
       res.send(results.data);
-=======
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.query.question_id}/answers`, {
-    headers: {Authorization: GITHUB_API_TOKEN},
-    })
-    .then((results) => {
-      res.send(results.data)
->>>>>>> 355f07f3e19f0f67ccbb3eea683579d1f0a89765
     })
     .catch((error) => {
       res.status(404).send('Error getting answers', error);
@@ -50,19 +33,19 @@ const getAnswersByQuestionID = (req, res) => {
 };
 
 const markQuestionHelpfulByQuestionID = (req, res) => {
-    axios({
-      method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.question_id}/helpful`,
-      headers: {Authorization: GITHUB_API_TOKEN},
-      data: {data: null}
-      })
-      .then((results) => {
-        console.log('Success marking answer heplful', results);
-        res.status(201)
-      })
-      .catch((error) => {
-        console.log('Error marking answer helpful', error);
-      })
+  axios({
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.question_id}/helpful`,
+    headers: { Authorization: GITHUB_API_TOKEN },
+    data: { data: null },
+  })
+    .then((results) => {
+      console.log('Success marking answer heplful', results);
+      res.status(201);
+    })
+    .catch((error) => {
+      console.log('Error marking answer helpful', error);
+    });
 };
 
 const markAnswerHelpfulByAnswerID = (req, res) => {
@@ -80,17 +63,16 @@ const markAnswerHelpfulByAnswerID = (req, res) => {
   axios({
     method: 'put',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.answer_id}/helpful`,
-    headers: {Authorization: GITHUB_API_TOKEN},
-    data: {data: null}
-    })
+    headers: { Authorization: GITHUB_API_TOKEN },
+    data: { data: null },
+  })
     .then((results) => {
       console.log('Success marking answer heplful', results);
-      res.status(201)
+      res.status(201);
     })
     .catch((error) => {
       console.log('Error marking answer helpful', error);
-    })
-
+    });
 };
 
 const postQuestionByProductID = () => {};
@@ -101,4 +83,5 @@ const reportAnswerByAnswerID = () => {};
 module.exports.getQuestionsByProductID = getQuestionsByProductID;
 module.exports.getAnswersByQuestionID = getAnswersByQuestionID;
 module.exports.markAnswerHelpfulByAnswerID = markAnswerHelpfulByAnswerID;
-module.exports.markQuestionHelpfulByQuestionID = markQuestionHelpfulByQuestionID;
+module.exports.markQuestionHelpfulByQuestionID =
+  markQuestionHelpfulByQuestionID;

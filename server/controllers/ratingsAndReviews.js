@@ -17,7 +17,7 @@ module.exports = {
         },
         params: {
           product_id: req.params.product_id,
-        }
+        },
       });
       promise.then((reviews) => {
         res.send(reviews.data);
@@ -38,7 +38,7 @@ module.exports = {
         },
         params: {
           product_id: req.params.product_id,
-        }
+        },
       });
       promise.then((reviewsMetadata) => {
         res.send(reviewsMetadata.data);
@@ -62,14 +62,15 @@ module.exports = {
           email: req.params.email,
           photos: req.params.photos,
           characteristics: req.params.characteristics,
-        }
+        },
       });
-      promise.then((response) => {
-        res.send(response)
-      })
+      promise
+        .then((response) => {
+          res.send(response);
+        })
         .catch((error) => {
           throw error;
-        })
+        });
     },
     markReviewAsHelpful: function (req, res) {
       let urlMarkHelpful = path.join(url, '/:review_id/helpful');
@@ -78,30 +79,32 @@ module.exports = {
         url: urlMarkHelpful,
         params: {
           reveiw_id: req.params.reveiw_id,
-        }
+        },
       });
-      promise.then((response) => {
-        res.send(response)
-      })
+      promise
+        .then((response) => {
+          res.send(response);
+        })
         .catch((error) => {
           throw error;
-        })
+        });
     },
-    reportReview: function(req, res) {
+    reportReview: function (req, res) {
       let urlReport = path.join(url, '/:review_id/report');
       let promise = axios({
         method: 'put',
         url: urlReport,
         params: {
           reveiw_id: req.params.reveiw_id,
-        }
+        },
       });
-      promise.then((response) => {
-        res.send(response)
-      })
+      promise
+        .then((response) => {
+          res.send(response);
+        })
         .catch((error) => {
           throw error;
-        })
-    }
-  }
+        });
+    },
+  },
 };
