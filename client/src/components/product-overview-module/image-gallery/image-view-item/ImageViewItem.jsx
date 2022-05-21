@@ -21,11 +21,6 @@ const ImageViewItem = ({
     y: 0,
   });
 
-  //handles changing className to go back to the default view
-  const handleClick = () => {
-    handleChildZoom();
-  };
-
   //handles setting initial position values for image in enlarged-zoomed mode
   const handleTransformScaleView = (e) => {
     handleChildScale();
@@ -49,6 +44,10 @@ const ImageViewItem = ({
   const imageScaledContainerStyle = {
     top: `${initialImagePosition.y - imagePosition.y}px`,
     left: `${initialImagePosition.x - imagePosition.x}px`,
+  };
+
+  const handleClick = () => {
+    handleChildZoom();
   };
 
   //enlarged image view

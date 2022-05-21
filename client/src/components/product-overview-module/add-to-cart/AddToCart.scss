@@ -3,14 +3,16 @@
 .form {
   display: flex;
   justify-content: space-evenly;
+  gap: 15px;
+
   .form-select-size {
-    @include set-size(75px, 12rem);
+    @include set-size(75px, 100%);
   }
   .form-quantity {
-    @include set-size(75px, 12rem);
+    @include set-size(75px, 100%);
   }
   .form-button {
-    @include set-size(75px, 8rem);
+    @include set-size(75px, 100%);
   }
   option {
     font-size: 20px;

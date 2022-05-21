@@ -34,7 +34,7 @@ input[type='checkbox']:checked ~ div.enlarged {
 
 .default {
   cursor: zoom-in;
-  @include set-size(70%, 50vw);
+  @include set-size(100%, 50vw);
   max-height: 75vh;
 }
 

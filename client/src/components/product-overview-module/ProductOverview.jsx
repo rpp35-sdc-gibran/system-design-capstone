@@ -8,10 +8,12 @@ import axios from 'axios';
 
 const ProductOverview = ({ currentProductId }) => {
   const [productInfo, setProductInfo] = useState([]);
+  const [isScaled, setIsScaled] = useState(false);
   const [styleList, setStyles] = useState();
   const [currentStyle, setCurrentStyle] = useState();
   const [reviews, setReviews] = useState(0);
   const [reviewList, setReviewList] = useState([]);
+  const [isEnlargedView, setIsEnlargedView] = useState(false);
 
   useEffect(() => {
     //gets product information for first product in product list
@@ -40,6 +42,15 @@ const ProductOverview = ({ currentProductId }) => {
         console.log('err:', err);
       });
   }, []);
+
+  const handleChildScale = () => {
+    setIsScaled(!isScaled);
+  };
+
+  //handles click of main image to zoom, based on isEnlarged state
+  const handleChildZoom = () => {
+    setIsEnlargedView(!isEnlargedView);
+  };
 
   // helper func to get average number of reviews
   const getAverageReviews = (arr) => {
@@ -87,35 +98,44 @@ const ProductOverview = ({ currentProductId }) => {
             data-testid='product-overview-image'
             className='product-overview-image-view'
           >
-            <ImageView currentStylePhotos={currentStyle.photos} />
-          </div>
-          <div className='product-overview-product-info'>
-            <ProductInformation
-              rating={reviews}
-              reviewLength={reviewList.length}
-              category={productInfo.category}
-              default_price={productInfo.default_price}
-              description={productInfo.description}
-              features={productInfo.features}
-              name={productInfo.name}
-              slogan={productInfo.slogan}
-              sale_price={currentStyle.sale_price}
+            <ImageView
+              currentStylePhotos={currentStyle.photos}
+              handleChildScale={handleChildScale}
+              isScaled={isScaled}
+              isEnlargedView={isEnlargedView}
+              setIsEnlargedView={setIsEnlargedView}
+              handleChildZoom={handleChildZoom}
             />
           </div>
-          <div className='product-overview-style-selector'>
-            <StyleSelector
-              styleList={styleList}
-              handleStyleClick={handleStyleClick}
-              currentStyle={currentStyle}
-            />
-          </div>
-          <div className='product-overview-add-to-cart'>
-            <AddToCart currentStyle={currentStyle} />
-          </div>
+          {!isScaled && !isEnlargedView && (
+            <div className='product-overview-info-style-container'>
+              <div className='product-overview-product-info'>
+                <ProductInformation
+                  rating={reviews}
+                  reviewLength={reviewList.length}
+                  category={productInfo.category}
+                  default_price={productInfo.default_price}
+                  description={productInfo.description}
+                  features={productInfo.features}
+                  name={productInfo.name}
+                  slogan={productInfo.slogan}
+                  sale_price={currentStyle.sale_price}
+                />
+              </div>
+              <div className='product-overview-style-selector'>
+                <StyleSelector
+                  styleList={styleList}
+                  handleStyleClick={handleStyleClick}
+                  currentStyle={currentStyle}
+                />
+              </div>
+              <div className='product-overview-add-to-cart'>
+                <AddToCart currentStyle={currentStyle} />
+              </div>
+            </div>
+          )}
         </>
-      ) : (
-        <h1>Loading...</h1>
-      )}
+      ) : null}
     </div>
   );
 };

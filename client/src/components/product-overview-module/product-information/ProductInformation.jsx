@@ -36,7 +36,7 @@ const ProductInformation = ({
       <Typography data-testid='product-info-category' variant='overline'>
         {category}
       </Typography>
-      <Typography data-testid='product-info-name' variant='h1'>
+      <Typography data-testid='product-info-name' variant='h3'>
         {name}
       </Typography>
       {sale_price ? (

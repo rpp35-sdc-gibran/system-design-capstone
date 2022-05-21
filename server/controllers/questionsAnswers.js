@@ -25,6 +25,7 @@ const getAnswersByQuestionID = (req, res) => {
       }
     )
     .then((results) => {
+      console.log('SUCCESS getting answers by question_id', results);
       res.send(results.data);
     })
     .catch((error) => {

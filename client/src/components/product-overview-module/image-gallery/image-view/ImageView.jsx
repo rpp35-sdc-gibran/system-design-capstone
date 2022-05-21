@@ -6,11 +6,17 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ImageViewThumbnails from '../image-view-thumbnails/ImageViewThumbnails.jsx';
 
-const ImageView = ({ currentStylePhotos }) => {
+import FitScreenIcon from '@mui/icons-material/FitScreen';
+
+const ImageView = ({
+  currentStylePhotos,
+  handleChildScale,
+  isScaled,
+  isEnlargedView,
+  setIsEnlargedView,
+  handleChildZoom,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
-  const [isEnlargedView, setIsEnlargedView] = useState(false);
-  const [isScaled, setIsScaled] = useState(false);
 
   //handles updating current slide on click next
   const goNext = () => {
@@ -18,11 +24,6 @@ const ImageView = ({ currentStylePhotos }) => {
       let newIndex = currentIndex;
       setCurrentIndex(newIndex + 1);
     }
-  };
-
-  //handle setting enlarged scaled view mode
-  const handleChildScale = () => {
-    setIsScaled(!isScaled);
   };
 
   //handles updating current slide on click previous
@@ -33,31 +34,11 @@ const ImageView = ({ currentStylePhotos }) => {
     }
   };
 
-  //handles click of main image to zoom, based on isZoomed state
-  const handleChildZoom = () => {
-    setIsEnlargedView(!isEnlargedView);
-  };
-
   //updates current index so that main image matches the clicked thumbnail
   const handleThumbnailClick = (index) => {
     setCurrentIndex(index);
   };
   console.log('currentStylePhotos:', currentStylePhotos);
-
-  // let updatedStylePhotos;
-  // if (currentStylePhotos.length > 7) {
-  //   if (currentIndex + 6 <= currentStylePhotos.length) {
-  //     updatedStylePhotos = currentStylePhotos.slice(
-  //       currentIndex,
-  //       currentIndex + 6
-  //     );
-  //   } else if (currentIndex - 6 >= 0) {
-  //     updatedStylePhotos = currentStylePhotos.slice(
-  //       currentIndex - 6,
-  //       currentIndex
-  //     );
-  //   }
-  // }
 
   return (
     <div className='image-view'>
@@ -84,15 +65,26 @@ const ImageView = ({ currentStylePhotos }) => {
       {!isScaled && (
         <div className='image-view-buttons'>
           {currentIndex !== 0 && (
-            <IconButton data-testid='icon-prev' onClick={goPrev}>
+            <IconButton
+              className='button-prev'
+              data-testid='icon-prev'
+              onClick={goPrev}
+            >
               <ArrowBackIcon color='primary' fontSize='large' />
             </IconButton>
           )}
           {currentIndex !== currentStylePhotos.length - 1 && (
-            <IconButton data-testid='icon-next' onClick={goNext}>
+            <IconButton
+              className='button-next'
+              data-testid='icon-next'
+              onClick={goNext}
+            >
               <ArrowForwardIcon color='primary' fontSize='large' />
             </IconButton>
           )}
+          <IconButton onClick={handleChildZoom} className='button-fit'>
+            <FitScreenIcon />
+          </IconButton>
         </div>
       )}
     </div>
