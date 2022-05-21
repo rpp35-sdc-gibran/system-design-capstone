@@ -1,4 +1,4 @@
-const GITHUB_API_TOKEN = require('../config/tylersConfig.js').GITHUB_API_TOKEN.TOKEN;
+const GITHUB_API_TOKEN = require('../config/config.js').GITHUB_API_TOKEN.TOKEN;
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions';
 const axios = require('axios');
 
@@ -8,7 +8,7 @@ const getQuestionsByProductID = (req, res) => {
     params: {product_id: req.query.product_id}
     })
     .then((results) => {
-      // console.log('SUCCESS getQuestionsByProductID', results.data.results);
+      console.log('SUCCESS getQuestionsByProductID', results.data.results);
       res.send(results.data)
     })
     .catch((error) => {
@@ -21,7 +21,7 @@ const getAnswersByQuestionID = (req, res) => {
     headers: {Authorization: GITHUB_API_TOKEN}
     })
     .then((results) => {
-      // console.log('SUCCESS getting answers by question_id', results);
+      console.log('SUCCESS getting answers by question_id', results);
       res.send(results.data)
     })
     .catch((error) => {

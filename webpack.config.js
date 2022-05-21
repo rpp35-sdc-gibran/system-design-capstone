@@ -17,7 +17,8 @@ module.exports = {
       '/api': {
         //rewrites request calls to /api/dest, so all requests to server must be made to /api/dest
         target: 'http://localhost:1128',
-        pathRewrite: { '^/api': '' },
+        pathRewrite: { '^/api': '' }
+
       },
     },
 
