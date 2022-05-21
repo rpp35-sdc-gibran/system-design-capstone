@@ -1,22 +1,36 @@
 import React from 'react';
-import { Box, Container } from '@mui/material';
-
+import Ratings from './ratings/Ratings.jsx'
+import ReviewsList from './reviews/ReviewsList.jsx'
+import axios from 'axios';
 class RatingsAndReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.id
+      currentReviews: []
     }
   }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if(nextProps.currentProductId) {
+      axios({
+          method: 'get',
+          url: '/api/reviews/',
+          headers: { 'product_id': nextProps.currentProductId.toString() }
+        }).
+          then(({ data }) => {
+            console.log('got reviews from server at Ratings&Reviews.jsx', data)
+            this.setState({
+              currentReviews: data.results
+            })
+          })
+  }
+}
   render() {
+    console.log("current product ID in Reviews Component: ", this.props.currentProductId)
     return (
-      <Container component="span" sx={{ p: 20 }}>
-        <Box sx={{ display: 'grid', gridTemplateRows: 'repeat(2, 1fr)', height: 500, border: 1 }}>
-          <div>1</div>
-          <div>2</div>
-        </Box>
-
-      </Container>
+      <div>
+        <Ratings currentProductId={this.props.currentProductId}/>
+        <ReviewsList reviews={this.state.currentReviews}/>
+      </div>
 
     )
   }

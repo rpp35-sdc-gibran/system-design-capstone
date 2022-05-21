@@ -4,7 +4,8 @@ const controllers = require('../controllers/ratingsAndReviews.js');
 
 
 //handles getting product reviews for single product
-router.get('/:product_id', (req, res) => {
+router.get('/', (req, res) => {
+  console.log('requesting reviews for productId: ')
   controllers.reviews.getProductReviews(req, res);
 });
 //handles posting product reviews for single product

@@ -1,5 +1,5 @@
 const GITHUB_API_TOKEN = require('../config/config').GITHUB_API_TOKEN.token;
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews';
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/';
 const axios = require('axios');
 const path = require('path');
 
@@ -9,21 +9,22 @@ module.exports = {
   reviews: {
     //returns list of all reviews for single product
     getProductReviews: function (req, res) {
-      let promise = axios({
-        method: 'get',
-        url: url,
+      console.log('req.headers.product_id: ', req.headers.product_id);
+      let promise = axios.get(url, {
         headers: {
           Authorization: GITHUB_API_TOKEN,
         },
         params: {
-          product_id: req.params.product_id,
+          product_id: req.headers.product_id
         }
       });
-      promise.then((reviews) => {
-        res.send(reviews.data);
+
+      promise.then((response) => {
+        console.log('got reviews from API: ', response.data)
+        res.send(response.data);
       });
       promise.catch((err) => {
-        console.log('err:', err);
+        //console.log('err:', err);
         res.status(400).send('Error getting reviews');
       });
     },
@@ -37,7 +38,7 @@ module.exports = {
           Authorization: GITHUB_API_TOKEN,
         },
         params: {
-          product_id: req.params.product_id,
+          product_id: req.body.params.product_id,
         }
       });
       promise.then((reviewsMetadata) => {
