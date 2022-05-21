@@ -25,11 +25,19 @@ class App extends Component {
   render() {
     return (
       <div>
+<<<<<<< HEAD
         {/* <QuestionsAnswers /> */}
         {this.state.currentProductId && (
           <ProductOverview currentProductId={this.state.currentProductId} />
         )}
         {/* <RatingsAndReviews id={this.state.currentProductId} /> */}
+=======
+        {this.state.currentProductId && (
+          <ProductOverview currentProductId={this.state.currentProductId} />
+        )}
+        <QuestionsAnswers currentProductId={this.state.currentProductId}/>
+        <RatingsAndReviews id={this.state.currentProductId}/>
+>>>>>>> 355f07f3e19f0f67ccbb3eea683579d1f0a89765
       </div>
     );
   }

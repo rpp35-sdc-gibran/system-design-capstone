@@ -4,12 +4,28 @@ import axios from 'axios';
 import Card from '@mui/material/Card';
 
 class Answer extends React.Component {
+  isHelpful () {
+    axios.put('/api/questionsAnswers/markAnswerHelpful', {
+      question_id: this.props.answer.answer_id
+      })
+      .then((results) => {
+        console.log('SUCCESS PUT /api/questionsAnswers/markAnswerHelpful', results);
+        // reload questions to update page
+      })
+      .catch((error) => {
+        console.log('ERROR PUT /api/questionsAnswers/markAnswerHelpful', error);
+      });
+  }
+
   render () {
     return (
       <Card variant="outlined">
-        {/* <div>{this.props.question.question_body}</div>
-        <div>{this.props.question.question_date}</div>
-        <div>{this.props.question.asker_name}</div> */}
+        <div>
+          A: {this.props.answer.body}
+          Helpful?
+          <a class="helpful" onClick={this.isHelpful.bind(this)} style={{cursor: 'pointer'}}>Yes</a>
+          {this.props.answer.helpfulness}
+        </div>
       </Card>
       )
   }
