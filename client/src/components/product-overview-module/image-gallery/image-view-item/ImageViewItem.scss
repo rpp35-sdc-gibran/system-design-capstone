@@ -1,0 +1,49 @@
+@use '../../../App.scss' as *;
+
+input[type='checkbox'] {
+  position: absolute; /* Force the checkbox at the start of the container */
+  cursor: nesw-resize;
+  @include set-size(100%);
+  z-index: 3;
+  opacity: 0;
+}
+
+input[type='checkbox']:checked {
+  cursor: sw-resize;
+  // position: relative;
+  // z-index: 4;
+}
+
+input[type='checkbox']:checked ~ div.enlarged {
+  transform: scale(2.5);
+}
+
+.enlarged {
+  @include set-size(80%, 100vw);
+  position: absolute;
+  z-index: 1;
+}
+
+.enlarged-view-btn {
+  position: absolute;
+  z-index: 10;
+  left: 90%;
+  margin: 0;
+  padding: 0;
+}
+
+.default {
+  cursor: zoom-in;
+  @include set-size(70%, 50vw);
+  max-height: 75vh;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+}
+
+// .enlarged {
+//   top: 100px;
+//   left: 100px;
+// }

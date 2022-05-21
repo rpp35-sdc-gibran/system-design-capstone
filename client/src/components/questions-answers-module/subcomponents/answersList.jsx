@@ -3,30 +3,37 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Card from '@mui/material/Card';
 
-import Answer from './Answer.jsx'
-
-
+import Answer from './Answer.jsx';
 
 class AnswersList extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      allAnswers: []
-    }
-    axios.get('/api/questionsAnswers/answers', {
-      params: {
-        question_id: this.props.question_id
-      }
+      allAnswers: [],
+    };
+    axios
+      .get('/api/questionsAnswers/answers', {
+        params: {
+          question_id: this.props.question_id,
+        },
       })
       .then((results) => {
+<<<<<<< HEAD
+        this.setState({ allAnswers: results.data.results });
+=======
         // console.log(`Answer list for ${this.props.question_id}`, results.data.results)
         this.setState({allAnswers: results.data.results})
+>>>>>>> 355f07f3e19f0f67ccbb3eea683579d1f0a89765
       })
       .catch((error) => {
-         console.log('error', error);
-      })
+        console.log('error', error);
+      });
   }
 
+<<<<<<< HEAD
+  render() {
+    return <Card>{this.props.question_id}</Card>;
+=======
 // ternary statement for not mapping undefined
 
   render () {
@@ -37,6 +44,7 @@ class AnswersList extends React.Component {
         })}
       </Card>
     )
+>>>>>>> 355f07f3e19f0f67ccbb3eea683579d1f0a89765
   }
 }
 

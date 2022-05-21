@@ -1,8 +1,8 @@
 import React from 'react';
+import './ProductInformation.scss';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Rating from '@mui/material/Rating';
 import Link from '@mui/material/Link';
+import Star from './star/Star.jsx';
 
 const ProductInformation = ({
   rating,
@@ -13,16 +13,44 @@ const ProductInformation = ({
   features,
   name,
   slogan,
+  sale_price,
 }) => {
+  //handle getting star ratings so it can be passed down as prop to SVG
+  let result = [];
+  let wholeStars = Math.floor(rating);
+  for (let i = 0; i < wholeStars; i++) {
+    result.push(50);
+  }
+  result.push(Math.floor(((rating % 1) * 100) / 2));
+
   return (
-    <Grid>
-      <Rating readOnly value={rating} precision={0.1} />
-      <Link href='#'>Read all {reviewLength} reviews</Link>
-      <Typography>{category}</Typography>
-      <Typography>{name}</Typography>
-      <Typography>{default_price}</Typography>
-      <Typography>{description}</Typography>
-    </Grid>
+    <div className='product-info-container'>
+      <div className='product-info-line-1'>
+        {result.map((rating, index) => (
+          <Star rating={rating} key={index} />
+        ))}
+        <Link data-testid='reviewLink' className='product-info-link' href='#'>
+          Read all {reviewLength} reviews
+        </Link>
+      </div>
+      <Typography data-testid='product-info-category' variant='overline'>
+        {category}
+      </Typography>
+      <Typography data-testid='product-info-name' variant='h1'>
+        {name}
+      </Typography>
+      {sale_price ? (
+        <>
+          <Typography variant='subtitle2'>{sale_price}</Typography>
+          <Typography className='product-info-old-price' variant='subtitle2'>
+            {default_price}
+          </Typography>
+        </>
+      ) : (
+        <Typography variant='subtitle2'>{default_price}</Typography>
+      )}
+      <Typography variant='body1'>{description}</Typography>
+    </div>
   );
 };
 

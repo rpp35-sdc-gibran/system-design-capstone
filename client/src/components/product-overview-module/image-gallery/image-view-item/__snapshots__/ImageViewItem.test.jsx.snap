@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="default"
+  onClick={[Function]}
+>
+  <img
+    alt="main image default view"
+    style={
+      Object {
+        "left": -70,
+        "top": -50,
+      }
+    }
+  />
+</div>
+`;

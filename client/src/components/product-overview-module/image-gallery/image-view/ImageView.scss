@@ -1,0 +1,27 @@
+@use '../../../App.scss' as *;
+
+.image-view {
+  display: grid;
+  @include set-size(100%);
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 3fr;
+
+  .image-view-thumbnails,
+  .image-view-item,
+  .image-view-buttons {
+    grid-row: 1/2;
+  }
+  .image-view-thumbnails {
+    grid-column: 1/2;
+  }
+  .image-view-item {
+    grid-column: 1 / 3;
+  }
+  .image-view-buttons {
+    grid-column: 3/3;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 4;
+  }
+}

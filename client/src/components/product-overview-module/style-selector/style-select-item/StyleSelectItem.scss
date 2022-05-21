@@ -1,0 +1,9 @@
+@use '../../../App.scss' as *;
+
+// .style-item-active-image {
+//   @include set-size(auto, 10em);
+// }
+
+.style-item-inactive-image {
+  @include set-size(auto, 10em);
+}

@@ -1,10 +1,107 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './AddToCart.scss';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
-const AddToCart = () => {
+const AddToCart = ({ currentStyle }) => {
+  const [currentSize, setCurrentSize] = useState('');
+  const [purchaseQuantity, setPurchaseQuantity] = useState(0);
+  const [quantity, setQuantity] = useState([]);
+
+  //handles turning skus into array so that they can be mapped over
+  const skus = Object.keys(currentStyle.skus).map((key) => {
+    return currentStyle.skus[key];
+  });
+
+  //handles when size is selected to get correct quantity and size options
+  const handleChange = (e) => {
+    setCurrentSize(e.target.value);
+    let quantityArr = [];
+    let currentQuantity;
+    for (let i = 0; i < skus.length; i++) {
+      if (skus[i].size === e.target.value) {
+        if (skus[i].size >= 15) {
+          currentQuantity = 15;
+        } else {
+          currentQuantity = skus[i].quantity;
+        }
+      }
+    }
+
+    for (let i = 1; i <= currentQuantity; i++) {
+      console.log('i:', i);
+      quantityArr.push(i);
+    }
+    setQuantity(quantityArr);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  //typo in data - has two options with XL size
+  if (skus.length) {
+    skus[skus.length - 1].size = 'XXL';
+  }
+  ////////////////////////////////////////////
+
+  //handles changing state when choosing quantity
+  const handleSelectQuantity = (e) => {
+    setPurchaseQuantity(e.target.value);
+  };
   return (
-    <div>
-      <h1>this is AddToCart component</h1>
-    </div>
+    <form className='form' onSubmit={handleSubmit}>
+      {skus.length ? (
+        <>
+          <select
+            data-testid='select-size'
+            className='form-select-size'
+            required
+            onChange={handleChange}
+          >
+            <option value=''>Select Size</option>
+            {skus.map((itemSize, index) => (
+              <option
+                data-testid='select-size-option'
+                key={index}
+                value={itemSize.size}
+                label={itemSize.size}
+              >
+                {itemSize.size}
+              </option>
+            ))}
+          </select>
+          <select
+            data-testid='select-quantity'
+            className='form-quantity'
+            required
+          >
+            {quantity.length ? (
+              quantity.map((number) => (
+                <option
+                  data-testid='select-quantity-option'
+                  key={number}
+                  label={number}
+                >
+                  {number}
+                </option>
+              ))
+            ) : (
+              <option data-testid='default-quantity' disabled={true}>
+                -
+              </option>
+            )}
+          </select>
+          <Button className='form-button' variant='contained' type='submit'>
+            Add To Cart
+          </Button>
+        </>
+      ) : (
+        <select disabled>
+          <option>OUT OF STOCK</option>
+        </select>
+      )}
+    </form>
   );
 };
 

@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/products', products);
+
 app.use('/questionsAnswers', questionsAnswers);
 
 app.use('/reviews', reviews);

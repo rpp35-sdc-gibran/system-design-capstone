@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<svg
+  id="star-container"
+  style={
+    Object {
+      "clipRule": "evenodd",
+      "fillRule": "evenodd",
+      "strokeLinejoin": "round",
+      "strokeMiterlimit": 2,
+    }
+  }
+  viewBox="0 0 undefined 50"
+  xmlSpace="preserve"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M0 37.069h102L19.491 96.991 51.041.009l31.55 96.982L0 37.069Z"
+    style={
+      Object {
+        "fill": "#ff0",
+        "fillRule": "nonzero",
+      }
+    }
+    transform="matrix(.36274 0 0 .36274 7 6.907)"
+  />
+</svg>
+`;

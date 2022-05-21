@@ -1,0 +1,22 @@
+@use '../../../App.scss' as *;
+
+.thumbnail-active,
+.thumbnail-default {
+  position: relative;
+  z-index: 5;
+}
+
+.thumbnail-default {
+  @include set-size(auto, 150);
+  opacity: 50%;
+}
+
+.thumbnail-active {
+  opacity: 99%;
+  @include set-size(auto, 150);
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
