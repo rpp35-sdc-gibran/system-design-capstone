@@ -1,7 +1,9 @@
 @use '../../../App.scss' as *;
 
+//checkbox is used to cover the elements under it and act as as way to mark
+//whether view should be scaled or enlarged
 input[type='checkbox'] {
-  position: absolute; /* Force the checkbox at the start of the container */
+  position: absolute;
   cursor: nesw-resize;
   @include set-size(100%);
   z-index: 3;
@@ -10,8 +12,6 @@ input[type='checkbox'] {
 
 input[type='checkbox']:checked {
   cursor: sw-resize;
-  // position: relative;
-  // z-index: 4;
 }
 
 input[type='checkbox']:checked ~ div.enlarged {

@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import './ImageView.scss';
 import ImageViewItem from '../image-view-item/ImageViewItem.jsx';
 import IconButton from '@mui/material/IconButton';
+import Avatar from '@mui/material/Avatar';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ImageViewThumbnails from '../image-view-thumbnails/ImageViewThumbnails.jsx';
@@ -69,7 +70,9 @@ const ImageView = ({
               data-testid='icon-prev'
               onClick={goPrev}
             >
-              <ArrowBackIcon color='primary' fontSize='large' />
+              <Avatar>
+                <ArrowBackIcon color='primary' fontSize='large' />
+              </Avatar>
             </IconButton>
           )}
           {currentIndex !== currentStylePhotos.length - 1 && (
@@ -78,7 +81,9 @@ const ImageView = ({
               data-testid='icon-next'
               onClick={goNext}
             >
-              <ArrowForwardIcon color='primary' fontSize='large' />
+              <Avatar>
+                <ArrowForwardIcon color='primary' fontSize='large' />
+              </Avatar>
             </IconButton>
           )}
           {/* <IconButton
