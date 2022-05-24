@@ -35,7 +35,7 @@ const markQuestionHelpfulByQuestionID = (req, res) => {
     })
 };
 
-const reportQuestionByQuestionID = () => {
+const reportQuestionByQuestionID = (req, res) => {
   axios({
     method: 'put',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.question_id}/report`,
