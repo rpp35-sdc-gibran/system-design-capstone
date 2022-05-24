@@ -3,19 +3,15 @@ import axios from 'axios';
 import ReviewTile from './ReviewTile.jsx';
 
 function ReviewsList({ reviews }) {
-  console.log('In ReviewsList got: ', reviews);
   const [renderedCount, setRenderedCount] = useState(2);
   function moreReviewsOnClick() {
-    console.log('MORE REVIEWS button clicked');
     if (renderedCount < reviews.length) {
       setRenderedCount(renderedCount + 2);
     } else {
       setRenderedCount(reviews.length);
     }
   }
-  console.log('reviews:', reviews);
   let currentReviews = reviews.slice(0, renderedCount);
-  console.log('currentReviews:', currentReviews);
   return (
     <div>
       <h1>Reviews</h1>

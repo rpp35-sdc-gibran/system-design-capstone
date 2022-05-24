@@ -4,8 +4,6 @@ import StarRating from './starRating/StarRating.jsx';
 //! starRating returns two components since two are being exported, so use StarRating.StarRating
 //! or StarRating.StarIcon
 
-console.log('StarRating:', StarRating);
-
 const ReviewTile = ({ review }) => {
   var months = [
     'January',

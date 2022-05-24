@@ -8,9 +8,16 @@ const photo = { url: 'test1', thumbnail_url: 'test1' };
 const photo2 = { url: 'test2', thumbnail_url: 'test2' };
 const photo3 = { url: 'test3', thumbnail_url: 'test3' };
 const currentStylePhotos = [photo, photo2, photo3];
-
+const handleChildZoom = () => {
+  console.log('here');
+};
 test('renders the image gallery correctly', () => {
-  render(<ImageView currentStylePhotos={currentStylePhotos} />);
+  render(
+    <ImageView
+      currentStylePhotos={currentStylePhotos}
+      handleChildZoom={handleChildZoom}
+    />
+  );
   expect(screen.getByAltText('main image default view')).toBeDefined();
   expect(screen.getAllByAltText('thumbnail image')).toBeDefined();
   expect(screen.queryByTestId('icon-prev')).toBeNull();
@@ -18,7 +25,12 @@ test('renders the image gallery correctly', () => {
 
 test('prev and next arrrows should switch default image src on click', async () => {
   const user = userEvent.setup();
-  render(<ImageView currentStylePhotos={currentStylePhotos} />);
+  render(
+    <ImageView
+      currentStylePhotos={currentStylePhotos}
+      handleChildZoom={handleChildZoom}
+    />
+  );
   let prevImage = screen.getByAltText('main image default view');
   expect(prevImage.src).toEqual('http://localhost/test1');
   await user.click(screen.getByTestId('icon-next'));
@@ -28,12 +40,4 @@ test('prev and next arrrows should switch default image src on click', async () 
   expect(nextImage.src).toEqual('http://localhost/test1');
 });
 
-test('image changes to extended view on user click', async () => {
-  const user = userEvent.setup();
-  render(<ImageView currentStylePhotos={currentStylePhotos} />);
-  const defaultImage = screen.getByAltText('main image default view');
-  await user.click(defaultImage);
-  expect(screen.getAllByAltText('main image enlarged view')).toBeDefined();
-});
-
-//todo should change image on thumbnail click
+//- [ ]  test to see if clicking on thumbnails changes the default image

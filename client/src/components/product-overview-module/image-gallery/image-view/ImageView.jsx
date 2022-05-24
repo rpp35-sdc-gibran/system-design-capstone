@@ -38,7 +38,6 @@ const ImageView = ({
   const handleThumbnailClick = (index) => {
     setCurrentIndex(index);
   };
-  console.log('currentStylePhotos:', currentStylePhotos);
 
   return (
     <div className='image-view'>
@@ -82,7 +81,11 @@ const ImageView = ({
               <ArrowForwardIcon color='primary' fontSize='large' />
             </IconButton>
           )}
-          <IconButton onClick={handleChildZoom} className='button-fit'>
+          <IconButton
+            data-testid='enlarge-button'
+            onClick={handleChildZoom}
+            className='button-fit'
+          >
             <FitScreenIcon />
           </IconButton>
         </div>

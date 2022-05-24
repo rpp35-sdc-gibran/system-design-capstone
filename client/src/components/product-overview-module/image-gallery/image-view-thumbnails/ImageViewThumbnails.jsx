@@ -9,7 +9,7 @@ const ImageViewThumbnails = ({
   isEnlargedView,
 }) => {
   return (
-    <div className='image-view-thumbnail-list'>
+    <div data-testid='thumbnail-list' className='image-view-thumbnail-list'>
       {photos.map((photo, index) => {
         if (currentIndex >= 5) {
           if (index > currentIndex - 5 && index <= currentIndex) {

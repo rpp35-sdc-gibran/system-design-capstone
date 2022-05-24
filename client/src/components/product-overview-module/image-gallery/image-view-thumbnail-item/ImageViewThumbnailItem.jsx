@@ -20,7 +20,11 @@ const ImageViewThumbnailItem = ({
   }
 
   return (
-    <div className={currentClass} onClick={handleClick}>
+    <div
+      className={currentClass}
+      onClick={handleClick}
+      data-testid={`thumbnail-img-${index}`}
+    >
       {isEnlargedView ? (
         <PendingIcon color='primary' />
       ) : (

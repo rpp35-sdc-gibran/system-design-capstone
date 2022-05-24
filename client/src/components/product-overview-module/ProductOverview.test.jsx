@@ -41,6 +41,28 @@ let getProductStylesResponse = {
       },
       style_id: 444218,
     },
+    {
+      default: true,
+      name: 'test-style',
+      original_price: '150.00',
+      photos: [
+        {
+          thumbnail_url: 'testthumbnailimages',
+          url: 'testimages',
+        },
+        {
+          thumbnail_url: 'testthumbnailimages',
+          url: 'testimages',
+        },
+      ],
+      sale_price: '120.00',
+      skus: {
+        28506: { quantity: 6, size: 'XS' },
+        48914: { quantity: 8, size: 'S' },
+        38596: { quantity: 10, size: 'M' },
+      },
+      style_id: 444218,
+    },
   ],
 };
 
@@ -83,7 +105,25 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-test('Product overview renders correctly with data from server', async () => {
+test('Product overview renders image correctly with data from server', async () => {
   await render(<ProductOverview currentProductId={123} />);
   await waitFor(() => screen.getByTestId('product-overview-image'));
 });
+
+test('Styles should be rendered in product overview', async () => {
+  await render(<ProductOverview currentProductId={123} />);
+  await waitFor(() => {
+    let currentStyle = screen.getAllByTestId('style-select-item');
+    expect(currentStyle).toBeDefined();
+  });
+});
+
+test('Size options should be rendered in product overview', async () => {
+  await render(<ProductOverview currentProductId={123} />);
+  await waitFor(() => {
+    expect(screen.getAllByTestId('select-size-option')).toBeDefined();
+  });
+});
+
+//- [ ]  test to see if clicking on style changes the thumbnails
+//- [ ]  test to see if clicking on the style changes the default image

@@ -29,7 +29,6 @@ const AddToCart = ({ currentStyle }) => {
     }
 
     for (let i = 1; i <= currentQuantity; i++) {
-      console.log('i:', i);
       quantityArr.push(i);
     }
     setQuantity(quantityArr);

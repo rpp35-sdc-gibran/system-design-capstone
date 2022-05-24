@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="thumbnail-active"
+  data-testid="thumbnail-img-undefined"
   onClick={[Function]}
 >
   <img

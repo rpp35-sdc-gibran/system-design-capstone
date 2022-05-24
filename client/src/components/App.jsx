@@ -17,7 +17,6 @@ class App extends Component {
     axios
       .get('/api/products')
       .then((products) => {
-        console.log('products data: ', products);
         this.setState({
           products: products.data,
           currentProductId: products.data[0].id,
