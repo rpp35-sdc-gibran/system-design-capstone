@@ -7,13 +7,24 @@ import Button from '@mui/material/Button';
 import AnswerList from '../answer-list/answersList.jsx';
 
 class Question extends React.Component {
+  reportQuestion () {
+    axios.put('/api/questionsAnswers/reportQuestion', {
+      question_id: this.props.question.question_id
+    })
+    .then((results) => {
+      console.log('SUCCESS PUT /api/questionsAnswers/reportQuestion ', this.props.question.question_id)
+    })
+    .catch((error) => {
+      console.log('ERROR PUT /api/questionsAnswers/reportQuestion ', error);
+    })
+  }
 
   isHelpful () {
     axios.put('/api/questionsAnswers/markQuestionHelpful', {
       question_id: this.props.question.question_id
       })
       .then((results) => {
-        console.log('SUCCESS PUT /api/questionsAnswers/markQuestionHelpful', results);
+        console.log('SUCCESS PUT /api/questionsAnswers/markQuestionHelpful');
         // reload questions to update page
       })
       .catch((error) => {
@@ -30,6 +41,7 @@ class Question extends React.Component {
             Helpful?
             <a class="helpful" onClick={this.isHelpful.bind(this)} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Yes</a>
             ({this.props.question.question_helpfulness})
+            <a class="report" onClick={this.reportQuestion.bind(this)} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Report</a>
           </div>
         </div>
         <div>by {this.props.question.asker_name} {this.props.question.question_date}</div>
