@@ -21,6 +21,11 @@ const ImageViewItem = ({
     y: 0,
   });
 
+  //handles changing className to go back to the default view
+  const handleClick = () => {
+    handleChildZoom();
+  };
+
   //handles setting initial position values for image in enlarged-zoomed mode
   const handleTransformScaleView = (e) => {
     handleChildScale();
@@ -46,14 +51,10 @@ const ImageViewItem = ({
     left: `${initialImagePosition.x - imagePosition.x}px`,
   };
 
-  const handleClick = () => {
-    handleChildZoom();
-  };
-
   //enlarged image view
   if (isEnlargedView) {
     return (
-      <div className='image-view-item-container'>
+      <>
         <input
           onMouseMove={handleMouseMove}
           type='checkbox'
@@ -61,34 +62,30 @@ const ImageViewItem = ({
         ></input>
         {/* scaled image view with inline style  */}
         {isScaled ? (
-          <div style={imageScaledContainerStyle} className='scaled-view'>
-            <img
-              className='scaled-view-img'
-              alt='scaled view'
-              src={image}
-            ></img>
+          <div style={imageScaledContainerStyle} className='enlarged'>
+            <img alt='main image scaled view' src={image}></img>
           </div>
         ) : (
           <>
             <IconButton className='enlarged-view-btn' onClick={handleClick}>
               <CloseIcon color='primary' fontSize='large' />
             </IconButton>
-            <div className='enlarged-view'>
-              <img
-                className='enlarged-view-img'
-                alt='main image enlarged view'
-                src={image}
-              ></img>
+            <div className='enlarged'>
+              <img alt='main image enlarged view' src={image}></img>
             </div>
           </>
         )}
-      </div>
+      </>
     );
   } else {
     //default image view
     return (
-      <div className='default-view' onClick={handleClick}>
-        <img className='default-view-img' alt='default view' src={image}></img>
+      <div className='default' onClick={handleClick}>
+        <img
+          alt='main image default view'
+          style={{ top: -50, left: -70 }}
+          src={image}
+        ></img>
       </div>
     );
   }

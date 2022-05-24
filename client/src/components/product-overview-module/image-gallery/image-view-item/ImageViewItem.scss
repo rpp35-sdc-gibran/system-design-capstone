@@ -1,15 +1,9 @@
 @use '../../../App.scss' as *;
 
-.image-view-item-container {
-  @include set-size(100%);
-}
-
 input[type='checkbox'] {
   position: absolute; /* Force the checkbox at the start of the container */
-
   cursor: nesw-resize;
-  // @include set-size(100%);
-  @include set-size(100vh, 100vw);
+  @include set-size(100%);
   z-index: 3;
   opacity: 0;
 }
@@ -20,67 +14,30 @@ input[type='checkbox']:checked {
   // z-index: 4;
 }
 
-input[type='checkbox']:checked ~ div.scaled-view {
+input[type='checkbox']:checked ~ div.enlarged {
   transform: scale(2.5);
 }
 
-//ENLARGED VIEW////////////////////////////
+.enlarged {
+  @include set-size(80%, 100vw);
+  position: absolute;
+  z-index: 1;
+}
+
 .enlarged-view-btn {
   position: absolute;
-  // z-index: 10;
-  // left: 90%;
+  z-index: 10;
+  left: 90%;
   margin: 0;
   padding: 0;
 }
-.enlarged-view {
-  @include set-size(100vh, 100vw);
-  // position: absolute;
-  z-index: 1;
-  // padding: 5rem 0 0 2rem;
-  // padding: 10rem, 0, 0, 0; // overflow: visible;
-  .enlarged-view-img {
-    @include set-size(auto, 100vw);
-  }
-}
 
-//SCALED VIEW ////////////////////////////
-
-//DEFAULT VIEW///////////////////////////////////
-.default-view {
+.default {
   cursor: zoom-in;
-  width: 50vw;
-  height: 100vh;
-  overflow: hidden;
-  // padding: 10rem 0 0 2rem;
-  .default-view-img {
-    // padding: 10rem 0 0 2rem;
-    width: 50vw;
-    height: 100%;
-    object-fit: scale-down;
-  }
-  // @include for-size(lg-desktop) {
-  //   img {
-  //     max-height: 80vh;
-  //     // width: 100%;
-  //   }
-  // }
-  // @include for-size(desktop) {
-  //   img {
-  //     max-height: 75vh;
-  // width: 100%;
-  // padding: 10rem 0 0 2rem;
-  // }
-  // }
-  // @include for-size(tablet-portrait) {
-  // img {
-  // width: 100vw;
-  // max-height: 95vh;
-  // padding: 10rem 0 0 2rem;
-  // }
-  // }
+  @include set-size(70%, 50vw);
+  max-height: 75vh;
 }
 
-//used for all images in product overview
 img {
   object-fit: cover;
   width: 100%;
