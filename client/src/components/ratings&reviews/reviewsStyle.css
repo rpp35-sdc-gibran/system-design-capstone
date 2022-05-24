@@ -1,0 +1,29 @@
+
+
+.reviewTile{
+  position: relative;
+}
+/* .star {
+  height: 50px;
+  margin: 0;
+  /* position: relative; */
+
+
+.stars-inner {
+  /* position: absolute; */
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 50px;
+
+
+}
+
+.stars-outer {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  height: 50px;
+
+}

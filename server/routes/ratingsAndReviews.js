@@ -13,7 +13,8 @@ router.post('/:product_id', (req, res) => {
   controllers.reviews.postProductReviews(req, res);
 });
 //handles getting product reviews Metadata for single product
-router.post('/meta/:product_id', (req, res) => {
+router.get('/meta', (req, res) => {
+  console.log('META');
   controllers.reviews.getReviewMetadata(req, res);
 });
 //handles makrking a review as helpful
