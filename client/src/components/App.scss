@@ -50,3 +50,28 @@ $primary-color: #ffffff;
   background-size: cover;
   background-position: center;
 }
+
+//the name of the mixin is devices, and input is mobile or tablet
+@mixin for-size($size) {
+  @if $size == phone {
+    @media (max-width: 599px) {
+      @content;
+    }
+  } @else if $size == tablet-portrait {
+    @media (min-width: 600px) {
+      @content;
+    }
+  } @else if $size == tablet-landscape {
+    @media (min-width: 900px) {
+      @content;
+    }
+  } @else if $size == desktop {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $size == lg-desktop {
+    @media (min-width: 1800px) {
+      @content;
+    }
+  }
+}
