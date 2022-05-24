@@ -35,10 +35,9 @@ const markQuestionHelpfulByQuestionID = (req, res) => {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.question_id}/helpful`,
       headers: {Authorization: GITHUB_API_TOKEN},
-      data: {data: null}
       })
       .then((results) => {
-        // console.log('Success marking question heplful', results);
+        // console.log('Success marking question heplful');
         res.status(201)
       })
       .catch((error) => {
@@ -51,10 +50,9 @@ const markAnswerHelpfulByAnswerID = (req, res) => {
     method: 'put',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.answer_id}/helpful`,
     headers: {Authorization: GITHUB_API_TOKEN},
-    data: {data: null}
     })
     .then((results) => {
-      console.log('Success marking answer heplful', results);
+      // console.log('Success marking answer heplful');
       res.status(201)
     })
     .catch((error) => {
@@ -63,12 +61,43 @@ const markAnswerHelpfulByAnswerID = (req, res) => {
 
 };
 
+const reportAnswerByAnswerID = (req, res) => {
+  console.log('report answer requested', req.body.answer_id)
+  axios({
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.answer_id}/report`,
+    headers: {Authorization: GITHUB_API_TOKEN},
+    })
+    .then((results) => {
+      console.log('Success reporting answer');
+      res.status(201)
+    })
+    .catch((error) => {
+      console.log('Error reporting answer', error)
+    })
+};
+
+const reportQuestionByQuestionID = () => {
+  axios({
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.question_id}/report`,
+    headers: {Authorization: GITHUB_API_TOKEN},
+    })
+    .then((results) => {
+      console.log('Success reporting question', req.body.question_id);
+      res.status(201)
+    })
+    .catch((error) => {
+      console.log('Error reporting answer', error)
+    })
+};
+
 const postQuestionByProductID = () => {};
 const postAnswerByQuestionID = () => {};
-const reportQuestionByQuestionID = () => {};
-const reportAnswerByAnswerID = () => {};
 
 module.exports.getQuestionsByProductID = getQuestionsByProductID;
 module.exports.getAnswersByQuestionID = getAnswersByQuestionID;
 module.exports.markAnswerHelpfulByAnswerID = markAnswerHelpfulByAnswerID;
 module.exports.markQuestionHelpfulByQuestionID = markQuestionHelpfulByQuestionID;
+module.exports.reportAnswerByAnswerID = reportAnswerByAnswerID;
+module.exports.reportQuestionByQuestionID = reportQuestionByQuestionID;
