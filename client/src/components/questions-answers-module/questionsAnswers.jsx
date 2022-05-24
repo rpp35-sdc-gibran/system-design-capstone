@@ -4,8 +4,8 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 
-import QuestionsList from './subcomponents/QuestionsList.jsx';
-import Search from './subcomponents/search.jsx';
+import QuestionsList from './question-list/questionsList.jsx';
+import Search from './search/search.jsx';
 
 class QuestionsAnswers extends React.Component {
   constructor(props) {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 
-import AnswerList from './AnswersList.jsx';
+import AnswerList from '../answer-list/answersList.jsx';
 
 class Question extends React.Component {
 
