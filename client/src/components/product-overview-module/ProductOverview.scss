@@ -1,31 +1,31 @@
 @use '../App.scss' as *;
 
 .product-overview {
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  padding: 3rem 0 0 3rem;
-  .product-overview-image-view {
-    @include set-size(100vh, 50vw);
-  }
-  .product-overview-info-style-container {
-    @include flex-column();
-    justify-content: flex-start;
-    padding: 1rem 0 0 0;
-    @include set-size(100%, 40vw);
+   min-height: 100vh;
+   width: 100vw;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+   //  padding: 3rem 0 0 3rem;
+   .product-overview-image-view {
+      @include set-size(100vh, 50vw);
+   }
+   .product-overview-info-style-container {
+      @include flex-column();
+      justify-content: flex-start;
+      padding: 1rem 0 0 0;
+      @include set-size(100%, 40vw);
 
-    .product-overview-product-info {
-      @include set-size(100%, 100%);
-      margin: 0;
-      padding: 0;
-    }
-    .product-overview-style-selector {
-      @include set-size(100%, 100%);
-    }
-    .product-overview-add-to-cart {
-      @include set-size(100%, 100%);
-    }
-  }
+      .product-overview-product-info {
+         @include set-size(100%, 100%);
+         margin: 0;
+         padding: 0;
+      }
+      .product-overview-style-selector {
+         @include set-size(100%, 100%);
+      }
+      .product-overview-add-to-cart {
+         @include set-size(100%, 100%);
+      }
+   }
 }

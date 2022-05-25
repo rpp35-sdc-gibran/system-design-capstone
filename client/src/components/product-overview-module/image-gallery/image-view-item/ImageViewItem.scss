@@ -2,43 +2,49 @@
 
 //checkbox is used to cover the elements under it and act as as way to mark
 //whether view should be scaled or enlarged
+//note checkbox is only rendered when image enters enlarged mode, no checkbox
+//present in default mode
 input[type='checkbox'] {
-  position: absolute;
-  cursor: nesw-resize;
-  @include set-size(100%);
-  z-index: 3;
-  opacity: 0;
+   position: absolute;
+   cursor: nesw-resize;
+   @include set-size(100%);
+   z-index: 3;
+   opacity: 0;
 }
 
+//SCALED VIEW MODE (CHECKBOX IS CHECKED)//////////////////
 input[type='checkbox']:checked {
-  cursor: sw-resize;
+   cursor: sw-resize;
 }
 
 input[type='checkbox']:checked ~ div.enlarged {
-  transform: scale(2.5);
+   transform: scale(2.5);
 }
 
+//ENLARGED VIEW MODE (CHECHBOX IS NOT CHECKED)////////////////
 .enlarged {
-  @include set-size(80%, 100vw);
-  position: absolute;
-  z-index: 1;
+   @include set-size(80%, 100vw);
+   position: absolute;
+   z-index: 1;
 }
 
 .enlarged-view-btn {
-  position: absolute;
-  z-index: 10;
-  left: 90%;
-  margin: 0;
-  padding: 0;
+   position: absolute;
+   z-index: 10;
+   left: 20%;
+   margin: 0;
+   padding: 0;
 }
 
+//DEFAULT MODE (NO CHECKBOX PRESENT)/////////////////////////
 .default {
-  cursor: zoom-in;
-  @include set-size(70%, 50vw);
-  max-height: 75vh;
+   cursor: zoom-in;
+   @include set-size(70%, 50vw);
+   max-height: 75vh;
 }
 
+//this applies to all images in product overview
 img {
-  object-fit: cover;
-  width: 100%;
+   object-fit: cover;
+   width: 100%;
 }
