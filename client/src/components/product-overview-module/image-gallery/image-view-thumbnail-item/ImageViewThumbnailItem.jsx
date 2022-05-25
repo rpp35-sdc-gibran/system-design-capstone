@@ -30,7 +30,7 @@ const ImageViewThumbnailItem = ({
          ) : (
             <img
                className='thumbnail-img'
-               alt='thumbnail image'
+               alt='thumbnail image not found'
                src={image}
             ></img>
          )}

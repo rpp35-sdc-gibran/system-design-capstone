@@ -1,0 +1,7 @@
+@use '../../App.scss' as *;
+
+.home-product-list {
+   @include flex-center();
+   flex-wrap: wrap;
+   gap: 1rem;
+}

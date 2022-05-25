@@ -88,7 +88,7 @@ const ImageViewItem = ({
       return (
          <div className='default' onClick={handleClick}>
             <img
-               alt='main image default view'
+               alt='main product image not found'
                className='default-img'
                // style={{ top: -50, left: -70 }}
                src={image}

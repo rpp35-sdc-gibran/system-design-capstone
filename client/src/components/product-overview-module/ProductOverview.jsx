@@ -8,120 +8,120 @@ import Nav from './navbar/Nav.jsx';
 import axios from 'axios';
 
 const ProductOverview = ({ currentProductId }) => {
-  const [productInfo, setProductInfo] = useState([]);
-  const [isScaled, setIsScaled] = useState(false);
-  const [styleList, setStyles] = useState();
-  const [currentStyle, setCurrentStyle] = useState();
-  const [reviews, setReviews] = useState(0);
-  const [reviewList, setReviewList] = useState([]);
-  const [isEnlargedView, setIsEnlargedView] = useState(false);
+   const [productInfo, setProductInfo] = useState([]);
+   const [isScaled, setIsScaled] = useState(false);
+   const [styleList, setStyles] = useState();
+   const [currentStyle, setCurrentStyle] = useState();
+   const [reviews, setReviews] = useState(0);
+   const [reviewList, setReviewList] = useState([]);
+   const [isEnlargedView, setIsEnlargedView] = useState(false);
 
-  useEffect(() => {
-    //gets product information for first product in product list
-    axios.get(`/api/products/${currentProductId}`).then((productData) => {
-      setProductInfo(productData.data);
-    });
-    //gets product styleList for first product in product list
-    axios
-      .get(`/api/products/${currentProductId}/styles`)
-      .then((productStyles) => {
-        setStyles(productStyles.data);
-        setCurrentStyle(productStyles.data.results[0]);
-      })
-      .catch((err) => {
-        console.log('err:', err);
+   useEffect(() => {
+      axios
+         .all([
+            axios.get(`/api/products/${currentProductId}`),
+            axios.get(`/api/products/${currentProductId}/styles`),
+            axios.get(`/api/products/${currentProductId}/reviews`),
+         ])
+         .then(
+            axios.spread(function (productData, productStyles, productReviews) {
+               setProductInfo(productData.data);
+               setStyles(productStyles.data);
+               setCurrentStyle(productStyles.data.results[0]);
+               let currentReviews = getAverageReviews(
+                  productReviews.data.results
+               );
+               setReviewList(productReviews.data.results);
+               setReviews(currentReviews);
+            })
+         )
+         .catch((err) => {
+            console.log('err:', err);
+         });
+   }, [currentProductId]);
+
+   const handleChildScale = () => {
+      setIsScaled(!isScaled);
+   };
+
+   //handles click of main image to zoom, based on isEnlarged state
+   const handleChildZoom = () => {
+      setIsEnlargedView(!isEnlargedView);
+   };
+
+   // helper func to get average number of reviews
+   const getAverageReviews = (arr) => {
+      console.log('arr:', arr);
+      let sum = 0;
+      arr.forEach((review) => {
+         sum += review.rating;
       });
-    //gets reviews for first product in product list
-    axios
-      .get(`/api/products/${currentProductId}/reviews`)
-      .then((productReviews) => {
-        let currentReviews = getAverageReviews(productReviews.data.results);
-        setReviewList(productReviews.data.results);
-        setReviews(currentReviews);
-      })
-      .catch((err) => {
-        console.log('err:', err);
+      return sum / arr.length;
+   };
+
+   //handles setting current style on click, updating images in image gallery
+   const handleStyleClick = (style_id) => {
+      styleList.results.forEach((style) => {
+         if (style.style_id === style_id) {
+            setCurrentStyle(style);
+         }
       });
-  }, []);
-
-  const handleChildScale = () => {
-    setIsScaled(!isScaled);
-  };
-
-  //handles click of main image to zoom, based on isEnlarged state
-  const handleChildZoom = () => {
-    setIsEnlargedView(!isEnlargedView);
-  };
-
-  // helper func to get average number of reviews
-  const getAverageReviews = (arr) => {
-    let sum = 0;
-    arr.forEach((review) => {
-      sum += review.rating;
-    });
-    return sum / arr.length;
-  };
-
-  //handles setting current style on click, updating images in image gallery
-  const handleStyleClick = (style_id) => {
-    styleList.results.forEach((style) => {
-      if (style.style_id === style_id) {
-        setCurrentStyle(style);
-      }
-    });
-  };
-
-  return (
-    <>
-      <Nav />
-      <div className='product-overview'>
-        {currentProductId && styleList ? (
-          <>
-            <div
-              data-testid='product-overview-image'
-              className='product-overview-image-view'
-            >
-              <ImageView
-                currentStylePhotos={currentStyle.photos}
-                handleChildScale={handleChildScale}
-                isScaled={isScaled}
-                isEnlargedView={isEnlargedView}
-                setIsEnlargedView={setIsEnlargedView}
-                handleChildZoom={handleChildZoom}
-              />
-            </div>
-            {!isScaled && !isEnlargedView && (
-              <div className='product-overview-info-style-container'>
-                <div className='product-overview-product-info'>
-                  <ProductInformation
-                    rating={reviews}
-                    reviewLength={reviewList.length}
-                    category={productInfo.category}
-                    default_price={productInfo.default_price}
-                    description={productInfo.description}
-                    features={productInfo.features}
-                    name={productInfo.name}
-                    slogan={productInfo.slogan}
-                    sale_price={currentStyle.sale_price}
-                  />
-                </div>
-                <div className='product-overview-style-selector'>
-                  <StyleSelector
-                    styleList={styleList}
-                    handleStyleClick={handleStyleClick}
-                    currentStyle={currentStyle}
-                  />
-                </div>
-                <div className='product-overview-add-to-cart'>
-                  <AddToCart currentStyle={currentStyle} />
-                </div>
-              </div>
-            )}
-          </>
-        ) : null}
-      </div>
-    </>
-  );
+   };
+   console.log('currentStyle.photos:', currentStyle);
+   console.log('reviewList:', reviewList);
+   console.log('productInfo:', productInfo);
+   if (currentProductId) {
+      return (
+         <div className='product-overview'>
+            {currentProductId && styleList ? (
+               <>
+                  <div
+                     data-testid='product-overview-image'
+                     className='product-overview-image-view'
+                  >
+                     <ImageView
+                        currentStylePhotos={currentStyle.photos}
+                        handleChildScale={handleChildScale}
+                        isScaled={isScaled}
+                        isEnlargedView={isEnlargedView}
+                        setIsEnlargedView={setIsEnlargedView}
+                        handleChildZoom={handleChildZoom}
+                     />
+                  </div>
+                  {!isScaled && !isEnlargedView && (
+                     <div className='product-overview-info-style-container'>
+                        <div className='product-overview-product-info'>
+                           <ProductInformation
+                              rating={reviews}
+                              reviewLength={reviewList.length}
+                              category={productInfo.category}
+                              default_price={productInfo.default_price}
+                              description={productInfo.description}
+                              features={productInfo.features}
+                              name={productInfo.name}
+                              slogan={productInfo.slogan}
+                              sale_price={currentStyle.sale_price}
+                           />
+                        </div>
+                        <div className='product-overview-style-selector'>
+                           <StyleSelector
+                              styleList={styleList}
+                              handleStyleClick={handleStyleClick}
+                              currentStyle={currentStyle}
+                           />
+                        </div>
+                        <div className='product-overview-add-to-cart'>
+                           <AddToCart currentStyle={currentStyle} />
+                        </div>
+                     </div>
+                  )}
+               </>
+            ) : null}
+         </div>
+      );
+   } else {
+      return null;
+   }
 };
 
 export default ProductOverview;
