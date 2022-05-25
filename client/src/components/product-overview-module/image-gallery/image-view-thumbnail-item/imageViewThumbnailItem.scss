@@ -4,27 +4,25 @@
 .thumbnail-default {
    position: relative;
    z-index: 5;
+   @include set-size(5rem, 5 rem);
+   img {
+      @include set-size(100%);
+      object-fit: cover;
+   }
 }
 
 .thumbnail-default {
-   @include set-size(auto, 125);
    opacity: 65%;
    padding-top: 0.5rem;
 }
 
 .thumbnail-active {
    opacity: 100%;
-   padding-top: 1rem;
-   padding-bottom: 1rem;
-   @include set-size(auto, 125);
+   // padding-top: 1rem;
+   // padding-bottom: 1rem;
    img {
       outline: thick outset #32a1ce;
    }
-}
-
-img {
-   max-width: 100%;
-   max-height: 100%;
 }
 
 // outline: 8px ridge rgba(170, 50, 220, .6);

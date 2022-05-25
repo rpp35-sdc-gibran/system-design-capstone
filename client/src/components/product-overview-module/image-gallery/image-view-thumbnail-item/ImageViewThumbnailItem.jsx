@@ -28,7 +28,11 @@ const ImageViewThumbnailItem = ({
          {isEnlargedView ? (
             <PendingIcon color='primary' />
          ) : (
-            <img alt='thumbnail image' src={image}></img>
+            <img
+               className='thumbnail-img'
+               alt='thumbnail image'
+               src={image}
+            ></img>
          )}
       </div>
    );
