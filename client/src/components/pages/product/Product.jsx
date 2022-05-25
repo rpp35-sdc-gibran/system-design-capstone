@@ -6,8 +6,6 @@ import sampleReviews from '../../ratings&reviews/reviews/reviewsForProductId7169
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-//todo put in ratings component
-
 const Product = (props) => {
    let currentReviews = sampleReviews.results;
    let { productId } = useParams();
@@ -20,7 +18,7 @@ const Product = (props) => {
          <RatingsAndReviews
             currentProductId={productId}
             reviews={currentReviews}
-            // {...props}
+            {...props}
          />
       </div>
    );

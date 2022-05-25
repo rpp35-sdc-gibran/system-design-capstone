@@ -1,25 +1,20 @@
 @use '../../App.scss' as *;
 
 .product-info-container {
-  padding: 0;
-  margin: 15px;
-}
-
-.product-info-line-1 {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  padding-top: 1rem;
-  height: 2rem;
-  width: 100%;
-  // @include set-size(2rem, auto);
-}
-
-.product-info-link {
-  @include set-size(100%);
-  width: 100%;
-}
-
-.product-info-old-price {
-  text-decoration: line-through;
+   padding: 1rem;
+   //  margin: 15px;
+   .product-info-line-1 {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 1rem 0 0 0;
+      @include set-size(100%);
+      .product-info-link {
+         @include set-size(100%);
+         text-align: center;
+      }
+   }
+   .product-info-old-price {
+      text-decoration: line-through;
+   }
 }
