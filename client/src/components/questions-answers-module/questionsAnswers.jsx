@@ -33,10 +33,6 @@ class QuestionsAnswers extends React.Component {
       });
   }
 
-  postQuestion () {
-
-  }
-
   componentDidMount() {
     axios
       .get('/api/questionsAnswers/questions', {

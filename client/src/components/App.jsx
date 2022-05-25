@@ -32,7 +32,7 @@ class App extends Component {
         {this.state.currentProductId && (
           <ProductOverview currentProductId={this.state.currentProductId} />
         )}
-        <div class="questions_answers">
+        <div class="questionsAnswers">
           <QuestionsAnswers currentProductId={this.state.currentProductId}/>
         </div>
         {/* <RatingsAndReviews currentProductId={this.state.currentProductId} reviews={this.state.currentReviews} {...this.props} /> */}

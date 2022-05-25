@@ -36,4 +36,8 @@ router.put('/reportAnswer', (req, res) => {
   controllers.reportAnswerByAnswerID(req, res);
 })
 
+router.post('/addAnswer', (req, res) => {
+  controllers.postAnswerByQuestionID(req, res)
+})
+
 module.exports = router;

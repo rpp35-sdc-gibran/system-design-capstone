@@ -50,7 +50,6 @@ const reportQuestionByQuestionID = (req, res) => {
 };
 
 const postQuestionByProductID = (req, res) => {
-  console.log('postQuestionByProductID req.body', req.body)
   axios({
     method: 'post',
     url: url,
@@ -60,10 +59,10 @@ const postQuestionByProductID = (req, res) => {
       name: req.body.question.name,
       email: req.body.question.email,
       product_id: req.body.question.product_id
-    }
-    })
+    }})
     .then((results) => {
-      console.log('SUCCESS POSTING question!');
+      console.log('Success POSTING question!');
+      res.status(201)
     })
     .catch((error) => {
       console.log('Error POSTING question ', error);
@@ -120,7 +119,23 @@ const reportAnswerByAnswerID = (req, res) => {
 };
 
 const postAnswerByQuestionID = (req, res) => {
-
+  axios({
+    method: 'post',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.answer.question_id}/answers`,
+    headers: { Authorization: GITHUB_API_TOKEN },
+    data: {
+      body: req.body.answer.body, // text
+      name: req.body.answer.name, // text
+      email: req.body.answer.email, // text
+      photos: req.body.answer.photos // array of urls
+    }})
+    .then((results) => {
+      console.log('Success POSTING answer!');
+      res.status(201)
+    })
+    .catch((error) => {
+      console.log('Error POSTING answer ', error);
+    })
 };
 
 module.exports.getQuestionsByProductID = getQuestionsByProductID;

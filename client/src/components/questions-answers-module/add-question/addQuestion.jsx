@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 
 //! expects product name as this.props.productName
 
-
 // create a function that maps form data to obj/arr
 class AddQuestion extends React.Component {
   getInputValues (event) {
@@ -36,7 +35,8 @@ class AddQuestion extends React.Component {
   }
 
   render () {
-    return (<div>
+    return (
+    <>
       <Card class="addQuestion">
         <form onSubmit={(event) => {
           event.preventDefault();
@@ -62,7 +62,7 @@ class AddQuestion extends React.Component {
           <button variant="contained">Sumbit</button>
         </form>
       </Card>
-    </div>)
+    </>)
   }
 }
 
