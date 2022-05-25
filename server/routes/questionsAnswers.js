@@ -17,6 +17,10 @@ router.put('/reportQuestion', (req, res) => {
   controllers.reportQuestionByQuestionID(req, res);
 })
 
+router.post('/addQuestion', (req, res) => {
+  controllers.postQuestionByProductID(req,res);
+})
+
 //=============================//
 // ANSWERS
 //=============================//

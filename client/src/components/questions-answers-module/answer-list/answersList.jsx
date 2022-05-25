@@ -11,6 +11,7 @@ class AnswersList extends React.Component {
     this.state = {
       allAnswers: [],
     };
+
     axios
       .get('/api/questionsAnswers/answers', {
         params: {

@@ -7,8 +7,7 @@ const axios = require('axios');
 // QUESTIONS:
 //=============================//
 const getQuestionsByProductID = (req, res) => {
-  axios
-    .get(url, {
+  axios.get(url, {
       headers: { Authorization: GITHUB_API_TOKEN },
       params: { product_id: req.query.product_id },
     })
@@ -27,7 +26,7 @@ const markQuestionHelpfulByQuestionID = (req, res) => {
     headers: {Authorization: GITHUB_API_TOKEN},
     })
     .then((results) => {
-      // console.log('Success marking question heplful');
+      console.log('Success marking question heplful');
       res.status(201)
     })
     .catch((error) => {
@@ -50,7 +49,26 @@ const reportQuestionByQuestionID = (req, res) => {
     })
 };
 
-const postQuestionByProductID = () => {};
+const postQuestionByProductID = (req, res) => {
+  console.log('postQuestionByProductID req.body', req.body)
+  axios({
+    method: 'post',
+    url: url,
+    headers: {Authorization: GITHUB_API_TOKEN},
+    data: {
+      body: req.body.question.body,
+      name: req.body.question.name,
+      email: req.body.question.email,
+      product_id: req.body.question.product_id
+    }
+    })
+    .then((results) => {
+      console.log('SUCCESS POSTING question!');
+    })
+    .catch((error) => {
+      console.log('Error POSTING question ', error);
+    })
+};
 
 //=============================//
 // ANSWERS
@@ -76,7 +94,7 @@ const markAnswerHelpfulByAnswerID = (req, res) => {
     headers: {Authorization: GITHUB_API_TOKEN},
     })
     .then((results) => {
-      // console.log('Success marking answer heplful');
+      console.log('Success marking answer heplful');
       res.status(201)
     })
     .catch((error) => {
@@ -109,3 +127,4 @@ module.exports.markAnswerHelpfulByAnswerID = markAnswerHelpfulByAnswerID;
 module.exports.markQuestionHelpfulByQuestionID = markQuestionHelpfulByQuestionID;
 module.exports.reportAnswerByAnswerID = reportAnswerByAnswerID;
 module.exports.reportQuestionByQuestionID = reportQuestionByQuestionID;
+module.exports.postQuestionByProductID = postQuestionByProductID;

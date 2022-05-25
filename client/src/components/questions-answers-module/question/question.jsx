@@ -32,6 +32,10 @@ class Question extends React.Component {
       });
   }
 
+  postAnswer () {
+
+  }
+
   render () {
     return (
       <Card variant="outlined">

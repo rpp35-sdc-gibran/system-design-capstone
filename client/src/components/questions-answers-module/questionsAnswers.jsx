@@ -6,6 +6,8 @@ import Card from '@mui/material/Card';
 
 import QuestionsList from './question-list/questionsList.jsx';
 import Search from './search/search.jsx';
+import AddQuestion from './add-question/addQuestion.jsx';
+
 
 class QuestionsAnswers extends React.Component {
   constructor(props) {
@@ -31,6 +33,10 @@ class QuestionsAnswers extends React.Component {
       });
   }
 
+  postQuestion () {
+
+  }
+
   componentDidMount() {
     axios
       .get('/api/questionsAnswers/questions', {
@@ -53,14 +59,16 @@ class QuestionsAnswers extends React.Component {
     // condition && component
     // conditionally render 'show additional questions' button
     return (
-      <div>
+      <>
         <h3>Questions & Answers</h3>
         <Search />
         <QuestionsList allQuestions={this.state.allQuestions} />
         <Button variant='contained'>Add a Question</Button>
-      </div>
+        <AddQuestion product_id={this.state.product_id}/>
+      </>
     );
   }
 }
 
 export default QuestionsAnswers;
+

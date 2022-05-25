@@ -1,17 +1,13 @@
-// stateful react componet
-
-// pass search state up to QA component \
-
-// create an on change function
-
-// create search/filter function
-
-// conditionally search after 3 chars typed
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Card from '@mui/material/Card';
+
+//! stateful react componet
+//! pass search state up to QA component
+//! create an on change function
+//! create search/filter function
+//! conditionally search after 3 chars typed
 
 class Search extends React.Component {
   constructor (props) {
@@ -21,7 +17,7 @@ class Search extends React.Component {
     }
   }
 
-// ternary statement for not mapping undefined
+  //? ternary statement for not mapping undefined
 
   render () {
     return (
