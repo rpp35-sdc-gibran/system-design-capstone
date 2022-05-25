@@ -63,7 +63,7 @@ class QuestionsAnswers extends React.Component {
         <h3>Questions & Answers</h3>
         <Search />
         <QuestionsList allQuestions={this.state.allQuestions} />
-        <Button variant='contained'>Add a Question</Button>
+        <button variant='contained'>Add a Question</button>
         <AddQuestion product_id={this.state.product_id}/>
       </>
     );

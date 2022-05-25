@@ -9,7 +9,7 @@ const axios = require('axios');
 const getQuestionsByProductID = (req, res) => {
   axios.get(url, {
       headers: { Authorization: GITHUB_API_TOKEN },
-      params: { product_id: req.query.product_id },
+      params: { product_id: req.query.product_id, count: 100 },
     })
     .then((results) => {
       res.send(results.data)
@@ -119,7 +119,9 @@ const reportAnswerByAnswerID = (req, res) => {
     })
 };
 
-const postAnswerByQuestionID = () => {};
+const postAnswerByQuestionID = (req, res) => {
+
+};
 
 module.exports.getQuestionsByProductID = getQuestionsByProductID;
 module.exports.getAnswersByQuestionID = getAnswersByQuestionID;
@@ -128,3 +130,4 @@ module.exports.markQuestionHelpfulByQuestionID = markQuestionHelpfulByQuestionID
 module.exports.reportAnswerByAnswerID = reportAnswerByAnswerID;
 module.exports.reportQuestionByQuestionID = reportQuestionByQuestionID;
 module.exports.postQuestionByProductID = postQuestionByProductID;
+module.exports.postAnswerByQuestionID = postAnswerByQuestionID;

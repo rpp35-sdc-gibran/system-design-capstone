@@ -49,7 +49,7 @@ class Question extends React.Component {
           </div>
         </div>
         <div>by {this.props.question.asker_name} {this.props.question.question_date}</div>
-        <Button variant="contained">Add an Answer</Button>
+        <button variant="contained">Add an Answer</button>
         <AnswerList question_id={this.props.question.question_id}/>
       </Card>
       )
