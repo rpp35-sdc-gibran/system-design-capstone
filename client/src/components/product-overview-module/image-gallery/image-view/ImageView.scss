@@ -27,10 +27,16 @@
       align-self: center;
       display: flex;
       justify-content: flex-end;
-      gap: 20rem;
+      gap: 10rem;
       @include set-size(auto, 25rem);
    }
    .button-prev {
-      flex-grow: 1;
+      position: absolute;
+      left: 1rem;
+      // align-self: flex-start;
+   }
+   .button-next {
+      position: absolute;
+      right: 10rem;
    }
 }

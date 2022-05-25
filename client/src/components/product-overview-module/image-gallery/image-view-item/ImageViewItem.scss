@@ -39,8 +39,11 @@ input[type='checkbox']:checked ~ div.enlarged {
 //DEFAULT MODE (NO CHECKBOX PRESENT)/////////////////////////
 .default {
    cursor: zoom-in;
-   @include set-size(70%, 50vw);
-   max-height: 75vh;
+   @include set-size(750px, 50vw);
+   .default-img {
+      @include set-size(100%);
+   }
+   // max-height: 75vh;
 }
 
 //this applies to all images in product overview
