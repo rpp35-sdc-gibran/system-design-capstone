@@ -6,6 +6,7 @@ import StyleSelector from './style-selector/style-select/StyleSelect.jsx';
 import AddToCart from './add-to-cart/AddToCart.jsx';
 import Nav from './navbar/Nav.jsx';
 import axios from 'axios';
+import Typography from '@mui/material/Typography';
 
 const ProductOverview = ({ currentProductId }) => {
    const [productInfo, setProductInfo] = useState([]);
@@ -51,7 +52,6 @@ const ProductOverview = ({ currentProductId }) => {
 
    // helper func to get average number of reviews
    const getAverageReviews = (arr) => {
-      console.log('arr:', arr);
       let sum = 0;
       arr.forEach((review) => {
          sum += review.rating;
@@ -67,9 +67,7 @@ const ProductOverview = ({ currentProductId }) => {
          }
       });
    };
-   console.log('currentStyle.photos:', currentStyle);
-   console.log('reviewList:', reviewList);
-   console.log('productInfo:', productInfo);
+
    if (currentProductId) {
       return (
          <div className='product-overview'>
@@ -89,31 +87,33 @@ const ProductOverview = ({ currentProductId }) => {
                      />
                   </div>
                   {!isScaled && !isEnlargedView && (
-                     <div className='product-overview-info-style-container'>
-                        <div className='product-overview-product-info'>
-                           <ProductInformation
-                              rating={reviews}
-                              reviewLength={reviewList.length}
-                              category={productInfo.category}
-                              default_price={productInfo.default_price}
-                              description={productInfo.description}
-                              features={productInfo.features}
-                              name={productInfo.name}
-                              slogan={productInfo.slogan}
-                              sale_price={currentStyle.sale_price}
-                           />
+                     <>
+                        <div className='product-overview-info-style-container'>
+                           <div className='product-overview-product-info'>
+                              <ProductInformation
+                                 rating={reviews}
+                                 reviewLength={reviewList.length}
+                                 category={productInfo.category}
+                                 default_price={productInfo.default_price}
+                                 description={productInfo.description}
+                                 features={productInfo.features}
+                                 name={productInfo.name}
+                                 slogan={productInfo.slogan}
+                                 sale_price={currentStyle.sale_price}
+                              />
+                           </div>
+                           <div className='product-overview-style-selector'>
+                              <StyleSelector
+                                 styleList={styleList}
+                                 handleStyleClick={handleStyleClick}
+                                 currentStyle={currentStyle}
+                              />
+                           </div>
+                           <div className='product-overview-add-to-cart'>
+                              <AddToCart currentStyle={currentStyle} />
+                           </div>
                         </div>
-                        <div className='product-overview-style-selector'>
-                           <StyleSelector
-                              styleList={styleList}
-                              handleStyleClick={handleStyleClick}
-                              currentStyle={currentStyle}
-                           />
-                        </div>
-                        <div className='product-overview-add-to-cart'>
-                           <AddToCart currentStyle={currentStyle} />
-                        </div>
-                     </div>
+                     </>
                   )}
                </>
             ) : null}

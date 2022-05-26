@@ -18,12 +18,9 @@ const ProductInformation = ({
    //round rating to nearest 0.25 to pass down to svg
    rating = (Math.round(rating * 4) / 4).toFixed(2);
 
-   console.log('rating:', rating);
    let currentRating = rating;
-   console.log('rating:', rating);
    let starRatings = [];
    for (let i = 0; i < 5; i++) {
-      console.log('i:', i);
       if (currentRating < 1 && currentRating > 0) {
          starRatings.push(currentRating);
       } else if (currentRating <= 0) {
@@ -33,7 +30,6 @@ const ProductInformation = ({
       }
       currentRating -= 1;
    }
-   console.log('starratings:', starRatings);
 
    return (
       <div className='product-info-container'>

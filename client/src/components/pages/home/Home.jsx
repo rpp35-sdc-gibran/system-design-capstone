@@ -4,6 +4,7 @@ import axios from 'axios';
 import Paper from '@mui/material/Paper';
 import ItemCard from './product-card/ItemCard.jsx';
 import Typography from '@mui/material/Typography';
+import LandingPage from './landing-page.svg';
 
 const Home = () => {
    const [products, setProducts] = useState([]);
@@ -18,7 +19,6 @@ const Home = () => {
                return axios.get(`/api/products/${item.id}/styles`);
             });
             Promise.all(promises).then((allProducts) => {
-               console.log('allProducts:', allProducts);
                setProductPhotos(allProducts);
             });
          })
@@ -35,22 +35,26 @@ const Home = () => {
    }
 
    return (
-      <div>
-         <Typography variant='h3'>Choose an Item</Typography>
-         {productPhotos.length ? (
-            <div className='home-product-list'>
-               {products.map((product, index) => (
-                  <ItemCard
-                     key={index}
-                     id={product.id}
-                     category={product.category}
-                     name={product.name}
-                     price={product.default_price}
-                     image={productPhotos[index].data.results[0].photos[0].url}
-                  />
-               ))}
-            </div>
-         ) : null}
+      <div className='home-container'>
+         <div>
+            <Typography variant='h3'>Choose an Item</Typography>
+            {productPhotos.length ? (
+               <div className='home-product-list'>
+                  {products.map((product, index) => (
+                     <ItemCard
+                        key={index}
+                        id={product.id}
+                        category={product.category}
+                        name={product.name}
+                        price={product.default_price}
+                        image={
+                           productPhotos[index].data.results[0].photos[0].url
+                        }
+                     />
+                  ))}
+               </div>
+            ) : null}
+         </div>
       </div>
    );
 };

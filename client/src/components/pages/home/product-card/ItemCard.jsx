@@ -7,12 +7,18 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
+import DefaultImage from './Image-coming-soon.svg';
 
 const ProductCard = ({ id, category, name, price, image }) => {
    return (
       <Paper elevation={12} className='product-card'>
-         <Card>
-            <CardMedia component='img' alt={name} height='200' image={image} />
+         <Card className='product-item-card'>
+            <CardMedia
+               component='img'
+               alt={name}
+               height='200'
+               image={image || DefaultImage}
+            />
          </Card>
          <CardActions>
             <Link to={`/${id}`}>{name}</Link>
