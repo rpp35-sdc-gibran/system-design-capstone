@@ -8,14 +8,16 @@ import QuestionsList from './question-list/questionsList.jsx';
 import Search from './search/search.jsx';
 import AddQuestion from './add-question/addQuestion.jsx';
 
+//! if filteredQuestions exisits, show it, or else render allQuestions
+    // condition && component
+    // conditionally render 'show additional questions' button
 
 class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_id: 71698, // set by App state
+      product_id: 71698, // set by window.location.pathname???
       allQuestions: [],
-      shownQuestions: [],
       moreQuestionsFlag: false,
     };
 
@@ -31,6 +33,12 @@ class QuestionsAnswers extends React.Component {
       .catch((error) => {
         this.setState({ error: error });
       });
+
+    this.changeQAState = this.changeQAState.bind(this);
+  }
+
+  changeQAState (prop, value) {
+    this.setState({[prop]: value});
   }
 
   componentDidMount() {
@@ -38,11 +46,9 @@ class QuestionsAnswers extends React.Component {
       .get('/api/questionsAnswers/questions', {
         params: {
           product_id: this.state.product_id,
-          // product_id: this.props.currentProductId
         },
       })
       .then((results) => {
-        // console.log('results', results);
         this.setState({ allQuestions: results.data.results });
       })
       .catch((error) => {
@@ -52,15 +58,20 @@ class QuestionsAnswers extends React.Component {
   }
 
   render() {
-    // condition && component
-    // conditionally render 'show additional questions' button
     return (
       <>
         <h3>Questions & Answers</h3>
-        <Search />
-        <QuestionsList allQuestions={this.state.allQuestions} />
+        <Search
+          changeQAState={this.changeQAState}
+          allQuestions={this.state.allQuestions}
+        />
+        <QuestionsList
+          allQuestions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.allQuestions }
+        />
         <button variant='contained'>Add a Question</button>
-        <AddQuestion product_id={this.state.product_id}/>
+        <AddQuestion
+          product_id={this.state.product_id}
+        />
       </>
     );
   }

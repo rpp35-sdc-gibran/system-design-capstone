@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 
 //! expects product name as this.props.productName
 
-// create a function that maps form data to obj/arr
 class AddQuestion extends React.Component {
   getInputValues (event) {
     let values = [];
@@ -21,7 +20,6 @@ class AddQuestion extends React.Component {
     return data
   }
 
-  // create a function that invokes axios request with mapped form data
   postQuestion(question) {
     axios.post('api/questionsAnswers/addQuestion', {
       question: question

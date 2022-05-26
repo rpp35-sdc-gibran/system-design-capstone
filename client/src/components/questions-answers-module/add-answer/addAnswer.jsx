@@ -27,8 +27,9 @@ class AddAnswer extends React.Component {
     data.body = values[0];
     data.name = values[1];
     data.email = values[2];
+    data.photos = values[3]
     data.product_id = this.props.product_id;
-    return data
+    return data;
   }
 
   postAnswer () {
