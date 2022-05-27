@@ -11,4 +11,4 @@ test('product information renders correctly', async () => {
   expect(screen.getByTestId('product-info-name')).toBeDefined();
 });
 
-//todo test whether link navigates to bottom of page when user clicks
+//- [ ]  test to see if price is crossed out when there is a sale price

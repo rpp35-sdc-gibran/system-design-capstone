@@ -4,120 +4,145 @@ import ImageView from './image-gallery/image-view/ImageView.jsx';
 import ProductInformation from './product-information/ProductInformation.jsx';
 import StyleSelector from './style-selector/style-select/StyleSelect.jsx';
 import AddToCart from './add-to-cart/AddToCart.jsx';
+import CheckIcon from '@mui/icons-material/Check';
+import Nav from './navbar/Nav.jsx';
 import axios from 'axios';
+import Typography from '@mui/material/Typography';
 
 const ProductOverview = ({ currentProductId }) => {
-  const [productInfo, setProductInfo] = useState([]);
-  const [styleList, setStyles] = useState();
-  const [currentStyle, setCurrentStyle] = useState();
-  const [reviews, setReviews] = useState(0);
-  const [reviewList, setReviewList] = useState([]);
+   const [productInfo, setProductInfo] = useState([]);
+   const [isScaled, setIsScaled] = useState(false);
+   const [styleList, setStyles] = useState();
+   const [currentStyle, setCurrentStyle] = useState();
+   const [reviews, setReviews] = useState(0);
+   const [reviewList, setReviewList] = useState([]);
+   const [isEnlargedView, setIsEnlargedView] = useState(false);
 
-  useEffect(() => {
-    //gets product information for first product in product list
-    axios.get(`/api/products/${currentProductId}`).then((productData) => {
-      setProductInfo(productData.data);
-    });
-    //gets product styleList for first product in product list
-    axios
-      .get(`/api/products/${currentProductId}/styles`)
-      .then((productStyles) => {
-        setStyles(productStyles.data);
-        setCurrentStyle(productStyles.data.results[0]);
-      })
-      .catch((err) => {
-        console.log('err:', err);
+   useEffect(() => {
+      axios
+         .all([
+            axios.get(`/api/products/${currentProductId}`),
+            axios.get(`/api/products/${currentProductId}/styles`),
+            axios.get(`/api/products/${currentProductId}/reviews`),
+         ])
+         .then(
+            axios.spread(function (productData, productStyles, productReviews) {
+               setProductInfo(productData.data);
+               setStyles(productStyles.data);
+               setCurrentStyle(productStyles.data.results[0]);
+               let currentReviews = getAverageReviews(
+                  productReviews.data.results
+               );
+               setReviewList(productReviews.data.results);
+               setReviews(currentReviews);
+            })
+         )
+         .catch((err) => {
+            console.log('err:', err);
+         });
+   }, [currentProductId]);
+
+   const handleChildScale = () => {
+      setIsScaled(!isScaled);
+   };
+
+   //handles click of main image to zoom, based on isEnlarged state
+   const handleChildZoom = () => {
+      setIsEnlargedView(!isEnlargedView);
+   };
+
+   // helper func to get average number of reviews
+   const getAverageReviews = (arr) => {
+      let sum = 0;
+      arr.forEach((review) => {
+         sum += review.rating;
       });
-    //gets reviews for first product in product list
-    axios
-      .get(`/api/products/${currentProductId}/reviews`)
-      .then((productReviews) => {
-        let currentReviews = getAverageReviews(productReviews.data.results);
-        setReviewList(productReviews.data.results);
-        setReviews(currentReviews);
-      })
-      .catch((err) => {
-        console.log('err:', err);
+      return sum / arr.length;
+   };
+
+   //handles setting current style on click, updating images in image gallery
+   const handleStyleClick = (style_id) => {
+      styleList.results.forEach((style) => {
+         if (style.style_id === style_id) {
+            setCurrentStyle(style);
+         }
       });
-  }, []);
-
-  // helper func to get average number of reviews
-  const getAverageReviews = (arr) => {
-    let sum = 0;
-    arr.forEach((review) => {
-      sum += review.rating;
-    });
-    return sum / arr.length;
-  };
-
-  //handles setting current style on click, updating images in image gallery
-  const handleStyleClick = (style_id) => {
-    styleList.results.forEach((style) => {
-      if (style.style_id === style_id) {
-        setCurrentStyle(style);
-      }
-    });
-  };
-
-  //?# test data to test crosses out price and thumbnail scrolling
-  if (currentStyle) {
-    currentStyle.sale_price = '120.00';
-    let testImages1 = {
-      thumbnail_url:
-        'https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
-      url: 'https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-    };
-    let testImages2 = {
-      thumbnail_url:
-        'https://images.unsplash.com/photo-1556304653-cba65c59b3c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
-      url: 'https://images.unsplash.com/photo-1556304653-cba65c59b3c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2761&q=80',
-    };
-    if (currentStyle.photos.length < 7) {
-      currentStyle.photos.push(testImages1);
-      currentStyle.photos.push(testImages2);
-    }
-  }
-  //# end test data///////////////////////////////////
-
-  return (
-    <div className='product-overview'>
-      {currentProductId && styleList ? (
-        <>
-          <div
-            data-testid='product-overview-image'
-            className='product-overview-image-view'
-          >
-            <ImageView currentStylePhotos={currentStyle.photos} />
-          </div>
-          <div className='product-overview-product-info'>
-            <ProductInformation
-              rating={reviews}
-              reviewLength={reviewList.length}
-              category={productInfo.category}
-              default_price={productInfo.default_price}
-              description={productInfo.description}
-              features={productInfo.features}
-              name={productInfo.name}
-              slogan={productInfo.slogan}
-              sale_price={currentStyle.sale_price}
-            />
-          </div>
-          <div className='product-overview-style-selector'>
-            <StyleSelector
-              styleList={styleList}
-              handleStyleClick={handleStyleClick}
-              currentStyle={currentStyle}
-            />
-          </div>
-          <div className='product-overview-add-to-cart'>
-            <AddToCart currentStyle={currentStyle} />
-          </div>
-        </>
-      ) : (
-        <h1>Loading...</h1>
-      )}
-    </div>
-  );
+   };
+   console.log('productInfo:', productInfo);
+   if (currentProductId) {
+      return (
+         <div className='product-overview'>
+            {styleList ? (
+               <>
+                  <div
+                     data-testid='product-overview-image'
+                     className='product-overview-image-view'
+                  >
+                     <ImageView
+                        currentStylePhotos={currentStyle.photos}
+                        handleChildScale={handleChildScale}
+                        isScaled={isScaled}
+                        isEnlargedView={isEnlargedView}
+                        setIsEnlargedView={setIsEnlargedView}
+                        handleChildZoom={handleChildZoom}
+                     />
+                  </div>
+                  {!isScaled && !isEnlargedView && (
+                     <>
+                        <div className='product-overview-info-style-container'>
+                           <div className='product-overview-product-info'>
+                              <ProductInformation
+                                 rating={reviews}
+                                 reviewLength={reviewList.length}
+                                 category={productInfo.category}
+                                 default_price={productInfo.default_price}
+                                 description={productInfo.description}
+                                 features={productInfo.features}
+                                 name={productInfo.name}
+                                 slogan={productInfo.slogan}
+                                 sale_price={currentStyle.sale_price}
+                              />
+                           </div>
+                           <div className='product-overview-style-selector'>
+                              <StyleSelector
+                                 styleList={styleList}
+                                 handleStyleClick={handleStyleClick}
+                                 currentStyle={currentStyle}
+                              />
+                           </div>
+                           <div className='product-overview-add-to-cart'>
+                              <AddToCart currentStyle={currentStyle} />
+                           </div>
+                        </div>
+                        <div className='product-overview-slogan-features'>
+                           <div className='product-overview-slogan'>
+                              <Typography variant='h6'>
+                                 {productInfo.slogan}
+                              </Typography>
+                              <Typography variant='body1'>
+                                 {productInfo.description}
+                              </Typography>
+                           </div>
+                           <div className='product-overview-features'>
+                              {productInfo.features.map((feature) => (
+                                 <div className='product-overview-feature-item'>
+                                    <CheckIcon />
+                                    <Typography variant='body1'>
+                                       {feature.value} {feature.feature}
+                                    </Typography>
+                                 </div>
+                              ))}
+                           </div>
+                        </div>
+                     </>
+                  )}
+               </>
+            ) : null}
+         </div>
+      );
+   } else {
+      return null;
+   }
 };
 
 export default ProductOverview;

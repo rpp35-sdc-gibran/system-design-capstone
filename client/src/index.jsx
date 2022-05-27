@@ -1,7 +1,13 @@
 import React from 'react';
+import './index.scss';
 import ReactDOM from 'react-dom/client';
 import App from './components/App.jsx';
-
+import { HashRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<App />);
+//use hashrouter instead of browser router to not interfere with server
+root.render(
+   <HashRouter>
+      <App />
+   </HashRouter>
+);

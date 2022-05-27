@@ -15,12 +15,12 @@ module.exports = {
           Authorization: GITHUB_API_TOKEN,
         },
         params: {
-          product_id: req.headers.product_id
-        }
+          product_id: req.headers.product_id,
+        },
       });
 
       promise.then((response) => {
-        console.log('got reviews from API: ', response.data)
+        console.log('got reviews from API: ', response.data);
         res.send(response.data);
       });
       promise.catch((err) => {
@@ -30,24 +30,29 @@ module.exports = {
     },
 
     getReviewMetadata: async function (req, res) {
-      console.log('reviews Metadata req.headers.product_id: ', typeof(req.headers.product_id));
-      let id = Number(req.headers.product_id)
-      console.log(id, typeof(id));
+      console.log(
+        'reviews Metadata req.headers.product_id: ',
+        typeof req.headers.product_id
+      );
+      let id = Number(req.headers.product_id);
+      console.log(id, typeof id);
       let urlMeta = path.join(url, 'meta');
       let promise = axios.get(`${url}meta`, {
         headers: {
           Authorization: GITHUB_API_TOKEN,
         },
         params: {
-          product_id: req.headers.product_id
+          product_id: req.headers.product_id,
         },
       });
-      promise.then((response) => {
-        console.log('got reviewsMetadata from API: ', response.data)
-        res.send(response.data);
-      }).catch((error)=> {
-         console.log(error)
-      });
+      promise
+        .then((response) => {
+          console.log('got reviewsMetadata from API: ', response.data);
+          res.send(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
 
     postProductReviews: function (req, res) {
@@ -67,14 +72,15 @@ module.exports = {
           email: req.params.email,
           photos: req.params.photos,
           characteristics: req.params.characteristics,
-        }
+        },
       });
-      promise.then((response) => {
-        res.send(response)
-      })
+      promise
+        .then((response) => {
+          res.send(response);
+        })
         .catch((error) => {
           throw error;
-        })
+        });
     },
     markReviewAsHelpful: function (req, res) {
       let urlMarkHelpful = path.join(url, '/:review_id/helpful');
@@ -83,14 +89,15 @@ module.exports = {
         url: urlMarkHelpful,
         params: {
           reveiw_id: req.params.reveiw_id,
-        }
+        },
       });
-      promise.then((response) => {
-        res.send(response)
-      })
+      promise
+        .then((response) => {
+          res.send(response);
+        })
         .catch((error) => {
           throw error;
-        })
+        });
     },
     reportReview: function (req, res) {
       let urlReport = path.join(url, '/:review_id/report');
@@ -99,14 +106,15 @@ module.exports = {
         url: urlReport,
         params: {
           reveiw_id: req.params.reveiw_id,
-        }
+        },
       });
-      promise.then((response) => {
-        res.send(response)
-      })
+      promise
+        .then((response) => {
+          res.send(response);
+        })
         .catch((error) => {
           throw error;
-        })
-    }
-  }
+        });
+    },
+  },
 };

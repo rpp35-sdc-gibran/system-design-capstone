@@ -1,5 +1,15 @@
-.style-image-list {
+.style-list-images {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
+  justify-items: center;
+  gap: 5px;
+}
+
+.style-list {
+  padding: 15px;
+  .style-list-title {
+    display: flex;
+    gap: 15px;
+  }
 }
