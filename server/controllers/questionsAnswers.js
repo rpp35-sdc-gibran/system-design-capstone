@@ -146,8 +146,7 @@ const postAnswerByQuestionID = (req, res) => {
 module.exports.getQuestionsByProductID = getQuestionsByProductID;
 module.exports.getAnswersByQuestionID = getAnswersByQuestionID;
 module.exports.markAnswerHelpfulByAnswerID = markAnswerHelpfulByAnswerID;
-module.exports.markQuestionHelpfulByQuestionID =
-   markQuestionHelpfulByQuestionID;
+module.exports.markQuestionHelpfulByQuestionID = markQuestionHelpfulByQuestionID;
 module.exports.reportAnswerByAnswerID = reportAnswerByAnswerID;
 module.exports.reportQuestionByQuestionID = reportQuestionByQuestionID;
 module.exports.postQuestionByProductID = postQuestionByProductID;

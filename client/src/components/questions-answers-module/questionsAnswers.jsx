@@ -15,7 +15,7 @@ class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_id: 71698, // set by window.location.pathname???
+      product_id: this.props.currentProductId, // set by window.location.pathname???
       allQuestions: [],
       moreQuestionsFlag: false,
     };
@@ -41,6 +41,7 @@ class QuestionsAnswers extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.currentProductId)
     axios
       .get('/api/questionsAnswers/questions', {
         params: {
@@ -55,7 +56,6 @@ class QuestionsAnswers extends React.Component {
         this.setState({ error: error });
       });
   }
-
   render() {
     return (
       <>
