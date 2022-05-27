@@ -6,4 +6,5 @@ describe('RatingsAndReviews', () => {
   test('renders reviews and ratings components', () => {
     render(<RatingsAndReviews />);
   });
+
 });

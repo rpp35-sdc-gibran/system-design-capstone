@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ratings&amp;reviews/reviews/ReviewTile.jsx</title>
+    <title>Code coverage report for ratings&amp;reviews/reviews/reviewsForProductId71697.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -15,41 +15,41 @@
         }
     </style>
 </head>
-
+    
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">ratings&reviews/reviews</a> ReviewTile.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">ratings&reviews/reviews</a> reviewsForProductId71697.js</h1>
         <div class='clearfix'>
-
+            
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>0/0</span>
             </div>
-
-
+        
+            
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>0/0</span>
             </div>
-
-
+        
+            
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/0</span>
             </div>
-
-
+        
+            
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>0/0</span>
             </div>
-
-
+        
+            
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -81,25 +81,7 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,32 +95,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect } from 'react';
-import StarRating from './starRating/StarRating.jsx'
-&nbsp;
-const ReviewTile = ({ review }) =&gt; {
-  console.log('in ReviewTile got: ', review);
-&nbsp;
-  var months = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"]
-  var month = months[Number(review.date.slice(5, 7)) - 1]
-  var date = review.date.slice(8, 10);
-  var year = review.date.slice(0, 4);
-  return (
-    &lt;div className='reviewTile'&gt;
-      &lt;StarRating rating={review.rating} reviewId={review.review_id} /&gt;&lt;span className='reviewName'&gt;{review.reviewer_name}&lt;/span&gt;&lt;span&gt;{`  ${month} ${date}, ${year}`}&lt;/span&gt;&lt;br /&gt;
-      &lt;span className='summary'&gt;{review.summary}&lt;/span&gt;&lt;br /&gt;
-      {review.recommend ? &lt;span&gt;&amp;#x2713; I recommend this product&lt;br/&gt;&lt;/span&gt; : <span class="branch-1 cbranch-no" title="branch not covered" >&lt;&gt;&lt;/&gt;}</span>
-      {review.response &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >review.response.length </span>? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;span&gt;{`Response from seller: ${&lt;br/&gt;}${review.response}`}&lt;br/&gt;&lt;/span&gt; </span>: &lt;&gt;&lt;/&gt;}
-      &lt;span className='body'&gt;{review.body}&lt;/span&gt;&lt;br /&gt;
-      &lt;span&gt;Helpful? Yes ({review.helpfulness})&lt;/span&gt;
-      &lt;span&gt;Report&lt;/span&gt;
-    &lt;/div&gt;
-  )
-}
-&nbsp;
-&nbsp;
-export default ReviewTile;</pre></td></tr></table></pre>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default {
+  "product": "71697",
+  "page": 0,
+  "count": 5,
+  "results": [
+    {
+      "review_id": 1254280,
+      "rating": 5,
+      "summary": "This product was great!",
+      "recommend": true,
+      "response": "",
+      "body": "I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.",
+      "date": "2019-01-01T00:00:00.000Z",
+      "reviewer_name": "funtime",
+      "helpfulness": 8,
+      "photos": []
+    }
+  ]
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
@@ -157,3 +136,4 @@ export default ReviewTile;</pre></td></tr></table></pre>
         <script src="../../block-navigation.js"></script>
     </body>
 </html>
+    

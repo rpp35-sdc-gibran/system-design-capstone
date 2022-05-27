@@ -8,8 +8,8 @@ import QuestionsList from './question-list/questionsList.jsx';
 import Search from './search/search.jsx';
 import AddQuestion from './add-question/addQuestion.jsx';
 
-    // condition && component
-    // conditionally render 'show additional questions' button
+// condition && component
+// conditionally render 'show additional questions' button
 
 class QuestionsAnswers extends React.Component {
   constructor(props) {

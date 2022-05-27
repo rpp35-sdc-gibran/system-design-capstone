@@ -29,20 +29,24 @@ module.exports = {
       });
     },
 
-    getReviewMetadata: function (req, res) {
-      let urlMeta = path.join(url, '/meta');
-      let promise = axios({
-        method: 'post',
-        url: urlMeta,
+    getReviewMetadata: async function (req, res) {
+      console.log('reviews Metadata req.headers.product_id: ', typeof(req.headers.product_id));
+      let id = Number(req.headers.product_id)
+      console.log(id, typeof(id));
+      let urlMeta = path.join(url, 'meta');
+      let promise = axios.get(`${url}meta`, {
         headers: {
           Authorization: GITHUB_API_TOKEN,
         },
         params: {
-          product_id: req.body.params.product_id,
-        }
+          product_id: req.headers.product_id
+        },
       });
-      promise.then((reviewsMetadata) => {
-        res.send(reviewsMetadata.data);
+      promise.then((response) => {
+        console.log('got reviewsMetadata from API: ', response.data)
+        res.send(response.data);
+      }).catch((error)=> {
+         console.log(error)
       });
     },
 
@@ -88,7 +92,7 @@ module.exports = {
           throw error;
         })
     },
-    reportReview: function(req, res) {
+    reportReview: function (req, res) {
       let urlReport = path.join(url, '/:review_id/report');
       let promise = axios({
         method: 'put',
