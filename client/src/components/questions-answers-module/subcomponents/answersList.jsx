@@ -18,22 +18,14 @@ class AnswersList extends React.Component {
         },
       })
       .then((results) => {
-<<<<<<< HEAD
-        this.setState({ allAnswers: results.data.results });
-=======
         // console.log(`Answer list for ${this.props.question_id}`, results.data.results)
         this.setState({allAnswers: results.data.results})
->>>>>>> 355f07f3e19f0f67ccbb3eea683579d1f0a89765
       })
       .catch((error) => {
         console.log('error', error);
       });
   }
 
-<<<<<<< HEAD
-  render() {
-    return <Card>{this.props.question_id}</Card>;
-=======
 // ternary statement for not mapping undefined
 
   render () {
@@ -44,7 +36,6 @@ class AnswersList extends React.Component {
         })}
       </Card>
     )
->>>>>>> 355f07f3e19f0f67ccbb3eea683579d1f0a89765
   }
 }
 
