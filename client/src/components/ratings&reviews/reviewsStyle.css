@@ -1,0 +1,53 @@
+.reviewTile {
+  position: relative;
+}
+
+/* .star {
+  height: 50px;
+  margin: 0;
+  /* position: relative; */
+
+
+.stars-inner {
+  /* position: absolute; */
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 50px;
+
+
+}
+
+.stars-outer {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  height: 50px;
+
+}
+
+progress.characteristics.big{
+  width: 80px;
+
+}
+
+progress.characteristics.small{
+  width: 60px;
+
+}
+div.characteristics{
+  font-size: smaller;
+}
+
+span.starFilter{
+  text-decoration: underline;
+}
+
+span.starFilter:hover {
+  background-color: grey;
+}
+
+div.ratingsBreakdown:hover {
+  background-color: Lightgrey;
+}

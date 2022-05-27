@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
 import ReviewTile from './ReviewTile.jsx';
 
-function ReviewsList({ reviews }) {
+const ReviewsList = ({ reviews, starFilters }) => {
+  console.log('starFilters in ReviewsList.jsx: ', starFilters);
+  if (starFilters.length) {
+    reviews = reviews.filter((review) =>
+      starFilters.includes(review.rating.toString())
+    );
+  }
+
   console.log('In ReviewsList got: ', reviews);
   const [renderedCount, setRenderedCount] = useState(2);
   function moreReviewsOnClick() {
@@ -13,33 +20,47 @@ function ReviewsList({ reviews }) {
       setRenderedCount(reviews.length);
     }
   }
-  console.log('reviews:', reviews);
-  let currentReviews = reviews.slice(0, renderedCount);
-  console.log('currentReviews:', currentReviews);
+
+  const handleReviewsSortChange = (e) => {
+    console.log(e.target.value, ' selected');
+    let sortWith = e.target.value;
+    if (sortWith === 'relevant') {
+      reviews.sort((a, b) => {
+        let helpfulnessA = a.helpfulness || 0;
+        let helpfulnessB = b.helpfulness || 0;
+        let dateA = a.date;
+        let dateB = b.date;
+        if (helpfulnessA < helpfulnessB) return -1;
+        if (helpfulnessA > helpfulnessB) return 1;
+        if (dateA > dateB) return -1;
+        if (dateA < dateB) return 1;
+        return 0;
+      });
+    }
+    if (sortWith === 'newest') {
+      reviews.sort((a, b) => a.date - b.date);
+    }
+    if (sortWith === 'helpfulness') {
+      reviews.sort((a, b) => b.helpfulness - a.helpfulness);
+    }
+  };
+
   return (
     <div>
       <h1>Reviews</h1>
       <h3>
         {reviews.length} reviews, sorted by
-        <select defaultValue='relevance'>
-          <option>helpful </option>
-          <option>newest </option>
-          <option>relevance </option>
+        <select defaultValue='relevant' onChange={handleReviewsSortChange}>
+          <option value='helpfulness'>helpfulness </option>
+          <option value='newest'>newest</option>
+          <option value='relevant'>relevant </option>
         </select>
       </h3>
-      {currentReviews.map((review, index) => (
-        <ReviewTile review={review} key={index} />
-      ))}
-      //! added index to map, then key to reviewtile
-      {/* {reviews.slice(0, renderedCount).map((singleReview, index) => ( */}
-      {/* <div key={review.review_id}> */}
-      {/* <StarRating rating={review.rating} reviewId={review.review_id} /><span>{review.reviewer_name}</span><span>{review.date.slice(5, 10) + ', ' + review.date.slice(0, 4)}</span><br />
-        //   <span>{review.summary}</span><br />
-        //   <span>{review.body}</span><br />
-        //   <span>Helpful? Yes ({review.helpfulness})</span><span>Report</span> */}
-      {/* <ReviewTile key={index} review={singleReview} /> */}
-      {/* </div> */}
-      {/* ))} */}
+      <div>
+        {reviews.slice(0, renderedCount).map((review, index) => (
+          <ReviewTile review={review} key={index} />
+        ))}
+      </div>
       {reviews.length > 2 && reviews.length > renderedCount ? (
         <button onClick={moreReviewsOnClick}>MORE REVIEWS</button>
       ) : (
@@ -48,5 +69,5 @@ function ReviewsList({ reviews }) {
       <button>ADD A REVIEW +</button>
     </div>
   );
-}
+};
 export default ReviewsList;

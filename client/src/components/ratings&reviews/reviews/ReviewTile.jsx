@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import StarRating from './starRating/StarRating.jsx';
+import StarRating from './starRating/StarRating.jsx'
+
+const ReviewTile = ({ review }) => {
+  console.log('in ReviewTile got: ', review);
 
 //! starRating returns two components since two are being exported, so use StarRating.StarRating
 //! or StarRating.StarIcon
@@ -26,23 +29,12 @@ const ReviewTile = ({ review }) => {
   var year = review.date.slice(0, 4);
   //! removed key from div, instead added to reviewlist file when calling review tile
   return (
-    <div>
-      {/* <StarRating rating={review.rating} reviewId={review.review_id} /> */}
-      <span>{review.reviewer_name}</span>
-      <span>{`  ${month} ${date}, ${year}`}</span>
-      <br />
-      <span>{review.summary}</span>
-      <br />
-      {review.response && review.response.length ? (
-        <span>
-          {`Response from seller: ${(<br />)}${review.response}`}
-          <br />
-        </span>
-      ) : (
-        <></>
-      )}
-      <span>{review.body}</span>
-      <br />
+    <div className='reviewTile'>
+      <StarRating rating={review.rating} reviewId={review.review_id} /><span className='reviewName'>{review.reviewer_name}</span><span>{`  ${month} ${date}, ${year}`}</span><br />
+      <span className='summary'>{review.summary.slice(0, 60)}</span><br />
+      {review.recommend ? <span>&#x2713; I recommend this product<br/></span> : <></>}
+      {review.response && review.response.length ? <span>{`Response from seller: ${<br/>}${review.response}`}<br/></span> : <></>}
+      <span className='body'>{review.body}</span><br />
       <span>Helpful? Yes ({review.helpfulness})</span>
       <span>Report</span>
     </div>

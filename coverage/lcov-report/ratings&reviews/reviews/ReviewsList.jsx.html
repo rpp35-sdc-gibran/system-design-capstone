@@ -15,12 +15,17 @@
         }
     </style>
 </head>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../../index.html">All files</a> / <a href="index.html">ratings&reviews/reviews</a> ReviewsList.jsx</h1>
         <div class='clearfix'>
+<<<<<<< HEAD
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">54.54% </span>
@@ -29,11 +34,22 @@
             </div>
         
             
+=======
+
+            <div class='fl pad1y space-right2'>
+                <span class="strong">55.55% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>5/9</span>
+            </div>
+
+
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
             <div class='fl pad1y space-right2'>
                 <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>2/6</span>
             </div>
+<<<<<<< HEAD
         
             
             <div class='fl pad1y space-right2'>
@@ -50,6 +66,24 @@
             </div>
         
             
+=======
+
+
+            <div class='fl pad1y space-right2'>
+                <span class="strong">66.66% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>2/3</span>
+            </div>
+
+
+            <div class='fl pad1y space-right2'>
+                <span class="strong">55.55% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>5/9</span>
+            </div>
+
+
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -99,6 +133,7 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
+<<<<<<< HEAD
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
@@ -122,6 +157,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+=======
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -130,6 +174,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -148,6 +193,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+=======
+<span class="cline-any cline-yes">2x</span>
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,6 +207,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+=======
+<span class="cline-any cline-yes">2x</span>
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,6 +221,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+<<<<<<< HEAD
 import ReviewTile from './ReviewTile.jsx';
 &nbsp;
 function ReviewsList({ reviews }) {
@@ -190,12 +243,32 @@ function ReviewsList({ reviews }) {
       &lt;h1&gt;Reviews&lt;/h1&gt;
       &lt;h3&gt;
         {reviews.length} reviews, sorted by
+=======
+import ReviewTile from './ReviewTile.jsx'
+&nbsp;
+const ReviewsList = ({ reviews }) =&gt; {
+  console.log('In ReviewsList got: ', reviews);
+  const [renderedCount, setRenderedCount] = useState(2);
+  function <span class="fstat-no" title="function not covered" >moreReviewsOnClick(</span>) {
+<span class="cstat-no" title="statement not covered" >    console.log('MORE REVIEWS button clicked')</span>
+<span class="cstat-no" title="statement not covered" >    if (renderedCount &lt; reviews.length) {</span>
+<span class="cstat-no" title="statement not covered" >      setRenderedCount(renderedCount + 2)</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      setRenderedCount(reviews.length)</span>
+    }
+  }
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Reviews&lt;/h1&gt;
+      &lt;h3&gt;{reviews.length} reviews, sorted by
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
         &lt;select defaultValue='relevance'&gt;
           &lt;option&gt;helpful &lt;/option&gt;
           &lt;option&gt;newest &lt;/option&gt;
           &lt;option&gt;relevance &lt;/option&gt;
         &lt;/select&gt;
       &lt;/h3&gt;
+<<<<<<< HEAD
       {currentReviews.map(<span class="fstat-no" title="function not covered" >(r</span>eview, index) =&gt; (
 <span class="cstat-no" title="statement not covered" >        &lt;ReviewTile review={review} key={index} /&gt;</span>
       ))}
@@ -220,13 +293,31 @@ function ReviewsList({ reviews }) {
 }
 export default ReviewsList;
 &nbsp;</pre></td></tr></table></pre>
+=======
+      &lt;div&gt;
+      {reviews.slice(0, renderedCount).map((review, index) =&gt; (
+          &lt;ReviewTile review={review} key={index}/&gt;
+      ))}
+      &lt;/div&gt;
+      {reviews.length &gt; 2 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >reviews.length &gt; renderedCount </span>? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;button onClick={moreReviewsOnClick}&gt;MORE REVIEWS&lt;/button&gt; </span>: &lt;&gt;&lt;/&gt;}
+      &lt;button&gt;ADD A REVIEW +&lt;/button&gt;
+    &lt;/div &gt;
+  );
+&nbsp;
+}
+export default ReviewsList;</pre></td></tr></table></pre>
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+<<<<<<< HEAD
                 at Sat May 21 2022 16:16:10 GMT-0400 (Eastern Daylight Time)
+=======
+                at Tue May 24 2022 17:32:28 GMT-0500 (Central Daylight Time)
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
             </div>
         <script src="../../prettify.js"></script>
         <script>
@@ -238,4 +329,7 @@ export default ReviewsList;
         <script src="../../block-navigation.js"></script>
     </body>
 </html>
+<<<<<<< HEAD
     
+=======
+>>>>>>> 0d1ef2d93cdcc3a60491753a101283c01c5197b5
