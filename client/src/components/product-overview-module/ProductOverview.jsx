@@ -4,6 +4,7 @@ import ImageView from './image-gallery/image-view/ImageView.jsx';
 import ProductInformation from './product-information/ProductInformation.jsx';
 import StyleSelector from './style-selector/style-select/StyleSelect.jsx';
 import AddToCart from './add-to-cart/AddToCart.jsx';
+import CheckIcon from '@mui/icons-material/Check';
 import Nav from './navbar/Nav.jsx';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
@@ -67,11 +68,11 @@ const ProductOverview = ({ currentProductId }) => {
          }
       });
    };
-
+   console.log('productInfo:', productInfo);
    if (currentProductId) {
       return (
          <div className='product-overview'>
-            {currentProductId && styleList ? (
+            {styleList ? (
                <>
                   <div
                      data-testid='product-overview-image'
@@ -111,6 +112,26 @@ const ProductOverview = ({ currentProductId }) => {
                            </div>
                            <div className='product-overview-add-to-cart'>
                               <AddToCart currentStyle={currentStyle} />
+                           </div>
+                        </div>
+                        <div className='product-overview-slogan-features'>
+                           <div className='product-overview-slogan'>
+                              <Typography variant='h6'>
+                                 {productInfo.slogan}
+                              </Typography>
+                              <Typography variant='body1'>
+                                 {productInfo.description}
+                              </Typography>
+                           </div>
+                           <div className='product-overview-features'>
+                              {productInfo.features.map((feature) => (
+                                 <div className='product-overview-feature-item'>
+                                    <CheckIcon />
+                                    <Typography variant='body1'>
+                                       {feature.value} {feature.feature}
+                                    </Typography>
+                                 </div>
+                              ))}
                            </div>
                         </div>
                      </>

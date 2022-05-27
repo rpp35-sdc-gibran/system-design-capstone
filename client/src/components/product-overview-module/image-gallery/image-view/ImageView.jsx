@@ -69,6 +69,7 @@ const ImageView = ({
                      className='button-prev'
                      data-testid='icon-prev'
                      onClick={goPrev}
+                     aria-label='previous image'
                   >
                      <Avatar>
                         <ArrowBackIcon color='primary' fontSize='large' />
@@ -80,6 +81,7 @@ const ImageView = ({
                      className='button-next'
                      data-testid='icon-next'
                      onClick={goNext}
+                     aria-label='next image'
                   >
                      <Avatar>
                         <ArrowForwardIcon color='primary' fontSize='large' />

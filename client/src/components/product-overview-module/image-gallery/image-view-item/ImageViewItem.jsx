@@ -3,6 +3,7 @@ import './ImageViewItem.scss';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Avatar from '@mui/material/Avatar';
+import DefaultImage from '../../../pages/home/product-card/Image-coming-soon.svg';
 
 const ImageViewItem = ({
    image,
@@ -64,20 +65,27 @@ const ImageViewItem = ({
             {/* scaled image view with inline style  */}
             {isScaled ? (
                <div style={imageScaledContainerStyle} className='enlarged'>
-                  <img alt='main image scaled view' src={image}></img>
+                  <img
+                     alt='main image scaled view'
+                     src={image || DefaultImage}
+                  ></img>
                </div>
             ) : (
                <>
                   <IconButton
                      className='enlarged-view-btn'
                      onClick={handleClick}
+                     ariaLabel='enlarge image'
                   >
                      <Avatar>
                         <CloseIcon color='primary' fontSize='large' />
                      </Avatar>
                   </IconButton>
                   <div className='enlarged'>
-                     <img alt='main image enlarged view' src={image}></img>
+                     <img
+                        alt='main image enlarged view'
+                        src={image || DefaultImage}
+                     ></img>
                   </div>
                </>
             )}
@@ -90,8 +98,7 @@ const ImageViewItem = ({
             <img
                alt='main product image not found'
                className='default-img'
-               // style={{ top: -50, left: -70 }}
-               src={image}
+               src={image || DefaultImage}
             ></img>
          </div>
       );

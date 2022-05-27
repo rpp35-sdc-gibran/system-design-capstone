@@ -6,15 +6,21 @@ import sampleReviews from '../../ratings&reviews/reviews/reviewsForProductId7169
 import RelatedItems from '../../related-items-module/RelatedItems.jsx';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import WithAnalytics from '../../../WithAnalytics.jsx';
+
+//! pass down module to this higher order component which will add on click to our module
+const EnhancedProductOverview = WithAnalytics(ProductOverview);
+const EnhancedRelatedItems = WithAnalytics(RelatedItems);
 
 const Product = (props) => {
    let currentReviews = sampleReviews.results;
+
    let { productId } = useParams();
 
    return (
       <div>
-         <ProductOverview currentProductId={productId} />
-         <RelatedItems currentProductId={productId} />
+         <EnhancedProductOverview currentProductId={productId} />
+         <EnhancedRelatedItems currentProductId={productId} />
          <QuestionsAnswers currentProductId={productId} />
          <RatingsAndReviews
             currentProductId={productId}

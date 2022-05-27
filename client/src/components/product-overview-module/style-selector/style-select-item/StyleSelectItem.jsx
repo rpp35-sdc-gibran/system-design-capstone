@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './StyleSelectItem.scss';
 import CheckIcon from '@mui/icons-material/Check';
 import Avatar from '@mui/material/Avatar';
+import DefaultImage from '../../../pages/home/product-card/Image-coming-soon.svg';
 
 const Style = ({ style_id, image, handleStyleClick, currentStyle, index }) => {
    const [active, setActive] = useState(false);
@@ -25,12 +26,16 @@ const Style = ({ style_id, image, handleStyleClick, currentStyle, index }) => {
                >
                   <CheckIcon />
                </Avatar>
-               <img className='style-item-active-image' src={image}></img>
+               <img
+                  className='style-item-active-image'
+                  alt='active thumbnail image'
+                  src={image || DefaultImage}
+               ></img>
             </>
          ) : (
             <img
                className='style-item-inactive-image'
-               src={image}
+               src={image || DefaultImage}
                alt='style image not found'
                data-testid={`style-img-${index}`}
             ></img>

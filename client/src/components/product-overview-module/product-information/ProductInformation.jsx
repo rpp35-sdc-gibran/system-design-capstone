@@ -64,7 +64,6 @@ const ProductInformation = ({
          ) : (
             <Typography variant='subtitle2'>{default_price}</Typography>
          )}
-         <Typography variant='body1'>{description}</Typography>
       </div>
    );
 };
