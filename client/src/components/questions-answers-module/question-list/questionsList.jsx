@@ -11,7 +11,7 @@ class QuestionsList extends React.Component {
   render () {
     return (
       <div>
-        {this.props.allQuestions.map((question) => {
+        {this.props.questions.map((question) => {
           return <Question question={question}/>
         })}
       </div>
