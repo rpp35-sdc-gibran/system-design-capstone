@@ -68,10 +68,11 @@ class QuestionsAnswers extends React.Component {
         <QuestionsList
           allQuestions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.allQuestions }
         />
-        <button variant='contained'>Add a Question</button>
-        <AddQuestion
-          product_id={this.state.product_id}
-        />
+        <button onClick={() => {
+          // render addQuestion module
+          <AddQuestion product_id={this.state.product_id}/>
+        }
+        }>Add a Question</button>
       </>
     );
   }

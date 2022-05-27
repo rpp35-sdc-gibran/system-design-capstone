@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 
 import AnswerList from '../answer-list/answersList.jsx';
+import AddAnswer from '../add-answer/addAnswer.jsx';
 
 class Question extends React.Component {
   reportQuestion () {
@@ -51,6 +52,7 @@ class Question extends React.Component {
         <div>by {this.props.question.asker_name} {this.props.question.question_date}</div>
         <button variant="contained">Add an Answer</button>
         <AnswerList question_id={this.props.question.question_id}/>
+        <AddAnswer question_id={this.props.question.question_id}/>
       </Card>
       )
   }

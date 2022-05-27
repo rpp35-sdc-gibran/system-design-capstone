@@ -28,12 +28,15 @@ class AddAnswer extends React.Component {
     data.name = values[1];
     data.email = values[2];
     data.photos = values[3]
-    data.product_id = this.props.product_id;
+    data.question_id = this.props.question_id;
     return data;
   }
 
   postAnswer () {
+    axios({
+      method: 'post',
 
+    })
   }
 
   render () {
@@ -41,9 +44,26 @@ class AddAnswer extends React.Component {
       <>
         <Card class="addAnswer">
           <form onSumbit={(event) => {
-
+            event.preventDefault()
+            console.log('getinputvalues', this.getInputValues(event));
           }}>
-
+            <div>
+              <label></label>
+              <input/>
+            </div>
+            <div>
+              <label></label>
+              <input/>
+            </div>
+            <div>
+              <label></label>
+              <input/>
+            </div>
+            <div>
+              <label></label>
+              <input/>
+            </div>
+            <button>Sumbit</button>
           </form>
         </Card>
       </>
