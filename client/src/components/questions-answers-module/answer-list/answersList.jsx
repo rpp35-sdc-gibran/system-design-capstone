@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Card from '@mui/material/Card';
 
-import Answer from './Answer.jsx';
+import Answer from '../answer/answer.jsx';
 
 class AnswersList extends React.Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class AnswersList extends React.Component {
     this.state = {
       allAnswers: [],
     };
+
     axios
       .get('/api/questionsAnswers/answers', {
         params: {

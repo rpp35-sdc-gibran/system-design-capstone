@@ -31,8 +31,15 @@ class App extends Component {
         {this.state.currentProductId && (
           <ProductOverview currentProductId={this.state.currentProductId} />
         )}
+<<<<<<< HEAD
+        <div class="questionsAnswers">
+          <QuestionsAnswers currentProductId={this.state.currentProductId}/>
+        </div>
+        {/* <RatingsAndReviews currentProductId={this.state.currentProductId} reviews={this.state.currentReviews} {...this.props} /> */}
+=======
         {/* <QuestionsAnswers currentProductId={this.state.currentProductId} /> */}
         <RatingsAndReviews currentProductId={this.state.currentProductId} />
+>>>>>>> main
       </div>
     );
   }
