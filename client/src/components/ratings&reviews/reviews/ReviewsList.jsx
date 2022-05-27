@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
 import ReviewTile from './ReviewTile.jsx';
 
+<<<<<<< HEAD
 const ReviewsList = ({ reviews, starFilters }) => {
   console.log('starFilters in ReviewsList.jsx: ', starFilters);
   if (starFilters.length) {
@@ -11,15 +12,18 @@ const ReviewsList = ({ reviews, starFilters }) => {
   }
 
   console.log('In ReviewsList got: ', reviews);
+=======
+function ReviewsList({ reviews }) {
+>>>>>>> product-overview
   const [renderedCount, setRenderedCount] = useState(2);
   function moreReviewsOnClick() {
-    console.log('MORE REVIEWS button clicked');
     if (renderedCount < reviews.length) {
       setRenderedCount(renderedCount + 2);
     } else {
       setRenderedCount(reviews.length);
     }
   }
+<<<<<<< HEAD
 
   const handleReviewsSortChange = (e) => {
     console.log(e.target.value, ' selected');
@@ -45,6 +49,9 @@ const ReviewsList = ({ reviews, starFilters }) => {
     }
   };
 
+=======
+  let currentReviews = reviews.slice(0, renderedCount);
+>>>>>>> product-overview
   return (
     <div>
       <h1>Reviews</h1>

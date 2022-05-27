@@ -1,0 +1,5 @@
+@use '../../../App.scss' as *;
+
+.product-card {
+   @include set-size(20rem, 15rem);
+}

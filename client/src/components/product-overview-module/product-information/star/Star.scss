@@ -1,24 +1,15 @@
 @use '../../../App.scss' as *;
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
-#star-container {
-  // height: 50px;
-  transform: scale(1);
-  // @include set-size(60px, 60px);
-  animation: star 1s ease;
-  transform-origin: center;
-  transform-box: fill-box;
+#star {
+   @include set-size(1.5rem);
+   animation: star 1s ease-in-out;
 }
 
 @keyframes star {
-  from {
-    transform: rotateZ(0deg);
-  }
-  to {
-    transform: rotateZ(360deg);
-  }
+   from {
+      transform: rotateZ(0deg);
+   }
+   to {
+      transform: rotateZ(360deg);
+   }
 }

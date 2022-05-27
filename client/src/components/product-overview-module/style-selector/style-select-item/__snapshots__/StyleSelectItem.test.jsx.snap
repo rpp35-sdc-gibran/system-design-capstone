@@ -8,6 +8,7 @@ exports[`renders correctly 1`] = `
 >
   <img
     className="style-item-inactive-image"
+    data-testid="style-img-undefined"
   />
 </div>
 `;

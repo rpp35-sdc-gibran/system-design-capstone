@@ -1,9 +1,12 @@
 @use '../../../App.scss' as *;
 
-// .style-item-active-image {
-//   @include set-size(auto, 10em);
-// }
+.style-item-inactive-image,
+.style-item-active-image {
+  border-radius: 100%;
+  position: relative;
+  @include set-size(90px, 90px);
+}
 
-.style-item-inactive-image {
-  @include set-size(auto, 10em);
+.style-item-icon {
+  background-color: red;
 }

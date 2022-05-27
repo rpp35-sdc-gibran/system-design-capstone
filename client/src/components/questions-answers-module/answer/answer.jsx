@@ -4,6 +4,7 @@ import axios from 'axios';
 import Card from '@mui/material/Card';
 
 class Answer extends React.Component {
+<<<<<<< HEAD:client/src/components/questions-answers-module/answer/answer.jsx
   reportAnswer () {
     axios.put('/api/questionsAnswers/reportAnswer', {
       answer_id: this.props.answer.answer_id
@@ -43,6 +44,46 @@ class Answer extends React.Component {
       </Card>
       )
   }
+=======
+   isHelpful() {
+      axios
+         .put('/api/questionsAnswers/markAnswerHelpful', {
+            question_id: this.props.answer.answer_id,
+         })
+         .then((results) => {
+            console.log(
+               'SUCCESS PUT /api/questionsAnswers/markAnswerHelpful',
+               results
+            );
+            // reload questions to update page
+         })
+         .catch((error) => {
+            console.log(
+               'ERROR PUT /api/questionsAnswers/markAnswerHelpful',
+               error
+            );
+         });
+   }
+
+   render() {
+      return (
+         <Card variant='outlined'>
+            <div>
+               A: {this.props.answer.body}
+               Helpful?
+               <a
+                  class='helpful'
+                  onClick={this.isHelpful.bind(this)}
+                  style={{ cursor: 'pointer' }}
+               >
+                  Yes
+               </a>
+               {this.props.answer.helpfulness}
+            </div>
+         </Card>
+      );
+   }
+>>>>>>> product-overview:client/src/components/questions-answers-module/subcomponents/answer.jsx
 }
 
 export default Answer;

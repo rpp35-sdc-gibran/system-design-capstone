@@ -1,0 +1,6 @@
+@use '../App.scss' as *;
+
+.related-items {
+   @include flex-center();
+   gap: 1rem;
+}

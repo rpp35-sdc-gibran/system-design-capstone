@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import ProductOverview from './product-overview-module/ProductOverview.jsx';
 import QuestionsAnswers from './questions-answers-module/QuestionsAnswers.jsx';
 import axios from 'axios';
@@ -53,5 +54,23 @@ class App extends Component {
     );
   }
 }
+=======
+import { Routes, Route } from 'react-router-dom';
+import Nav from './product-overview-module/navbar/Nav.jsx';
+import Home from './pages/home/Home.jsx';
+import Product from './pages/product/Product.jsx';
+
+const App = () => {
+   return (
+      <>
+         <Nav />
+         <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/:productId' element={<Product />} />
+         </Routes>
+      </>
+   );
+};
+>>>>>>> product-overview
 
 export default App;

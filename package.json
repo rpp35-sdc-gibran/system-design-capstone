@@ -26,11 +26,11 @@
     "@mui/material": "^5.7.0",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
-    "cypress": "^9.6.1",
     "express": "^4.18.1",
     "nodemon": "^2.0.16",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-router-dom": "^6.3.0",
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
@@ -57,6 +57,7 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
+    "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.[jt]sx?$",
     "collectCoverage": true,
     "verbose": true,
     "moduleNameMapper": {
