@@ -12,7 +12,7 @@ const ReviewTile = ({ review }) => {
   return (
     <div className='reviewTile'>
       <StarRating rating={review.rating} reviewId={review.review_id} /><span className='reviewName'>{review.reviewer_name}</span><span>{`  ${month} ${date}, ${year}`}</span><br />
-      <span className='summary'>{review.summary}</span><br />
+      <span className='summary'>{review.summary.slice(0, 60)}</span><br />
       {review.recommend ? <span>&#x2713; I recommend this product<br/></span> : <></>}
       {review.response && review.response.length ? <span>{`Response from seller: ${<br/>}${review.response}`}<br/></span> : <></>}
       <span className='body'>{review.body}</span><br />

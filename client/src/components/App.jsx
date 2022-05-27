@@ -15,10 +15,10 @@ class App extends Component {
   componentDidMount() {
     axios.get('/api/products')
       .then((products) => {
-        console.log('products data: ', products)
+        console.log('products data: ', products.data)
         this.setState({
           products: products.data,
-          currentProductId: products.data[0].id,
+          currentProductId: products.data[0].id
         });
       }).
       catch((err) => {

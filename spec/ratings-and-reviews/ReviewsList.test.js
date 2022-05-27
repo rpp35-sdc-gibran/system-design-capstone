@@ -39,6 +39,7 @@ it("renders reviewsList data", async () => {
   await act(async () => {
     render(<ReviewsList reviews={fakeReviews} />, container);
   });
+
   expect(container.querySelector("h3").textContent).toBe('1 reviews, sorted byhelpful newest relevance ');
 
 
