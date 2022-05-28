@@ -3,7 +3,7 @@ import './ImageViewItem.scss';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Avatar from '@mui/material/Avatar';
-import DefaultImage from '../../../pages/home/product-carousel/product-card/Image-coming-soon.svg';
+import DefaultImage from '../../../pages/home/home-product-carousel/product-card/Image-coming-soon.svg';
 
 const ImageViewItem = ({
    image,

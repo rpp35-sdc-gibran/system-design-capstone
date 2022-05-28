@@ -1,4 +1,5 @@
 import React from 'react';
+import './Woman.scss';
 
 const Woman = () => {
    return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ProductCard from '../pages/home/product-carousel/product-card/ProductCard.jsx';
+import ProductCard from '../pages/home/home-product-carousel/product-card/ProductCard.jsx';
 import Typography from '@mui/material/Typography';
 import './RelatedItems.scss';
 

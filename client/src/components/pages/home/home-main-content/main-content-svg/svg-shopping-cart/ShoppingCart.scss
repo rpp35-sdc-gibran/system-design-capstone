@@ -1,0 +1,44 @@
+#shopping-cart {
+   animation: drive 3s ease 1s;
+   transform-origin: center;
+}
+
+@keyframes drive {
+   0% {
+      transform: translateX(0);
+      transform: rotateZ(-10deg);
+   }
+   100% {
+      transform: translateX(20rem);
+   }
+}
+
+#wheel1 {
+   animation: spin 1s linear infinite;
+   transform-origin: center;
+   transform-box: fill-box;
+}
+
+#wheel2 {
+   animation: move 1s linear infinite;
+   transform-origin: center;
+   transform-box: fill-box;
+}
+
+@keyframes spin {
+   0% {
+      transform: rotateZ(0deg);
+   }
+   100% {
+      transform: rotateZ(360deg);
+   }
+}
+
+@keyframes move {
+   0% {
+      transform: rotateZ(0deg);
+   }
+   100% {
+      transform: rotateZ(360deg);
+   }
+}

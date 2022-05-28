@@ -1,9 +1,9 @@
 import React from 'react';
-
+import './ShoppingCart.scss';
 const ShoppingCart = () => {
    return (
       <>
-         <g id='UI'>
+         <g id='shopping-cart'>
             <g
                id='Shopping_bag'
                transform='matrix(1.35063,0,0,1.35063,-303.999,-211.53)'
@@ -156,90 +156,54 @@ const ShoppingCart = () => {
                   />
                </g>
                <g id='Shoping_Cart'>
-                  <g id='wheel1'>
-                     <g>
+                  <g id='shopping-cart-wheels'>
+                     <g
+                        id='wheel2'
+                        transform='matrix(1,0,0,1,-170.96,-0.281233)'
+                     >
+                        <g>
+                           <circle
+                              cx={849.85}
+                              cy={963.92}
+                              r={24.13}
+                              style={{
+                                 fill: 'rgb(75,54,157)',
+                              }}
+                           />
+                        </g>
                         <circle
                            cx={849.85}
                            cy={963.92}
-                           r={24.13}
+                           r={17.06}
                            style={{
-                              fill: 'rgb(75,54,157)',
+                              fill: 'rgb(227,229,252)',
                            }}
                         />
-                     </g>
-                     <circle
-                        cx={849.85}
-                        cy={963.92}
-                        r={17.06}
-                        style={{
-                           fill: 'rgb(227,229,252)',
-                        }}
-                     />
-                     <g transform='matrix(0.740395,0,0,0.740395,145.466,170.126)'>
-                        <rect
-                           x={947}
-                           y={1044}
-                           width={9.377}
-                           height={51.164}
-                           style={{
-                              fill: 'rgb(75,54,157)',
-                           }}
-                        />
-                     </g>
-                     <g transform='matrix(4.53361e-17,-0.740395,-0.740395,-4.53361e-17,1642,1668.26)'>
-                        <rect
-                           x={947}
-                           y={1044}
-                           width={9.377}
-                           height={51.164}
-                           style={{
-                              fill: 'rgb(75,54,157)',
-                           }}
-                        />
+                        <g transform='matrix(0.740395,0,0,0.740395,145.466,170.126)'>
+                           <rect
+                              x={947}
+                              y={1044}
+                              width={9.377}
+                              height={51.164}
+                              style={{
+                                 fill: 'rgb(75,54,157)',
+                              }}
+                           />
+                        </g>
+                        <g transform='matrix(4.53361e-17,-0.740395,-0.740395,-4.53361e-17,1642,1668.26)'>
+                           <rect
+                              x={947}
+                              y={1044}
+                              width={9.377}
+                              height={51.164}
+                              style={{
+                                 fill: 'rgb(75,54,157)',
+                              }}
+                           />
+                        </g>
                      </g>
                   </g>
-                  <g id='wheel2' transform='matrix(1,0,0,1,-170.96,-0.281233)'>
-                     <g>
-                        <circle
-                           cx={849.85}
-                           cy={963.92}
-                           r={24.13}
-                           style={{
-                              fill: 'rgb(75,54,157)',
-                           }}
-                        />
-                     </g>
-                     <circle
-                        cx={849.85}
-                        cy={963.92}
-                        r={17.06}
-                        style={{
-                           fill: 'rgb(227,229,252)',
-                        }}
-                     />
-                     <g transform='matrix(0.740395,0,0,0.740395,145.466,170.126)'>
-                        <rect
-                           x={947}
-                           y={1044}
-                           width={9.377}
-                           height={51.164}
-                           style={{
-                              fill: 'rgb(75,54,157)',
-                           }}
-                        />
-                     </g>
-                     <g transform='matrix(4.53361e-17,-0.740395,-0.740395,-4.53361e-17,1642,1668.26)'>
-                        <rect
-                           x={947}
-                           y={1044}
-                           width={9.377}
-                           height={51.164}
-                           style={{
-                              fill: 'rgb(75,54,157)',
-                           }}
-                        />
-                     </g>
-                  </g>
+
                   <g>
                      <g>
                         <path
