@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductCard.scss';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
@@ -9,14 +9,15 @@ import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
 import DefaultImage from './Image-coming-soon.svg';
 
-const ProductCard = ({ id, category, name, price, image }) => {
+const ProductCard = ({ id, category, name, price, image, slideDirection }) => {
+   //ues the useeffect hook to watch for
    return (
-      <Paper elevation={12} className='product-card'>
+      <Paper elevation={20} className='product-card'>
          <Card className='product-item-card'>
             <CardMedia
                component='img'
                alt={name}
-               height='200'
+               height='150'
                image={image || DefaultImage}
             />
          </Card>

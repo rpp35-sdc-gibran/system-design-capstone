@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Home.scss';
+import Typography from '@mui/material/Typography';
 import HomeMainContent from './home-main-content/HomeMainContent.jsx';
 import ProductCarousel from './home-product-carousel/ProductCarousel.jsx';
 
@@ -23,13 +24,13 @@ const Home = () => {
             });
          })
          .catch((err) => {
-            q;
             console.log('err in App.jsx:', err);
          });
    }, []);
    return (
       <div className='home-container'>
          <HomeMainContent />
+         <Typography variant='h5'>Newest Products</Typography>
          <ProductCarousel products={products} productPhotos={productPhotos} />
       </div>
    );

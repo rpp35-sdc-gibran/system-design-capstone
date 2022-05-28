@@ -2,9 +2,10 @@
 
 .home-main-content {
    @include set-size(55vh, 100vw);
-   display: flex;
+   @include flex-center();
+   gap: 1rem;
    background-color: #1976d2;
-   padding: 4rem;
+   padding: 4rem 0 4rem 4rem;
    color: #fffbf6;
    .home-main-content-left {
       @include flex-column();
