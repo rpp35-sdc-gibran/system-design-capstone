@@ -1,0 +1,20 @@
+@use '../../../App.scss' as *;
+
+.home-main-content {
+   @include set-size(55vh, 100vw);
+   display: flex;
+   background-color: #1976d2;
+   padding: 4rem;
+   color: #fffbf6;
+   .home-main-content-left {
+      @include flex-column();
+      @include set-size(100%, 50%);
+      gap: 1rem;
+      .main-content-button {
+         width: 50%;
+      }
+   }
+   .home-main-content-right {
+      @include set-size(100%, 50%);
+   }
+}

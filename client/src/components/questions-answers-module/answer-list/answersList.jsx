@@ -32,8 +32,8 @@ class AnswersList extends React.Component {
    render() {
       return (
          <Card>
-            {this.state.allAnswers.map((answer) => {
-               return <Answer answer={answer} />;
+            {this.state.allAnswers.map((answer, index) => {
+               return <Answer answer={answer} key={index} />;
             })}
          </Card>
       );

@@ -88,13 +88,6 @@ const ImageView = ({
                      </Avatar>
                   </IconButton>
                )}
-               {/* <IconButton
-            data-testid='enlarge-button'
-            onClick={handleChildZoom}
-            className='button-fit'
-          >
-            <FitScreenIcon />
-          </IconButton> */}
             </div>
          )}
       </div>

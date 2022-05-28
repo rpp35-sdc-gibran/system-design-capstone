@@ -23,15 +23,19 @@ input[type='checkbox']:checked ~ div.enlarged {
 
 //ENLARGED VIEW MODE (CHECHBOX IS NOT CHECKED)////////////////
 .enlarged {
-   @include set-size(80%, 100vw);
+   @include set-size(100vh, 90%);
    position: absolute;
    z-index: 1;
+   img {
+      @include set-size(100vh, 90vw);
+      object-fit: cover;
+   }
 }
 
 .enlarged-view-btn {
    position: absolute;
    z-index: 10;
-   left: 20%;
+   left: 90vw;
    margin: 0;
    padding: 0;
 }

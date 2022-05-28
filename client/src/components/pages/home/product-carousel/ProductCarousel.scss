@@ -1,0 +1,5 @@
+@use '../../../App.scss' as *;
+
+.product-carousel {
+   @include set-size(45vh, 100vw);
+}

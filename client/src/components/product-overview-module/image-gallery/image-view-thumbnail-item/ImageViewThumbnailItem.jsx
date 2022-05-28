@@ -1,7 +1,7 @@
 import React from 'react';
 import './imageViewThumbnailItem.scss';
 import PendingIcon from '@mui/icons-material/Pending';
-import DefaultImage from '../../../pages/home/product-card/Image-coming-soon.svg';
+import DefaultImage from '../../../pages/home/product-carousel/product-card/Image-coming-soon.svg';
 
 const ImageViewThumbnailItem = ({
    image,
@@ -32,7 +32,7 @@ const ImageViewThumbnailItem = ({
          ) : (
             <img
                className='thumbnail-img'
-               alt='thumbnail image not found'
+               alt='thumbnail image'
                src={image || DefaultImage}
             ></img>
          )}

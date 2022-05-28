@@ -18,57 +18,58 @@ import Button from '@mui/material/Button';
  */
 
 class AddAnswer extends React.Component {
-  getInputValues (event) {
-    let values = [];
-    for (var i = 0; i < event.target.elements.length -1; i++) {
-      values.push(event.target.elements[i].value);
-    }
-    let data = {};
-    data.body = values[0];
-    data.name = values[1];
-    data.email = values[2];
-    data.photos = values[3]
-    data.question_id = this.props.question_id;
-    return data;
-  }
+   getInputValues(event) {
+      let values = [];
+      for (var i = 0; i < event.target.elements.length - 1; i++) {
+         values.push(event.target.elements[i].value);
+      }
+      let data = {};
+      data.body = values[0];
+      data.name = values[1];
+      data.email = values[2];
+      data.photos = values[3];
+      data.question_id = this.props.question_id;
+      return data;
+   }
 
-  postAnswer () {
-    axios({
-      method: 'post',
+   postAnswer() {
+      axios({
+         method: 'post',
+      });
+   }
 
-    })
-  }
-
-  render () {
-    return (
-      <>
-        <Card class="addAnswer">
-          <form onSumbit={(event) => {
-            event.preventDefault()
-            console.log('getinputvalues', this.getInputValues(event));
-          }}>
-            <div>
-              <label></label>
-              <input/>
-            </div>
-            <div>
-              <label></label>
-              <input/>
-            </div>
-            <div>
-              <label></label>
-              <input/>
-            </div>
-            <div>
-              <label></label>
-              <input/>
-            </div>
-            <button>Sumbit</button>
-          </form>
-        </Card>
-      </>
-    )
-  }
+   render() {
+      return (
+         <>
+            <Card className='addAnswer'>
+               <form
+                  onSubmit={(event) => {
+                     event.preventDefault();
+                     console.log('getinputvalues', this.getInputValues(event));
+                  }}
+               >
+                  <div>
+                     <label></label>
+                     <input />
+                  </div>
+                  <div>
+                     <label></label>
+                     <input />
+                  </div>
+                  <div>
+                     <label></label>
+                     <input />
+                  </div>
+                  <div>
+                     <label></label>
+                     <input />
+                  </div>
+                  <button>Sumbit</button>
+               </form>
+            </Card>
+         </>
+      );
+   }
 }
 
 export default AddAnswer;

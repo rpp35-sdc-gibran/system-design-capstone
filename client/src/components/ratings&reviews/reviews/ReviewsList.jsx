@@ -3,14 +3,12 @@ import axios from 'axios';
 import ReviewTile from './ReviewTile.jsx';
 
 const ReviewsList = ({ reviews, starFilters }) => {
-   console.log('starFilters in ReviewsList.jsx: ', starFilters);
    if (starFilters.length) {
       reviews = reviews.filter((review) =>
          starFilters.includes(review.rating.toString())
       );
    }
 
-   console.log('In ReviewsList got: ', reviews);
    const [renderedCount, setRenderedCount] = useState(2);
    function moreReviewsOnClick() {
       if (renderedCount < reviews.length) {
@@ -21,7 +19,6 @@ const ReviewsList = ({ reviews, starFilters }) => {
    }
 
    const handleReviewsSortChange = (e) => {
-      console.log(e.target.value, ' selected');
       let sortWith = e.target.value;
       if (sortWith === 'relevant') {
          reviews.sort((a, b) => {

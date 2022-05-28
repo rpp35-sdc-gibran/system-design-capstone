@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Home.scss';
 import axios from 'axios';
 import Paper from '@mui/material/Paper';
-import ItemCard from './product-card/ItemCard.jsx';
+import ProductCard from './product-carousel/product-card/ProductCard.jsx';
 import Typography from '@mui/material/Typography';
-import LandingPage from './landing-page.svg';
+import HomeMainContent from './home-main-content/HomeMainContent.jsx';
+import ProductCarousel from './product-carousel/ProductCarousel.jsx';
 
 const Home = () => {
    const [products, setProducts] = useState([]);
@@ -27,34 +28,10 @@ const Home = () => {
          });
    }, []);
 
-   if (productPhotos.length) {
-      console.log(
-         'productPhotos:',
-         productPhotos[0].data.results[0].photos[0].url
-      );
-   }
-
    return (
       <div className='home-container'>
-         <div>
-            <Typography variant='h3'>Choose an Item</Typography>
-            {productPhotos.length ? (
-               <div className='home-product-list'>
-                  {products.map((product, index) => (
-                     <ItemCard
-                        key={index}
-                        id={product.id}
-                        category={product.category}
-                        name={product.name}
-                        price={product.default_price}
-                        image={
-                           productPhotos[index].data.results[0].photos[0].url
-                        }
-                     />
-                  ))}
-               </div>
-            ) : null}
-         </div>
+         <HomeMainContent />
+         <ProductCarousel products={products} productPhotos={productPhotos} />
       </div>
    );
 };

@@ -68,7 +68,7 @@ const ProductOverview = ({ currentProductId }) => {
          }
       });
    };
-   console.log('productInfo:', productInfo);
+
    if (currentProductId) {
       return (
          <div className='product-overview'>
@@ -124,8 +124,11 @@ const ProductOverview = ({ currentProductId }) => {
                               </Typography>
                            </div>
                            <div className='product-overview-features'>
-                              {productInfo.features.map((feature) => (
-                                 <div className='product-overview-feature-item'>
+                              {productInfo.features.map((feature, index) => (
+                                 <div
+                                    className='product-overview-feature-item'
+                                    key={index}
+                                 >
                                     <CheckIcon />
                                     <Typography variant='body1'>
                                        {feature.value} {feature.feature}

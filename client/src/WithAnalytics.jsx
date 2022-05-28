@@ -8,12 +8,12 @@ const WithAnalytics = (WrappedComponent) => {
 
       const handleAnalyticsClick = (event) => {
          ////  const element = currentElement.current;
-         console.log('WrappedComponent:', WrappedComponent);
-         console.log('target element:', event.target);
-         console.log(Date().toLocaleString());
+         // console.log('WrappedComponent:', WrappedComponent);
+         // console.log('target element:', event.target);
+         // console.log(Date().toLocaleString());
       };
       return (
-         <div className='TEST' onClick={handleAnalyticsClick}>
+         <div onClick={handleAnalyticsClick}>
             <WrappedComponent {...props} />
          </div>
       );

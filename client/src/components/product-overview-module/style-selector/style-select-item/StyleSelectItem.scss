@@ -2,11 +2,11 @@
 
 .style-item-inactive-image,
 .style-item-active-image {
-  border-radius: 100%;
-  position: relative;
-  @include set-size(90px, 90px);
+   border-radius: 100%;
+   position: relative;
+   @include set-size(90px, 90px);
 }
 
 .style-item-icon {
-  background-color: red;
+   background-color: 186FC6;
 }

@@ -9,7 +9,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 const Nav = () => {
    return (
-      <AppBar position='sticky' className='nav'>
+      <AppBar elevation={0} position='sticky' className='nav'>
          <div className='nav-container'>
             <Link to='/' className='nav-logo'>
                <Typography variant='h6'>Logo</Typography>

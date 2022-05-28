@@ -1,5 +1,5 @@
 import React from 'react';
-import './ItemCard.scss';
+import './ProductCard.scss';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';

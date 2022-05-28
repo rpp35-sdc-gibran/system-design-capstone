@@ -49,7 +49,7 @@ class Answer extends React.Component {
                A: {this.props.answer.body}
                Helpful?
                <a
-                  class='helpful'
+                  className='helpful'
                   onClick={this.isHelpful.bind(this)}
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                >
@@ -57,7 +57,7 @@ class Answer extends React.Component {
                </a>
                ({this.props.answer.helpfulness})
                <a
-                  class='report'
+                  className='report'
                   onClick={this.reportAnswer.bind(this)}
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                >

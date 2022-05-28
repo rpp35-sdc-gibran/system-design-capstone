@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ItemCard from '../pages/home/product-card/ItemCard.jsx';
+import ProductCard from '../pages/home/product-carousel/product-card/ProductCard.jsx';
 import Typography from '@mui/material/Typography';
 import './RelatedItems.scss';
 
@@ -39,7 +39,7 @@ const RelatedItems = ({ currentProductId }) => {
             </Typography>
             <div className='related-items'>
                {relatedProducts.map((product, index) => (
-                  <ItemCard
+                  <ProductCard
                      key={index}
                      id={product.data.id}
                      category={product.data.category}
