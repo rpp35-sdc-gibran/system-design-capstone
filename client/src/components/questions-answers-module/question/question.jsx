@@ -38,6 +38,16 @@ class Question extends React.Component {
   }
 
   render () {
+    // this.props.addAnswerModule
+    if (false) {
+      return (
+        <AddAnswer
+          question_id={this.props.question.question_id}
+          question_body={this.props.question.question_body}
+        />
+      )
+    }
+
     return (
       <Card variant="outlined">
         <div>
@@ -52,10 +62,6 @@ class Question extends React.Component {
         <div>by {this.props.question.asker_name} {this.props.question.question_date}</div>
         <button variant="contained">Add an Answer</button>
         <AnswerList question_id={this.props.question.question_id}/>
-        <AddAnswer
-          question_id={this.props.question.question_id}
-          question_body={this.props.question.question_body}
-        />
       </Card>
       )
   }

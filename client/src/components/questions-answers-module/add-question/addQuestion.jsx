@@ -38,8 +38,9 @@ class AddQuestion extends React.Component {
       <Card class="addQuestion">
         <form onSubmit={(event) => {
           event.preventDefault();
-          console.log('Add Question Submitted ', this.getInputValues(event));
           this.postQuestion(this.getInputValues(event));
+          // change QA addQuestionsModal to false
+          this.props.changeQAState('addQuestionModal', false);
         }}>
           <h1>Ask Your Question</h1>
           <h3>About {this.props.product_id}</h3>

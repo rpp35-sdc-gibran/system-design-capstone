@@ -18,6 +18,7 @@ class QuestionsAnswers extends React.Component {
       product_id: this.props.currentProductId, // set by window.location.pathname???
       allQuestions: [],
       moreQuestionsFlag: false,
+      addQuestionModal: false
     };
 
     axios
@@ -41,7 +42,6 @@ class QuestionsAnswers extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.currentProductId)
     axios
       .get('/api/questionsAnswers/questions', {
         params: {
@@ -57,6 +57,14 @@ class QuestionsAnswers extends React.Component {
       });
   }
   render() {
+    if (this.state.addQuestionModal) {
+      return (
+        <AddQuestion
+          product_id={this.state.product_id}
+          changeQAState={this.changeQAState}
+        />
+      )
+    }
     return (
       <>
         <h3>Questions & Answers</h3>
@@ -66,10 +74,10 @@ class QuestionsAnswers extends React.Component {
         />
         <QuestionsList
           questions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.allQuestions }
+          addQuestionModal={this.state.addQuestionModal}
         />
         <button onClick={() => {
-          // render addQuestion module
-          <AddQuestion product_id={this.state.product_id}/>
+          this.changeQAState('addQuestionModal', true);
         }
         }>Add a Question</button>
       </>

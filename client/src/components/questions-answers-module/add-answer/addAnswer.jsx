@@ -50,9 +50,9 @@ class AddAnswer extends React.Component {
       <>
         <Card class="addAnswer">
           <form onSumbit={(event) => {
-            event.preventDefault();
-            console.log("this.getInputValues(event)", this.getInputValues(event))
-            this.postAnswer(this.getInputValues(event));
+            event.preventDefault()
+            console.log('getinputvalues', this.getInputValues(event));
+
           }}>
             <h1>Submit your Answer</h1>
             <h3>{this.props.question_id}: {this.props.question_body}</h3>
