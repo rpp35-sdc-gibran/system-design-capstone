@@ -16,8 +16,8 @@ class QuestionsAnswers extends React.Component {
     super(props);
     this.state = {
       product_id: this.props.currentProductId, // set by window.location.pathname???
+      shownQuestions: [],
       allQuestions: [],
-      moreQuestionsFlag: false,
       addQuestionModal: false
     };
 
@@ -37,11 +37,27 @@ class QuestionsAnswers extends React.Component {
     this.changeQAState = this.changeQAState.bind(this);
   }
 
+  addShownQuestions () {
+    // save current shown questions to a variable
+    let currShownQuestions = this.state.shownQuestions;
+    // save current allquestions to a variable
+    let currAllQuestions = this.state.allQuestions;
+
+    // set currShownQuestions to equal original value plus two questions
+    currShownQuestions = currShownQuestions.concat(currAllQuestions.splice(0,2));
+
+    // set shownQuestions to updated current shownQuestions variable
+    this.setState({shownQuestions: currShownQuestions});
+    // set allQuestions to updated current allQuestions variable
+    this.setState({allQuestions: currAllQuestions});
+  }
+
   changeQAState (prop, value) {
     this.setState({[prop]: value});
   }
 
   componentDidMount() {
+    this.addShownQuestions();
     axios
       .get('/api/questionsAnswers/questions', {
         params: {
@@ -73,9 +89,12 @@ class QuestionsAnswers extends React.Component {
           allQuestions={this.state.allQuestions}
         />
         <QuestionsList
-          questions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.allQuestions }
+          questions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.shownQuestions }
           addQuestionModal={this.state.addQuestionModal}
         />
+        <button onClick={() => {
+          this.addShownQuestions();
+        }}>Show More Questions:</button>
         <button onClick={() => {
           this.changeQAState('addQuestionModal', true);
         }
