@@ -6,8 +6,7 @@ const axios = require('axios');
 // QUESTIONS:
 //=============================//
 const getQuestionsByProductID = (req, res) => {
-   axios
-      .get(url, {
+   axios.get(url, {
          headers: { Authorization: GITHUB_API_TOKEN },
          params: { product_id: req.query.product_id, count: 100 },
       })
@@ -123,6 +122,7 @@ const reportAnswerByAnswerID = (req, res) => {
 };
 
 const postAnswerByQuestionID = (req, res) => {
+   console.log('postAnswerByQuestionID req.body', req.body)
    axios({
       method: 'post',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.answer.question_id}/answers`,

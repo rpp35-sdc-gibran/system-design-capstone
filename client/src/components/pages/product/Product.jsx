@@ -19,14 +19,14 @@ const Product = (props) => {
 
    return (
       <div>
-         <EnhancedProductOverview currentProductId={productId} />
-         <EnhancedRelatedItems currentProductId={productId} />
+         {/* <EnhancedProductOverview currentProductId={productId} />
+         <EnhancedRelatedItems currentProductId={productId} /> */}
          <QuestionsAnswers currentProductId={productId} />
-         <RatingsAndReviews
+         {/* <RatingsAndReviews
             currentProductId={productId}
             reviews={currentReviews}
             {...props}
-         />
+         /> */}
       </div>
    );
 };

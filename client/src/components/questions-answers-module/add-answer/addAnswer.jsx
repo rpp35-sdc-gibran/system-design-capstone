@@ -32,11 +32,17 @@ class AddAnswer extends React.Component {
     return data;
   }
 
-  postAnswer () {
-    axios({
-      method: 'post',
-
-    })
+  postAnswer (answer) {
+    console.log('answer', answer)
+    axios.post('api/questionsAnswers/addAnswer', {
+      answer: answer
+      })
+      .then((results) => {
+        console.log('Success adding answer for answer_id ', this.props.answer_id);
+      })
+      .catch((error) => {
+        console.log('Error adding answer for answer_id ', this.props.answer_id);
+      })
   }
 
   render () {
@@ -44,9 +50,12 @@ class AddAnswer extends React.Component {
       <>
         <Card class="addAnswer">
           <form onSumbit={(event) => {
-            event.preventDefault()
-            console.log('getinputvalues', this.getInputValues(event));
+            event.preventDefault();
+            console.log("this.getInputValues(event)", this.getInputValues(event))
+            this.postAnswer(this.getInputValues(event));
           }}>
+            <h1>Submit your Answer</h1>
+            <h3>{this.props.question_id}: {this.props.question_body}</h3>
             <div>
               <label></label>
               <input/>
