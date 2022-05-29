@@ -27,6 +27,8 @@ const Home = () => {
             console.log('err in App.jsx:', err);
          });
    }, []);
+
+   console.log('products:', products);
    return (
       <div className='home-container'>
          <HomeMainContent />

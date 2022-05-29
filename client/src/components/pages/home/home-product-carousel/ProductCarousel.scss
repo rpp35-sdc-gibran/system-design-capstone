@@ -4,7 +4,7 @@
    @include set-size(45vh, 100%);
    .product-carousel-products {
       @include flex-center();
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
       justify-content: space-between;
       gap: 1rem;
    }

@@ -10,24 +10,24 @@ import { Link } from 'react-router-dom';
 import DefaultImage from './Image-coming-soon.svg';
 
 const ProductCard = ({ id, category, name, price, image, slideDirection }) => {
-   //ues the useeffect hook to watch for
    return (
-      <Paper elevation={20} className='product-card'>
-         <Card className='product-item-card'>
+      <Paper elevation={1}>
+         <Card className='product-card'>
             <CardMedia
                component='img'
                alt={name}
                height='150'
+               className='product-card-image'
                image={image || DefaultImage}
             />
+            <CardContent>
+               <Typography>{category}</Typography>
+               <Typography>{price}</Typography>
+            </CardContent>
+            <CardActions>
+               <Link to={`/${id}`}>{name}</Link>
+            </CardActions>
          </Card>
-         <CardActions>
-            <Link to={`/${id}`}>{name}</Link>
-         </CardActions>
-         <CardContent>
-            <Typography>{category}</Typography>
-            <Typography>{price}</Typography>
-         </CardContent>
       </Paper>
    );
 };

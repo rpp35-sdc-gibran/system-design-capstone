@@ -1,21 +1,8 @@
 @use '../../../../App.scss' as *;
 
 .product-card {
-   @include set-size(17rem, 12rem);
-}
-
-.product-card-animation {
-   animation: shift 0.2s linear forwards;
-}
-
-@keyframes shift {
-   0% {
-      transform: translateX(0);
-   }
-   50% {
-      transform: translateX(15rem);
-   }
-   100% {
-      transform: translateX(0);
+   @include set-size(22rem, 16rem);
+   .product-card-image {
+      // @include set-size(auto, 100%);
    }
 }
