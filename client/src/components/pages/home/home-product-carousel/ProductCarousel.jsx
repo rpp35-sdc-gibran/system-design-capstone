@@ -30,7 +30,7 @@ const ProductCarousel = ({ products, productPhotos }) => {
          });
       });
    };
-   console.log('products:', products);
+
    return productPhotos.length ? (
       <div className='product-carousel'>
          <div className='product-carousel-products' ref={containerRef}>

@@ -49,6 +49,8 @@ const ImageView = ({
                   handleThumbnailClick={handleThumbnailClick}
                   currentIndex={currentIndex}
                   isEnlargedView={isEnlargedView}
+                  goNext={goNext}
+                  goPrev={goPrev}
                />
             </div>
          )}

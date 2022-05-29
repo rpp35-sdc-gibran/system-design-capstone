@@ -39,16 +39,6 @@ const RelatedItems = ({ currentProductId }) => {
                Related Items
             </Typography>
             <div className='related-items'>
-               {/* {relatedProducts.map((product, index) => (
-                  <ProductCard
-                     key={index}
-                     id={product.data.id}
-                     category={product.data.category}
-                     name={product.data.name}
-                     price={product.data.default_price}
-                     image={productPhotos[index].data.results[0].photos[0].url}
-                  />
-               ))} */}
                <ProductCarousel
                   products={relatedProducts}
                   productPhotos={productPhotos}
