@@ -4,6 +4,7 @@ import ImageViewThumbnailItem from '../image-view-thumbnail-item/ImageViewThumbn
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import IconButton from '@mui/material/IconButton';
+import Avatar from '@mui/material/Avatar';
 
 const ImageViewThumbnails = ({
    photos,
@@ -17,7 +18,7 @@ const ImageViewThumbnails = ({
       <div className='image-view-thumbnail-list' data-testid='thumbnail-list'>
          {currentIndex !== 0 && (
             <IconButton onClick={() => goPrev()} className='arrow-up'>
-               <ArrowBackIosIcon />
+               <ArrowBackIosIcon color='primary' />
             </IconButton>
          )}
          {photos.map((photo, index) => {
@@ -55,7 +56,7 @@ const ImageViewThumbnails = ({
          })}
          {currentIndex !== photos.length - 1 && (
             <IconButton onClick={() => goNext()} className='arrow-down'>
-               <ArrowBackIosIcon />
+               <ArrowBackIosIcon color='primary' />
             </IconButton>
          )}
       </div>

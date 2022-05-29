@@ -3,4 +3,9 @@
 .home-container {
    @include flex-column();
    @include set-size(100vh, 100vw);
+   .home-container-new-products {
+      @include flex-column();
+      padding: 1rem 4rem 0rem 4rem;
+      gap: 1rem;
+   }
 }

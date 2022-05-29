@@ -30,8 +30,13 @@ const Home = () => {
    return (
       <div className='home-container'>
          <HomeMainContent />
-         <Typography variant='h5'>Newest Products</Typography>
-         <ProductCarousel products={products} productPhotos={productPhotos} />
+         <div className='home-container-new-products'>
+            <Typography variant='h5'>Newest Products</Typography>
+            <ProductCarousel
+               products={products}
+               productPhotos={productPhotos}
+            />
+         </div>
       </div>
    );
 };
