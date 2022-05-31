@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useReducer, useMemo } from 'react';
 import axios from 'axios';
 import './addNewReview.css'
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
+import IconButton from '@mui/material/IconButton';
+
 // params: {
 //   product_id: req.params.product_id,
 //   rating: req.params.rating,
@@ -13,13 +17,20 @@ import './addNewReview.css'
 //   characteristics: req.params.characteristics,
 // },
 const AddNewReview = (props) => {
-  const [newReview, setNewReview] = useState({});
-  const [rating, setRating] = useState(0);
-  const [hoverRating, setHoverRating] = useState(0);
+  const [newReview, SetNewReview] = useState({});
+  const [rating, SetRating] = useState(0);
+  const [hoverRating, SetHoverRating] = useState(0);
   const [explainRating, SetExplainRating] = useState(false);
   const [selectedRadioBtn, SetSelectedRadioBtn] = useState('Yes');
   const [characteristics, SetCharacteristcs] = useState({});
   const [reviewSummary, SetReviewSummary] = useState('');
+  const [reviewBody, SetReviewBody] = useState('');
+  const [uploadPhotos, SetUploadPhotos] = useState(false);
+  const [images, SetImages] = useState([]);
+  const [imageURLs, SetImageURLs] = useState([]);
+  const [nickName, SetNickName] = useState('');
+  const [email, SetEmail] = useState('');
+
   const onMouseEnter = (index) => {
     setHoverRating(index);
   };
@@ -42,16 +53,38 @@ const AddNewReview = (props) => {
   const handelLength = (e) => { SetCharacteristcs({ ...characteristics, Length: e.target.value }) }
   const handleFit = (e) => { SetCharacteristcs({ ...characteristics, Fit: e.target.value }) }
 
-const handleRecommend = (e) => {
+  const handleRecommend = (e) => {
     console.log(e.target.value)
     SetSelectedRadioBtn(e.target.value);
-    (e.target.value === 'Yes') ? setNewReview({ ...newReview, recommend: true }) : setNewReview({ ...newReview, recommend: false });
+    (e.target.value === 'Yes') ? SetNewReview({ ...newReview, recommend: true }) : SetNewReview({ ...newReview, recommend: false });
     console.log(newReview)
   }
   const handleReviewSummary = (e) => {
     SetReviewSummary(e.target.value);
-    setNewReview({ ...newReview, summary: e.target.value})
+    SetNewReview({ ...newReview, summary: e.target.value })
   }
+  const handleReviewBody = (e) => {
+    SetReviewBody(e.target.value);
+    SetNewReview({ ...newReview, body: e.target.value })
+  }
+  const onImageChange = (e) => {
+    SetImages([...e.target.files]);
+  }
+  const handleNickName = (e)=> {
+    SetNickName(e.target.value);
+    SetNewReview({ ...newReview, reviewer_name: e.target.value })
+  }
+  const handleEmail = (e)=> {
+    SetEmail(e.target.value);
+    SetNewReview({ ...newReview, email: e.target.value })
+  }
+  useEffect(() => {
+    if (images.length < 1) return;
+    const newImageURLs = [];
+    images.forEach(image => newImageURLs.push(URL.createObjectURL(image)))
+    SetImageURLs([...imageURLs, newImageURLs]);
+  }, [images]);
+
   const ratingRef = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
 
   return (props.trigger) ? (
@@ -97,24 +130,51 @@ const handleRecommend = (e) => {
             <Characteristics handleChara={handelComfort} name='Comfort' meanings={['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect']} />
           </label>
           <label>
-          Quality
+            Quality
             <Characteristics handleChara={handelQuality} name='Quality' meanings={['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect']} />
           </label>
           <label>
-          Length
+            Length
             <Characteristics handleChara={handelLength} name='Length' meanings={['Runs slightly short', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']} />
           </label>
           <label>
-          Fit
+            Fit
             <Characteristics handleChara={handleFit} name='Fit' meanings={['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']} />
           </label>
           <label>
-          Review summary
-          <div><textarea value={reviewSummary} onChange={handleReviewSummary} /></div>
-        </label>
-          <input type="submit" value="Submit" />
-        </form>
+            Review summary
+            <div ><textarea placeholder='Example: Best purchase ever!' maxLength="60" value={reviewSummary} onChange={handleReviewSummary} /></div>
+          </label>
+          <label>
+            Review Body
+            <div ><textarea placeholder='Why did you like the product or not?' maxLength="1000" className='reviewBody' value={reviewBody} onChange={handleReviewBody} /></div>
+          </label>
+          <Button onClick={() => SetUploadPhotos(true)} variant="contained" component="span">
+            Upload Photos
+          </Button>
+          {uploadPhotos ? (<div>
+            {imageURLs.length < 5 ? <input accept="image/*" multiple type="file" onChange={onImageChange} /> : <></>}
+            {imageURLs.map((url) => {
+              return <img className="smallimg" src={url} />
+            })}
+          </div>) : <></>}
+          <div className='nickName'><label>
+            Nickname:
+            <Input placeholder='Example: jackson11!' maxLength="60" className='nickName' value={nickName} onChange={handleNickName} />
+            <p>For privacy reasons, do not use your full name or email address</p>
+          </label>
+          </div>
+          <div className='email'><label>
+            Email:
+            <Input placeholder='Example: jackson11@email.com' maxLength="60" className='email' value={email} onChange={handleEmail} />
+            <p>For authentication reasons, you will not be emailed” will appear</p>
+          </label>
+          </div>
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
 
+        </form>
       </div>
     </div>) : '';
 }
@@ -165,4 +225,6 @@ function Characteristics({ meanings, handleChara }) {
     </div>
   )
 }
+
+
 export default AddNewReview;
