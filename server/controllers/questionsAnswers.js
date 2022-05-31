@@ -49,17 +49,18 @@ const reportQuestionByQuestionID = (req, res) => {
 };
 
 const postQuestionByProductID = (req, res) => {
+   console.log('req.body.question', req.body.question)
    axios({
-      method: 'post',
-      url: url,
-      headers: { Authorization: GITHUB_API_TOKEN },
-      data: {
-         body: req.body.question.body,
-         name: req.body.question.name,
-         email: req.body.question.email,
-         product_id: req.body.question.product_id,
-      },
-   })
+         method: 'post',
+         url: url,
+         headers: { Authorization: GITHUB_API_TOKEN },
+         data: {
+            body: req.body.question.body,
+            name: req.body.question.name,
+            email: req.body.question.email,
+            product_id: req.body.question.product_id
+         }
+      })
       .then((results) => {
          console.log('Success POSTING question!');
          res.status(201);

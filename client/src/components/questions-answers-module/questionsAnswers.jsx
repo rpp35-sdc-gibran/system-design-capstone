@@ -78,6 +78,8 @@ class QuestionsAnswers extends React.Component {
           changeQAState={this.changeQAState}
         />
       )
+    } else if (this.state.addAnswerModal) {
+      // render addAnswer modal here?
     }
 
     return (
@@ -90,6 +92,8 @@ class QuestionsAnswers extends React.Component {
         <QuestionsList
           questions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.shownQuestions }
           addQuestionModal={this.state.addQuestionModal}
+          addAnswerModal={this.state.addAnswerModal}
+          changeQAState={this.changeQAState}
         />
         {moreQuestions}
         <button onClick={() => {this.changeQAState('addQuestionModal', true);}}>Add a Question</button>

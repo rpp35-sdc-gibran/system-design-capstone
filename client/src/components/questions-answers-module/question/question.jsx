@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 
 import AnswerList from '../answer-list/answersList.jsx';
 import AddAnswer from '../add-answer/addAnswer.jsx';
+import { ThirtyFpsTwoTone } from '@mui/icons-material';
 
 class Question extends React.Component {
   reportQuestion () {
@@ -38,12 +39,12 @@ class Question extends React.Component {
   }
 
   render () {
-    // this.props.addAnswerModule
-    if (false) {
+    if (this.props.addAnswerModal) {
       return (
         <AddAnswer
           question_id={this.props.question.question_id}
           question_body={this.props.question.question_body}
+          changeQAState={this.props.changeQAState}
         />
       )
     }
@@ -60,7 +61,11 @@ class Question extends React.Component {
           </div>
         </div>
         <div>by {this.props.question.asker_name} {this.props.question.question_date}</div>
-        <button variant="contained">Add an Answer</button>
+        <button onClick={() => {
+          // set QA addAnswerModal to true
+          this.props.changeQAState('addAnswerModal', true)
+
+        }}>Add an Answer</button>
         <AnswerList question_id={this.props.question.question_id}/>
       </Card>
       )

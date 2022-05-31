@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
 
 /*
  * axios({
@@ -51,28 +50,32 @@ class AddAnswer extends React.Component {
         <Card class="addAnswer">
           <form onSumbit={(event) => {
             event.preventDefault()
-            console.log('getinputvalues', this.getInputValues(event));
-
+            console.log('getinputvalues', this.getInputValues(event)); // not working?
+            this.postAnswer(this.getInputValues(event)); // not working?
+            () => this.props.changeQAState('addAnswerModal', false); // working????
           }}>
             <h1>Submit your Answer</h1>
             <h3>{this.props.question_id}: {this.props.question_body}</h3>
             <div>
-              <label></label>
-              <input/>
+              <label for="body">Your Answer*</label>
+              <textarea name="body" class="body" maxlength="1000" cols="45" rows="15" required></textarea>
             </div>
             <div>
-              <label></label>
-              <input/>
+              <label for="name">What is your nickname?*</label>
+              <input type="text" name="name" class="name" maxlength="60" size="50" required/>
+              <div>For privacy reasons, do not use your full name or email address</div>
             </div>
             <div>
-              <label></label>
-              <input/>
+              <label for="email">Your email*</label>
+              <input type="text" name="email" class="email" maxlength="60" size="50" required/>
+              <div>For authentication reasons, you will not be emailed</div>
             </div>
             <div>
-              <label></label>
-              <input/>
+              <label for="photos">Upload Your Photos</label>
+              <input type="text" name="email" class="email" maxlength="60" size="50" required/>
             </div>
             <button>Sumbit</button>
+            <button onClick={() => this.props.changeQAState('addAnswerModal', false)}>Cancel</button>
           </form>
         </Card>
       </>

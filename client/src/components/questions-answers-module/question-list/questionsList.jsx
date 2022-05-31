@@ -12,7 +12,13 @@ class QuestionsList extends React.Component {
     return (
       <div>
         {this.props.questions.map((question) => {
-          return <Question question={question}/>
+          return (
+            <Question
+              question={question}
+              addAnswerModal={this.props.addAnswerModal}
+              changeQAState={this.props.changeQAState}
+            />
+          );
         })}
       </div>
     )
