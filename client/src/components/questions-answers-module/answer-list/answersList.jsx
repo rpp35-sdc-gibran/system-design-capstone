@@ -9,17 +9,17 @@ class AnswersList extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         allAnswers: [],
+         shownAnswers: [],
+         allAnswers: []
       };
 
-      axios
-         .get('/api/questionsAnswers/answers', {
-            params: {
-               question_id: this.props.question_id,
-            },
-         })
+     this.getAnswers = this.getAnswers.bind(this);
+     this.addShownAnswers = this.addShownAnswers.bind(this);
+   }
+
+   getAnswers () {
+      axios.get('/api/questionsAnswers/answers', { params: {question_id: this.props.question_id} })
          .then((results) => {
-            // console.log(`Answer list for ${this.props.question_id}`, results.data.results)
             this.setState({ allAnswers: results.data.results });
          })
          .catch((error) => {
@@ -27,14 +27,32 @@ class AnswersList extends React.Component {
          });
    }
 
-   // ternary statement for not mapping undefined
+   addShownAnswers () {
+      let currShownAnswers = this.state.shownAnswers;
+      let currAllAnswers = this.state.allAnswers;
+      currShownAnswers = currShownAnswers.concat(currAllAnswers.splice(0, 2));
+      this.setState({shownAnswers: currShownAnswers});
+      this.setState({allAnswers: currAllAnswers});
+   }
+
+   componentDidMount () {
+      this.getAnswers();
+      this.addShownAnswers();
+   }
 
    render() {
+      let moreAnswers;
+
+      if (this.state.allAnswers.length) {
+         moreAnswers = <button onClick={() => { this.addShownAnswers() }}>See more answers</button>;
+      } else {
+         moreAnswers = null;
+      }
+
       return (
          <Card>
-            {this.state.allAnswers.map((answer) => {
-               return <Answer answer={answer} />;
-            })}
+            {this.state.shownAnswers.map((answer) => { return <Answer answer={answer} /> })}
+            {moreAnswers}
          </Card>
       );
    }

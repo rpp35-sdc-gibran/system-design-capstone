@@ -15,40 +15,28 @@ class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_id: this.props.currentProductId, // set by window.location.pathname???
+      product_id: this.props.currentProductId,
       shownQuestions: [],
       allQuestions: [],
-      addQuestionModal: false
+      addQuestionModal: false,
+      addAnswerModal: false
     };
 
-    axios
-      .get('/api/questionsAnswers/questions', {
-        params: {
-          product_id: this.state.product_id,
-        },
-      })
-      .then((results) => {
-        this.setState({ allQuestions: results.data.results });
-      })
-      .catch((error) => {
-        this.setState({ error: error });
-      });
-
     this.changeQAState = this.changeQAState.bind(this);
+    this.addShownQuestions = this.addShownQuestions.bind(this);
+    this.getQuestions = this.getQuestions.bind(this);
   }
 
   addShownQuestions () {
-    // save current shown questions to a variable
+    // save current shown questions and all questions to variables
     let currShownQuestions = this.state.shownQuestions;
-    // save current allquestions to a variable
     let currAllQuestions = this.state.allQuestions;
 
     // set currShownQuestions to equal original value plus two questions
     currShownQuestions = currShownQuestions.concat(currAllQuestions.splice(0,2));
 
-    // set shownQuestions to updated current shownQuestions variable
+    // set shownQuestions and allQuestions to updated current variables
     this.setState({shownQuestions: currShownQuestions});
-    // set allQuestions to updated current allQuestions variable
     this.setState({allQuestions: currAllQuestions});
   }
 
@@ -56,14 +44,8 @@ class QuestionsAnswers extends React.Component {
     this.setState({[prop]: value});
   }
 
-  componentDidMount() {
-    this.addShownQuestions();
-    axios
-      .get('/api/questionsAnswers/questions', {
-        params: {
-          product_id: this.state.product_id,
-        },
-      })
+  getQuestions () {
+    axios.get('/api/questionsAnswers/questions', { params: {product_id: this.state.product_id}})
       .then((results) => {
         this.setState({ allQuestions: results.data.results });
       })
@@ -72,7 +54,23 @@ class QuestionsAnswers extends React.Component {
         this.setState({ error: error });
       });
   }
+
+  componentDidMount() {
+    this.getQuestions();
+
+    // invoke addShownQuestions to load first 2 questions
+    this.addShownQuestions();
+  }
+
+
   render() {
+    var moreQuestions;
+    if (this.state.allQuestions.length) {
+      moreQuestions = <button onClick={() => {this.addShownQuestions()}}>More Answered Questions</button>
+    } else {
+      moreQuestions = null;
+    }
+
     if (this.state.addQuestionModal) {
       return (
         <AddQuestion
@@ -81,6 +79,7 @@ class QuestionsAnswers extends React.Component {
         />
       )
     }
+
     return (
       <>
         <h3>Questions & Answers</h3>
@@ -92,17 +91,11 @@ class QuestionsAnswers extends React.Component {
           questions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.shownQuestions }
           addQuestionModal={this.state.addQuestionModal}
         />
-        <button onClick={() => {
-          this.addShownQuestions();
-        }}>Show More Questions:</button>
-        <button onClick={() => {
-          this.changeQAState('addQuestionModal', true);
-        }
-        }>Add a Question</button>
+        {moreQuestions}
+        <button onClick={() => {this.changeQAState('addQuestionModal', true);}}>Add a Question</button>
       </>
     );
   }
 }
 
 export default QuestionsAnswers;
-

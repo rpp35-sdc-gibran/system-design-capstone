@@ -39,7 +39,6 @@ class AddQuestion extends React.Component {
         <form onSubmit={(event) => {
           event.preventDefault();
           this.postQuestion(this.getInputValues(event));
-          // change QA addQuestionsModal to false
           this.props.changeQAState('addQuestionModal', false);
         }}>
           <h1>Ask Your Question</h1>
@@ -58,7 +57,8 @@ class AddQuestion extends React.Component {
             <input type="text" name="email" id="email" required maxlength="60" size="50"></input>
             <div>For authentication reasons, you will not be emailed</div>
           </div>
-          <button variant="contained">Sumbit</button>
+          <button>Sumbit</button>
+          <button onClick={() => {this.props.changeQAState('addQuestionModal', false)}}>Cancel</button>
         </form>
       </Card>
     </>)
