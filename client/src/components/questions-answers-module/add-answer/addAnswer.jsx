@@ -3,19 +3,6 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Card from '@mui/material/Card';
 
-/*
- * axios({
- *   method: 'post',
- *   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.answer.question_id}/answers`,
- *   headers: { Authorization: GITHUB_API_TOKEN },
- *   data: {
- *     body: req.body.answer.body, // text
- *     name: req.body.answer.name, // text
- *     email: req.body.answer.email, // text
- *     photos: req.body.answer.photos // array of urls
- *   }})
- */
-
 class AddAnswer extends React.Component {
   getInputValues (event) {
     let values = [];
@@ -26,7 +13,7 @@ class AddAnswer extends React.Component {
     data.body = values[0];
     data.name = values[1];
     data.email = values[2];
-    data.photos = values[3]
+    data.photos = [];
     data.question_id = this.props.question_id;
     return data;
   }
@@ -48,11 +35,10 @@ class AddAnswer extends React.Component {
     return (
       <>
         <Card class="addAnswer">
-          <form onSumbit={(event) => {
-            event.preventDefault()
-            console.log('getinputvalues', this.getInputValues(event)); // not working?
-            this.postAnswer(this.getInputValues(event)); // not working?
-            () => this.props.changeQAState('addAnswerModal', false); // working????
+        <form onSubmit={(event) => {
+            event.preventDefault();
+            this.postAnswer(this.getInputValues(event));
+            this.props.changeQAState('addAnswerModal', false);
           }}>
             <h1>Submit your Answer</h1>
             <h3>{this.props.question_id}: {this.props.question_body}</h3>
@@ -72,7 +58,7 @@ class AddAnswer extends React.Component {
             </div>
             <div>
               <label for="photos">Upload Your Photos</label>
-              <input type="text" name="email" class="email" maxlength="60" size="50" required/>
+              <input type="text" name="email" class="email" maxlength="60" size="50"/>
             </div>
             <button>Sumbit</button>
             <button onClick={() => this.props.changeQAState('addAnswerModal', false)}>Cancel</button>

@@ -48,7 +48,13 @@ class QuestionsAnswers extends React.Component {
   getQuestions () {
     axios.get('/api/questionsAnswers/questions', { params: {product_id: this.state.product_id}})
       .then((results) => {
-        this.setState({ allQuestions: results.data.results });
+        // let currAllQuestions = results.data.results;
+        // let currShownQuestions = [];
+        // currShownQuestions.concat(currAllQuestions.splice(0, 2));
+        // this.setState({ allQuestions: currAllQuestions });
+        // this.setState({ shownQuestions: currShownQuestions });
+
+        this.setState({allQuestions: results.data.results});
       })
       .catch((error) => {
         console.log('error', error);
@@ -57,12 +63,6 @@ class QuestionsAnswers extends React.Component {
   }
 
   componentDidMount() {
-    this.getQuestions();
-    // invoke addShownQuestions to load first 2 questions
-    this.addShownQuestions();
-  }
-
-  useEffect () {
     this.getQuestions();
     // invoke addShownQuestions to load first 2 questions
     this.addShownQuestions();
