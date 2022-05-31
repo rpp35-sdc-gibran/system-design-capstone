@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import useEffect from 'react';
 
 import QuestionsList from './question-list/questionsList.jsx';
 import Search from './search/search.jsx';
@@ -57,11 +58,15 @@ class QuestionsAnswers extends React.Component {
 
   componentDidMount() {
     this.getQuestions();
-
     // invoke addShownQuestions to load first 2 questions
     this.addShownQuestions();
   }
 
+  useEffect () {
+    this.getQuestions();
+    // invoke addShownQuestions to load first 2 questions
+    this.addShownQuestions();
+  }
 
   render() {
     var moreQuestions;

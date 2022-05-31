@@ -50,6 +50,14 @@ const reportQuestionByQuestionID = (req, res) => {
 
 const postQuestionByProductID = (req, res) => {
    console.log('req.body.question', req.body.question)
+
+   // req.body.question {
+   //    body: 'Why did you like the product or not?',
+   //    name: 'Tyler',
+   //    email: 'nourse41@gmail.com',
+   //    product_id: '71697'
+   //  }
+
    axios({
          method: 'post',
          url: url,
@@ -62,11 +70,11 @@ const postQuestionByProductID = (req, res) => {
          }
       })
       .then((results) => {
-         console.log('Success POSTING question!');
-         res.status(201);
+         console.log('Success POSTING question. was this it!');
+         res.status(201)
       })
       .catch((error) => {
-         console.log('Error POSTING question ', error);
+         console.log('Error POSTING question. was this it??', error);
       });
 };
 

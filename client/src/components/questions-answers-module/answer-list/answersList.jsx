@@ -12,7 +12,6 @@ class AnswersList extends React.Component {
          shownAnswers: [],
          allAnswers: []
       };
-
      this.getAnswers = this.getAnswers.bind(this);
      this.addShownAnswers = this.addShownAnswers.bind(this);
    }

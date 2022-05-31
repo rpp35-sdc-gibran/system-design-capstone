@@ -16,7 +16,7 @@ class AddQuestion extends React.Component {
     data.body = values[0];
     data.name = values[1];
     data.email = values[2];
-    data.product_id = this.props.product_id;
+    data.product_id = Number(this.props.product_id);
     return data
   }
 
@@ -27,12 +27,12 @@ class AddQuestion extends React.Component {
       })
       .then((results) => {
         console.log('Successfully added question for product_id ', this.props.product_id);
-        this.props.changeQAState('addQuestionModal', false);
       })
       .catch((error) => {
         console.log('Error adding question for product_id ', this.props.product_id, error);
       })
   }
+
 
   render () {
     return (
@@ -41,7 +41,7 @@ class AddQuestion extends React.Component {
         <form onSubmit={(event) => {
           event.preventDefault();
           this.postQuestion(this.getInputValues(event));
-          // this.props.changeQAState('addQuestionModal', false);
+          this.props.changeQAState('addQuestionModal', false);
         }}>
           <h1>Ask Your Question</h1>
           <h3>About {this.props.product_id}</h3>

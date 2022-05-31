@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 
 import AnswerList from '../answer-list/answersList.jsx';
 import AddAnswer from '../add-answer/addAnswer.jsx';
-import { ThirtyFpsTwoTone } from '@mui/icons-material';
 
 class Question extends React.Component {
   reportQuestion () {
