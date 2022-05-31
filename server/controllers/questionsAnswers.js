@@ -49,15 +49,6 @@ const reportQuestionByQuestionID = (req, res) => {
 };
 
 const postQuestionByProductID = (req, res) => {
-   console.log('req.body.question', req.body.question)
-
-   // req.body.question {
-   //    body: 'Why did you like the product or not?',
-   //    name: 'Tyler',
-   //    email: 'nourse41@gmail.com',
-   //    product_id: '71697'
-   //  }
-
    axios({
          method: 'post',
          url: url,
@@ -83,8 +74,7 @@ const postQuestionByProductID = (req, res) => {
 //=============================//
 
 const getAnswersByQuestionID = (req, res) => {
-   axios
-      .get(
+   axios.get(
          `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.query.question_id}/answers`,
          {
             headers: { Authorization: GITHUB_API_TOKEN },

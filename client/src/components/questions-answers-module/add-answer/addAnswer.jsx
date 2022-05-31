@@ -34,7 +34,7 @@ class AddAnswer extends React.Component {
   render () {
     return (
       <>
-        <Card class="addAnswer">
+        <Card className="addAnswer">
         <form onSubmit={(event) => {
             event.preventDefault();
             this.postAnswer(this.getInputValues(event));
@@ -43,22 +43,22 @@ class AddAnswer extends React.Component {
             <h1>Submit your Answer</h1>
             <h3>{this.props.question_id}: {this.props.question_body}</h3>
             <div>
-              <label for="body">Your Answer*</label>
-              <textarea name="body" class="body" maxlength="1000" cols="45" rows="15" required></textarea>
+              <label htmlFor="body">Your Answer*</label>
+              <textarea name="body" className="body" maxLength="1000" cols="45" rows="15" required></textarea>
             </div>
             <div>
-              <label for="name">What is your nickname?*</label>
-              <input type="text" name="name" class="name" maxlength="60" size="50" required/>
+              <label htmlFor="name">What is your nickname?*</label>
+              <input type="text" name="name" className="name" maxLength="60" size="60" required defaultValue="Example: jack543!"/>
               <div>For privacy reasons, do not use your full name or email address</div>
             </div>
             <div>
-              <label for="email">Your email*</label>
-              <input type="text" name="email" class="email" maxlength="60" size="50" required/>
+              <label htmlFor="email">Your email*</label>
+              <input type="text" name="email" className="email" maxLength="60" size="60" required defaultValue="Example: jack@email.com"/>
               <div>For authentication reasons, you will not be emailed</div>
             </div>
             <div>
-              <label for="photos">Upload Your Photos</label>
-              <input type="text" name="email" class="email" maxlength="60" size="50"/>
+              <label htmlFor="photos">Upload Your Photos</label>
+              <input type="text" name="email" className="email" maxLength="60" size="60"/>
             </div>
             <button>Sumbit</button>
             <button onClick={() => this.props.changeQAState('addAnswerModal', false)}>Cancel</button>

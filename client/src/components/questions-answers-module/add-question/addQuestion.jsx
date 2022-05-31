@@ -37,7 +37,7 @@ class AddQuestion extends React.Component {
   render () {
     return (
     <>
-      <Card class="addQuestion">
+      <Card className="addQuestion">
         <form onSubmit={(event) => {
           event.preventDefault();
           this.postQuestion(this.getInputValues(event));
@@ -46,17 +46,17 @@ class AddQuestion extends React.Component {
           <h1>Ask Your Question</h1>
           <h3>About {this.props.product_id}</h3>
           <div>
-            <label for="body">Question*</label>
-            <textarea name="body" id="body" required maxlength="1000" cols="45" rows="15">Why did you like the product or not?</textarea>
+            <label htmlFor="body">Question*</label>
+            <textarea name="body" id="body" required maxLength="1000" cols="45" rows="15" defaultValue="Why did you like the product or not?"></textarea>
           </div>
           <div>
-            <label for="name">Nickname*</label>
-            <input type="text" name="name" id="name" required maxlenth="60" size="50"/>
+            <label htmlFor="name">Nickname*</label>
+            <input type="text" name="name" id="name" required maxLength="60" size="50" defaultValue="Example: jackson11!"/>
             <div>For privacy reasons, do not use your full name or email address</div>
           </div>
           <div>
-            <label for="email">Email*</label>
-            <input type="text" name="email" id="email" required maxlength="60" size="50"></input>
+            <label htmlFor="email">Email*</label>
+            <input type="text" name="email" id="email" required maxLength="60" size="50" defaultValue="Example: jack@email.com"></input>
             <div>For authentication reasons, you will not be emailed</div>
           </div>
           <button>Sumbit</button>

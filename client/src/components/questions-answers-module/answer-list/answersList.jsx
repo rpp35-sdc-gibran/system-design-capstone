@@ -50,7 +50,12 @@ class AnswersList extends React.Component {
 
       return (
          <Card>
-            {this.state.shownAnswers.map((answer) => { return <Answer answer={answer} /> })}
+            {this.state.shownAnswers.map((answer, index) => {
+               return <Answer
+                 key={index}
+                 answer={answer}
+               />
+            })}
             {moreAnswers}
          </Card>
       );

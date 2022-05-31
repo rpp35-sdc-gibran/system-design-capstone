@@ -5,29 +5,20 @@ import Card from '@mui/material/Card';
 
 class Answer extends React.Component {
    reportAnswer() {
-      axios
-         .put('/api/questionsAnswers/reportAnswer', {
+      axios.put('/api/questionsAnswers/reportAnswer', {
             answer_id: this.props.answer.answer_id,
          })
          .then((results) => {
-            console.log(
-               'SUCCESS reporting answer',
-               this.props.answer.answer_id
-            );
+            console.log('SUCCESS reporting answer', this.props.answer.answer_id);
             // refresh page
          })
          .catch((error) => {
-            console.log(
-               'ERROR reporting answer ',
-               this.props.answer.answer_id,
-               error
-            );
+            console.log('ERROR reporting answer ', this.props.answer.answer_id, error);
          });
    }
 
    isHelpful() {
-      axios
-         .put('/api/questionsAnswers/markAnswerHelpful', {
+      axios.put('/api/questionsAnswers/markAnswerHelpful', {
             answer_id: this.props.answer.answer_id,
          })
          .then((results) => {
@@ -35,10 +26,7 @@ class Answer extends React.Component {
             // reload questions to update page
          })
          .catch((error) => {
-            console.log(
-               'ERROR PUT /api/questionsAnswers/markAnswerHelpful',
-               error
-            );
+            console.log('ERROR PUT /api/questionsAnswers/markAnswerHelpful', error);
          });
    }
 
@@ -48,21 +36,9 @@ class Answer extends React.Component {
             <div>
                A: {this.props.answer.body}
                Helpful?
-               <a
-                  class='helpful'
-                  onClick={this.isHelpful.bind(this)}
-                  style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
-               >
-                  Yes
-               </a>
+               <a className='helpful' onClick={this.isHelpful.bind(this)} style={{ cursor: 'pointer', textDecorationLine: 'underline' }}>Yes</a>
                ({this.props.answer.helpfulness})
-               <a
-                  class='report'
-                  onClick={this.reportAnswer.bind(this)}
-                  style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
-               >
-                  Report
-               </a>
+               <a className='report' onClick={this.reportAnswer.bind(this)} style={{ cursor: 'pointer', textDecorationLine: 'underline' }}>Report</a>
             </div>
          </Card>
       );

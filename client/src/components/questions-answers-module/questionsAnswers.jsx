@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import useEffect from 'react';
 
@@ -10,7 +9,6 @@ import Search from './search/search.jsx';
 import AddQuestion from './add-question/addQuestion.jsx';
 
 // condition && component
-// conditionally render 'show additional questions' button
 
 class QuestionsAnswers extends React.Component {
   constructor(props) {
@@ -23,22 +21,15 @@ class QuestionsAnswers extends React.Component {
       addAnswerModal: false
     };
 
-    this.changeQAState = this.changeQAState.bind(this);
     this.addShownQuestions = this.addShownQuestions.bind(this);
+    this.changeQAState = this.changeQAState.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
   }
 
   addShownQuestions () {
-    // save current shown questions and all questions to variables
-    let currShownQuestions = this.state.shownQuestions;
-    let currAllQuestions = this.state.allQuestions;
-
-    // set currShownQuestions to equal original value plus two questions
+    let currShownQuestions = this.state.shownQuestions, currAllQuestions = this.state.allQuestions;
     currShownQuestions = currShownQuestions.concat(currAllQuestions.splice(0,2));
-
-    // set shownQuestions and allQuestions to updated current variables
-    this.setState({shownQuestions: currShownQuestions});
-    this.setState({allQuestions: currAllQuestions});
+    this.setState({shownQuestions: currShownQuestions, allQuestions: currAllQuestions});
   }
 
   changeQAState (prop, value) {
@@ -48,27 +39,20 @@ class QuestionsAnswers extends React.Component {
   getQuestions () {
     axios.get('/api/questionsAnswers/questions', { params: {product_id: this.state.product_id}})
       .then((results) => {
-        // let currAllQuestions = results.data.results;
-        // let currShownQuestions = [];
-        // currShownQuestions.concat(currAllQuestions.splice(0, 2));
-        // this.setState({ allQuestions: currAllQuestions });
-        // this.setState({ shownQuestions: currShownQuestions });
-
         this.setState({allQuestions: results.data.results});
       })
       .catch((error) => {
         console.log('error', error);
-        this.setState({ error: error });
       });
   }
 
   componentDidMount() {
-    this.getQuestions();
-    // invoke addShownQuestions to load first 2 questions
-    this.addShownQuestions();
+    this.getQuestions(); // works?
+    this.addShownQuestions(); // doesnt work?? - invoke addShownQuestions to load first 2 questions
   }
 
   render() {
+    // conditionally render 'show additional questions' button
     var moreQuestions;
     if (this.state.allQuestions.length) {
       moreQuestions = <button onClick={() => {this.addShownQuestions()}}>More Answered Questions</button>
@@ -76,6 +60,7 @@ class QuestionsAnswers extends React.Component {
       moreQuestions = null;
     }
 
+    // conditionally render addQuestions modal
     if (this.state.addQuestionModal) {
       return (
         <AddQuestion
@@ -83,8 +68,11 @@ class QuestionsAnswers extends React.Component {
           changeQAState={this.changeQAState}
         />
       )
-    } else if (this.state.addAnswerModal) {
-      // render addAnswer modal here?
+    }
+
+    // render addAnswer modal here?
+    if (this.state.addAnswerModal) {
+      // how to pass answer_id up to QA for current addAnswer
     }
 
     return (
