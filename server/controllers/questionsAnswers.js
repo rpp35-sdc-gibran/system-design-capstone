@@ -69,19 +69,16 @@ const postQuestionByProductID = (req, res) => {
       });
 };
 
+
 //=============================//
 // ANSWERS
 //=============================//
-
 const getAnswersByQuestionID = (req, res) => {
    axios.get(
          `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.query.question_id}/answers`,
-         {
-            headers: { Authorization: GITHUB_API_TOKEN },
-         }
+         { headers: { Authorization: GITHUB_API_TOKEN } }
       )
       .then((results) => {
-         // console.log('SUCCESS getting answers by question_id', results);
          res.send(results.data);
       })
       .catch((error) => {
@@ -121,16 +118,15 @@ const reportAnswerByAnswerID = (req, res) => {
 };
 
 const postAnswerByQuestionID = (req, res) => {
-   console.log('postAnswerByQuestionID req.body', req.body)
    axios({
       method: 'post',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.answer.question_id}/answers`,
       headers: { Authorization: GITHUB_API_TOKEN },
       data: {
-         body: req.body.answer.body, // text
-         name: req.body.answer.name, // text
-         email: req.body.answer.email, // text
-         photos: req.body.answer.photos, // array of urls
+         body: req.body.answer.body,
+         name: req.body.answer.name,
+         email: req.body.answer.email,
+         photos: req.body.answer.photos,
       },
    })
       .then((results) => {
@@ -142,6 +138,43 @@ const postAnswerByQuestionID = (req, res) => {
       });
 };
 
+
+//=============================//
+// OTHER
+//=============================//
+const getProductInfoByProductID = (req, res) => {
+  axios({
+     method: 'get',
+     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${req.query.product_id}`,
+     headers: { Authorization: GITHUB_API_TOKEN }
+    })
+    .then((results) => {
+      console.log('Success getting product info');
+      res.send(results.data.name);
+    })
+    .catch((error) => {
+      console.log('Error getting product info', error);
+    });
+};
+
+const postInteraction = (req, res) => {
+   console.log('req.body', req.body);
+   // requires req.body.interaction.element
+   // requires req.body.interaction.widget
+   // requires req.body.interaction.time
+   axios({
+      method: 'post',
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions',
+      headers: { Authorization: GITHUB_API_TOKEN }
+   })
+   .then((results) => {
+     console.log('Success posting interaction!');
+   })
+   .catch((error) => {
+     console.log('Error posting interaction', error);
+   });
+}
+
 module.exports.getQuestionsByProductID = getQuestionsByProductID;
 module.exports.getAnswersByQuestionID = getAnswersByQuestionID;
 module.exports.markAnswerHelpfulByAnswerID = markAnswerHelpfulByAnswerID;
@@ -150,3 +183,5 @@ module.exports.reportAnswerByAnswerID = reportAnswerByAnswerID;
 module.exports.reportQuestionByQuestionID = reportQuestionByQuestionID;
 module.exports.postQuestionByProductID = postQuestionByProductID;
 module.exports.postAnswerByQuestionID = postAnswerByQuestionID;
+module.exports.getProductInfoByProductID = getProductInfoByProductID;
+module.exports.postInteraction = postInteraction;

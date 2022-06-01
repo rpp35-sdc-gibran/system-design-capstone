@@ -44,7 +44,7 @@ class AddQuestion extends React.Component {
           this.props.changeQAState('addQuestionModal', false);
         }}>
           <h1>Ask Your Question</h1>
-          <h3>About {this.props.product_id}</h3>
+          <h3>About the {this.props.product_name}</h3>
           <div>
             <label htmlFor="body">Question*</label>
             <textarea name="body" id="body" required maxLength="1000" cols="45" rows="15" defaultValue="Why did you like the product or not?"></textarea>

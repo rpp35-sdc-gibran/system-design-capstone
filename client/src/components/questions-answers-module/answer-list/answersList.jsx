@@ -39,7 +39,6 @@ class AnswersList extends React.Component {
 
    render() {
       let moreAnswers;
-
       if (this.state.allAnswers.length) {
          moreAnswers = <button onClick={() => { this.addShownAnswers() }}>See more answers</button>;
       } else {

@@ -46,7 +46,7 @@ class AddAnswer extends React.Component {
 
           }}>
             <h1>Submit your Answer</h1>
-            <h3>{this.props.question_id}: {this.props.question_body}</h3>
+            <h3>{this.props.product_name}: {this.props.question_body}</h3>
             <div>
               <label htmlFor="body">Your Answer*</label>
               <textarea name="body" className="body" maxLength="1000" cols="45" rows="15" required></textarea>

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Card from '@mui/material/Card';
+import Paper from '@mui/material/Paper'
 
 import QuestionsList from './question-list/questionsList.jsx';
 import Search from './search/search.jsx';
@@ -20,10 +21,12 @@ class QuestionsAnswers extends React.Component {
       addAnswerModal: false,
       currQuestion_id: null,
       currQuestion_body: null,
+      currProductName: null
     };
     this.addShownQuestions = this.addShownQuestions.bind(this);
     this.changeQAState = this.changeQAState.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
+    this.getProductInfo = this.getProductInfo(this);
   }
 
   addShownQuestions () {
@@ -43,12 +46,24 @@ class QuestionsAnswers extends React.Component {
         this.setState({shownQuestions: results.data.results.splice(0,2), allQuestions: results.data.results});
       })
       .catch((error) => {
-        console.log('error', error);
+        console.log('error getting questions', error);
       });
+  }
+
+  getProductInfo () {
+    axios.get('/api/questionsAnswers/productInfo', {params: {product_id: this.props.currentProductId}})
+      .then((results) => {
+        console.log('success getting product info', results);
+        this.setState({currProductName: results.data})
+      })
+      .catch((error) => {
+        console.log('error getting product info', error);
+      })
   }
 
   componentDidMount() {
     this.getQuestions();
+    this.getProductInfo
   }
 
   render() {
@@ -60,34 +75,32 @@ class QuestionsAnswers extends React.Component {
       moreQuestions = null;
     }
 
-    // conditionally render addQuestions modal
+    // conditionally render addQuestion modal
     if (this.state.addQuestionModal) {
       return (
         <AddQuestion
           product_id={this.state.product_id}
           changeQAState={this.changeQAState}
+          product_name={this.state.currProductName}
         />
       )
     }
 
-    // render addAnswer modal here?
-      // needs question_id
-      // needs question_body
-
+    // conditionally render addAnwser modal
     if (this.state.addAnswerModal) {
-      // how to pass answer_id up to QA for current addAnswer
       return (
         <AddAnswer
           question_id={this.state.currQuestion_id}
           question_body={this.state.currQuestion_body}
           changeQAState={this.changeQAState}
+          product_name={this.state.currProductName}
         />
       )
 
     }
 
     return (
-      <>
+      <Paper elevation={24} className='questions-anwers'>
         <h3>Questions & Answers</h3>
         <Search
           changeQAState={this.changeQAState}
@@ -101,7 +114,7 @@ class QuestionsAnswers extends React.Component {
         />
         {moreQuestions}
         <button onClick={() => {this.changeQAState('addQuestionModal', true);}}>Add a Question</button>
-      </>
+      </Paper>
     );
   }
 }

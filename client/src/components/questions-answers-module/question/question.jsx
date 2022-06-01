@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper'
 
 import AnswerList from '../answer-list/answersList.jsx';
 
@@ -49,6 +51,7 @@ class Question extends React.Component {
           </div>
         </div>
         <div>by {this.props.question.asker_name} {this.props.question.question_date}</div>
+        <AnswerList question_id={this.props.question.question_id}/>
         <button onClick={() => {
           // set QA addAnswerModal to true
           this.props.changeQAState('addAnswerModal', true);
@@ -57,7 +60,6 @@ class Question extends React.Component {
           // set QA.currQuestion_body to null
           this.props.changeQAState('currQuestion_body', this.props.question.question_body);
         }}>Add an Answer</button>
-        <AnswerList question_id={this.props.question.question_id}/>
       </Card>
       )
   }

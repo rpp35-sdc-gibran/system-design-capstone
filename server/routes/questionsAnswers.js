@@ -40,4 +40,11 @@ router.post('/addAnswer', (req, res) => {
   controllers.postAnswerByQuestionID(req, res)
 })
 
+//=============================//
+// OTHER
+//=============================//
+
+router.get('/productInfo', (req, res) => {
+  controllers.getProductInfoByProductID(req, res);
+})
 module.exports = router;

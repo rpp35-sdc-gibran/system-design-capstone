@@ -29,12 +29,17 @@ class Answer extends React.Component {
             console.log('ERROR PUT /api/questionsAnswers/markAnswerHelpful', error);
          });
    }
-
+   // if this.props.answer.answerer_name is equal to "Seller" bold font?
    render() {
       return (
          <Card variant='outlined'>
             <div>
                A: {this.props.answer.body}
+            </div>
+            <div>
+               by {this.props.answer.answerer_name}, {this.props.answer.date}
+            </div>
+            <div>
                Helpful?
                <a className='helpful' onClick={this.isHelpful.bind(this)} style={{ cursor: 'pointer', textDecorationLine: 'underline' }}>Yes</a>
                ({this.props.answer.helpfulness})
