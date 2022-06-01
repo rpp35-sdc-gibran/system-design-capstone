@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Card from '@mui/material/Card';
-import useEffect from 'react';
 
 import QuestionsList from './question-list/questionsList.jsx';
 import Search from './search/search.jsx';
@@ -14,20 +13,20 @@ class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_id: this.props.currentProductId,
       shownQuestions: [],
       allQuestions: [],
       addQuestionModal: false,
-      addAnswerModal: false
+      addAnswerModal: false,
+      addAnswer_id: null,
     };
-
     this.addShownQuestions = this.addShownQuestions.bind(this);
     this.changeQAState = this.changeQAState.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
   }
 
   addShownQuestions () {
-    let currShownQuestions = this.state.shownQuestions, currAllQuestions = this.state.allQuestions;
+    let currShownQuestions = this.state.shownQuestions;
+    let currAllQuestions = this.state.allQuestions;
     currShownQuestions = currShownQuestions.concat(currAllQuestions.splice(0,2));
     this.setState({shownQuestions: currShownQuestions, allQuestions: currAllQuestions});
   }
@@ -37,9 +36,9 @@ class QuestionsAnswers extends React.Component {
   }
 
   getQuestions () {
-    axios.get('/api/questionsAnswers/questions', { params: {product_id: this.state.product_id}})
+    axios.get('/api/questionsAnswers/questions', { params: {product_id: this.props.currentProductId}})
       .then((results) => {
-        this.setState({allQuestions: results.data.results});
+        this.setState({shownQuestions: results.data.results.splice(0,2), allQuestions: results.data.results});
       })
       .catch((error) => {
         console.log('error', error);
@@ -47,8 +46,7 @@ class QuestionsAnswers extends React.Component {
   }
 
   componentDidMount() {
-    this.getQuestions(); // works?
-    this.addShownQuestions(); // doesnt work?? - invoke addShownQuestions to load first 2 questions
+    this.getQuestions();
   }
 
   render() {

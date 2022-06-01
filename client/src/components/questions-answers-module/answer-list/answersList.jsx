@@ -19,7 +19,7 @@ class AnswersList extends React.Component {
    getAnswers () {
       axios.get('/api/questionsAnswers/answers', { params: {question_id: this.props.question_id} })
          .then((results) => {
-            this.setState({ allAnswers: results.data.results });
+            this.setState({ shownAnswers: results.data.results.splice(0,2), allAnswers: results.data.results });
          })
          .catch((error) => {
             console.log('error', error);
@@ -27,11 +27,9 @@ class AnswersList extends React.Component {
    }
 
    addShownAnswers () {
-      let currShownAnswers = this.state.shownAnswers;
-      let currAllAnswers = this.state.allAnswers;
+      let currShownAnswers = this.state.shownAnswers, currAllAnswers = this.state.allAnswers;
       currShownAnswers = currShownAnswers.concat(currAllAnswers.splice(0, 2));
-      this.setState({shownAnswers: currShownAnswers});
-      this.setState({allAnswers: currAllAnswers});
+      this.setState({shownAnswers: currShownAnswers, allAnswers: currAllAnswers});
    }
 
    componentDidMount () {
