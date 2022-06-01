@@ -20,7 +20,7 @@
 // }
 
 #shopping-cart-woman {
-   animation: drive 5s linear forwards 1s;
+   animation: drive 1.5s linear forwards;
    transform-origin: center;
    transform-box: fill-box;
 }
@@ -30,9 +30,13 @@
       transform: translateX(0) rotateZ(0deg);
    }
    50% {
-      transform: translateX(115rem) rotateZ(-20deg);
+      transform: translateX(40rem) rotateZ(-20deg);
    }
    100% {
       transform: translateX(0) rotateZ(0deg);
    }
 }
+
+// #Arm_1_ {
+//    transform: translate(0px, -110px) rotateZ(-15deg);
+// }

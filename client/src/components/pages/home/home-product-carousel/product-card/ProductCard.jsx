@@ -8,7 +8,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import DefaultImage from './Image-coming-soon.svg';
+import SellIcon from '@mui/icons-material/Sell';
 
 const ProductCard = ({
    id,
@@ -20,15 +22,22 @@ const ProductCard = ({
    slideDirection,
 }) => {
    return (
-      <Paper elevation={1}>
+      <Paper elevation={3}>
          <Card className='product-card'>
             <CardMedia
                component='img'
                alt={name}
-               height='150'
+               height='175'
                className='product-card-image'
                image={image || DefaultImage}
             />
+            <Typography
+               align='center'
+               className='product-card-price'
+               variant='overline'
+            >
+               ${price}
+            </Typography>
             <div className='product-card-actions-content'>
                <CardActions className='product-card-actions'>
                   <Link className='product-card-name' to={`/${id}`}>
@@ -37,7 +46,6 @@ const ProductCard = ({
                </CardActions>
                <CardContent className='product-card-content'>
                   <Typography variant='overline'>{category}</Typography>
-                  <Typography variant='overline'>{price}</Typography>
                   <Typography
                      className='product-content-description'
                      variant='caption'
@@ -45,11 +53,13 @@ const ProductCard = ({
                      {description}
                   </Typography>
                   <Button
-                     className='.product-card-btn'
+                     className='product-card-btn'
                      size='small'
+                     color='secondary'
                      variant='contained'
                   >
-                     test
+                     <ShoppingCartIcon />
+                     Add to Cart
                   </Button>
                </CardContent>
             </div>

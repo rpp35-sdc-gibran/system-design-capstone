@@ -7,7 +7,7 @@
       .nav-logo {
          flex-grow: 1;
          @include flex-center-vert();
-         color: #9c27b0;
+         color: $secondary-color;
          text-decoration: none;
       }
       .nav-search-field {
