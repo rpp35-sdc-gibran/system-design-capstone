@@ -6,6 +6,7 @@ import Card from '@mui/material/Card';
 import QuestionsList from './question-list/questionsList.jsx';
 import Search from './search/search.jsx';
 import AddQuestion from './add-question/addQuestion.jsx';
+import AddAnswer from './add-answer/addAnswer.jsx';
 
 // condition && component
 
@@ -17,7 +18,8 @@ class QuestionsAnswers extends React.Component {
       allQuestions: [],
       addQuestionModal: false,
       addAnswerModal: false,
-      addAnswer_id: null,
+      currQuestion_id: null,
+      currQuestion_body: null,
     };
     this.addShownQuestions = this.addShownQuestions.bind(this);
     this.changeQAState = this.changeQAState.bind(this);
@@ -69,8 +71,19 @@ class QuestionsAnswers extends React.Component {
     }
 
     // render addAnswer modal here?
+      // needs question_id
+      // needs question_body
+
     if (this.state.addAnswerModal) {
       // how to pass answer_id up to QA for current addAnswer
+      return (
+        <AddAnswer
+          question_id={this.state.currQuestion_id}
+          question_body={this.state.currQuestion_body}
+          changeQAState={this.changeQAState}
+        />
+      )
+
     }
 
     return (

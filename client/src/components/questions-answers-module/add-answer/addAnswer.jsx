@@ -39,6 +39,11 @@ class AddAnswer extends React.Component {
             event.preventDefault();
             this.postAnswer(this.getInputValues(event));
             this.props.changeQAState('addAnswerModal', false);
+            // set QA.currQuestion_id to null
+            this.props.changeQAState('currQuestion_id', null);
+            // set QA.currQuestion_body to null
+            this.props.changeQAState('currQuestion_body', null);
+
           }}>
             <h1>Submit your Answer</h1>
             <h3>{this.props.question_id}: {this.props.question_body}</h3>
