@@ -54,6 +54,10 @@ const ProductCarousel = ({ products, productPhotos }) => {
                            products[index].data.category
                         }
                         name={products[index].name || products[index].data.name}
+                        description={
+                           products[index].description ||
+                           products[index].data.description
+                        }
                         price={
                            products[index].default_price ||
                            products[index].data.default_price

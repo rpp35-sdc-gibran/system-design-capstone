@@ -1,8 +1,40 @@
 @use '../../../../App.scss' as *;
 
+.MuiCard-root {
+   display: flex;
+   flex-direction: column;
+}
+
 .product-card {
-   @include set-size(22rem, 16rem);
-   .product-card-image {
-      // @include set-size(auto, 100%);
+   @include set-size(24rem, 16rem);
+   @include flex-column();
+   padding-left: 0;
+   justify-content: space-between;
+
+   .product-card-actions-content {
+      padding: 0 0.4rem 0.4rem 0.4rem;
+      @include flex-column();
+      justify-content: flex-start;
+      @include set-size(100%);
+      .product-card-actions {
+         padding: 0;
+         .product-card-name {
+            text-decoration: none;
+            color: black;
+            // align-self: flex-start;
+         }
+      }
+      .product-card-content {
+         padding: 0;
+         @include set-size(100%);
+         @include flex-column();
+         // justify-content: space-between;
+         .product-content-description {
+            flex-grow: 1;
+         }
+         .product-card-btn {
+            align-self: flex-end;
+         }
+      }
    }
 }
