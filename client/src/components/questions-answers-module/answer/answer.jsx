@@ -32,6 +32,7 @@ class Answer extends React.Component {
          });
    }
    //! if this.props.answer.answerer_name is equal to "Seller" bold font?
+
    render() {
       return (
          <Card variant='outlined'>
@@ -44,7 +45,13 @@ class Answer extends React.Component {
             </div>
             <div>
                Helpful?
-               <a className='helpful' onClick={this.isHelpful.bind(this)} style={{ cursor: 'pointer', textDecorationLine: 'underline' }}>Yes</a>
+               <a className='helpful' style={{ cursor: 'pointer', textDecorationLine: 'underline' }} onClick={() => {
+                  let answer_id = this.props.answer.answer_id.toString();
+                  if (!Boolean(localStorage.getItem(answer_id))) {
+                     this.isHelpful();
+                     localStorage.setItem(answer_id, true);
+                  }
+               }}>Yes</a>
                ({this.props.answer.helpfulness})
                <a className='report' onClick={this.reportAnswer.bind(this)} style={{ cursor: 'pointer', textDecorationLine: 'underline' }}>Report</a>
             </div>
