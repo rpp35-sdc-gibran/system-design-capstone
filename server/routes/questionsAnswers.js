@@ -21,6 +21,7 @@ router.post('/addQuestion', (req, res) => {
   controllers.postQuestionByProductID(req,res);
 })
 
+
 //=============================//
 // ANSWERS
 //=============================//
@@ -40,11 +41,17 @@ router.post('/addAnswer', (req, res) => {
   controllers.postAnswerByQuestionID(req, res)
 })
 
+
 //=============================//
 // OTHER
 //=============================//
-
 router.get('/productInfo', (req, res) => {
   controllers.getProductInfoByProductID(req, res);
 })
+
+router.post('/interactions', (req, res) => {
+  controllers.postInteraction(req, res);
+})
+
+
 module.exports = router;

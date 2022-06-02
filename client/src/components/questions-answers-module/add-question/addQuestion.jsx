@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 //! expects product name as this.props.productName
 
@@ -37,14 +39,14 @@ class AddQuestion extends React.Component {
   render () {
     return (
     <>
-      <Card className="addQuestion">
+      <Card elevation={24} rounded={true} outlined={true} className="addQuestion">
         <form onSubmit={(event) => {
           event.preventDefault();
           this.postQuestion(this.getInputValues(event));
           this.props.changeQAState('addQuestionModal', false);
         }}>
-          <h1>Ask Your Question</h1>
-          <h3>About the {this.props.product_name}</h3>
+          <Typography align='center' variant='h4'>Ask Your Question</Typography>
+          <Typography align='center' variant='subtitle1'>About the {this.props.product_name}</Typography>
           <div>
             <label htmlFor="body">Question*</label>
             <textarea name="body" id="body" required maxLength="1000" cols="45" rows="15" defaultValue="Why did you like the product or not?"></textarea>

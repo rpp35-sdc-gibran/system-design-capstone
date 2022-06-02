@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
 import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
 
 class AddAnswer extends React.Component {
   getInputValues (event) {
@@ -33,8 +35,7 @@ class AddAnswer extends React.Component {
 
   render () {
     return (
-      <>
-        <Card className="addAnswer">
+      <Card elevation={24} rounded={true} outlined={true} className="addAnswer">
         <form onSubmit={(event) => {
             event.preventDefault();
             this.postAnswer(this.getInputValues(event));
@@ -45,8 +46,8 @@ class AddAnswer extends React.Component {
             this.props.changeQAState('currQuestion_body', null);
 
           }}>
-            <h1>Submit your Answer</h1>
-            <h3>{this.props.product_name}: {this.props.question_body}</h3>
+            <Typography align='center' variant='h4'>Submit your Answer</Typography>
+            <Typography align='center' variant='subtitle1'>{this.props.product_name}: {this.props.question_body}</Typography>
             <div>
               <label htmlFor="body">Your Answer*</label>
               <textarea name="body" className="body" maxLength="1000" cols="45" rows="15" required></textarea>
@@ -69,7 +70,6 @@ class AddAnswer extends React.Component {
             <button onClick={() => this.props.changeQAState('addAnswerModal', false)}>Cancel</button>
           </form>
         </Card>
-      </>
     )
   }
 }

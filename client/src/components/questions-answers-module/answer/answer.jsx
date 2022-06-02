@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
 import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
 
 class Answer extends React.Component {
    reportAnswer() {
@@ -29,12 +31,13 @@ class Answer extends React.Component {
             console.log('ERROR PUT /api/questionsAnswers/markAnswerHelpful', error);
          });
    }
-   // if this.props.answer.answerer_name is equal to "Seller" bold font?
+   //! if this.props.answer.answerer_name is equal to "Seller" bold font?
    render() {
       return (
          <Card variant='outlined'>
             <div>
-               A: {this.props.answer.body}
+              <Typography align='left' variant='h6'>A: </Typography>
+              {this.props.answer.body}
             </div>
             <div>
                by {this.props.answer.answerer_name}, {this.props.answer.date}
