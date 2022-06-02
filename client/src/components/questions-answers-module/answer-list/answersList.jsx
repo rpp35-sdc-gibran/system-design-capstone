@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
 import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
 
 import Answer from '../answer/answer.jsx';
 
@@ -38,9 +40,10 @@ class AnswersList extends React.Component {
    }
 
    render() {
+
       let moreAnswers;
       if (this.state.allAnswers.length) {
-         moreAnswers = <button onClick={() => { this.addShownAnswers() }}>See more answers</button>;
+         moreAnswers = <button onClick={() => { this.addShownAnswers() }}><Typography variant='body1'>See More Answers</Typography></button>;
       } else {
          moreAnswers = null;
       }
@@ -51,11 +54,12 @@ class AnswersList extends React.Component {
                return <Answer
                  key={index}
                  answer={answer}
+                 convertDate={this.props.convertDate}
                />
             })}
             {moreAnswers}
          </Card>
-      );
+      )
    }
 }
 

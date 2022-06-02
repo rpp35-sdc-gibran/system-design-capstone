@@ -47,6 +47,12 @@ class Question extends React.Component {
     }
   }
 
+  handleQuestionModal () {
+    this.props.changeQAState('addAnswerModal', true);
+    this.props.changeQAState('currQuestion_id', this.props.question.question_id);
+    this.props.changeQAState('currQuestion_body', this.props.question.question_body);
+  }
+
   render () {
     return (
       <Card variant="outlined">
@@ -65,16 +71,15 @@ class Question extends React.Component {
           }}>Yes</a>
           ({this.props.question.question_helpfulness})
           <a className="report" onClick={this.reportQuestion.bind(this)} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Report</a>
-          <a className="add-question" onClick={() => {
-            this.props.changeQAState('addAnswerModal', true);
-            this.props.changeQAState('currQuestion_id', this.props.question.question_id);
-            this.props.changeQAState('currQuestion_body', this.props.question.question_body);
-          }} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Add an Answer</a>
+          <a className="add-question" onClick={this.handleQuestionModal} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Add an Answer</a>
         </Typography>
         <Typography variant='body1'>
-          by {this.props.question.asker_name} {this.props.question.question_date}
+          by {this.props.question.asker_name} {this.props.convertDate(this.props.question.question_date)}
         </Typography>
-        <AnswerList question_id={this.props.question.question_id}/>
+        <AnswerList
+          question_id={this.props.question.question_id}
+          convertDate={this.props.convertDate}
+        />
       </Card>
       )
   }

@@ -63,6 +63,38 @@ class QuestionsAnswers extends React.Component {
       })
   }
 
+  convertDate (isoDate) {
+    let date = new Date(isoDate).toLocaleString().split(',')[0].split('/');
+
+    if (date[0] === '1') {
+      date[0] = 'January';
+    } else if (date[0] === '2') {
+       date[0] = 'February';
+    } else if (date[0] === '3') {
+      date[0] = 'March';
+    } else if (date[0] === '4') {
+      date[0] = 'April';
+    } else if (date[0] === '5') {
+      date[0] = 'May';
+    } else if (date[0] === '6') {
+      date[0] = 'June';
+    } else if (date[0] === '7') {
+      date[0] = 'July';
+    } else if (date[0] === '8') {
+      date[0] = 'August';
+    } else if (date[0] === '9') {
+      date[0] = 'September';
+    } else if (date[0] === '10') {
+      date[0] = 'October';
+    } else if (date[0] === '11') {
+      date[0] = 'November';
+    } else if (date[0] === '12') {
+      date[0] = 'December'
+    }
+
+   return `${date[0]} ${date[1]}, ${date[2]}`
+ }
+
   componentDidMount() {
     this.getQuestions();
     this.getProductInfo
@@ -113,6 +145,7 @@ class QuestionsAnswers extends React.Component {
           addQuestionModal={this.state.addQuestionModal}
           addAnswerModal={this.state.addAnswerModal}
           changeQAState={this.changeQAState}
+          convertDate={this.convertDate}
         />
         {moreQuestions}
         <button onClick={() => {this.changeQAState('addQuestionModal', true);}}><Typography variant='body1'>Add a Question +</Typography></button>

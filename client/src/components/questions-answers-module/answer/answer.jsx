@@ -31,30 +31,32 @@ class Answer extends React.Component {
             console.log('ERROR PUT /api/questionsAnswers/markAnswerHelpful', error);
          });
    }
-   //! if this.props.answer.answerer_name is equal to "Seller" bold font?
 
    render() {
+      //! if this.props.answer.answerer_name is equal to "Seller" bold font?
+      let answerer;
+      if (this.props.answer.answerer_name === 'Seller') {
+        answerer = <Typography variant="h6">{this.props.answer.answerer_name}</Typography>
+      } else {
+        answerer = this.props.answer.answerer_name;
+      }
       return (
          <Card variant='outlined'>
-            <div>
-              <Typography align='left' variant='h6'>A: </Typography>
-              {this.props.answer.body}
-            </div>
-            <div>
-               by {this.props.answer.answerer_name}, {this.props.answer.date}
-            </div>
-            <div>
-               Helpful?
-               <a className='helpful' style={{ cursor: 'pointer', textDecorationLine: 'underline' }} onClick={() => {
-                  let answer_id = this.props.answer.answer_id.toString();
-                  if (!Boolean(localStorage.getItem(answer_id))) {
-                     this.isHelpful();
-                     localStorage.setItem(answer_id, true);
-                  }
-               }}>Yes</a>
-               ({this.props.answer.helpfulness})
-               <a className='report' onClick={this.reportAnswer.bind(this)} style={{ cursor: 'pointer', textDecorationLine: 'underline' }}>Report</a>
-            </div>
+           <Typography align='left' variant='h6'>A: </Typography>
+           <Typography variant='body1'>
+             {this.props.answer.body}
+             by {this.props.answer.answerer_name}, {this.props.convertDate(this.props.answer.date)}
+             Helpful?
+             <a className='helpful' style={{ cursor: 'pointer', textDecorationLine: 'underline' }} onClick={() => {
+             let answer_id = this.props.answer.answer_id.toString();
+               if (!Boolean(localStorage.getItem(answer_id))) {
+                 this.isHelpful();
+                 localStorage.setItem(answer_id, true);
+               }
+             }}>Yes</a>
+             ({this.props.answer.helpfulness})
+             <a className='report' onClick={this.reportAnswer.bind(this)} style={{ cursor: 'pointer', textDecorationLine: 'underline' }}>Report</a>
+           </Typography>
          </Card>
       );
    }

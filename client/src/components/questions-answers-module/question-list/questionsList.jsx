@@ -18,6 +18,7 @@ class QuestionsList extends React.Component {
               question={question}
               addAnswerModal={this.props.addAnswerModal}
               changeQAState={this.props.changeQAState}
+              convertDate={this.props.convertDate}
             />
           );
         })}
