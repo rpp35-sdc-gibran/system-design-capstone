@@ -55,7 +55,12 @@ class Answer extends React.Component {
                }
              }}>Yes</a>
              ({this.props.answer.helpfulness})
-             <a className='report' onClick={this.reportAnswer.bind(this)} style={{ cursor: 'pointer', textDecorationLine: 'underline' }}>Report</a>
+             <a className='report' onClick={(event) => {
+                this.reportAnswer.bind(this)();
+                // change inner html text to reported
+                event.target.innerHTML = 'Reported'
+             }} style={{ cursor: 'pointer', textDecorationLine: 'underline' }}>Report</a>
+
            </Typography>
          </Card>
       );

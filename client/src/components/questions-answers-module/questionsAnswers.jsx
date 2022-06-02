@@ -113,7 +113,7 @@ class QuestionsAnswers extends React.Component {
     if (this.state.addQuestionModal) {
       return (
         <AddQuestion
-          product_id={this.state.product_id}
+          product_id={this.props.currentProductId}
           changeQAState={this.changeQAState}
           product_name={this.state.currProductName}
         />

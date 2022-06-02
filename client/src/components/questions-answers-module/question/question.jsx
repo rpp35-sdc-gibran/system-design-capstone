@@ -70,11 +70,15 @@ class Question extends React.Component {
             }
           }}>Yes</a>
           ({this.props.question.question_helpfulness})
-          <a className="report" onClick={this.reportQuestion.bind(this)} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Report</a>
-          <a className="add-question" onClick={this.handleQuestionModal} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Add an Answer</a>
+          <a className="report" onClick={(event) => {
+            this.reportQuestion.bind(this)();
+            // change inner html text to reported
+            event.target.innerHTML = 'Reported'
+          }} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Report</a>
+          <a className="add-question" onClick={this.handleQuestionModal.bind(this)} style={{cursor: 'pointer', textDecorationLine: 'underline'}}>Add an Answer</a>
         </Typography>
         <Typography variant='body1'>
-          by {this.props.question.asker_name} {this.props.convertDate(this.props.question.question_date)}
+          by {this.props.question.asker_name}, {this.props.convertDate(this.props.question.question_date)}
         </Typography>
         <AnswerList
           question_id={this.props.question.question_id}
