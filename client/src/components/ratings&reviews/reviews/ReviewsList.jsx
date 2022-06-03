@@ -1,21 +1,11 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
 import ReviewTile from './ReviewTile.jsx';
-<<<<<<< HEAD
-
-const ReviewsList = ({ reviews, starFilters }) => {
-   if (starFilters.length) {
-      reviews = reviews.filter((review) =>
-         starFilters.includes(review.rating.toString())
-      );
-   }
-=======
 import AddNewReview from './addNewReview/AddNewReview.jsx';
 const ReviewsList = ({ reviews, starFilters, productName }) => {
    console.log('In ReviewsList got: ', reviews);
    console.log('starFilters in ReviewsList.jsx: ', starFilters);
 
->>>>>>> 84b37a9e0efb3b91fede7919d49ae1b06cbc3c5f
 
    const [renderedCount, setRenderedCount] = useState(2);
    const [reviewsToRender, setReviewsToRender] = useState([]);

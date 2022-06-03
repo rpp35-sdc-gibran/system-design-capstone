@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import './addQuestion.scss'
 
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';

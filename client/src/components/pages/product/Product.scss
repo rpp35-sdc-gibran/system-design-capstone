@@ -9,8 +9,10 @@
 }
 
 .product-questions-answers {
-   @include set-size(100vh, 100vw);
-   overflow: hidden; //set to hide any contents greater than the height of total view height
+   // @include set-size(150vh, 100vw);
+   // overflow: hidden; //set to hide any contents greater than the height of total view height
+   height: 500px;
+   overflow-y: scroll;
 }
 
 .product-ratings-reviews {
