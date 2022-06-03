@@ -18,10 +18,8 @@ const AddToCart = ({ currentStyle }) => {
    //handles when size is selected to get correct quantity and size options
    const handleChange = (e) => {
       setCurrentSize(e.target.value);
-      console.log('e.target.value:', e.target.value);
       let quantityArr = [];
       let currentQuantity;
-      console.log('skus:', skus);
       for (let i = 0; i < skus.length; i++) {
          if (skus[i].itemValues.size === e.target.value) {
             setCurrentSku(skus[i].itemSku);
@@ -47,7 +45,7 @@ const AddToCart = ({ currentStyle }) => {
       } else {
          let promise = axios.post('/api/cart', { sku_id: currentSku });
          promise.then((response) => {
-            console.log('response:', response);
+            console.log('submission posted');
          });
          promise.catch((err) => {
             console.log('err:', err);

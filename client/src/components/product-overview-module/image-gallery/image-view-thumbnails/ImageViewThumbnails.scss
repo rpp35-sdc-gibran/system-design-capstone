@@ -4,4 +4,12 @@
    @include set-size(auto, 5rem);
    display: 'flex';
    flex-direction: column;
+   .arrow-up {
+      transform: rotate(90deg);
+      left: 1rem;
+   }
+   .arrow-down {
+      transform: rotate(-90deg);
+      left: 1rem;
+   }
 }

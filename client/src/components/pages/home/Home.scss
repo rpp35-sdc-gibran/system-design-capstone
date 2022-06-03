@@ -1,16 +1,11 @@
 @use '../../App.scss' as *;
 
 .home-container {
-   display: flex;
-   flex-wrap: wrap;
-   @include set-size(100%);
-   // .home-image {
-   //    @include set-size(20rem, 50vw);
-   // }
-   .home-product-list {
-      @include flex-center();
-      @include set-size(auto, 100%);
-      flex-wrap: wrap;
+   @include flex-column();
+   @include set-size(100vh, 100vw);
+   .home-container-new-products {
+      @include flex-column();
+      padding: 1rem 4rem 0rem 4rem;
       gap: 1rem;
    }
 }

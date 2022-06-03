@@ -3,7 +3,7 @@ import './ImageViewItem.scss';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Avatar from '@mui/material/Avatar';
-import DefaultImage from '../../../pages/home/product-card/Image-coming-soon.svg';
+import DefaultImage from '../../../pages/home/home-product-carousel/product-card/Image-coming-soon.svg';
 
 const ImageViewItem = ({
    image,
@@ -61,6 +61,7 @@ const ImageViewItem = ({
                onMouseMove={handleMouseMove}
                type='checkbox'
                onClick={handleTransformScaleView}
+               data-testid='enlarged-checkbox'
             ></input>
             {/* scaled image view with inline style  */}
             {isScaled ? (
@@ -68,6 +69,7 @@ const ImageViewItem = ({
                   <img
                      alt='main image scaled view'
                      src={image || DefaultImage}
+                     loading='lazy'
                   ></img>
                </div>
             ) : (
@@ -75,7 +77,7 @@ const ImageViewItem = ({
                   <IconButton
                      className='enlarged-view-btn'
                      onClick={handleClick}
-                     ariaLabel='enlarge image'
+                     aria-label='enlarge image'
                   >
                      <Avatar>
                         <CloseIcon color='primary' fontSize='large' />
@@ -85,6 +87,7 @@ const ImageViewItem = ({
                      <img
                         alt='main image enlarged view'
                         src={image || DefaultImage}
+                        loading='lazy'
                      ></img>
                   </div>
                </>
@@ -96,8 +99,9 @@ const ImageViewItem = ({
       return (
          <div className='default' onClick={handleClick}>
             <img
-               alt='main product image not found'
+               alt='main product image '
                className='default-img'
+               loading='lazy'
                src={image || DefaultImage}
             ></img>
          </div>

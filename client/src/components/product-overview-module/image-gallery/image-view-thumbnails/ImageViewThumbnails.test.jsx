@@ -9,16 +9,16 @@ const photo2 = { url: 'test2', thumbnail_url: 'test2' };
 const photo3 = { url: 'test3', thumbnail_url: 'test3' };
 const photos = [photo1, photo2, photo3];
 const handleChildZoom = () => {
-  console.log('here');
+   return 1;
 };
 
 test('renders the image view thumbnails correctly', async () => {
-  render(
-    <ImageViewThumbnails
-      photos={photos}
-      currenetIndex={0}
-      handleChildZoom={handleChildZoom}
-    />
-  );
-  expect(screen.getByTestId('thumbnail-list')).toBeDefined();
+   render(
+      <ImageViewThumbnails
+         photos={photos}
+         currenetIndex={0}
+         handleChildZoom={handleChildZoom}
+      />
+   );
+   expect(screen.getByTestId('thumbnail-list')).toBeDefined();
 });
