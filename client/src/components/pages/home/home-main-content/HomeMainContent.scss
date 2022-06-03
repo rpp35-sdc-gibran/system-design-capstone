@@ -5,17 +5,17 @@
    @include flex-center();
    gap: 1rem;
    background-color: $primary-color;
-   padding: 4rem 0 4rem 4rem;
+   padding: 2rem 12rem 2rem 12rem;
    color: $text-color-light;
    .home-main-content-left {
       @include flex-column();
-      @include set-size(100%, 50%);
+      @include set-size(100%, 30%);
       gap: 1rem;
       .main-content-button {
          width: 50%;
       }
    }
    .home-main-content-right {
-      @include set-size(100%, 50%);
+      @include set-size(100%, 70%);
    }
 }

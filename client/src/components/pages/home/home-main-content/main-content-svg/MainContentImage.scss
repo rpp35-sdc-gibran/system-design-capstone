@@ -19,23 +19,23 @@
 //    }
 // }
 
-#shopping-cart-woman {
-   animation: drive 1.5s linear forwards;
-   transform-origin: center;
-   transform-box: fill-box;
-}
+// #shopping-cart-woman {
+//    animation: drive 1.5s linear forwards;
+//    transform-origin: center;
+//    transform-box: fill-box;
+// }
 
-@keyframes drive {
-   0% {
-      transform: translateX(0) rotateZ(0deg);
-   }
-   50% {
-      transform: translateX(40rem) rotateZ(-20deg);
-   }
-   100% {
-      transform: translateX(0) rotateZ(0deg);
-   }
-}
+// @keyframes drive {
+//    0% {
+//       transform: translateX(0) rotateZ(0deg);
+//    }
+//    50% {
+//       transform: translateX(40rem) rotateZ(-20deg);
+//    }
+//    100% {
+//       transform: translateX(0) rotateZ(0deg);
+//    }
+// }
 
 // #Arm_1_ {
 //    transform: translate(0px, -110px) rotateZ(-15deg);

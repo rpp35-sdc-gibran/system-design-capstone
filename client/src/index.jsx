@@ -30,6 +30,9 @@ const theme = createTheme({
       caption: {
          fontSize: '0.7rem',
       },
+      subtitle1: {
+         fontSize: '1vw',
+      },
    },
 });
 
