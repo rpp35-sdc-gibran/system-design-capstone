@@ -23,6 +23,7 @@ const RatingsAndReviews = ({ currentProductId }) => {
    const [currentReviewsMeta, SetCurrentReviewsMeta] =
       useState(sampleReviewsMeta);
    const [starFilters, dispatch] = useReducer(reducer, []);
+   const [productName, setProductName] = useState('');
    useEffect(() => {
       if (currentProductId) {
          axios
@@ -37,21 +38,40 @@ const RatingsAndReviews = ({ currentProductId }) => {
                   url: '/api/reviews/meta',
                   headers: { product_id: currentProductId },
                }),
+               axios.get(`/api/products/${currentProductId}`),
             ])
             .then(
-               axios.spread((data1, data2) => {
-                  SetCurrentReviews(data1.data.results);
-                  SetCurrentReviewsMeta(data2.data);
+               axios.spread((reviews, reviewsMeta, productData) => {
+                  console.log(
+                     'reviews from server Ratings&Reviews.jsx',
+                     reviews,
+                     'reviewsMeta',
+                     reviewsMeta,
+                     'productName: ',
+                     productData.data.name
+                  );
+                  SetCurrentReviews(reviews.data.results);
+                  SetCurrentReviewsMeta(reviewsMeta.data);
+                  setProductName(productData.data.name);
                })
             );
       }
    }, [currentProductId]);
 
+   console.log(
+      'current product ID in RatingsAndReviews.jsx: ',
+      currentProductId
+   );
+   console.log('starFilters', starFilters);
    return (
       <div>
          <link rel='stylesheet' type='css' href='reviewsStyle.css' />
          <Ratings reviewsMeta={currentReviewsMeta} dispatch={dispatch} />
-         <ReviewsList reviews={currentReviews} starFilters={starFilters} />
+         <ReviewsList
+            reviews={currentReviews}
+            starFilters={starFilters}
+            productName={productName}
+         />
       </div>
    );
 };
