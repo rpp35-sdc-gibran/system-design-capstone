@@ -162,10 +162,16 @@ const postInteraction = (req, res) => {
    // requires req.body.interaction.element
    // requires req.body.interaction.widget
    // requires req.body.interaction.time
+
    axios({
       method: 'post',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions',
-      headers: { Authorization: GITHUB_API_TOKEN }
+      headers: { Authorization: GITHUB_API_TOKEN },
+      data: {
+        element: req.body.interaction.element,
+        widget: req.body.interaction.widget,
+        time: req.body.interaction.time
+      }
    })
    .then((results) => {
      console.log('Success posting interaction!');

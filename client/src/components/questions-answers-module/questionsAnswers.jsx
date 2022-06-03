@@ -140,7 +140,7 @@ class QuestionsAnswers extends React.Component {
           changeQAState={this.changeQAState}
           allQuestions={this.state.allQuestions}
         />
-        <QuestionsList
+        <QuestionsList className="question-list"
           questions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.shownQuestions }
           addQuestionModal={this.state.addQuestionModal}
           addAnswerModal={this.state.addAnswerModal}

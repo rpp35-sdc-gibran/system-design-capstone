@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import  './answerList.scss';
 
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -16,6 +17,23 @@ class AnswersList extends React.Component {
       };
       this.getAnswers = this.getAnswers.bind(this);
       this.addShownAnswers = this.addShownAnswers.bind(this);
+   }
+
+   sortAnswers() {
+      // set var to current allAnswers array
+      let currAllAnswers = this.state.allAnswers;
+      // create new array
+      let sellerAnswers = [];
+
+      // iterate overy copy of allAnswers
+      currAllAnswers.forEach((answer) => {
+         // if answerer is Seller, push answer to new array
+         if (answer.answerer_name === 'Seller') {
+            sellerAnswers.push(answer);
+         }
+      })
+      // update allAnswers state to new array concatinated with remaining answers
+      this.setState({allAnswers: sellerAnswers.concat(currAllAnswers)});
    }
 
    getAnswers() {
@@ -46,6 +64,8 @@ class AnswersList extends React.Component {
 
    componentDidMount() {
       this.getAnswers();
+      // order answers
+      this.sortAnswers();
       this.addShownAnswers();
    }
 
