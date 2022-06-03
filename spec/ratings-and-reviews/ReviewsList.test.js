@@ -1,9 +1,8 @@
-import React from "react";
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-import 'regenerator-runtime/runtime'
+import React from 'react';
+import { render, unmountComponentAtNode } from 'react-dom';
+import { act } from 'react-dom/test-utils';
+import 'regenerator-runtime/runtime';
 import ReviewsList from '../../client/src/components/ratings&reviews/reviews/ReviewsList.jsx';
-
 
 let container = null;
 beforeEach(() => {
@@ -35,13 +34,12 @@ it("renders reviewsList data", async () => {
     }
   ];
 
-  // Use the asynchronous version of act to apply resolved promises
+Use the asynchronous version of act to apply resolved promises
   await act(async () => {
     render(<ReviewsList reviews={fakeReviews} />, container);
   });
 
   expect(container.querySelector("h3").textContent).toBe('1 reviews, sorted byhelpful newest relevance ');
-
 
   // remove the mock to ensure tests are completely isolated
   //global.fetch.mockRestore();

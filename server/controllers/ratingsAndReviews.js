@@ -4,7 +4,7 @@ const axios = require('axios');
 const path = require('path');
 
 module.exports = {
-  //returns array of all products
+   //returns array of all products
 
   reviews: {
     //returns list of all reviews for single product
@@ -19,41 +19,41 @@ module.exports = {
         },
       });
 
-      promise.then((response) => {
-        console.log('got reviews from API: ', response.data);
-        res.send(response.data);
-      });
-      promise.catch((err) => {
-        //console.log('err:', err);
-        res.status(400).send('Error getting reviews');
-      });
-    },
+         promise.then((response) => {
+            console.log('got reviews from API: ', response.data);
+            res.send(response.data);
+         });
+         promise.catch((err) => {
+            //console.log('err:', err);
+            res.status(400).send('Error getting reviews');
+         });
+      },
 
-    getReviewMetadata: async function (req, res) {
-      console.log(
-        'reviews Metadata req.headers.product_id: ',
-        typeof req.headers.product_id
-      );
-      let id = Number(req.headers.product_id);
-      console.log(id, typeof id);
-      let urlMeta = path.join(url, 'meta');
-      let promise = axios.get(`${url}meta`, {
-        headers: {
-          Authorization: GITHUB_API_TOKEN,
-        },
-        params: {
-          product_id: req.headers.product_id,
-        },
-      });
-      promise
-        .then((response) => {
-          console.log('got reviewsMetadata from API: ', response.data);
-          res.send(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+      getReviewMetadata: async function (req, res) {
+         console.log(
+            'reviews Metadata req.headers.product_id: ',
+            typeof req.headers.product_id
+         );
+         let id = Number(req.headers.product_id);
+         console.log(id, typeof id);
+         let urlMeta = path.join(url, 'meta');
+         let promise = axios.get(`${url}meta`, {
+            headers: {
+               Authorization: GITHUB_API_TOKEN,
+            },
+            params: {
+               product_id: req.headers.product_id,
+            },
+         });
+         promise
+            .then((response) => {
+               console.log('got reviewsMetadata from API: ', response.data);
+               res.send(response.data);
+            })
+            .catch((error) => {
+               console.log(error);
+            });
+      },
 
     postProductReviews: function (req, res) {
       console.log(req.body)

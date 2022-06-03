@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
 import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
 
 class Answer extends React.Component {
    reportAnswer() {
@@ -43,27 +45,53 @@ class Answer extends React.Component {
    }
 
    render() {
+      //! if this.props.answer.answerer_name is equal to "Seller" bold font?
+      let answerer;
+      if (this.props.answer.answerer_name === 'Seller') {
+         answerer = (
+            <Typography variant='h6'>
+               {this.props.answer.answerer_name}
+            </Typography>
+         );
+      } else {
+         answerer = this.props.answer.answerer_name;
+      }
       return (
          <Card variant='outlined'>
-            <div>
-               A: {this.props.answer.body}
+            <Typography align='left' variant='h6'>
+               A:{' '}
+            </Typography>
+            <Typography variant='body1'>
+               {this.props.answer.body}
+               by {this.props.answer.answerer_name},{' '}
+               {this.props.convertDate(this.props.answer.date)}
                Helpful?
                <a
-                  class='helpful'
-                  onClick={this.isHelpful.bind(this)}
+                  className='helpful'
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
+                  onClick={() => {
+                     let answer_id = this.props.answer.answer_id.toString();
+                     if (!Boolean(localStorage.getItem(answer_id))) {
+                        this.isHelpful();
+                        localStorage.setItem(answer_id, true);
+                     }
+                  }}
                >
                   Yes
                </a>
                ({this.props.answer.helpfulness})
                <a
-                  class='report'
-                  onClick={this.reportAnswer.bind(this)}
+                  className='report'
+                  onClick={(event) => {
+                     this.reportAnswer.bind(this)();
+                     // change inner html text to reported
+                     event.target.innerHTML = 'Reported';
+                  }}
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                >
                   Report
                </a>
-            </div>
+            </Typography>
          </Card>
       );
    }

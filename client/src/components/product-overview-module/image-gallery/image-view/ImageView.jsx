@@ -49,6 +49,8 @@ const ImageView = ({
                   handleThumbnailClick={handleThumbnailClick}
                   currentIndex={currentIndex}
                   isEnlargedView={isEnlargedView}
+                  goNext={goNext}
+                  goPrev={goPrev}
                />
             </div>
          )}
@@ -88,13 +90,6 @@ const ImageView = ({
                      </Avatar>
                   </IconButton>
                )}
-               {/* <IconButton
-            data-testid='enlarge-button'
-            onClick={handleChildZoom}
-            className='button-fit'
-          >
-            <FitScreenIcon />
-          </IconButton> */}
             </div>
          )}
       </div>

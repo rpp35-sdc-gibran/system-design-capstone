@@ -1,15 +1,26 @@
 import React from 'react';
 import './ImageViewThumbnails.scss';
 import ImageViewThumbnailItem from '../image-view-thumbnail-item/ImageViewThumbnailItem.jsx';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import IconButton from '@mui/material/IconButton';
+import Avatar from '@mui/material/Avatar';
 
 const ImageViewThumbnails = ({
    photos,
    handleThumbnailClick,
    currentIndex,
    isEnlargedView,
+   goNext,
+   goPrev,
 }) => {
    return (
-      <div data-testid='thumbnail-list' className='image-view-thumbnail-list'>
+      <div className='image-view-thumbnail-list' data-testid='thumbnail-list'>
+         {currentIndex !== 0 && (
+            <IconButton onClick={() => goPrev()} className='arrow-up'>
+               <ArrowBackIosIcon color='primary' />
+            </IconButton>
+         )}
          {photos.map((photo, index) => {
             if (currentIndex >= 5) {
                if (index > currentIndex - 5 && index <= currentIndex) {
@@ -43,6 +54,11 @@ const ImageViewThumbnails = ({
                }
             }
          })}
+         {currentIndex !== photos.length - 1 && (
+            <IconButton onClick={() => goNext()} className='arrow-down'>
+               <ArrowBackIosIcon color='primary' />
+            </IconButton>
+         )}
       </div>
    );
 };

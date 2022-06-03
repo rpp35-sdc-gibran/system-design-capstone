@@ -7,16 +7,16 @@ import sampleReviewsMeta from './sampleReviewsMeta.js';
 import './reviewsStyle.css';
 
 const reducer = (starFilters, action) => {
-  switch (action.type) {
-    case 'toggle':
-      return starFilters.includes(action.payload)
-        ? starFilters.filter((filter) => filter !== action.payload)
-        : [...starFilters, action.payload];
-    case 'reset':
-      return [];
-    default:
-      return starFilters;
-  }
+   switch (action.type) {
+      case 'toggle':
+         return starFilters.includes(action.payload)
+            ? starFilters.filter((filter) => filter !== action.payload)
+            : [...starFilters, action.payload];
+      case 'reset':
+         return [];
+      default:
+         return starFilters;
+   }
 };
 const RatingsAndReviews = ({ currentProductId }) => {
   const [currentReviews, SetCurrentReviews] = useState(sampleReviews.results);

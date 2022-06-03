@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './StyleSelectItem.scss';
 import CheckIcon from '@mui/icons-material/Check';
 import Avatar from '@mui/material/Avatar';
-import DefaultImage from '../../../pages/home/product-card/Image-coming-soon.svg';
+import DefaultImage from '../../../pages/home/home-product-carousel/product-card/Image-coming-soon.svg';
 
 const Style = ({ style_id, image, handleStyleClick, currentStyle, index }) => {
    const [active, setActive] = useState(false);
@@ -16,6 +16,7 @@ const Style = ({ style_id, image, handleStyleClick, currentStyle, index }) => {
             <>
                <Avatar
                   className='style-item-icon'
+                  data-testid='checkbox-icon'
                   sx={{
                      height: '25px',
                      width: '25px',

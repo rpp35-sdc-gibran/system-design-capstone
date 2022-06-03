@@ -1,0 +1,47 @@
+@use '../../../../App.scss' as *;
+
+.product-card {
+   @include flex-column();
+   @include set-size(24rem, 16rem);
+   justify-content: space-between;
+   padding-left: 0;
+   .product-card-actions-content {
+      @include flex-column();
+      @include set-size(100%);
+      justify-content: flex-start;
+      padding: 0 0.4rem 0.4rem 0.4rem;
+      .product-card-actions {
+         padding: 0;
+         .product-card-name {
+            color: $text-color-dark;
+            text-decoration: none;
+         }
+         .product-card-name:hover {
+            color: $alternate-color-1;
+         }
+      }
+      .product-card-content {
+         @include flex-column();
+         @include set-size(100%);
+         padding: 0;
+         .product-content-description {
+            flex-grow: 1;
+         }
+         .product-card-btn {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+         }
+      }
+   }
+}
+
+.product-card-price {
+   @include set-size(2rem, 4rem);
+   color: $text-color-light;
+   position: relative;
+   bottom: 1rem;
+   left: 0.5rem;
+   border-radius: 25px;
+   background-color: $alternate-color-1;
+}

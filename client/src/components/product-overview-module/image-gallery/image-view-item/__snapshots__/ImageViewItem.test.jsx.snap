@@ -6,13 +6,10 @@ exports[`renders correctly 1`] = `
   onClick={[Function]}
 >
   <img
-    alt="main image default view"
-    style={
-      Object {
-        "left": -70,
-        "top": -50,
-      }
-    }
+    alt="main product image "
+    className="default-img"
+    loading="lazy"
+    src="test-file-stub"
   />
 </div>
 `;

@@ -1,14 +1,17 @@
 @use '../../App.scss' as *;
 
 .nav {
-  padding: 0px 10px 0 10px;
-}
-.nav-container {
-  @include flex-center();
-  .nav-logo {
-    flex-grow: 1;
-  }
-  .nav-search-field {
-    margin: 5px;
-  }
+   padding: 0px 10px 0 10px;
+   .nav-container {
+      @include flex-center();
+      .nav-logo {
+         flex-grow: 1;
+         @include flex-center-vert();
+         color: $secondary-color;
+         text-decoration: none;
+      }
+      .nav-search-field {
+         margin: 5px;
+      }
+   }
 }

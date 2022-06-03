@@ -8,6 +8,8 @@ exports[`renders correctly 1`] = `
 >
   <img
     alt="thumbnail image"
+    className="thumbnail-img"
+    src="test-file-stub"
   />
 </div>
 `;
