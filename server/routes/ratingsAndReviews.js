@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   controllers.reviews.getProductReviews(req, res);
 });
 //handles posting product reviews for single product
-router.post('/:product_id', (req, res) => {
+router.post('/', (req, res) => {
   controllers.reviews.postProductReviews(req, res);
 });
 //handles getting product reviews Metadata for single product

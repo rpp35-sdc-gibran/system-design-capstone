@@ -15,7 +15,7 @@ module.exports = {
           Authorization: GITHUB_API_TOKEN,
         },
         params: {
-          product_id: req.headers.product_id,
+          product_id: req.headers.product_id, count: 100
         },
       });
 
@@ -56,31 +56,30 @@ module.exports = {
     },
 
     postProductReviews: function (req, res) {
-      let promise = axios({
+      console.log(req.body)
+      axios({
         method: 'post',
-        url: url,
-        headers: {
-          Authorization: GITHUB_API_TOKEN,
-        },
-        params: {
-          product_id: req.params.product_id,
-          rating: req.params.rating,
-          summary: req.params.summary,
-          body: req.params.body,
-          recommend: req.params.recommend,
-          name: req.params.name,
-          email: req.params.email,
-          photos: req.params.photos,
-          characteristics: req.params.characteristics,
-        },
-      });
-      promise
+        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews',
+        headers: { Authorization: GITHUB_API_TOKEN, },
+        data: {
+          "product_id": Number(req.body.product_id),
+          "rating": req.body.rating,
+          "summary": req.body.summary,
+          "body": req.body.body,
+          "recommend": req.body.recommend,
+          "name": req.body.name,
+          "email": req.body.email,
+          "photos": [],
+          "characteristics": {}
+        }
+      })
         .then((response) => {
-          res.send(response);
+          console.log('successed! posting')
+          res.send(response.status);
         })
-        .catch((error) => {
-          throw error;
-        });
+      .catch((error) => {
+        console.log('something wrong when posting new review', error)
+      });
     },
     markReviewAsHelpful: function (req, res) {
       let urlMarkHelpful = path.join(url, '/:review_id/helpful');
@@ -93,6 +92,7 @@ module.exports = {
       });
       promise
         .then((response) => {
+          console.log(response)
           res.send(response);
         })
         .catch((error) => {

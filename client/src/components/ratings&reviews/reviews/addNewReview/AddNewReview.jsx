@@ -17,7 +17,7 @@ import IconButton from '@mui/material/IconButton';
 //   characteristics: req.params.characteristics,
 // },
 const AddNewReview = (props) => {
-  const [newReview, SetNewReview] = useState({});
+  const [newReview, SetNewReview] = useState({ recommend: true });
   const [rating, SetRating] = useState(0);
   const [hoverRating, SetHoverRating] = useState(0);
   const [explainRating, SetExplainRating] = useState(false);
@@ -32,26 +32,35 @@ const AddNewReview = (props) => {
   const [email, SetEmail] = useState('');
 
   const onMouseEnter = (index) => {
-    setHoverRating(index);
+    SetHoverRating(index);
   };
   const onMouseLeave = () => {
-    setHoverRating(0);
+    SetHoverRating(0);
   };
   const onSaveRating = (index) => {
-    setRating(index);
-    setNewReview({ ...newReview, rating: index })
+    SetRating(index);
+    SetNewReview({ ...newReview, rating: index })
     SetExplainRating(true);
   };
   const handleNewReviewSubmit = (e) => {
     e.preventDefault();
-    props.setTrigger(false)
+    console.log(characteristics);
+    console.log(imageURLs);
+    props.postReview({...newReview, photos: imageURLs, characteristics: characteristics})
+    props.SetTrigger(false)
   }
-  const handelSize = (e) => { SetCharacteristcs({ ...characteristics, size: e.target.value }) }
-  const handelWidth = (e) => { SetCharacteristcs({ ...characteristics, width: e.target.value }) }
-  const handelComfort = (e) => { SetCharacteristcs({ ...characteristics, Comfort: e.target.value }) }
-  const handelQuality = (e) => { SetCharacteristcs({ ...characteristics, Quality: e.target.value }) }
-  const handelLength = (e) => { SetCharacteristcs({ ...characteristics, Length: e.target.value }) }
-  const handleFit = (e) => { SetCharacteristcs({ ...characteristics, Fit: e.target.value }) }
+
+
+   const handelSize = (e) => {
+    //SetCharacteristcs({ ...characteristics, size: Number(e.target.value) })
+  }
+  const handelWidth = (e) => {
+   // SetCharacteristcs({ ...characteristics, width: Number(e.target.value) })
+  }
+  const handelComfort = (e) => { SetCharacteristcs({ ...characteristics, Comfort: Number(e.target.value) }) }
+  const handelQuality = (e) => { SetCharacteristcs({ ...characteristics, Quality: Number(e.target.value) }) }
+  const handelLength = (e) => { SetCharacteristcs({ ...characteristics, Length: Number(e.target.value) }) }
+  const handleFit = (e) => { SetCharacteristcs({ ...characteristics, Fit: Number(e.target.value) }) }
 
   const handleRecommend = (e) => {
     console.log(e.target.value)
@@ -70,11 +79,11 @@ const AddNewReview = (props) => {
   const onImageChange = (e) => {
     SetImages([...e.target.files]);
   }
-  const handleNickName = (e)=> {
+  const handleNickName = (e) => {
     SetNickName(e.target.value);
-    SetNewReview({ ...newReview, reviewer_name: e.target.value })
+    SetNewReview({ ...newReview, name: e.target.value })
   }
-  const handleEmail = (e)=> {
+  const handleEmail = (e) => {
     SetEmail(e.target.value);
     SetNewReview({ ...newReview, email: e.target.value })
   }
@@ -113,14 +122,11 @@ const AddNewReview = (props) => {
           <label>
             Do you recommend this product? (mandatory)
             <div >
-              <input type="radio" value="Yes" name="recommend" onChange={handleRecommend} checked={selectedRadioBtn === 'Yes'} /> Yes
-              <input type="radio" value="No" name="recommend" onChange={handleRecommend} checked={selectedRadioBtn === 'No'} /> No
+              <input className='recommendRadio' type="radio" value="Yes" name="recommend" onChange={handleRecommend} checked={selectedRadioBtn === 'Yes'} /> Yes
+              <input className='recommendRadio' type="radio" value="No" name="recommend" onChange={handleRecommend} checked={selectedRadioBtn === 'No'} /> No
             </div>
           </label>
-          <label>
-            Size
-            <Characteristics handleChara={handelSize} name='Size' meanings={['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide']} />
-          </label>
+          <label>Size<Characteristics handleChara={handelSize} name='Size' meanings={['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide']} /></label>
           <label>
             Width
             <Characteristics handleChara={handelWidth} name='Width' meanings={['Too narrow', 'Slightly narrow', 'Ok', 'Slightly wide', 'Too wide']} />
@@ -141,37 +147,40 @@ const AddNewReview = (props) => {
             Fit
             <Characteristics handleChara={handleFit} name='Fit' meanings={['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']} />
           </label>
-          <label>
-            Review summary
-            <div ><textarea placeholder='Example: Best purchase ever!' maxLength="60" value={reviewSummary} onChange={handleReviewSummary} /></div>
-          </label>
-          <label>
-            Review Body
-            <div ><textarea placeholder='Why did you like the product or not?' maxLength="1000" className='reviewBody' value={reviewBody} onChange={handleReviewBody} /></div>
-          </label>
+          <div className='summarybody-box'>
+            <label>
+              Review summary
+              <div ><textarea placeholder='Example: Best purchase ever!' maxLength="60" value={reviewSummary} onChange={handleReviewSummary} /></div>
+            </label>
+            <label>
+              Review Body
+              <div ><textarea placeholder='Why did you like the product or not?' minLength="50" maxLength="1000" className='reviewBody' value={reviewBody} onChange={handleReviewBody} required/></div>
+              {reviewBody.length < 50 ? <p>Minimum required characters left: {50 - reviewBody.length}</p> : <p>Minimum reached</p>}
+            </label>
+          </div>
           <Button onClick={() => SetUploadPhotos(true)} variant="contained" component="span">
             Upload Photos
           </Button>
           {uploadPhotos ? (<div>
-            {imageURLs.length < 5 ? <input accept="image/*" multiple type="file" onChange={onImageChange} /> : <></>}
+            {imageURLs.length < 5 ? <input accept="image/*" type="file" onChange={onImageChange} /> : <></>}
             {imageURLs.map((url) => {
               return <img className="smallimg" src={url} />
             })}
           </div>) : <></>}
           <div className='nickName'><label>
             Nickname:
-            <Input placeholder='Example: jackson11!' maxLength="60" className='nickName' value={nickName} onChange={handleNickName} />
+            <Input placeholder='Example: jackson11!' maxLength="60" className='nickName' value={nickName} onChange={handleNickName} required/>
             <p>For privacy reasons, do not use your full name or email address</p>
           </label>
           </div>
           <div className='email'><label>
             Email:
-            <Input placeholder='Example: jackson11@email.com' maxLength="60" className='email' value={email} onChange={handleEmail} />
+            <Input placeholder='Example: jackson11@email.com' maxLength="60" className='email' value={email} onChange={handleEmail} required/>
             <p>For authentication reasons, you will not be emailed” will appear</p>
           </label>
           </div>
           <div>
-            <input type="submit" value="Submit" />
+            <input className='submitbutton' variant="contained" component="span" type="submit" value="Submit" />
           </div>
 
         </form>
@@ -212,13 +221,13 @@ function StarIcon(props) {
     <svg className="w-6 h-6" fill={fill} stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
   );
 }
-function Characteristics({ meanings, handleChara }) {
+function Characteristics({ meanings, handleChara, name }) {
 
   return (
     <div className="section-box">
       {meanings.map((meaning, index, name) => (
         <div className='characteristic-box'>
-          <span><input className='rateChara' type="radio" value={index + 1} name={name} onChange={handleChara} /></span>
+          <span><input className='rateChara' type="radio" value={index + 1} name={name} onChange={handleChara} required/></span>
           <span className='explainChara'>{meaning}</span>
         </div>
       ))}

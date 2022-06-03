@@ -26,8 +26,7 @@ const ReviewTile = ({ review }) => {
    return (
       <div className='reviewTile'>
          <StarRating rating={review.rating} reviewId={review.review_id} />
-         <span className='reviewName'>{review.reviewer_name}</span>
-         <span>{`  ${month} ${date}, ${year}`}</span>
+         <span className='nameanddate'>{`${review.reviewer_name},  ${month} ${date}, ${year}`}</span>
          <br />
          <span className='summary'>{review.summary.slice(0, 60)}</span>
          <br />

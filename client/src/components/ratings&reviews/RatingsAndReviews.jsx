@@ -24,7 +24,7 @@ const RatingsAndReviews = ({ currentProductId }) => {
     useState(sampleReviewsMeta);
   const [starFilters, dispatch] = useReducer(reducer, []);
   const [productName, setProductName] = useState('');
-  useEffect(() => {
+  const renderReviewsAndRatings = () => {
     if (currentProductId) {
       axios
         .all([
@@ -55,19 +55,33 @@ const RatingsAndReviews = ({ currentProductId }) => {
           })
         );
     }
-  }, [currentProductId]);
-
+  }
+  useEffect(renderReviewsAndRatings, [currentProductId]);
+  const postReview = (newReview) => {
+    console.log('sending to serer newReview', newReview);
+    axios.post('/api/reviews/', {...newReview, product_id: currentProductId})
+      .then((response) => {
+        console.log('after posting review response:', response);
+        renderReviewsAndRatings();
+      }).
+      catch((error) => {
+        console.log(error)
+      })
+  }
   console.log(
     'current product ID in RatingsAndReviews.jsx: ',
     currentProductId
   );
   console.log('starFilters', starFilters);
   return (
+    <>
     <div>
       <link rel='stylesheet' type='css' href='reviewsStyle.css' />
       <Ratings reviewsMeta={currentReviewsMeta} dispatch={dispatch} />
-      <ReviewsList reviews={currentReviews} starFilters={starFilters} productName={productName}/>
+      <ReviewsList reviews={currentReviews} starFilters={starFilters} productName={productName} postReview={postReview} />
     </div>
+    <div class="page-bottom">bottom</div>
+    </>
   );
 };
 
