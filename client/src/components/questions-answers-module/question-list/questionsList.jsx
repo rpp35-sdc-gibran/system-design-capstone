@@ -11,8 +11,16 @@ class QuestionsList extends React.Component {
   render () {
     return (
       <div>
-        {this.props.questions.map((question) => {
-          return <Question question={question}/>
+        {this.props.questions.map((question, index) => {
+          return (
+            <Question
+              key={index}
+              question={question}
+              addAnswerModal={this.props.addAnswerModal}
+              changeQAState={this.props.changeQAState}
+              convertDate={this.props.convertDate}
+            />
+          );
         })}
       </div>
     )

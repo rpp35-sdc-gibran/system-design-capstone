@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
 import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
 
 import Answer from '../answer/answer.jsx';
 
@@ -9,34 +11,55 @@ class AnswersList extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         allAnswers: [],
+         shownAnswers: [],
+         allAnswers: []
       };
+     this.getAnswers = this.getAnswers.bind(this);
+     this.addShownAnswers = this.addShownAnswers.bind(this);
+   }
 
-      axios
-         .get('/api/questionsAnswers/answers', {
-            params: {
-               question_id: this.props.question_id,
-            },
-         })
+   getAnswers () {
+      axios.get('/api/questionsAnswers/answers', { params: {question_id: this.props.question_id} })
          .then((results) => {
-            // console.log(`Answer list for ${this.props.question_id}`, results.data.results)
-            this.setState({ allAnswers: results.data.results });
+            this.setState({ shownAnswers: results.data.results.splice(0,2), allAnswers: results.data.results });
          })
          .catch((error) => {
             console.log('error', error);
          });
    }
 
-   // ternary statement for not mapping undefined
+   addShownAnswers () {
+      let currShownAnswers = this.state.shownAnswers, currAllAnswers = this.state.allAnswers;
+      currShownAnswers = currShownAnswers.concat(currAllAnswers.splice(0, 2));
+      this.setState({shownAnswers: currShownAnswers, allAnswers: currAllAnswers});
+   }
+
+   componentDidMount () {
+      this.getAnswers();
+      this.addShownAnswers();
+   }
 
    render() {
+
+      let moreAnswers;
+      if (this.state.allAnswers.length) {
+         moreAnswers = <button onClick={() => { this.addShownAnswers() }}><Typography variant='body1'>See More Answers</Typography></button>;
+      } else {
+         moreAnswers = null;
+      }
+
       return (
          <Card>
-            {this.state.allAnswers.map((answer) => {
-               return <Answer answer={answer} />;
+            {this.state.shownAnswers.map((answer, index) => {
+               return <Answer
+                 key={index}
+                 answer={answer}
+                 convertDate={this.props.convertDate}
+               />
             })}
+            {moreAnswers}
          </Card>
-      );
+      )
    }
 }
 
