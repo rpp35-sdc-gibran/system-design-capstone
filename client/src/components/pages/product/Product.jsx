@@ -21,7 +21,7 @@ const Product = (props) => {
       <div>
          <EnhancedProductOverview currentProductId={productId} />
          <EnhancedRelatedItems currentProductId={productId} />
-         {/* <QuestionsAnswers currentProductId={productId} /> */}
+         <QuestionsAnswers currentProductId={productId} />
          <RatingsAndReviews currentProductId={productId}/>
       </div>
    );
