@@ -25,13 +25,16 @@ const theme = createTheme({
    },
    typography: {
       h6: {
-         fontSize: '0.8rem',
+         fontSize: '1.2rem',
       },
       caption: {
-         fontSize: '0.7rem',
+         fontSize: '1rem',
       },
       subtitle1: {
-         fontSize: '1vw',
+         fontSize: '1rem',
+      },
+      body1: {
+         fontSize: '1.2rem',
       },
    },
 });

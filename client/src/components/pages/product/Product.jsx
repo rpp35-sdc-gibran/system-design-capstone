@@ -7,7 +7,7 @@ import sampleReviews from '../../ratings&reviews/reviews/reviewsForProductId7169
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import WithAnalytics from '../../../WithAnalytics.jsx';
-import useIntersectionObserver from '../../../Hooks/useIntersectionObserver.jsx';
+import { useIntersectionObserver } from '../../../Hooks/useIntersectionObserver.jsx';
 
 // pass down module to this higher order component which will add on click to our module
 const EnhancedProductOverview = WithAnalytics(ProductOverview);
@@ -36,15 +36,15 @@ const Product = (props) => {
    //create refs for all elements to observe
    let relatedItemsSection = useRef(null);
    let questionsAnswersSection = useRef(null);
-   let ratingsAndReviewSection = useRef(null);
+   // let ratingsAndReviewSection = useRef(null);
 
    //start observing them using hook - will return true when in viewport
    let isRelatedItemsSectionVisible =
       useIntersectionObserver(relatedItemsSection);
 
-   let isRatingsAndReviewSectionVisible = useIntersectionObserver(
-      ratingsAndReviewSection
-   );
+   // let isRatingsAndReviewSectionVisible = useIntersectionObserver(
+   //    ratingsAndReviewSection
+   // );
 
    let isQuestionsAnswersSectionVisible = useIntersectionObserver(
       questionsAnswersSection
@@ -54,14 +54,17 @@ const Product = (props) => {
       'isQuestionsAnswersSectionVisible:',
       isQuestionsAnswersSectionVisible
    );
-   console.log(
-      'isRatingsAndReviewSectionVisible:',
-      isRatingsAndReviewSectionVisible
-   );
+   // console.log(
+   //    'isRatingsAndReviewSectionVisible:',
+   //    isRatingsAndReviewSectionVisible
+   // );
 
    return (
       <>
-         <section className='product-productoverview'>
+         <section
+            className='product-productoverview'
+            data-testid='product-overview'
+         >
             <EnhancedProductOverview currentProductId={productId} />
          </section>
          <section ref={relatedItemsSection} className='product-related-items'>
@@ -81,7 +84,7 @@ const Product = (props) => {
                </Suspense>
             )}
          </section>
-         <section
+         {/* <section
             ref={ratingsAndReviewSection}
             className='product-ratings-reviews'
          >
@@ -94,7 +97,7 @@ const Product = (props) => {
                   />
                </Suspense>
             )}
-         </section>
+         </section> */}
       </>
    );
 };

@@ -1,5 +1,5 @@
 //HOC to track all clicks throughout app
-import { useRef } from 'react'; //TODO implemnt useRef within the HOC
+import axios from 'axios';
 
 const WithAnalytics = (WrappedComponent) => {
    //return a new component that adds on click to given component
@@ -7,10 +7,18 @@ const WithAnalytics = (WrappedComponent) => {
       //  const currentElement = useRef();
 
       const handleAnalyticsClick = (event) => {
-         ////  const element = currentElement.current;
-         // console.log('WrappedComponent:', WrappedComponent);
-         // console.log('target element:', event.target);
-         // console.log(Date().toLocaleString());
+         let parameters = {
+            widget: WrappedComponent.name,
+            element: event.target.innerHTML,
+            time: Date().toLocaleString(),
+         };
+         let promise = axios.post('api/interactions', parameters);
+         promise.then((response) => {
+            console.log('response:', response);
+         });
+         promise.catch((err) => {
+            console.log('err:', err);
+         });
       };
       return (
          <div onClick={handleAnalyticsClick}>

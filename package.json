@@ -68,6 +68,9 @@
       "moduleFileExtensions": [
          "js",
          "jsx"
+      ],
+      "testPathIgnorePatterns": [
+         "<rootDir>/spec"
       ]
    }
 }

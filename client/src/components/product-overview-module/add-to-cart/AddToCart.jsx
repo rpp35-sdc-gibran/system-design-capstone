@@ -116,6 +116,7 @@ const AddToCart = ({ currentStyle }) => {
                   className='form-button'
                   variant='contained'
                   type='submit'
+                  aria-label='add item to cart'
                >
                   Add To Cart
                </Button>
