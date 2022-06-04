@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import WithAnalytics from '../../../WithAnalytics.jsx';
 import useIntersectionObserver from '../../../Hooks/useIntersectionObserver.jsx';
+import InteractionAnalytics from '../../questions-answers-module/interactionAnalytics.jsx';
 
 // pass down module to this higher order component which will add on click to our module
 const EnhancedProductOverview = WithAnalytics(ProductOverview);
@@ -28,6 +29,9 @@ const RelatedItems = lazy(() =>
       /* webpackChunkName: "RelatedItems" */ '../../related-items-module/RelatedItems.jsx'
    )
 );
+
+// pass down module to this higher order component which will add on click to our module
+const EnhancedQuestionsAnswers = InteractionAnalytics(QuestionsAnswers);
 
 const Product = (props) => {
    let currentReviews = sampleReviews.results;
@@ -77,7 +81,7 @@ const Product = (props) => {
          >
             {isQuestionsAnswersSectionVisible && (
                <Suspense fallback={<div>Loading...</div>}>
-                  <QuestionsAnswers currentProductId={productId} />
+                  <EnhancedQuestionsAnswers currentProductId={productId} />
                </Suspense>
             )}
          </section>

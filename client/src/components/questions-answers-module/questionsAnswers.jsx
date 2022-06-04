@@ -11,6 +11,7 @@ import QuestionsList from './question-list/questionsList.jsx';
 import Search from './search/search.jsx';
 import AddQuestion from './add-question/addQuestion.jsx';
 import AddAnswer from './add-answer/addAnswer.jsx';
+import InteractionAnalytics from './interactionAnalytics.jsx';
 
 // condition && component
 

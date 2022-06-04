@@ -159,10 +159,6 @@ const getProductInfoByProductID = (req, res) => {
 
 const postInteraction = (req, res) => {
    console.log('req.body', req.body);
-   // requires req.body.interaction.element
-   // requires req.body.interaction.widget
-   // requires req.body.interaction.time
-
    axios({
       method: 'post',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions',
