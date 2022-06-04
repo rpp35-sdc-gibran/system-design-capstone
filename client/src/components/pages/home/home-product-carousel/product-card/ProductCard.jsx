@@ -23,7 +23,7 @@ const ProductCard = ({
 }) => {
    return (
       <Paper elevation={3}>
-         <Card className='product-card'>
+         <Card className='product-card' data-testid='product-card'>
             <CardMedia
                component='img'
                alt={name}
@@ -40,7 +40,11 @@ const ProductCard = ({
             </Typography>
             <div className='product-card-actions-content'>
                <CardActions className='product-card-actions'>
-                  <Link className='product-card-name' to={`/${id}`}>
+                  <Link
+                     data-testid='product-card-name'
+                     className='product-card-name'
+                     to={`/${id}`}
+                  >
                      <Typography variant='h6'>{name}</Typography>
                   </Link>
                </CardActions>
