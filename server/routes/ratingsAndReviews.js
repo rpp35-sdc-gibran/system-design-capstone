@@ -18,11 +18,11 @@ router.get('/meta', (req, res) => {
   controllers.reviews.getReviewMetadata(req, res);
 });
 //handles makrking a review as helpful
-router.put('/helpful/:review_id', (req, res) => {
+router.post('/helpful', (req, res) => {
   controllers.reviews.markReviewAsHelpful(req, res);
 });
 //handles reporting a review
-router.put('/report/:review_id', (req, res) => {
+router.post('/report', (req, res) => {
   controllers.reviews.reportReview(req, res);
 })
 module.exports = router;

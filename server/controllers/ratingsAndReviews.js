@@ -69,7 +69,7 @@ module.exports = {
           "recommend": req.body.recommend,
           "name": req.body.name,
           "email": req.body.email,
-          "photos": [],
+          "photos": req.body.photos,
           "characteristics": {}
         }
       })
@@ -82,39 +82,45 @@ module.exports = {
       });
     },
     markReviewAsHelpful: function (req, res) {
-      let urlMarkHelpful = path.join(url, '/:review_id/helpful');
-      let promise = axios({
+      let urlMarkHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.body.review_id}/helpful`;
+      console.log(`marking ${req.body.review_id} as helpful`)
+      axios({
         method: 'put',
         url: urlMarkHelpful,
-        params: {
-          reveiw_id: req.params.reveiw_id,
+        headers: {
+         Authorization: GITHUB_API_TOKEN,
+      },
+        data: {
+          reveiw_id: req.body.reveiw_id,
         },
-      });
-      promise
+      })
         .then((response) => {
-          console.log(response)
-          res.send(response);
+          console.log(response.status)
+          res.send(response.status);
         })
         .catch((error) => {
-          throw error;
+          console.log('failed marking helpful', error)
         });
     },
     reportReview: function (req, res) {
-      let urlReport = path.join(url, '/:review_id/report');
-      let promise = axios({
-        method: 'put',
-        url: urlReport,
-        params: {
-          reveiw_id: req.params.reveiw_id,
-        },
-      });
-      promise
-        .then((response) => {
-          res.send(response);
-        })
-        .catch((error) => {
-          throw error;
-        });
+      let urlReport = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.body.review_id}/report`;
+      axios({
+         method: 'put',
+         url: urlReport,
+         headers: {
+          Authorization: GITHUB_API_TOKEN,
+       },
+         data: {
+           reveiw_id: req.body.reveiw_id,
+         },
+       })
+         .then((response) => {
+           console.log(response.status)
+           res.send(response.status);
+         })
+         .catch((error) => {
+           console.log('failed reporting review', error)
+         });
     },
   },
 };

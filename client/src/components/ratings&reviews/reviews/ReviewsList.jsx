@@ -5,7 +5,7 @@ import AddNewReview from './addNewReview/AddNewReview.jsx';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 
-const ReviewsList = ({ reviews, starFilters, productName, postReview }) => {
+const ReviewsList = ({ reviews, starFilters, productName, postReview, handleReport }) => {
    console.log('In ReviewsList got: ', reviews);
    console.log('starFilters in ReviewsList.jsx: ', starFilters);
 
@@ -15,6 +15,7 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview }) => {
    const [formPopup, SetFormPopup] = useState(false);
    const [value, SetValue] = useState('');
    const [search, SetSearch] = useState('');
+
 
    const addStarFilter = () => {
       if (starFilters.length) {
@@ -63,6 +64,7 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview }) => {
       e.preventDefault();
       SetSearch(e.target.value);
    }
+
    console.log('reviews To Render: ', reviewsToRender);
 
    useEffect(() => {
@@ -93,7 +95,7 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview }) => {
                <>
                   <div className="reviewtiles">
                      {reviewsToRender.slice(0, renderedCount).map((review, index) => (
-                        <ReviewTile review={review} key={index} />
+                        <ReviewTile review={review} handleReport={handleReport} key={index} />
                      ))}
                   </div>
                   {reviewsToRender.length > 2 && reviewsToRender.length > renderedCount ? (
