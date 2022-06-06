@@ -57,10 +57,10 @@ const AddNewReview = (props) => {
   const handelWidth = (e) => {
    // SetCharacteristcs({ ...characteristics, width: Number(e.target.value) })
   }
-  const handelComfort = (e) => { SetCharacteristcs({ ...characteristics, Comfort: Number(e.target.value) }) }
-  const handelQuality = (e) => { SetCharacteristcs({ ...characteristics, Quality: Number(e.target.value) }) }
-  const handelLength = (e) => { SetCharacteristcs({ ...characteristics, Length: Number(e.target.value) }) }
-  const handleFit = (e) => { SetCharacteristcs({ ...characteristics, Fit: Number(e.target.value) }) }
+  const handelComfort = (e) => { SetCharacteristcs({ ...characteristics, 240584: Number(e.target.value) }) }
+  const handelQuality = (e) => { SetCharacteristcs({ ...characteristics, 240585: Number(e.target.value) }) }
+  const handelLength = (e) => { SetCharacteristcs({ ...characteristics, 240583: Number(e.target.value) }) }
+  const handleFit = (e) => { SetCharacteristcs({ ...characteristics, 240582: Number(e.target.value) }) }
 
   const handleRecommend = (e) => {
     console.log(e.target.value)

@@ -7,10 +7,10 @@ const WithAnalytics = (WrappedComponent) => {
       //  const currentElement = useRef();
 
       const handleAnalyticsClick = (event) => {
-         ////  const element = currentElement.current;
-         // console.log('WrappedComponent:', WrappedComponent);
-         // console.log('target element:', event.target);
-         // console.log(Date().toLocaleString());
+         //  const element = currentElement.current;
+         console.log('WrappedComponent:', WrappedComponent);
+         console.log('target element:', event.target);
+         console.log(Date().toLocaleString());
       };
       return (
          <div onClick={handleAnalyticsClick}>

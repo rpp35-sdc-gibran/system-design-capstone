@@ -25,4 +25,7 @@ router.post('/helpful', (req, res) => {
 router.post('/report', (req, res) => {
   controllers.reviews.reportReview(req, res);
 })
+router.post('/interactions', (req, res) => {
+  controllers.reviews.postInteraction(req, res);
+})
 module.exports = router;
