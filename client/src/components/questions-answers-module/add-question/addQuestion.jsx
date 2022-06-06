@@ -97,7 +97,7 @@ class AddQuestion extends React.Component {
                   <div>
                      <label htmlFor='email'>Email*</label>
                      <input
-                        type='text'
+                        type='email'
                         name='email'
                         id='email'
                         required

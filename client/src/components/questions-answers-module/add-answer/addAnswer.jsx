@@ -52,6 +52,7 @@ class AddAnswer extends React.Component {
             <form
                onSubmit={(event) => {
                   event.preventDefault();
+                  //! check form for invalid entries and sent alter
                   this.postAnswer(this.getInputValues(event));
                   this.props.changeQAState('addAnswerModal', false);
                   // set QA.currQuestion_id to null
@@ -96,7 +97,7 @@ class AddAnswer extends React.Component {
                <div>
                   <label htmlFor='email'>Your email*</label>
                   <input
-                     type='text'
+                     type='email'
                      name='email'
                      className='email'
                      maxLength='60'
@@ -109,11 +110,12 @@ class AddAnswer extends React.Component {
                <div>
                   <label htmlFor='photos'>Upload Your Photos</label>
                   <input
-                     type='text'
-                     name='email'
+                     type='file'
+                     name='photos'
                      className='email'
                      maxLength='60'
                      size='60'
+                     accept="image/png, image/jpeg"
                   />
                </div>
                <button>Sumbit</button>
