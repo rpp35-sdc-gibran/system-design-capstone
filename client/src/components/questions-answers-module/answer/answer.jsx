@@ -46,13 +46,11 @@ class Answer extends React.Component {
    }
 
    render() {
-      //! if this.props.answer.answerer_name is equal to "Seller" bold font?
+      // if this.props.answer.answerer_name is equal to "Seller" bold font?
       let answerer;
       if (this.props.answer.answerer_name === 'Seller') {
          answerer = (
-            <Typography variant='h6'>
-               {this.props.answer.answerer_name}
-            </Typography>
+            <strong>{this.props.answer.answerer_name}</strong>
          );
       } else {
          answerer = this.props.answer.answerer_name;
@@ -64,7 +62,7 @@ class Answer extends React.Component {
             </Typography>
             <Typography variant='body1'>
                {this.props.answer.body}
-               by {this.props.answer.answerer_name},{' '}
+               by {answerer},{' '}
                {this.props.convertDate(this.props.answer.date)}
                Helpful?
                <a
