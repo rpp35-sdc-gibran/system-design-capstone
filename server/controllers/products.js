@@ -45,7 +45,6 @@ module.exports = {
             res.send(response.data);
          });
          promise.catch((err) => {
-            console.log('err:', err);
             res.status(400).send('Error getting product information');
          });
       },
@@ -56,7 +55,6 @@ module.exports = {
             },
          });
          promise.then((response) => {
-            console.log('response:', response);
             res.send(response.data);
          });
          promise.catch((err) => {
@@ -82,7 +80,6 @@ module.exports = {
             res.send(reviews.data);
          });
          promise.catch((err) => {
-            console.log('err:', err);
             res.status(400).send('Error getting reviews');
          });
       },

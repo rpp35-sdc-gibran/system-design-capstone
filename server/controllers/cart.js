@@ -27,7 +27,6 @@ module.exports = {
             res.send('Success! Item has been added to cart.');
          });
          promise.catch((err) => {
-            console.log('err:', err);
             res.status(400).send('Error storing item to cart.');
          });
       },
