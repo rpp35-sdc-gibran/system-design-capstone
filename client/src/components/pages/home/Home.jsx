@@ -13,13 +13,11 @@ const Home = () => {
       axios
          .get('/api/products')
          .then((products) => {
-            console.log('products:', products);
             setProducts(products.data);
             let promises = products.data.map((item) => {
                return axios.get(`/api/products/${item.id}/styles`);
             });
             Promise.all(promises).then((allProducts) => {
-               console.log('allProducts:', allProducts);
                setProductPhotos(allProducts);
             });
          })
@@ -28,7 +26,6 @@ const Home = () => {
          });
    }, []);
 
-   console.log('products:', products);
    return (
       <div className='home-container'>
          <HomeMainContent />

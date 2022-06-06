@@ -27,7 +27,7 @@ const ProductCard = ({
             <CardMedia
                component='img'
                alt={name}
-               height='175'
+               height='155'
                className='product-card-image'
                image={image || DefaultImage}
             />

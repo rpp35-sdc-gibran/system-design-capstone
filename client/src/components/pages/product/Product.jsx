@@ -50,15 +50,6 @@ const Product = (props) => {
       questionsAnswersSection
    );
 
-   console.log(
-      'isQuestionsAnswersSectionVisible:',
-      isQuestionsAnswersSectionVisible
-   );
-   // console.log(
-   //    'isRatingsAndReviewSectionVisible:',
-   //    isRatingsAndReviewSectionVisible
-   // );
-
    return (
       <>
          <section
