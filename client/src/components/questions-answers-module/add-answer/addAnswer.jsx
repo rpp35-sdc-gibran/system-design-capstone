@@ -41,6 +41,10 @@ class AddAnswer extends React.Component {
          });
    }
 
+   componentDidMount() {
+
+   }
+
    render() {
       return (
          <Card
@@ -52,12 +56,9 @@ class AddAnswer extends React.Component {
             <form
                onSubmit={(event) => {
                   event.preventDefault();
-                  //! check form for invalid entries and sent alter
                   this.postAnswer(this.getInputValues(event));
                   this.props.changeQAState('addAnswerModal', false);
-                  // set QA.currQuestion_id to null
                   this.props.changeQAState('currQuestion_id', null);
-                  // set QA.currQuestion_body to null
                   this.props.changeQAState('currQuestion_body', null);
                }}
             >
@@ -118,7 +119,7 @@ class AddAnswer extends React.Component {
                      accept="image/png, image/jpeg"
                   />
                </div>
-               <button>Sumbit</button>
+               <button ref='sumbit'>Sumbit</button>
                <button
                   onClick={() =>
                      this.props.changeQAState('addAnswerModal', false)

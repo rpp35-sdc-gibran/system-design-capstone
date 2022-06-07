@@ -76,7 +76,9 @@ const postQuestionByProductID = (req, res) => {
 const getAnswersByQuestionID = (req, res) => {
    axios.get(
          `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.query.question_id}/answers`,
-         { headers: { Authorization: GITHUB_API_TOKEN } }
+         { headers: { Authorization: GITHUB_API_TOKEN },
+         params: { count: 100 },
+       }
       )
       .then((results) => {
          res.send(results.data);
@@ -158,7 +160,6 @@ const getProductInfoByProductID = (req, res) => {
 };
 
 const postInteraction = (req, res) => {
-   console.log('req.body', req.body);
    axios({
       method: 'post',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions',

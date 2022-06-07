@@ -17,19 +17,26 @@ class AnswersList extends React.Component {
       };
       this.getAnswers = this.getAnswers.bind(this);
       this.addShownAnswers = this.addShownAnswers.bind(this);
+      this.sortAnswers = this.sortAnswers.bind(this);
    }
 
    sortAnswers() {
       // set var to current allAnswers array
       let currAllAnswers = this.state.allAnswers;
-      // create new array
-      let sellerAnswers = [];
 
       // iterate overy copy of allAnswers
       currAllAnswers.forEach((answer) => {
          // if answerer is Seller, push answer to new array
          if (answer.answerer_name === 'Seller') {
+            console.log('answer', answer);
             sellerAnswers.push(answer);
+         }
+      })
+
+      let sellerAnswers = currAllAnswers.map((answer) => {
+         if (answer.answerer_name === 'Seller') {
+            console.log('answer', answer);
+            return answer;
          }
       })
       // update allAnswers state to new array concatinated with remaining answers
@@ -65,7 +72,7 @@ class AnswersList extends React.Component {
    componentDidMount() {
       this.getAnswers();
       // order answers
-      this.sortAnswers();
+      // this.sortAnswers();
       this.addShownAnswers();
    }
 
