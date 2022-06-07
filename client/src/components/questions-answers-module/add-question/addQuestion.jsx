@@ -57,6 +57,7 @@ class AddQuestion extends React.Component {
                   onSubmit={(event) => {
                      event.preventDefault();
                      this.postQuestion(this.getInputValues(event));
+                     this.props.handleInteraction(event);
                      this.props.changeQAState('addQuestionModal', false);
                   }}
                >
@@ -112,6 +113,7 @@ class AddQuestion extends React.Component {
                   <button>Sumbit</button>
                   <button
                      onClick={() => {
+                        this.props.handleInteraction(event);
                         this.props.changeQAState('addQuestionModal', false);
                      }}
                   >

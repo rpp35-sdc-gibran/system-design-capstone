@@ -35,12 +35,14 @@ class Search extends React.Component {
       <input defaultValue="Have a question? Search for answers…" size="40" onChange={(event) => {
         this.updateQuery(event);
 
-
         if (this.state.query.length >= 2) {
           this.props.changeQAState('filteredQuestions', this.filterQuestions(this.props.allQuestions, this.state.query))
         } else {
           this.props.changeQAState('filteredQuestions', undefined);
         }
+
+        // this.props.handleInteraction(event);
+
      }}/>
     )
   }

@@ -31,7 +31,7 @@ const RelatedItems = lazy(() =>
 );
 
 // pass down module to this higher order component which will add on click to our module
-const EnhancedQuestionsAnswers = InteractionAnalytics(QuestionsAnswers);
+// const EnhancedQuestionsAnswers = InteractionAnalytics(QuestionsAnswers);
 
 const Product = (props) => {
    let currentReviews = sampleReviews.results;
@@ -81,7 +81,7 @@ const Product = (props) => {
          >
             {isQuestionsAnswersSectionVisible && (
                <Suspense fallback={<div>Loading...</div>}>
-                  <EnhancedQuestionsAnswers currentProductId={productId} />
+                  <QuestionsAnswers currentProductId={productId} />
                </Suspense>
             )}
          </section>

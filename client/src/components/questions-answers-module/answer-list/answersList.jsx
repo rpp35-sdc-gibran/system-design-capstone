@@ -66,11 +66,7 @@ class AnswersList extends React.Component {
    removeShownAnswers() {
       let currShownAnswers = this.state.shownAnswers;
       let currAllAnswers = this.state.allAnswers;
-
-      // currShownAnswers = currShownAnswers.concat(currAllAnswers.splice(0, 2));
       currAllAnswers = currAllAnswers.concat(currShownAnswers.splice(2))
-
-
       this.setState({
          shownAnswers: currShownAnswers,
          allAnswers: currAllAnswers,
@@ -84,22 +80,25 @@ class AnswersList extends React.Component {
    }
 
    render() {
-      let moreAnswers;
+
+      let answersButton;
       if (this.state.allAnswers.length) {
-         moreAnswers = (
+         answersButton = (
             <button
-               onClick={() => {
+               onClick={(event) => {
                   this.addShownAnswers();
+                  this.props.handleInteraction(event);
                }}
             >
                <Typography variant='body1'>See More Answers</Typography>
             </button>
          );
       } else if (this.state.shownAnswers.length) {
-         moreAnswers = (
+         answersButton = (
             <button
-               onClick={() => {
+               onClick={(event) => {
                   this.removeShownAnswers();
+                  this.props.handleInteraction(event);
                }}
             >
                <Typography variant='body1'>Collapse Answers</Typography>
@@ -115,10 +114,11 @@ class AnswersList extends React.Component {
                      key={index}
                      answer={answer}
                      convertDate={this.props.convertDate}
+                     handleInteraction={this.props.handleInteraction}
                   />
                );
             })}
-            {moreAnswers}
+            {answersButton}
          </Card>
       );
    }

@@ -22,7 +22,6 @@ class AddAnswer extends React.Component {
    }
 
    postAnswer(answer) {
-      console.log('answer', answer);
       axios
          .post('api/questionsAnswers/addAnswer', {
             answer: answer,
@@ -57,6 +56,7 @@ class AddAnswer extends React.Component {
                onSubmit={(event) => {
                   event.preventDefault();
                   this.postAnswer(this.getInputValues(event));
+                  this.props.handleInteraction(event);
                   this.props.changeQAState('addAnswerModal', false);
                   this.props.changeQAState('currQuestion_id', null);
                   this.props.changeQAState('currQuestion_body', null);
@@ -121,9 +121,10 @@ class AddAnswer extends React.Component {
                </div>
                <button ref='sumbit'>Sumbit</button>
                <button
-                  onClick={() =>
-                     this.props.changeQAState('addAnswerModal', false)
-                  }
+                  onClick={(event) => {
+                     this.props.changeQAState('addAnswerModal', false);
+                     this.props.handleInteraction(event);
+                  }}
                >
                   Cancel
                </button>

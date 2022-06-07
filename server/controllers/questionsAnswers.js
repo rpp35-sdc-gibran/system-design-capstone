@@ -61,11 +61,11 @@ const postQuestionByProductID = (req, res) => {
          }
       })
       .then((results) => {
-         console.log('Success POSTING question. was this it!');
+         console.log('Success POSTING question');
          res.status(201)
       })
       .catch((error) => {
-         console.log('Error POSTING question. was this it??', error);
+         console.log('Error POSTING question', error);
       });
 };
 

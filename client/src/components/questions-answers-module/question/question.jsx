@@ -80,13 +80,13 @@ class Question extends React.Component {
                Q: {this.props.question.question_body}
             </Typography>
             <Typography variant='body1'>
-               Helpful?
+               Helpful?{' '}
                <a
                   className='helpful'
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
-                  onClick={() => {
-                     let question_id =
-                        this.props.question.question_id.toString();
+                  onClick={(event) => {
+                     this.props.handleInteraction(event);
+                     let question_id = this.props.question.question_id.toString();
                      // check if localStorage is empty
                      if (!Boolean(localStorage.getItem(question_id))) {
                         // mark helpful
@@ -98,10 +98,11 @@ class Question extends React.Component {
                >
                   Yes
                </a>
-               ({this.props.question.question_helpfulness})
+               ({this.props.question.question_helpfulness}){' '}
                <a
                   className='report'
                   onClick={(event) => {
+                     this.props.handleInteraction(event);
                      this.reportQuestion.bind(this)();
                      // change inner html text to reported
                      event.target.innerHTML = 'Reported';
@@ -109,10 +110,13 @@ class Question extends React.Component {
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                >
                   Report
-               </a>
+               </a>{' '}
                <a
                   className='add-question'
-                  onClick={this.handleQuestionModal.bind(this)}
+                  onClick={(event) => {
+                     this.props.handleInteraction(event);
+                     this.handleQuestionModal.bind(this)();
+                  }}
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                >
                   Add an Answer
@@ -124,6 +128,7 @@ class Question extends React.Component {
             </Typography>
             <AnswerList
                question_id={this.props.question.question_id}
+               handleInteraction={this.props.handleInteraction}
                convertDate={this.props.convertDate}
             />
          </Card>

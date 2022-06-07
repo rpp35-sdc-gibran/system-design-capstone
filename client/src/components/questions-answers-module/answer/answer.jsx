@@ -62,13 +62,14 @@ class Answer extends React.Component {
             </Typography>
             <Typography variant='body1'>
                {this.props.answer.body}
-               by {answerer},{' '}
+               {' '}by {answerer},{' '}
                {this.props.convertDate(this.props.answer.date)}
-               Helpful?
+               {' '}Helpful?{' '}
                <a
                   className='helpful'
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
-                  onClick={() => {
+                  onClick={(event) => {
+                     this.props.handleInteraction(event);
                      let answer_id = this.props.answer.answer_id.toString();
                      if (!Boolean(localStorage.getItem(answer_id))) {
                         this.isHelpful();
@@ -78,10 +79,11 @@ class Answer extends React.Component {
                >
                   Yes
                </a>
-               ({this.props.answer.helpfulness})
+               ({this.props.answer.helpfulness}){' '}
                <a
                   className='report'
                   onClick={(event) => {
+                     this.props.handleInteraction(event);
                      this.reportAnswer.bind(this)();
                      // change inner html text to reported
                      event.target.innerHTML = 'Reported';
