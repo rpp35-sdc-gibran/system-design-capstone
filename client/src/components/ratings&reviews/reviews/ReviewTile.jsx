@@ -31,6 +31,7 @@ const ReviewTile = ({ review, handleReport }) => {
       SetClickCount(clickCount + 1);
    }
    const handleReporClicked = (e) => {
+      console.log('report clicked')
       e.preventDefault();
       handleReport(review.review_id);
    }

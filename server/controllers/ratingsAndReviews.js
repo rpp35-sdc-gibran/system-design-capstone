@@ -4,7 +4,7 @@ const axios = require('axios');
 const path = require('path');
 
 module.exports = {
-   //returns array of all products
+  //returns array of all products
 
   reviews: {
     //returns list of all reviews for single product
@@ -19,44 +19,44 @@ module.exports = {
         },
       });
 
-         promise.then((response) => {
-            console.log('got reviews from API: ', response.data);
-            res.send(response.data);
-         });
-         promise.catch((err) => {
-            //console.log('err:', err);
-            res.status(400).send('Error getting reviews');
-         });
-      },
+      promise.then((response) => {
+        console.log('got reviews from API: ', response.data);
+        res.send(response.data);
+      });
+      promise.catch((err) => {
+        //console.log('err:', err);
+        res.status(400).send('Error getting reviews');
+      });
+    },
 
-      getReviewMetadata: async function (req, res) {
-         console.log(
-            'reviews Metadata req.headers.product_id: ',
-            typeof req.headers.product_id
-         );
-         let id = Number(req.headers.product_id);
-         console.log(id, typeof id);
-         let urlMeta = path.join(url, 'meta');
-         let promise = axios.get(`${url}meta`, {
-            headers: {
-               Authorization: GITHUB_API_TOKEN,
-            },
-            params: {
-               product_id: req.headers.product_id,
-            },
-         });
-         promise
-            .then((response) => {
-               console.log('got reviewsMetadata from API: ', response.data);
-               res.send(response.data);
-            })
-            .catch((error) => {
-               console.log(error);
-            });
-      },
+    getReviewMetadata: async function (req, res) {
+      console.log(
+        'reviews Metadata req.headers.product_id: ',
+        typeof req.headers.product_id
+      );
+      let id = Number(req.headers.product_id);
+      console.log(id, typeof id);
+      let urlMeta = path.join(url, 'meta');
+      let promise = axios.get(`${url}meta`, {
+        headers: {
+          Authorization: GITHUB_API_TOKEN,
+        },
+        params: {
+          product_id: req.headers.product_id,
+        },
+      });
+      promise
+        .then((response) => {
+          console.log('got reviewsMetadata from API: ', response.data);
+          res.send(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
     postProductReviews: function (req, res) {
-      console.log(req.body)
+      console.log('req.body', req.body.characteristics)
       axios({
         method: 'post',
         url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews',
@@ -70,16 +70,16 @@ module.exports = {
           "name": req.body.name,
           "email": req.body.email,
           "photos": req.body.photos,
-          "characteristics": {}
+          "characteristics": req.body.characteristics
         }
       })
         .then((response) => {
           console.log('successed! posting')
           res.send(response.status);
         })
-      .catch((error) => {
-        console.log('something wrong when posting new review', error)
-      });
+        .catch((error) => {
+          console.log('something wrong when posting new review', error)
+        });
     },
     markReviewAsHelpful: function (req, res) {
       let urlMarkHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.body.review_id}/helpful`;
@@ -88,8 +88,8 @@ module.exports = {
         method: 'put',
         url: urlMarkHelpful,
         headers: {
-         Authorization: GITHUB_API_TOKEN,
-      },
+          Authorization: GITHUB_API_TOKEN,
+        },
         data: {
           reveiw_id: req.body.reveiw_id,
         },
@@ -105,22 +105,41 @@ module.exports = {
     reportReview: function (req, res) {
       let urlReport = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.body.review_id}/report`;
       axios({
-         method: 'put',
-         url: urlReport,
-         headers: {
+        method: 'put',
+        url: urlReport,
+        headers: {
           Authorization: GITHUB_API_TOKEN,
-       },
-         data: {
-           reveiw_id: req.body.reveiw_id,
-         },
-       })
-         .then((response) => {
-           console.log(response.status)
-           res.send(response.status);
-         })
-         .catch((error) => {
-           console.log('failed reporting review', error)
-         });
+        },
+        data: {
+          reveiw_id: req.body.reveiw_id,
+        },
+      })
+        .then((response) => {
+          console.log('reported! with response', response.status)
+          res.send(response.status);
+        })
+        .catch((error) => {
+          console.log('failed reporting review', error)
+        });
     },
+    postInteraction: (req, res) => {
+      console.log('req.body', req.body);
+      axios({
+        method: 'post',
+        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions',
+        headers: { Authorization: GITHUB_API_TOKEN },
+        data: {
+          element: req.body.interaction.element,
+          widget: req.body.interaction.widget,
+          time: req.body.interaction.time
+        }
+      })
+        .then((results) => {
+          console.log('Success posting reviews and Ratings interaction!');
+        })
+        .catch((error) => {
+          console.log('Error posting reviews and Ratings interaction', error);
+        });
+    }
   },
 };
