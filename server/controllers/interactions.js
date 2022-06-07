@@ -1,6 +1,6 @@
 const axios = require('axios');
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions';
-const GITHUB_API_TOKEN = require('../config/config').GITHUB_API_TOKEN.token;
+const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN;
 
 module.exports = {
    interactions: {
@@ -14,7 +14,7 @@ module.exports = {
             res.send('Response sent');
          });
          promise.catch((err) => {
-            res.send('Error: ', err);
+            res.send('Error');
          });
       },
    },
