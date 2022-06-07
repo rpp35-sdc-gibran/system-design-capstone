@@ -50,11 +50,11 @@ const Characteristics = ({ characteristics }) => {
         </div>
         <div>
           <progress className='characteristics small' value='0'></progress>
-          <span style={{ "margin-bottom": "20px" }} ></span>
+          <span style={{ "marginBottom": "20px" }} ></span>
         </div>
         <div>
           <progress className='characteristics small' value='0'></progress>
-          <span style={{ "margin-bottom": "20px" }} ></span>
+          <span style={{ "marginBottom": "20px" }} ></span>
         </div>
         <div>
           <progress className='characteristics small' value='0'></progress>
@@ -71,11 +71,11 @@ const Characteristics = ({ characteristics }) => {
         </div>
         <div>
           <progress className='characteristics small' value='0'></progress>
-          <span style={{ "margin-bottom": "20px" }} ></span>
+          <span style={{ "marginBottom": "20px" }} ></span>
         </div>
         <div>
           <progress className='characteristics small' value='0'></progress>
-          <span style={{ "margin-bottom": "20px" }} ></span>
+          <span style={{ "marginBottom": "20px" }} ></span>
         </div>
         <div>
           <progress className='characteristics small' value='0'></progress>
