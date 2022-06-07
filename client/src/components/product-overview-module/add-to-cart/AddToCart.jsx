@@ -3,12 +3,15 @@ import './AddToCart.scss';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 const AddToCart = ({ currentStyle }) => {
    const [currentSize, setCurrentSize] = useState('');
    const [purchaseQuantity, setPurchaseQuantity] = useState(0);
    const [quantity, setQuantity] = useState([]);
    const [currentSku, setCurrentSku] = useState(null);
+   const [openAlert, setOpenAlert] = useState(false);
 
    //handles turning skus into array so that they can be mapped over
    const skus = Object.keys(currentStyle.skus).map((key) => {
@@ -45,7 +48,7 @@ const AddToCart = ({ currentStyle }) => {
       } else {
          let promise = axios.post('/api/cart', { sku_id: currentSku });
          promise.then((response) => {
-            console.log('submission posted');
+            setOpenAlert(true);
          });
          promise.catch((err) => {
             console.log('err:', err);
@@ -126,6 +129,15 @@ const AddToCart = ({ currentStyle }) => {
                <option>OUT OF STOCK</option>
             </select>
          )}
+         <Snackbar
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={openAlert}
+            color='success'
+            autoHideDuration={5000}
+            onClose={() => setOpenAlert(false)}
+         >
+            <Alert severity='success'>Item has been added to your cart!</Alert>
+         </Snackbar>
       </form>
    );
 };
