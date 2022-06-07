@@ -17,6 +17,7 @@ class AnswersList extends React.Component {
       };
       this.getAnswers = this.getAnswers.bind(this);
       this.addShownAnswers = this.addShownAnswers.bind(this);
+      this.removeShownAnswers = this.removeShownAnswers.bind(this);
       this.sortAnswers = this.sortAnswers.bind(this);
    }
 
@@ -25,15 +26,8 @@ class AnswersList extends React.Component {
       let currAllAnswers = this.state.allAnswers;
 
       // iterate overy copy of allAnswers
-      currAllAnswers.forEach((answer) => {
-         // if answerer is Seller, push answer to new array
-         if (answer.answerer_name === 'Seller') {
-            console.log('answer', answer);
-            sellerAnswers.push(answer);
-         }
-      })
-
       let sellerAnswers = currAllAnswers.map((answer) => {
+         // if answerer is Seller, push answer to new array
          if (answer.answerer_name === 'Seller') {
             console.log('answer', answer);
             return answer;
@@ -60,9 +54,23 @@ class AnswersList extends React.Component {
    }
 
    addShownAnswers() {
-      let currShownAnswers = this.state.shownAnswers,
-         currAllAnswers = this.state.allAnswers;
+      let currShownAnswers = this.state.shownAnswers
+      let currAllAnswers = this.state.allAnswers;
       currShownAnswers = currShownAnswers.concat(currAllAnswers.splice(0, 2));
+      this.setState({
+         shownAnswers: currShownAnswers,
+         allAnswers: currAllAnswers,
+      });
+   }
+
+   removeShownAnswers() {
+      let currShownAnswers = this.state.shownAnswers;
+      let currAllAnswers = this.state.allAnswers;
+
+      // currShownAnswers = currShownAnswers.concat(currAllAnswers.splice(0, 2));
+      currAllAnswers = currAllAnswers.concat(currShownAnswers.splice(2))
+
+
       this.setState({
          shownAnswers: currShownAnswers,
          allAnswers: currAllAnswers,
@@ -71,8 +79,7 @@ class AnswersList extends React.Component {
 
    componentDidMount() {
       this.getAnswers();
-      // order answers
-      // this.sortAnswers();
+      this.sortAnswers();
       this.addShownAnswers();
    }
 
@@ -88,8 +95,16 @@ class AnswersList extends React.Component {
                <Typography variant='body1'>See More Answers</Typography>
             </button>
          );
-      } else {
-         moreAnswers = null;
+      } else if (this.state.shownAnswers.length) {
+         moreAnswers = (
+            <button
+               onClick={() => {
+                  this.removeShownAnswers();
+               }}
+            >
+               <Typography variant='body1'>Collapse Answers</Typography>
+            </button>
+         );
       }
 
       return (
