@@ -9,3 +9,13 @@ export default  {
     Quality: { id: 240585, value: '4.0000000000000000' }
   }
 }
+const samplePost = {
+  "product_id": 71697,
+  "rating": 5,
+  "summary": "my kid loves it",
+  "body": "Below the input for the Review body, a counter should appear.  This counter should let the user know how many characters are needed to reach the 50 character minimum.",
+  "recommend": true,
+  "name": "test11",
+  "email": "test11@gmail.com",
+  "photos": ["https://tse4.mm.bing.net/th?id=OIP.kK-9akIc5NzQx_ncBeHIpwHaHA&pid=Api", "https://tse4.mm.bing.net/th?id=OIP.dupntNLktjsaUwU3GtKPTAHaHa&pid=Api"]
+}

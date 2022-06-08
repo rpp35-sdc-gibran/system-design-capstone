@@ -22,12 +22,12 @@ const Ratings = ({ reviewsMeta, dispatch }) => {
   let avgRating = getAvgRating();
   let recommendRatio = getRecommendRatio();
   return (
-    <div>
-      <h5>RATINGS & REVIEWS</h5>
+    <div className='rating-box'>
+      <p id="ratingtitle">RATINGS & REVIEWS</p>
       <div>
-        <span>{avgRating}</span>
-        <StarRating rating={avgRating} /><br />
-        <div>{`${recommendRatio} of the reviews recommend this product`}</div>
+        <span id='avgrating'>{avgRating}</span>
+        <span id='avgstars'><StarRating rating={avgRating} /><br /></span>
+        <div id='recommendrate'>{`${recommendRatio} of the reviews recommend this product`}</div>
         <RatingsList reviews={reviewsMeta} ratingCount={ratingCount} dispatch={dispatch} />
         <Characteristics characteristics={reviewsMeta.characteristics} />
       </div>
