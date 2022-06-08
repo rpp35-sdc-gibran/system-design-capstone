@@ -61,11 +61,11 @@ const postQuestionByProductID = (req, res) => {
          }
       })
       .then((results) => {
-         console.log('Success POSTING question. was this it!');
+         console.log('Success POSTING question');
          res.status(201)
       })
       .catch((error) => {
-         console.log('Error POSTING question. was this it??', error);
+         console.log('Error POSTING question', error);
       });
 };
 
@@ -76,7 +76,9 @@ const postQuestionByProductID = (req, res) => {
 const getAnswersByQuestionID = (req, res) => {
    axios.get(
          `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.query.question_id}/answers`,
-         { headers: { Authorization: GITHUB_API_TOKEN } }
+         { headers: { Authorization: GITHUB_API_TOKEN },
+         params: { count: 100 },
+       }
       )
       .then((results) => {
          res.send(results.data);
@@ -158,14 +160,15 @@ const getProductInfoByProductID = (req, res) => {
 };
 
 const postInteraction = (req, res) => {
-   console.log('req.body', req.body);
-   // requires req.body.interaction.element
-   // requires req.body.interaction.widget
-   // requires req.body.interaction.time
    axios({
       method: 'post',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions',
-      headers: { Authorization: GITHUB_API_TOKEN }
+      headers: { Authorization: GITHUB_API_TOKEN },
+      data: {
+        element: req.body.interaction.element,
+        widget: req.body.interaction.widget,
+        time: req.body.interaction.time
+      }
    })
    .then((results) => {
      console.log('Success posting interaction!');

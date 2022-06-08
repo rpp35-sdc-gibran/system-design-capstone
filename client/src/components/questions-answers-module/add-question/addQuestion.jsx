@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import './addQuestion.scss';
 
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
@@ -56,6 +57,7 @@ class AddQuestion extends React.Component {
                   onSubmit={(event) => {
                      event.preventDefault();
                      this.postQuestion(this.getInputValues(event));
+                     this.props.handleInteraction(event);
                      this.props.changeQAState('addQuestionModal', false);
                   }}
                >
@@ -96,7 +98,7 @@ class AddQuestion extends React.Component {
                   <div>
                      <label htmlFor='email'>Email*</label>
                      <input
-                        type='text'
+                        type='email'
                         name='email'
                         id='email'
                         required
@@ -111,6 +113,7 @@ class AddQuestion extends React.Component {
                   <button>Sumbit</button>
                   <button
                      onClick={() => {
+                        this.props.handleInteraction(event);
                         this.props.changeQAState('addQuestionModal', false);
                      }}
                   >
