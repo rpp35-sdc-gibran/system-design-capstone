@@ -17,7 +17,11 @@ const ImageViewThumbnails = ({
    return (
       <div className='image-view-thumbnail-list' data-testid='thumbnail-list'>
          {currentIndex !== 0 && (
-            <IconButton onClick={() => goPrev()} className='arrow-up'>
+            <IconButton
+               aria-label='go to previous thumbnail'
+               onClick={() => goPrev()}
+               className='arrow-up'
+            >
                <ArrowBackIosIcon color='primary' />
             </IconButton>
          )}
@@ -55,7 +59,11 @@ const ImageViewThumbnails = ({
             }
          })}
          {currentIndex !== photos.length - 1 && (
-            <IconButton onClick={() => goNext()} className='arrow-down'>
+            <IconButton
+               aria-label='go to next thumbnail'
+               onClick={() => goNext()}
+               className='arrow-down'
+            >
                <ArrowBackIosIcon color='primary' />
             </IconButton>
          )}

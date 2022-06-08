@@ -5,17 +5,21 @@ import AddNewReview from './addNewReview/AddNewReview.jsx';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 
-const ReviewsList = ({ reviews, starFilters, productName, postReview, handleReport }) => {
+const ReviewsList = ({
+   reviews,
+   starFilters,
+   productName,
+   postReview,
+   handleReport,
+}) => {
    console.log('In ReviewsList got: ', reviews);
    console.log('starFilters in ReviewsList.jsx: ', starFilters);
-
 
    const [renderedCount, SetRenderedCount] = useState(2);
    const [reviewsToRender, SetReviewsToRender] = useState([]);
    const [formPopup, SetFormPopup] = useState(false);
    const [value, SetValue] = useState('');
    const [search, SetSearch] = useState('');
-
 
    const addStarFilter = () => {
       if (starFilters&&starFilters.length) {
@@ -24,7 +28,7 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
          SetReviewsToRender([...filteredReviews])
          console.log('ReviewsList after applying starFilters: ', reviewsToRender);
       }
-   }
+   };
    function moreReviewsOnClick() {
       if (renderedCount < reviews.length) {
          SetRenderedCount(renderedCount + 2);
@@ -52,18 +56,18 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
       }
       if (sortWith === 'newest') {
          reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
-         SetReviewsToRender([...reviews])
+         SetReviewsToRender([...reviews]);
       }
       if (sortWith === 'helpfulness') {
          reviews.sort((a, b) => b.helpfulness - a.helpfulness);
-         SetReviewsToRender([...reviews])
+         SetReviewsToRender([...reviews]);
       }
-      console.log('reviews after sorted by change: ', reviews)
+      console.log('reviews after sorted by change: ', reviews);
    };
    const handleSearch = (e) => {
       e.preventDefault();
       SetSearch(e.target.value);
-   }
+   };
 
    console.log('reviews To Render: ', reviewsToRender);
 
@@ -71,8 +75,15 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
       SetReviewsToRender(reviews);
       addStarFilter();
       if (search.length >= 3) {
+<<<<<<< HEAD
          let filteredReviews = reviewsToRender.filter(review => review.body.includes(search) || review.summary.includes(search) || review.reviewer_name.includes(search))
          SetReviewsToRender(filteredReviews)
+=======
+         let filteredReviews = reviewsToRender.filter((review) =>
+            review.body.includes(search)
+         );
+         SetReviewsToRender(filteredReviews);
+>>>>>>> main
       }
    }, [reviews, starFilters, search]);
    return (
@@ -81,7 +92,10 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
             <h1>Reviews</h1>
             <div className='reviewlistheader'>
                <h3>{reviewsToRender.length || 0} reviews, sorted by</h3>
-               <select defaultValue='relevant' onChange={handleReviewsSortChange}>
+               <select
+                  defaultValue='relevant'
+                  onChange={handleReviewsSortChange}
+               >
                   <option value='helpfulness'>helpfulness </option>
                   <option value='newest'>newest</option>
                   <option value='relevant'>relevant </option>
@@ -91,27 +105,54 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
                   <input placeholder='Search' onChange={handleSearch}></input>
                </Button>
             </div>
-            {reviewsToRender.length ?
+            {reviewsToRender.length ? (
                <>
-                  <div className="reviewtiles">
-                     {reviewsToRender.slice(0, renderedCount).map((review, index) => (
-                        <ReviewTile review={review} handleReport={handleReport} key={index} />
-                     ))}
+                  <div className='reviewtiles'>
+                     {reviewsToRender
+                        .slice(0, renderedCount)
+                        .map((review, index) => (
+                           <ReviewTile
+                              review={review}
+                              handleReport={handleReport}
+                              key={index}
+                           />
+                        ))}
                   </div>
-                  {reviewsToRender.length > 2 && reviewsToRender.length > renderedCount ? (
-                     <Button style={{ "padding": "1px", "margin": "2px" }} variant='contained' onClick={moreReviewsOnClick}>MORE REVIEWS</Button>
+                  {reviewsToRender.length > 2 &&
+                  reviewsToRender.length > renderedCount ? (
+                     <Button
+                        style={{ padding: '1px', margin: '2px' }}
+                        variant='contained'
+                        onClick={moreReviewsOnClick}
+                     >
+                        MORE REVIEWS
+                     </Button>
                   ) : (
                      <></>
                   )}
-               </> : <></>}
-            <Button style={{ "padding": "1px", "margin": "2px" }} variant='contained' onClick={() => SetFormPopup(true)}>ADD A REVIEW +</Button>
+               </>
+            ) : (
+               <></>
+            )}
+            <Button
+               style={{ padding: '1px', margin: '2px' }}
+               variant='contained'
+               onClick={() => SetFormPopup(true)}
+            >
+               ADD A REVIEW +
+            </Button>
          </div>
 
-         <AddNewReview trigger={formPopup} SetTrigger={SetFormPopup} value={value} SetValue={SetValue} postReview={postReview}>
+         <AddNewReview
+            trigger={formPopup}
+            SetTrigger={SetFormPopup}
+            value={value}
+            SetValue={SetValue}
+            postReview={postReview}
+         >
             <h3>Write Your Review</h3>
             <h4>About the {productName}</h4>
          </AddNewReview>
-
       </div>
    );
 };

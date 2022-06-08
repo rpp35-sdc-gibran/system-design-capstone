@@ -1,4 +1,5 @@
-const GITHUB_API_TOKEN = require('../config/config').GITHUB_API_TOKEN.token;
+console.log('process.env:', process.env.GITHUB_API_TOKEN);
+const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN;
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/cart';
 const axios = require('axios');
 
@@ -27,7 +28,6 @@ module.exports = {
             res.send('Success! Item has been added to cart.');
          });
          promise.catch((err) => {
-            console.log('err:', err);
             res.status(400).send('Error storing item to cart.');
          });
       },

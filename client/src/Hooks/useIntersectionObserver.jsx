@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
  * @returns boolean
  */
 
-const useIntersectionObserver = (reference) => {
+export const useIntersectionObserver = (reference) => {
    const [isVisible, setIsVisible] = useState(false);
 
    useEffect(() => {
@@ -32,5 +32,3 @@ const useIntersectionObserver = (reference) => {
    }, [reference]);
    return isVisible;
 };
-
-export default useIntersectionObserver;
