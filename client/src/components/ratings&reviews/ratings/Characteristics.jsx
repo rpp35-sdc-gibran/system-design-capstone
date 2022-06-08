@@ -2,50 +2,87 @@ import React, { useState, useEffect } from 'react';
 
 
 const Characteristics = ({ characteristics }) => {
+  const getPercentage = (key) => {
 
+    return Math.round(((Number(characteristics[key].value) - 1) / 4 ) * 100);
+  }
+  console.log(getPercentage('Fit'))
   return (
-    <div>
-      <h5>characteristics</h5>
+    <div className="chara-section">
       <div>Fit</div>
-      <div>
-        <progress className='characteristics big' value='0'></progress>
-        <progress className='characteristics big' value='0'></progress>
-        <progress className='characteristics big' value='0'></progress>
-      </div>
-      <div className='characteristics'>
-        <span className='chara'>Too Small</span><span className='chara'>Perfect</span><span className='chara'>Too large</span>
+      <div className="chara-box">
+        <div className='progressbar'>
+          <progress className='characteristics big' value='0'></progress>
+          <span>Too Small</span>
+        </div>
+        <div className='progressbar'>
+          <progress className='characteristics big' value='0'></progress>
+          <span>Perfect</span>
+        </div>
+        <div className='progressbar'>
+          <progress className='characteristics big' value='0'></progress>
+          <span>Too large</span>
+        </div>
+        <span className='triangelicon' style={{ left: `${getPercentage('Fit')}%` }}>&#9660;</span>
       </div>
       <div>Length</div>
-      <div>
-      <progress className='characteristics big' value='0'></progress>
-      <progress className='characteristics big' value='0'></progress>
-      <progress className='characteristics big' value='0'></progress>
+      <div className="chara-box">
+        <div>
+          <progress className='characteristics big' value='0'></progress>
+          <span>Too Small</span>
+        </div>
+        <div>
+          <progress className='characteristics big' value='0'></progress>
+          <span>Perfect</span>
+        </div>
+        <div>
+          <progress className='characteristics big' value='0'></progress>
+          <span>Too large</span>
+        </div>
+        <span className='triangelicon' style={{ left: `${getPercentage('Length')}%` }}>&#9660;</span>
       </div>
-      <div className='characteristics'>
-        <span className='chara'>Too Small</span><span className='chara'>Perfect</span><span className='chara'>Too large</span>
-      </div>
+
       <div>Comfort</div>
-      <div>
-      <progress className='characteristics small' value='0'></progress>
-      <progress className='characteristics small' value='0'></progress>
-      <progress className='characteristics small' value='0'></progress>
-      <progress className='characteristics small' value='0'></progress>
+      <div className="chara-box" >
+        <div >
+          <progress className='characteristics small' value='0'></progress>
+          <span>Poor</span>
+        </div>
+        <div>
+          <progress className='characteristics small' value='0'></progress>
+          <span style={{ "margin-bottom": "20px" }} ></span>
+        </div>
+        <div>
+          <progress className='characteristics small' value='0'></progress>
+          <span style={{ "margin-bottom": "20px" }} ></span>
+        </div>
+        <div>
+          <progress className='characteristics small' value='0'></progress>
+          <span>Perfect</span>
+        </div>
+        <span className='triangelicon' style={{ left: `${getPercentage('Comfort')}%` }}>&#9660;</span>
       </div>
-      <div className='characteristics'>
-        <span className='chara small'>Poor</span><span className='chara small'>Perfect</span>
-      </div>
+
       <div>Quality</div>
-      <div>
-      <progress className='characteristics small' value='0'></progress>
-      <progress className='characteristics small' value='0'></progress>
-      <progress className='characteristics small ' value='0'></progress>
-      <progress className='characteristics small' value='0'></progress>
+      <div className="chara-box" >
+        <div>
+          <progress className='characteristics small' value='0'></progress>
+          <span>Poor</span>
+        </div>
+        <div>
+          <progress className='characteristics small' value='0'></progress>
+          <span style={{ "margin-bottom": "20px" }} ></span>
+        </div>
+        <div>
+          <progress className='characteristics small' value='0'></progress>
+          <span style={{ "margin-bottom": "20px" }} ></span>
+        </div>
+        <div>
+          <progress className='characteristics small' value='0'></progress>
+          <span>Perfect</span>
+        </div>
+        <span className='triangelicon' style={{ left: `${getPercentage('Quality')}%` }}>&#9660;</span>
       </div>
-      <div className='characteristics'>
-        <span className='chara small'>Poor</span><span className='chara small'>Perfect</span>
-      </div>
-
-
     </div >
   )
 }

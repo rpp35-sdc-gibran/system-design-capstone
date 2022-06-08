@@ -1,40 +1,108 @@
-.reviewTile {
+.rating-box{
+  margin-top: 30px;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  float: left;
+  width: 25%;
+
+}
+.review-box{
+  margin-top: 30px;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  float: right;
+  width: 65%;
+}
+
+
+#starrating-box {
+float: right;
+margin-right: 20%;
+}
+#ratingtitle{
+  margin-left: 8px;
+}
+
+#avgrating {
+  font-size:5ex;
+  /* font-weight: bold; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:rgb(81, 8, 81);
+  margin-left: 8px;
+}
+#avgstars{
+  position: absolute;
+  margin-left: 8px;
+}
+#recommendrate{
+  margin: 15px;
+  color: rgb(81, 8, 81)
+}
+.ratingsBreakdown{
+  color:rgb(81, 8, 81);
+  margin: 8px;
+}
+.ratingprog{
+  background-color: rgb(121, 225, 121);;
+  margin: 5px;
+  width: 70%;
+  height: 10px;
+}
+.starContainer{
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+
+}
+.star{
+  width: 18px;
+  display: flex;
+  color: rgb(248, 175, 5);;
+  display: flex;
+  margin-right: 2px;
+  fill: rgb(248, 175, 5);
+
+}
+
+.starsOverlay{
+  background-color: white;
+  mix-blend-mode: color;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+}
+.chara-box{
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1px;
+  width: 240px;
   position: relative;
 }
-
-/* .star {
-  height: 50px;
-  margin: 0;
-  /* position: relative; */
-
-
-.stars-inner {
-  /* position: absolute; */
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 50px;
-
-
+.chara-section{
+  margin: 15px;
 }
-
-.stars-outer {
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  top: 0;
-  height: 50px;
-
+.chara-section span{
+  font-size: smaller;
+  display: flex;
+  margin-bottom: 5px;
 }
-
 progress.characteristics.big{
   width: 80px;
-
+  background-color: yellow;
+  margin: 1px;
+  height: 10px
 }
 
 progress.characteristics.small{
   width: 60px;
-
+  background-color: yellow;
+  margin: 1px;
+  height: 10px
 }
 div.characteristics{
   font-size: smaller;
@@ -45,9 +113,69 @@ span.starFilter{
 }
 
 span.starFilter:hover {
-  background-color: grey;
+  background-color: lightcoral;
 }
 
 div.ratingsBreakdown:hover {
   background-color: Lightgrey;
+}
+.page-bottom{
+  position:static;
+  height: 30px;
+  margin-top: 20px;
+}
+.reviewtiles{
+  max-height: 55vh;
+  overflow-x: scroll;
+}
+.reviewTile {
+  position: relative;
+  margin-bottom: 10px;
+}
+.nameanddate{
+  float: right;
+  padding: 1px
+}
+.summary{
+  font-size: large;
+  font-weight: bold;
+ padding-top: 10px;
+  padding-bottom: 50px;
+}
+.submitbutton{
+  background-color: #1976d2;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+.searchIcon{
+  float: left;
+  color:#1976d2;
+
+}
+
+.searchreview{
+float: right;
+width: 20%;
+max-height: 30px;
+}
+.reviewlistheader{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.reviewlistheader select{
+  width:auto;
+  height:20px
+}
+.helpful, .report{
+text-decoration:underline ;
+}
+.triangelicon{
+  position: absolute;
+  top: 0px;
 }

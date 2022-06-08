@@ -8,8 +8,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: scroll;
 }
-
+.smallimg {
+  width:50px;height:40px;margin-right:5px;padding:5px
+}
 .popupform-inner {
   position: relative;
   padding: 32px;
@@ -46,13 +49,36 @@
 .section-box {
   font-size: smaller;
   display: flex;
-  margin-bottom: 15px;;
+  margin-bottom: 5px;;
 }
-
+.recommendRadio{
+  width: 10%;
+}
 .characteristic-box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0px;
+  width: 18%;
+}
+textarea{
+  width: 90%;
+  max-width: 100%;
   padding: 5px;
-  width: 20%;
+}
+div.summarybody-box{
+  margin-top: 15px
+}
+textarea.reviewBody{
+  height: 120px;
+}
+p{
+  font-size: smaller;
+  margin-top: 1px;
+}
+.nickName{
+  margin-top: 3px;
+}
+input{
+  width: 200px
 }
