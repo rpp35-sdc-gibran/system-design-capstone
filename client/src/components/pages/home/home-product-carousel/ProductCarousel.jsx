@@ -69,7 +69,7 @@ const ProductCarousel = ({ products, productPhotos }) => {
                   </section>
                </Slide>
             ))}
-            <IconButton onClick={goNext}>
+            <IconButton onClick={goNext} aria-label='go to next product'>
                <ArrowForwardIosIcon />
             </IconButton>
          </div>

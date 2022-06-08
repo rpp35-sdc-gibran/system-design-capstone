@@ -5,10 +5,15 @@ import AddNewReview from './addNewReview/AddNewReview.jsx';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 
-const ReviewsList = ({ reviews, starFilters, productName, postReview, handleReport }) => {
+const ReviewsList = ({
+   reviews,
+   starFilters,
+   productName,
+   postReview,
+   handleReport,
+}) => {
    console.log('In ReviewsList got: ', reviews);
    console.log('starFilters in ReviewsList.jsx: ', starFilters);
-
 
    const [renderedCount, SetRenderedCount] = useState(2);
    const [reviewsToRender, SetReviewsToRender] = useState([]);
@@ -16,15 +21,19 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
    const [value, SetValue] = useState('');
    const [search, SetSearch] = useState('');
 
-
    const addStarFilter = () => {
       if (starFilters.length) {
-         console.log('starFilters: ', starFilters)
-         let filteredReviews = reviews.filter((review) => starFilters.includes(review.rating.toString()))
-         SetReviewsToRender([...filteredReviews])
-         console.log('ReviewsList after applying starFilters: ', reviewsToRender);
+         console.log('starFilters: ', starFilters);
+         let filteredReviews = reviews.filter((review) =>
+            starFilters.includes(review.rating.toString())
+         );
+         SetReviewsToRender([...filteredReviews]);
+         console.log(
+            'ReviewsList after applying starFilters: ',
+            reviewsToRender
+         );
       }
-   }
+   };
    function moreReviewsOnClick() {
       if (renderedCount < reviews.length) {
          SetRenderedCount(renderedCount + 2);
@@ -52,18 +61,18 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
       }
       if (sortWith === 'newest') {
          reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
-         SetReviewsToRender([...reviews])
+         SetReviewsToRender([...reviews]);
       }
       if (sortWith === 'helpfulness') {
          reviews.sort((a, b) => b.helpfulness - a.helpfulness);
-         SetReviewsToRender([...reviews])
+         SetReviewsToRender([...reviews]);
       }
-      console.log('reviews after sorted by change: ', reviews)
+      console.log('reviews after sorted by change: ', reviews);
    };
    const handleSearch = (e) => {
       e.preventDefault();
       SetSearch(e.target.value);
-   }
+   };
 
    console.log('reviews To Render: ', reviewsToRender);
 
@@ -71,8 +80,10 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
       SetReviewsToRender(reviews);
       addStarFilter();
       if (search.length >= 3) {
-         let filteredReviews = reviewsToRender.filter(review => review.body.includes(search))
-         SetReviewsToRender(filteredReviews)
+         let filteredReviews = reviewsToRender.filter((review) =>
+            review.body.includes(search)
+         );
+         SetReviewsToRender(filteredReviews);
       }
    }, [reviews, starFilters, search]);
    return (
@@ -81,37 +92,83 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
             <h1>Reviews</h1>
             <div className='reviewlistheader'>
                <h3>{reviewsToRender.length || 0} reviews, sorted by</h3>
-               <select defaultValue='relevant' onChange={handleReviewsSortChange}>
+               <select
+                  defaultValue='relevant'
+                  onChange={handleReviewsSortChange}
+               >
                   <option value='helpfulness'>helpfulness </option>
                   <option value='newest'>newest</option>
                   <option value='relevant'>relevant </option>
                </select>
                <Button className='searchreview'>
-                  <span><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                  <span>
+                     <svg
+                        width='20'
+                        height='20'
+                        class='DocSearch-Search-Icon'
+                        viewBox='0 0 20 20'
+                     >
+                        <path
+                           d='M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z'
+                           stroke='currentColor'
+                           fill='none'
+                           fill-rule='evenodd'
+                           stroke-linecap='round'
+                           stroke-linejoin='round'
+                        ></path>
+                     </svg>
+                  </span>
                   <input placeholder='Search' onChange={handleSearch}></input>
                </Button>
             </div>
-            {reviewsToRender.length ?
+            {reviewsToRender.length ? (
                <>
-                  <div className="reviewtiles">
-                     {reviewsToRender.slice(0, renderedCount).map((review, index) => (
-                        <ReviewTile review={review} handleReport={handleReport} key={index} />
-                     ))}
+                  <div className='reviewtiles'>
+                     {reviewsToRender
+                        .slice(0, renderedCount)
+                        .map((review, index) => (
+                           <ReviewTile
+                              review={review}
+                              handleReport={handleReport}
+                              key={index}
+                           />
+                        ))}
                   </div>
-                  {reviewsToRender.length > 2 && reviewsToRender.length > renderedCount ? (
-                     <Button style={{ "padding": "1px", "margin": "2px" }} variant='contained' onClick={moreReviewsOnClick}>MORE REVIEWS</Button>
+                  {reviewsToRender.length > 2 &&
+                  reviewsToRender.length > renderedCount ? (
+                     <Button
+                        style={{ padding: '1px', margin: '2px' }}
+                        variant='contained'
+                        onClick={moreReviewsOnClick}
+                     >
+                        MORE REVIEWS
+                     </Button>
                   ) : (
                      <></>
                   )}
-               </> : <></>}
-            <Button style={{ "padding": "1px", "margin": "2px" }} variant='contained' onClick={() => SetFormPopup(true)}>ADD A REVIEW +</Button>
+               </>
+            ) : (
+               <></>
+            )}
+            <Button
+               style={{ padding: '1px', margin: '2px' }}
+               variant='contained'
+               onClick={() => SetFormPopup(true)}
+            >
+               ADD A REVIEW +
+            </Button>
          </div>
 
-         <AddNewReview trigger={formPopup} SetTrigger={SetFormPopup} value={value} SetValue={SetValue} postReview={postReview}>
+         <AddNewReview
+            trigger={formPopup}
+            SetTrigger={SetFormPopup}
+            value={value}
+            SetValue={SetValue}
+            postReview={postReview}
+         >
             <h3>Write Your Review</h3>
             <h4>About the {productName}</h4>
          </AddNewReview>
-
       </div>
    );
 };

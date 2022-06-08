@@ -20,7 +20,6 @@ const RelatedItems = ({ currentProductId }) => {
                   return axios.get(`/api/products/${currentId}`);
                });
                Promise.all(promises).then((productInfo) => {
-                  console.log('productInfo:', productInfo);
                   setRelatedProducts(productInfo);
                });
                let stylePromises = currentRelatedProducts.map((id) => {

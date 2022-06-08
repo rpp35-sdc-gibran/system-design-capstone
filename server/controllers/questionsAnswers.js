@@ -6,7 +6,8 @@ const axios = require('axios');
 // QUESTIONS:
 //=============================//
 const getQuestionsByProductID = (req, res) => {
-   axios.get(url, {
+   axios
+      .get(url, {
          headers: { Authorization: GITHUB_API_TOKEN },
          params: { product_id: req.query.product_id, count: 100 },
       })
@@ -25,7 +26,6 @@ const markQuestionHelpfulByQuestionID = (req, res) => {
       headers: { Authorization: GITHUB_API_TOKEN },
    })
       .then((results) => {
-         console.log('Success marking question heplful');
          res.status(201);
       })
       .catch((error) => {
@@ -40,7 +40,6 @@ const reportQuestionByQuestionID = (req, res) => {
       headers: { Authorization: GITHUB_API_TOKEN },
    })
       .then((results) => {
-         console.log('Success reporting question', req.body.question_id);
          res.status(201);
       })
       .catch((error) => {
@@ -50,35 +49,36 @@ const reportQuestionByQuestionID = (req, res) => {
 
 const postQuestionByProductID = (req, res) => {
    axios({
-         method: 'post',
-         url: url,
-         headers: { Authorization: GITHUB_API_TOKEN },
-         data: {
-            body: req.body.question.body,
-            name: req.body.question.name,
-            email: req.body.question.email,
-            product_id: req.body.question.product_id
-         }
-      })
+      method: 'post',
+      url: url,
+      headers: { Authorization: GITHUB_API_TOKEN },
+      data: {
+         body: req.body.question.body,
+         name: req.body.question.name,
+         email: req.body.question.email,
+         product_id: req.body.question.product_id,
+      },
+   })
       .then((results) => {
          console.log('Success POSTING question');
-         res.status(201)
+         res.status(201);
       })
       .catch((error) => {
          console.log('Error POSTING question', error);
       });
 };
 
-
 //=============================//
 // ANSWERS
 //=============================//
 const getAnswersByQuestionID = (req, res) => {
-   axios.get(
+   axios
+      .get(
          `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.query.question_id}/answers`,
-         { headers: { Authorization: GITHUB_API_TOKEN },
-         params: { count: 100 },
-       }
+         {
+            headers: { Authorization: GITHUB_API_TOKEN },
+            params: { count: 100 },
+         }
       )
       .then((results) => {
          res.send(results.data);
@@ -140,23 +140,22 @@ const postAnswerByQuestionID = (req, res) => {
       });
 };
 
-
 //=============================//
 // OTHER
 //=============================//
 const getProductInfoByProductID = (req, res) => {
-  axios({
-     method: 'get',
-     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${req.query.product_id}`,
-     headers: { Authorization: GITHUB_API_TOKEN }
-    })
-    .then((results) => {
-      console.log('Success getting product info');
-      res.send(results.data.name);
-    })
-    .catch((error) => {
-      console.log('Error getting product info', error);
-    });
+   axios({
+      method: 'get',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${req.query.product_id}`,
+      headers: { Authorization: GITHUB_API_TOKEN },
+   })
+      .then((results) => {
+         console.log('Success getting product info');
+         res.send(results.data.name);
+      })
+      .catch((error) => {
+         console.log('Error getting product info', error);
+      });
 };
 
 const postInteraction = (req, res) => {
@@ -165,23 +164,24 @@ const postInteraction = (req, res) => {
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions',
       headers: { Authorization: GITHUB_API_TOKEN },
       data: {
-        element: req.body.interaction.element,
-        widget: req.body.interaction.widget,
-        time: req.body.interaction.time
-      }
+         element: req.body.interaction.element,
+         widget: req.body.interaction.widget,
+         time: req.body.interaction.time,
+      },
    })
-   .then((results) => {
-     console.log('Success posting interaction!');
-   })
-   .catch((error) => {
-     console.log('Error posting interaction', error);
-   });
-}
+      .then((results) => {
+         console.log('Success posting interaction!');
+      })
+      .catch((error) => {
+         console.log('Error posting interaction', error);
+      });
+};
 
 module.exports.getQuestionsByProductID = getQuestionsByProductID;
 module.exports.getAnswersByQuestionID = getAnswersByQuestionID;
 module.exports.markAnswerHelpfulByAnswerID = markAnswerHelpfulByAnswerID;
-module.exports.markQuestionHelpfulByQuestionID = markQuestionHelpfulByQuestionID;
+module.exports.markQuestionHelpfulByQuestionID =
+   markQuestionHelpfulByQuestionID;
 module.exports.reportAnswerByAnswerID = reportAnswerByAnswerID;
 module.exports.reportQuestionByQuestionID = reportQuestionByQuestionID;
 module.exports.postQuestionByProductID = postQuestionByProductID;
