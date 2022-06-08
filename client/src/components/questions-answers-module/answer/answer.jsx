@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import './answer.scss'
 
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -45,13 +46,11 @@ class Answer extends React.Component {
    }
 
    render() {
-      //! if this.props.answer.answerer_name is equal to "Seller" bold font?
+      // if this.props.answer.answerer_name is equal to "Seller" bold font?
       let answerer;
       if (this.props.answer.answerer_name === 'Seller') {
          answerer = (
-            <Typography variant='h6'>
-               {this.props.answer.answerer_name}
-            </Typography>
+            <strong>{this.props.answer.answerer_name}</strong>
          );
       } else {
          answerer = this.props.answer.answerer_name;
@@ -60,16 +59,17 @@ class Answer extends React.Component {
          <Card variant='outlined'>
             <Typography align='left' variant='h6'>
                A:{' '}
+               {this.props.answer.body}
             </Typography>
             <Typography variant='body1'>
-               {this.props.answer.body}
-               by {this.props.answer.answerer_name},{' '}
+               {' '}by {answerer},{' '}
                {this.props.convertDate(this.props.answer.date)}
-               Helpful?
+               {' '}Helpful?{' '}
                <a
                   className='helpful'
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
-                  onClick={() => {
+                  onClick={(event) => {
+                     this.props.handleInteraction(event);
                      let answer_id = this.props.answer.answer_id.toString();
                      if (!Boolean(localStorage.getItem(answer_id))) {
                         this.isHelpful();
@@ -79,10 +79,11 @@ class Answer extends React.Component {
                >
                   Yes
                </a>
-               ({this.props.answer.helpfulness})
+               ({this.props.answer.helpfulness}){' '}
                <a
                   className='report'
                   onClick={(event) => {
+                     this.props.handleInteraction(event);
                      this.reportAnswer.bind(this)();
                      // change inner html text to reported
                      event.target.innerHTML = 'Reported';
