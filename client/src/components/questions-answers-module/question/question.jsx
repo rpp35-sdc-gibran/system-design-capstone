@@ -50,13 +50,9 @@ class Question extends React.Component {
    }
 
    markHelpful() {
-      // set var to question_id to string
       let question_id = this.props.question.question_id;
-      // check if local storage key exisits for current question_id
       if (!localStorage.getItem(question_id.toString())) {
-         // mark question helpful
          this.isHelpful.bind(this)();
-         // save true to key of question_id in local storage
          localStorage.setItem(question_id.toString(), true);
       }
    }

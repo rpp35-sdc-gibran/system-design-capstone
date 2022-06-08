@@ -59,9 +59,9 @@ class Answer extends React.Component {
          <Card variant='outlined'>
             <Typography align='left' variant='h6'>
                A:{' '}
+               {this.props.answer.body}
             </Typography>
             <Typography variant='body1'>
-               {this.props.answer.body}
                {' '}by {answerer},{' '}
                {this.props.convertDate(this.props.answer.date)}
                {' '}Helpful?{' '}

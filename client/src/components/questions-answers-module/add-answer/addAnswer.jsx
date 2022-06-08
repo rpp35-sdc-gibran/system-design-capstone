@@ -40,6 +40,30 @@ class AddAnswer extends React.Component {
          });
    }
 
+   previewImages (event) {
+      // set variable to file list
+      const images = event.target.files;
+      console.log('images', images);
+      // create an hmtl element
+      const previews = document.createElement('div');
+      previews.className = 'previews';
+      // iterate over file list
+      for (var i = 0; i < images.length; i++) {
+         const image = images[i];
+         // create div for image
+         const preview = document.createElement('div');
+         preview.className = 'preview';
+         // create a URL.createObjectURL() for each image
+         preview.src = URL.createObjectURL(image)
+         // append to previews element
+         console.log('preview', preview)
+         previews.append(preview);
+      }
+      // select div w/ gallery id & append previews to html element
+      console.log('previews', previews);
+      document.getElementsByClassName('gallery').appendChild(previews);
+   }
+
    componentDidMount() {
 
    }
@@ -116,8 +140,13 @@ class AddAnswer extends React.Component {
                      className='email'
                      maxLength='60'
                      size='60'
-                     accept="image/png, image/jpeg"
+                     accept='image/png, image/jpeg'
+                     onChange={(event) => {
+                        // console.log('files event', event.target.files[0])
+                        this.previewImages.bind(this)(event);
+                     }}
                   />
+                  <div className='gallery'></div>
                </div>
                <button ref='sumbit'>Sumbit</button>
                <button
