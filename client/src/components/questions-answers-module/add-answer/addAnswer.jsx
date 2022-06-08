@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import './addAnswer.scss'
 
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -21,7 +22,6 @@ class AddAnswer extends React.Component {
    }
 
    postAnswer(answer) {
-      console.log('answer', answer);
       axios
          .post('api/questionsAnswers/addAnswer', {
             answer: answer,
@@ -40,6 +40,34 @@ class AddAnswer extends React.Component {
          });
    }
 
+   previewImages (event) {
+      // set variable to file list
+      const images = event.target.files;
+      console.log('images', images);
+      // create an hmtl element
+      const previews = document.createElement('div');
+      previews.className = 'previews';
+      // iterate over file list
+      for (var i = 0; i < images.length; i++) {
+         const image = images[i];
+         // create div for image
+         const preview = document.createElement('div');
+         preview.className = 'preview';
+         // create a URL.createObjectURL() for each image
+         preview.src = URL.createObjectURL(image)
+         // append to previews element
+         console.log('preview', preview)
+         previews.append(preview);
+      }
+      // select div w/ gallery id & append previews to html element
+      console.log('previews', previews);
+      document.getElementsByClassName('gallery').appendChild(previews);
+   }
+
+   componentDidMount() {
+
+   }
+
    render() {
       return (
          <Card
@@ -52,10 +80,9 @@ class AddAnswer extends React.Component {
                onSubmit={(event) => {
                   event.preventDefault();
                   this.postAnswer(this.getInputValues(event));
+                  this.props.handleInteraction(event);
                   this.props.changeQAState('addAnswerModal', false);
-                  // set QA.currQuestion_id to null
                   this.props.changeQAState('currQuestion_id', null);
-                  // set QA.currQuestion_body to null
                   this.props.changeQAState('currQuestion_body', null);
                }}
             >
@@ -95,7 +122,7 @@ class AddAnswer extends React.Component {
                <div>
                   <label htmlFor='email'>Your email*</label>
                   <input
-                     type='text'
+                     type='email'
                      name='email'
                      className='email'
                      maxLength='60'
@@ -108,18 +135,25 @@ class AddAnswer extends React.Component {
                <div>
                   <label htmlFor='photos'>Upload Your Photos</label>
                   <input
-                     type='text'
-                     name='email'
+                     type='file'
+                     name='photos'
                      className='email'
                      maxLength='60'
                      size='60'
+                     accept='image/png, image/jpeg'
+                     onChange={(event) => {
+                        // console.log('files event', event.target.files[0])
+                        this.previewImages.bind(this)(event);
+                     }}
                   />
+                  <div className='gallery'></div>
                </div>
-               <button>Sumbit</button>
+               <button ref='sumbit'>Sumbit</button>
                <button
-                  onClick={() =>
-                     this.props.changeQAState('addAnswerModal', false)
-                  }
+                  onClick={(event) => {
+                     this.props.changeQAState('addAnswerModal', false);
+                     this.props.handleInteraction(event);
+                  }}
                >
                   Cancel
                </button>
