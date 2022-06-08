@@ -71,7 +71,7 @@ const ReviewsList = ({ reviews, starFilters, productName, postReview, handleRepo
       SetReviewsToRender(reviews);
       addStarFilter();
       if (search.length >= 3) {
-         let filteredReviews = reviewsToRender.filter(review => review.body.includes(search))
+         let filteredReviews = reviewsToRender.filter(review => review.body.includes(search) || review.summary.includes(search) || review.reviewer_name.includes(search))
          SetReviewsToRender(filteredReviews)
       }
    }, [reviews, starFilters, search]);

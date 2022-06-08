@@ -73,6 +73,10 @@ const ReviewTile = ({ review, handleReport }) => {
          )}
          <span className='body'>{review.body}</span>
          <br />
+         {review.photos.length ? review.photos.map((photo) => (
+            <img src={photo}></img>
+         )) : <></>
+         }
          <span>Helpful?</span><span className='helpful' onClick={handleHelpful}> Yes </span><span>({helpfulCount})</span>
          <span className='report' onClick={handleReporClicked}>Report</span>
       </div>

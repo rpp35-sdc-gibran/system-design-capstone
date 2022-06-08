@@ -42,7 +42,6 @@ it("renders single reviewsTile", async () => {
 
   expect(container.querySelector(".summary").textContent).toBe('This product was great!');
   expect(container.querySelector(".body").textContent).toBe('I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.');
-
   // remove the mock to ensure tests are completely isolated
   //global.fetch.mockRestore();
 });
