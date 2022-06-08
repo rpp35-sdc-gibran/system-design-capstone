@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 import WithAnalytics from '../../../WithAnalytics.jsx';
 
 import { useIntersectionObserver } from '../../../Hooks/useIntersectionObserver.jsx';
-import useIntersectionObserver from '../../../Hooks/useIntersectionObserver.jsx';
+
 import InteractionAnalytics from '../../ratings&reviews/interactionAnalytics.jsx';
 
 // pass down module to this higher order component which will add on click to our module
@@ -31,7 +31,7 @@ const RelatedItems = lazy(() =>
       /* webpackChunkName: "RelatedItems" */ '../../related-items-module/RelatedItems.jsx'
    )
 );
-// const EnhancedRatingsAndReviews = InteractionAnalytics(RatingsAndReviews);
+const EnhancedRatingsAndReviews = InteractionAnalytics(RatingsAndReviews);
 const Product = (props) => {
    let currentReviews = sampleReviews.results;
    let { productId } = useParams();
@@ -39,15 +39,15 @@ const Product = (props) => {
    //create refs for all elements to observe
    let relatedItemsSection = useRef(null);
    let questionsAnswersSection = useRef(null);
-   // let ratingsAndReviewSection = useRef(null);
+   let ratingsAndReviewSection = useRef(null);
 
    //start observing them using hook - will return true when in viewport
    let isRelatedItemsSectionVisible =
       useIntersectionObserver(relatedItemsSection);
 
-   // let isRatingsAndReviewSectionVisible = useIntersectionObserver(
-   //    ratingsAndReviewSection
-   // );
+   let isRatingsAndReviewSectionVisible = useIntersectionObserver(
+      ratingsAndReviewSection
+   );
 
    let isQuestionsAnswersSectionVisible = useIntersectionObserver(
       questionsAnswersSection
@@ -78,7 +78,7 @@ const Product = (props) => {
                </Suspense>
             )}
          </section>
-         {/* <section
+         <section
             ref={ratingsAndReviewSection}
             className='product-ratings-reviews'
          >
@@ -91,7 +91,7 @@ const Product = (props) => {
                   />
                </Suspense>
             )}
-         </section> */}
+         </section>
       </>
    );
 };
