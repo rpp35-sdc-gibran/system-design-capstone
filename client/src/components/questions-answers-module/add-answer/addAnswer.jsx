@@ -43,25 +43,24 @@ class AddAnswer extends React.Component {
    previewImages (event) {
       // set variable to file list
       const images = event.target.files;
-      console.log('images', images);
       // create an hmtl element
       const previews = document.createElement('div');
       previews.className = 'previews';
       // iterate over file list
       for (var i = 0; i < images.length; i++) {
-         const image = images[i];
          // create div for image
-         const preview = document.createElement('div');
+         const preview = document.createElement('img');
          preview.className = 'preview';
          // create a URL.createObjectURL() for each image
-         preview.src = URL.createObjectURL(image)
+         preview.src = URL.createObjectURL(images[i])
          // append to previews element
-         console.log('preview', preview)
+         console.log('does preview have a src', preview.src)
          previews.append(preview);
       }
       // select div w/ gallery id & append previews to html element
-      console.log('previews', previews);
-      document.getElementsByClassName('gallery').appendChild(previews);
+      console.log('document.getElementsByClassName("gallery")', document.getElementsByClassName('gallery'));
+
+      document.getElementsByClassName('gallery')[0].append(previews);
    }
 
    componentDidMount() {
@@ -141,8 +140,8 @@ class AddAnswer extends React.Component {
                      maxLength='60'
                      size='60'
                      accept='image/png, image/jpeg'
+                     multiple
                      onChange={(event) => {
-                        // console.log('files event', event.target.files[0])
                         this.previewImages.bind(this)(event);
                      }}
                   />
