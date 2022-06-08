@@ -54,12 +54,9 @@ class AddAnswer extends React.Component {
          // create a URL.createObjectURL() for each image
          preview.src = URL.createObjectURL(images[i])
          // append to previews element
-         console.log('does preview have a src', preview.src)
          previews.append(preview);
       }
       // select div w/ gallery id & append previews to html element
-      console.log('document.getElementsByClassName("gallery")', document.getElementsByClassName('gallery'));
-
       document.getElementsByClassName('gallery')[0].append(previews);
    }
 

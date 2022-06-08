@@ -75,7 +75,7 @@ class AnswersList extends React.Component {
 
    componentDidMount() {
       this.getAnswers();
-      this.sortAnswers();
+      // this.sortAnswers();
       this.addShownAnswers();
    }
 
