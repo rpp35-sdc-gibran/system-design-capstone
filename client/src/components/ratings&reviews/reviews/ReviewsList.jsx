@@ -75,15 +75,8 @@ const ReviewsList = ({
       SetReviewsToRender(reviews);
       addStarFilter();
       if (search.length >= 3) {
-<<<<<<< HEAD
          let filteredReviews = reviewsToRender.filter(review => review.body.includes(search) || review.summary.includes(search) || review.reviewer_name.includes(search))
          SetReviewsToRender(filteredReviews)
-=======
-         let filteredReviews = reviewsToRender.filter((review) =>
-            review.body.includes(search)
-         );
-         SetReviewsToRender(filteredReviews);
->>>>>>> main
       }
    }, [reviews, starFilters, search]);
    return (
