@@ -41,6 +41,12 @@ class QuestionsAnswers extends React.Component {
     this.setState({shownQuestions: currShownQuestions, allQuestions: currAllQuestions});
   }
 
+  getDerivedStateFromProps(props, state) {
+    if (props.currQuestion_id !== state.currProductID) {
+      console.log('getDerivedStateFromProps invoked');
+    }
+  }
+
   changeQAState (prop, value) {
     this.setState({[prop]: value});
   }
@@ -132,6 +138,8 @@ class QuestionsAnswers extends React.Component {
 
 
 
+
+
   render() {
     // conditionally render 'show additional questions' button
     var moreQuestions;
@@ -184,21 +192,26 @@ class QuestionsAnswers extends React.Component {
           handleInteraction={this.handleInteraction}
           allQuestions={this.state.allQuestions}
         />
-        <QuestionsList className="questionList"
-          changeQAState={this.changeQAState}
-          convertDate={this.convertDate}
-          handleInteraction={this.handleInteraction}
-          questions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.shownQuestions }
-          addQuestionModal={this.state.addQuestionModal}
-          addAnswerModal={this.state.addAnswerModal}
-        />
-        {moreQuestions}
-        <button
-          className='addQuestionButton'
-          onClick={(event) => {
-            this.changeQAState('addQuestionModal', true);
-            this.handleInteraction(event);
-          }}><Typography variant='body1'><strong>ADD A QUESTION +</strong> </Typography></button>
+        <div className='QA_body'>
+          <QuestionsList
+          className="questionList"
+            changeQAState={this.changeQAState}
+            convertDate={this.convertDate}
+            handleInteraction={this.handleInteraction}
+            questions={ (this.state.filteredQuestions !== undefined) ? this.state.filteredQuestions : this.state.shownQuestions }
+            addQuestionModal={this.state.addQuestionModal}
+            addAnswerModal={this.state.addAnswerModal}
+          />
+        </div>
+        <div className='questionsButtons'>
+          {moreQuestions}
+          <button
+            className='addQuestionButton'
+            onClick={(event) => {
+              this.changeQAState('addQuestionModal', true);
+              this.handleInteraction(event);
+            }}><Typography variant='body1'><strong>ADD A QUESTION +</strong> </Typography></button>
+        </div>
       </Paper>
     );
   }

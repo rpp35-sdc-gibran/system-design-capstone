@@ -1,7 +1,10 @@
 @use '../App.scss' as *;
 
 .questionsAnwers {
-  @include set-size(85vh, 85vw);
+  // @include set-size(85vh, 85vw);
+  width: 84vw;
+  max-height: 100vh;
+  height: fit-content;
   // overflow: hidden; //set to hide any contents greater than the height of total view height
   overflow-y: hidden;
   // min-height: 100%;
@@ -16,23 +19,36 @@
   // margin-left: 10%;
 }
 
-// .searchBar {
-//   display: flex;
+.searchBar {
+  order: 2;
+  display: flex;
 //   align-self: center;
 //   @include set-size(85vh, 85vw);
 //   // gap: 10px 20px;
-// }
-
-.questionList {
-  display: flex;
-  gap: 10px;
-  overflow-y: scroll;
-  margin-left: 1rem;
 }
-
 .questionsAnswersTile {
+  order: 1;
+  display: flex;
+  align-self: center;
   padding-top: 1.5rem;
   padding-bottom: .5rem;
+}
+
+.QA_body {
+  display: flex;
+  gap: 10px;
+  margin-left: 1rem;
+  order: 3;
+  max-height: 100vh;
+  height: fit-content;
+  // overflow: hidden; //set to hide any contents greater than the height of total view height
+  overflow-y: scroll;
+}
+
+
+.questionsButtons {
+  display: flex;
+  order: 4;
 }
 
 .addQuestionButton {

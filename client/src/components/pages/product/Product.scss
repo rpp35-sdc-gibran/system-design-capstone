@@ -9,10 +9,12 @@
 }
 
 .product-questions-answers {
-   @include set-size(100%, 100vw);
+   // @include set-size(100%, 100vw);
    // overflow: hidden; //set to hide any contents greater than the height of total view height
    display: flex;
    justify-content: center;
+   max-height: 100%;
+   height: fit-content;
    // align-items: stretch;
    // margin-right: 5%;
    // margin-bottom: 5%;
