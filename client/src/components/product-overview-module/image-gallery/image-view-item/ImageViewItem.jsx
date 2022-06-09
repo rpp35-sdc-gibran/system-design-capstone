@@ -101,7 +101,6 @@ const ImageViewItem = ({
             <img
                alt='main product image '
                className='default-img'
-               loading='lazy'
                src={image || DefaultImage}
             ></img>
          </div>

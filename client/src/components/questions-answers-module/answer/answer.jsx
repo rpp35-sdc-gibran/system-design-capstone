@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import './answer.scss'
+import './answer.scss';
 
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 class Answer extends React.Component {
    reportAnswer() {
       axios
-         .put('/api/questionsAnswers/reportAnswer', {
+         .put('/questionsAnswers/reportAnswer', {
             answer_id: this.props.answer.answer_id,
          })
          .then((results) => {
@@ -30,7 +30,7 @@ class Answer extends React.Component {
 
    isHelpful() {
       axios
-         .put('/api/questionsAnswers/markAnswerHelpful', {
+         .put('/questionsAnswers/markAnswerHelpful', {
             answer_id: this.props.answer.answer_id,
          })
          .then((results) => {
@@ -49,22 +49,19 @@ class Answer extends React.Component {
       // if this.props.answer.answerer_name is equal to "Seller" bold font?
       let answerer;
       if (this.props.answer.answerer_name === 'Seller') {
-         answerer = (
-            <strong>{this.props.answer.answerer_name}</strong>
-         );
+         answerer = <strong>{this.props.answer.answerer_name}</strong>;
       } else {
          answerer = this.props.answer.answerer_name;
       }
       return (
          <Card variant='outlined'>
             <Typography align='left' variant='h6'>
-               A:{' '}
-               {this.props.answer.body}
+               A: {this.props.answer.body}
             </Typography>
             <Typography variant='body1'>
-               {' '}by {answerer},{' '}
-               {this.props.convertDate(this.props.answer.date)}
-               {' '}Helpful?{' '}
+               {' '}
+               by {answerer}, {this.props.convertDate(this.props.answer.date)}{' '}
+               Helpful?{' '}
                <a
                   className='helpful'
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}

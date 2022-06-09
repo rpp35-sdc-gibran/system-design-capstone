@@ -26,7 +26,7 @@ class AddQuestion extends React.Component {
    postQuestion(question) {
       console.log('question', question);
       axios
-         .post('api/questionsAnswers/addQuestion', {
+         .post('/questionsAnswers/addQuestion', {
             question: question,
          })
          .then((results) => {

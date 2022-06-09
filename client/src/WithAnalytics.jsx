@@ -12,7 +12,7 @@ const WithAnalytics = (WrappedComponent) => {
             element: event.target.innerHTML,
             time: Date().toLocaleString(),
          };
-         let promise = axios.post('api/interactions', parameters);
+         let promise = axios.post('/interactions', parameters);
 
          promise.catch((err) => {
             console.log('err:', err);
