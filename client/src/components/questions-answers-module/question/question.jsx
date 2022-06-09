@@ -71,9 +71,9 @@ class Question extends React.Component {
 
    render() {
       return (
-         <Card variant='outlined'>
-            <Typography align='left' variant='h6'>
-               Q: {this.props.question.question_body}
+         <Card outlined={true}>
+            <Typography align='left' variant='body1'>
+               <strong>Q: {this.props.question.question_body}</strong>
             </Typography>
             <Typography variant='body1'>
                Helpful?{' '}

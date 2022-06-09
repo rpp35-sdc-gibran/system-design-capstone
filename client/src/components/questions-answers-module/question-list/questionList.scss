@@ -1,8 +1,16 @@
 @use '../../App.scss' as *;
 
-.question-list {
+// .question-list {
   // @include set-size(100vh, 100vw);
   // overflow: hidden; //set to hide any contents greater than the height of total view height
-  height: 85vh;
-  overflow-y: scroll;
+  // height: 85vh;
+  // overflow-y: scroll;
+  // overflow: scroll;
+
+// }
+
+
+.question {
+  display: flex;
+  gap: 10px;
 }

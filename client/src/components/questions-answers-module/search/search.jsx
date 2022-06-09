@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './search.scss';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 class Search extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      // original questions????
       query: ''
     }
 
@@ -32,20 +35,23 @@ class Search extends React.Component {
 
   render () {
     return (
-      <input defaultValue="Have a question? Search for answers…" size="40" onChange={(event) => {
-        this.updateQuery(event);
+      <input
+        className='searchBar'
+        defaultValue="Have a question? Search for answers…"
+        size="40"
+        onChange={(event) => {
+          this.updateQuery(event);
 
-        if (this.state.query.length >= 2) {
-          this.props.changeQAState('filteredQuestions', this.filterQuestions(this.props.allQuestions, this.state.query))
-        } else {
-          this.props.changeQAState('filteredQuestions', undefined);
-        }
+          if (this.state.query.length > 2) {
+            this.props.changeQAState('filteredQuestions', this.filterQuestions(this.props.allQuestions, this.state.query))
+          } else {
+            this.props.changeQAState('filteredQuestions', undefined);
+          }
 
-        // this.props.handleInteraction(event);
+          // this.props.handleInteraction(event);
+        }}/>
 
-     }}/>
-    )
-  }
+  )}
 }
 
 export default Search;

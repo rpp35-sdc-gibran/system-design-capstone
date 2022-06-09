@@ -18,6 +18,7 @@ class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      //
       shownQuestions: [],
       allQuestions: [],
       addQuestionModal: false,
@@ -102,7 +103,6 @@ class QuestionsAnswers extends React.Component {
       widget: 'QuestionsAnswers',
       time: Date().toLocaleString()
     };
-
     // make axios request to interactions api
     axios.post('/api/questionsAnswers/interactions',{
       interaction: data
@@ -125,11 +125,14 @@ class QuestionsAnswers extends React.Component {
     // conditionally render 'show additional questions' button
     var moreQuestions;
     if (this.state.allQuestions.length) {
-      moreQuestions = <button onClick={(event) => {
-        this.addShownQuestions();
-        this.handleInteraction(event);
-      }}><Typography variant='body1'>More Answered Questions</Typography></button>;
+      moreQuestions = <button
+        className='moreQuestionsButton'
+        onClick={(event) => {
+          this.addShownQuestions();
+          this.handleInteraction(event);
+      }}><Typography variant='body1'><strong>More Answered Questions</strong></Typography></button>;
     } else {
+      // add collapse answers button??
       moreQuestions = null;
     }
 
@@ -137,6 +140,7 @@ class QuestionsAnswers extends React.Component {
     if (this.state.addQuestionModal) {
       return (
         <AddQuestion
+          className='addQuestionModal'
           handleInteraction={this.handleInteraction}
           changeQAState={this.changeQAState}
           product_id={this.props.currentProductId}
@@ -149,6 +153,7 @@ class QuestionsAnswers extends React.Component {
     if (this.state.addAnswerModal) {
       return (
         <AddAnswer
+          className='addAnswerModal'
           changeQAState={this.changeQAState}
           handleInteraction={this.handleInteraction}
           question_id={this.state.currQuestion_id}
@@ -160,14 +165,15 @@ class QuestionsAnswers extends React.Component {
     }
 
     return (
-      <Paper elevation={24} rounded={true} outlined={true} className='questions-anwers'>
-        <Typography align='center' variant='h3'>Questions & Answers</Typography>
+      <Paper elevation={24} rounded={true} outlined={true} className='questionsAnwers'>
+        <Typography align='center' variant='h3' className='questionsAnswersTile'>Questions & Answers</Typography>
         <Search
+          className='searchBar'
           changeQAState={this.changeQAState}
           handleInteraction={this.handleInteraction}
           allQuestions={this.state.allQuestions}
         />
-        <QuestionsList className="question-list"
+        <QuestionsList className="questionList"
           changeQAState={this.changeQAState}
           convertDate={this.convertDate}
           handleInteraction={this.handleInteraction}
@@ -176,10 +182,12 @@ class QuestionsAnswers extends React.Component {
           addAnswerModal={this.state.addAnswerModal}
         />
         {moreQuestions}
-        <button onClick={(event) => {
-          this.changeQAState('addQuestionModal', true);
-          this.handleInteraction(event);
-          }}><Typography variant='body1'>Add a Question +</Typography></button>
+        <button
+          className='addQuestionButton'
+          onClick={(event) => {
+            this.changeQAState('addQuestionModal', true);
+            this.handleInteraction(event);
+          }}><Typography variant='body1'><strong>Add a Question +</strong> </Typography></button>
       </Paper>
     );
   }

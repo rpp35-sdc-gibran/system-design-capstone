@@ -1,8 +1,42 @@
 @use '../App.scss' as *;
 
-.question-list {
-  // @include set-size(100vh, 100vw);
+.questionsAnwers {
+  @include set-size(85vh, 85vw);
   // overflow: hidden; //set to hide any contents greater than the height of total view height
-  height: 85vh;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  // min-height: 100%;
+  // width: 80vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  // background-color: $primary-color;
+  // color:aliceblue
+  // flex-wrap: wrap;
+  // padding-left: 2rem;
+  // margin-left: 10%;
 }
+
+// .searchBar {
+//   display: flex;
+//   align-self: center;
+//   @include set-size(85vh, 85vw);
+//   // gap: 10px 20px;
+// }
+
+.questionList {
+  display: flex;
+  gap: 10px;
+  overflow-y: scroll;
+  margin-left: 1rem;
+}
+
+
+
+.addQuestionButton {
+
+}
+
+.moreQuestionsButton {
+
+}
+

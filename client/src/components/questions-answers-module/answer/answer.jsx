@@ -56,12 +56,12 @@ class Answer extends React.Component {
          answerer = this.props.answer.answerer_name;
       }
       return (
-         <Card variant='outlined'>
-            <Typography align='left' variant='h6'>
-               A:{' '}
+         <>
+            <Typography align='left' variant='body1'>
+               <strong>A:</strong>{' '}
                {this.props.answer.body}
             </Typography>
-            <Typography variant='body1'>
+            <Typography variant='body2'>
                {' '}by {answerer},{' '}
                {this.props.convertDate(this.props.answer.date)}
                {' '}Helpful?{' '}
@@ -93,7 +93,7 @@ class Answer extends React.Component {
                   Report
                </a>
             </Typography>
-         </Card>
+         </>
       );
    }
 }

@@ -1,1 +1,17 @@
 @use '../../App.scss' as *;
+
+.addQuestionModal {
+  @include set-size(85vh, 85vw);
+  // overflow: hidden; //set to hide any contents greater than the height of total view height
+  overflow-y: hidden;
+  // min-height: 100%;
+  // width: 80vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  // background-color: $primary-color;
+  // color:aliceblue
+  // flex-wrap: wrap;
+  // padding-left: 2rem;
+  // margin-left: 10%;
+}

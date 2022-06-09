@@ -1,1 +1,15 @@
 @use '../../App.scss' as *;
+
+.searchBar {
+  display: flex;
+  align-self: center;
+  height: 5vh;
+  width: 75vw;
+  font-size: 2rem;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/61/61088.png');
+  background-repeat: no-repeat;
+  background-position: 53rem;
+  background-size: Auto 75%;
+  // @include set-size(85vh, 85vw);
+  // gap: 10px 20px;
+}

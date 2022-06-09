@@ -70,13 +70,14 @@ class AddAnswer extends React.Component {
             elevation={24}
             rounded={true}
             outlined={true}
-            className='addAnswer'
+            className='addAnswerCard'
          >
             <form
+               className='addAnswerForm'
                onSubmit={(event) => {
                   event.preventDefault();
                   this.postAnswer(this.getInputValues(event));
-                  this.props.handleInteraction(event);
+                  // this.props.handleInteraction(event);
                   this.props.changeQAState('addAnswerModal', false);
                   this.props.changeQAState('currQuestion_id', null);
                   this.props.changeQAState('currQuestion_body', null);

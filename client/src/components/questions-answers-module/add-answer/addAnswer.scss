@@ -1,2 +1,9 @@
 @use '../../App.scss' as *;
 
+.addAnswerCard {
+  @include set-size(50vh, 50vw);
+  overflow-y: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
