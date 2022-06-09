@@ -73,8 +73,10 @@ class Answer extends React.Component {
                      if (!Boolean(localStorage.getItem(answer_id))) {
                         this.isHelpful();
                         localStorage.setItem(answer_id, true);
-                        this.props.handleInteraction(event);
+                     } else {
+                        console.log('Answer previously marked helpful');
                      }
+                     this.props.handleInteraction(event);
                   }}
                >
                   Yes

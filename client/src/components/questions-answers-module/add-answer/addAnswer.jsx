@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 
 class AddAnswer extends React.Component {
    getInputValues(event) {
+      console.log('getInputValues/this.props.question_id: ', this.props.question_id)
       let values = [];
       for (var i = 0; i < event.target.elements.length - 1; i++) {
          values.push(event.target.elements[i].value);

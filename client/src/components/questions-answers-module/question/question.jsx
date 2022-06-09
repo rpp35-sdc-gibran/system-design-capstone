@@ -31,6 +31,7 @@ class Question extends React.Component {
    }
 
    isHelpful() {
+      console.log()
       axios
          .put('/api/questionsAnswers/markQuestionHelpful', {
             question_id: this.props.question.question_id,
@@ -89,6 +90,8 @@ class Question extends React.Component {
                            this.isHelpful();
                            // save true to key of question_id in local storage
                            localStorage.setItem(question_id, true);
+                        } else {
+                           console.log('Question previously marked helpful');
                         }
                         this.props.handleInteraction(event);
                      }}
