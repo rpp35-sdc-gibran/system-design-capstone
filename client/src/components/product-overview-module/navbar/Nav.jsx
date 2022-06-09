@@ -1,7 +1,7 @@
 import React from 'react';
 import '../navbar/Nav.scss';
 import { NavLink } from 'react-router-dom';
-import AppBar from '@mui/material/Appbar';
+import Appbar from '@mui/material/Appbar';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
