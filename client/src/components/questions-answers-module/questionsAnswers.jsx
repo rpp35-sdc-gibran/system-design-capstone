@@ -18,14 +18,14 @@ class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //
       shownQuestions: [],
       allQuestions: [],
       addQuestionModal: false,
       addAnswerModal: false,
       currQuestion_id: null,
       currQuestion_body: null,
-      currProductName: null
+      currProductName: null,
+      currProductID: null
     };
     this.addShownQuestions = this.addShownQuestions.bind(this);
     this.changeQAState = this.changeQAState.bind(this);
@@ -115,10 +115,21 @@ class QuestionsAnswers extends React.Component {
       });
   }
 
+  getProductIDfromURL () {
+    // get product id as string from url
+    let url = window.location.href.split('/').slice(-1)[0];
+    // set currProductID to url value
+    this.setState({currProductID: url});
+    console.log('url and state should be set: ', url);
+  }
+
   componentDidMount() {
     this.getQuestions();
     this.getProductInfo();
+    this.getProductIDfromURL();
   }
+
+
 
 
   render() {

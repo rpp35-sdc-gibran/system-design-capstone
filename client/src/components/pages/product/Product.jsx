@@ -91,11 +91,11 @@ const Product = (props) => {
          >
             {isRatingsAndReviewSectionVisible && (
                <Suspense fallback={<div>Loading...</div>}>
-                  <EnhancedRatingsAndReviews
+                  {/* <EnhancedRatingsAndReviews
                      currentProductId={productId}
                      reviews={currentReviews}
                      {...props}
-                  />
+                  /> */}
                </Suspense>
             )}
          </section>
