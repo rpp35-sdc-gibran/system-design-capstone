@@ -43,7 +43,7 @@
   max-height: 100vh;
   height: fit-content;
   // overflow: hidden; //set to hide any contents greater than the height of total view height
-  overflow-y: scroll;
+  overflow-y: auto;
   align-self: center;
 
 }
@@ -52,8 +52,8 @@
 .questionsButtons {
   display: flex;
   order: 4;
-  margin-left: 1rem;
-  gap: 5px;
+  margin-left: 4%;
+  gap: 2.5%;
   margin-bottom: 1rem;
 }
 

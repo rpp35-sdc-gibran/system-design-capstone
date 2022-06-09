@@ -73,6 +73,14 @@ class AddAnswer extends React.Component {
             outlined={true}
             className='addAnswerCard'
          >
+            <div className='addAnswerTitleBar'>
+               <Typography className='addAnswerTile' align='center' variant='h4'>
+                  Submit your Answer
+               </Typography>
+               <Typography className='addAnswerSubtile'align='center' variant='subtitle1'>
+                  {this.props.product_name}: {this.props.question_body}
+               </Typography>
+            </div>
             <form
                className='addAnswerForm'
                onSubmit={(event) => {
@@ -84,12 +92,6 @@ class AddAnswer extends React.Component {
                   this.props.changeQAState('currQuestion_body', null);
                }}
             >
-               <Typography align='center' variant='h4'>
-                  Submit your Answer
-               </Typography>
-               <Typography align='center' variant='subtitle1'>
-                  {this.props.product_name}: {this.props.question_body}
-               </Typography>
                <div>
                   <label htmlFor='body'>Your Answer*</label>
                   <textarea
@@ -144,17 +146,19 @@ class AddAnswer extends React.Component {
                         this.previewImages.bind(this)(event);
                      }}
                   />
-                  <div className='gallery'></div>
                </div>
-               <button ref='sumbit'>Sumbit</button>
-               <button
-                  onClick={(event) => {
-                     this.props.changeQAState('addAnswerModal', false);
-                     this.props.handleInteraction(event);
-                  }}
-               >
-                  Cancel
-               </button>
+               <div className="addAnswerButtons">
+                  <button ref='sumbit'>Sumbit</button>
+                  <button
+                     onClick={(event) => {
+                        this.props.changeQAState('addAnswerModal', false);
+                        this.props.handleInteraction(event);
+                     }}
+                  >
+                     Cancel
+                  </button>
+               </div>
+               <div className='gallery'></div>
             </form>
          </Card>
       );
