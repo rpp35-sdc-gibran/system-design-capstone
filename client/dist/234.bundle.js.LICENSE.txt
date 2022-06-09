@@ -1,0 +1,1 @@
+//! expects product name as this.props.productName

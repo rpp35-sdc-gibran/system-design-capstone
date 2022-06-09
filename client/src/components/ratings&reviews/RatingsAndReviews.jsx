@@ -33,15 +33,15 @@ const RatingsAndReviews = ({ currentProductId }) => {
             .all([
                axios({
                   method: 'get',
-                  url: '/api/reviews/',
+                  url: '/reviews/',
                   headers: { product_id: currentProductId },
                }),
                axios({
                   method: 'get',
-                  url: '/api/reviews/meta',
+                  url: '/reviews/meta',
                   headers: { product_id: currentProductId },
                }),
-               axios.get(`/api/products/${currentProductId}`)
+               axios.get(`/products/${currentProductId}`)
             ])
             .then(
                axios.spread((reviews, reviewsMeta, productData) => {
@@ -63,14 +63,14 @@ const RatingsAndReviews = ({ currentProductId }) => {
       SetReport(!report);
       axios({
          method: 'post',
-         url: '/api/reviews/report',
+         url: '/reviews/report',
          data: { review_id: review_id }
       })
    }
    useEffect(renderReviewsAndRatings, [currentProductId, report]);
    const postReview = (newReview) => {
       console.log('sending to serer newReview', newReview);
-      axios.post('/api/reviews/', { ...newReview, product_id: currentProductId })
+      axios.post('/reviews/', { ...newReview, product_id: currentProductId })
          .then((response) => {
             console.log('after posting review response:', response);
             renderReviewsAndRatings();

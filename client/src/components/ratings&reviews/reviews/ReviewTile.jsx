@@ -32,7 +32,7 @@ const ReviewTile = ({ review, handleReport }) => {
       if (clickCount < 1) {
          console.log('clicked helpful', clickCount)
          axios({
-            url: '/api/reviews/helpful',
+            url: '/reviews/helpful',
             method: 'post',
             data: {
                review_id: review.review_id
@@ -50,7 +50,7 @@ const ReviewTile = ({ review, handleReport }) => {
    // useEffect(() => {
    //    if (clickCount <= 1) {
    //       axios({
-   //          url: '/api/reviews/helpful',
+   //          url: '/reviews/helpful',
    //          method: 'post',
    //          data: {
    //             review_id: review.review_id
@@ -89,7 +89,7 @@ const ReviewTile = ({ review, handleReport }) => {
             <img src={photo}></img>
          )) : <></>
          }
-         <span>Helpful?</span><span className='helpful' onClick={handleHelpful}> Yes </span><span>({helpfulCount})</span>
+         <span>Helpful?</span><span className='helpful' onClick={handleHelpful}> Yes </span><span style={{"padding": "3px"}}>{review.helpfulness}</span>
          <span className='report' onClick={handleReporClicked}>Report</span>
       </div>
    );

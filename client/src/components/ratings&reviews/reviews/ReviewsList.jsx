@@ -60,7 +60,7 @@ const ReviewsList = ({
       }
       if (sortWith === 'helpfulness') {
          reviews.sort((a, b) => b.helpfulness - a.helpfulness);
-         SetReviewsToRender([...reviews]);
+         SetReviewsToRender(reviews);
       }
       console.log('reviews after sorted by change: ', reviews);
    };

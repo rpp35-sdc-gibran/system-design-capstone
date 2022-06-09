@@ -21,9 +21,9 @@ const ProductOverview = ({ currentProductId }) => {
    useEffect(() => {
       axios
          .all([
-            axios.get(`/api/products/${currentProductId}`),
-            axios.get(`/api/products/${currentProductId}/styles`),
-            axios.get(`/api/products/${currentProductId}/reviews`),
+            axios.get(`/products/${currentProductId}`),
+            axios.get(`/products/${currentProductId}/styles`),
+            axios.get(`/products/${currentProductId}/reviews`),
          ])
          .then(
             axios.spread(function (productData, productStyles, productReviews) {
