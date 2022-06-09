@@ -1,5 +1,5 @@
-console.log('process.env:', process.env.GITHUB_API_TOKEN);
-const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN;
+//console.log('process.env:', GITHUB_API_TOKEN);
+//const GITHUB_API_TOKEN = GITHUB_API_TOKEN;
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/cart';
 const axios = require('axios');
 

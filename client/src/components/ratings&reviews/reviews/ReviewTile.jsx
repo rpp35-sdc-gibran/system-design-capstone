@@ -29,14 +29,8 @@ const ReviewTile = ({ review, handleReport }) => {
       console.log('clicked helpful', review.review_id)
       e.preventDefault();
       SetClickCount(clickCount + 1);
-   }
-   const handleReporClicked = (e) => {
-      console.log('report clicked')
-      e.preventDefault();
-      handleReport(review.review_id);
-   }
-   useEffect(() => {
-      if (clickCount <= 1) {
+      if (clickCount < 1) {
+         console.log('clicked helpful', clickCount)
          axios({
             url: '/api/reviews/helpful',
             method: 'post',
@@ -47,7 +41,25 @@ const ReviewTile = ({ review, handleReport }) => {
             SetHelpfulCount(helpfulCount + 1)
          })
       }
-   }, [clickCount])
+   }
+   const handleReporClicked = (e) => {
+      console.log('report clicked')
+      e.preventDefault();
+      handleReport(review.review_id);
+   }
+   // useEffect(() => {
+   //    if (clickCount <= 1) {
+   //       axios({
+   //          url: '/api/reviews/helpful',
+   //          method: 'post',
+   //          data: {
+   //             review_id: review.review_id
+   //          }
+   //       }).then((response) => {
+   //          SetHelpfulCount(helpfulCount + 1)
+   //       })
+   //    }
+   // }, [clickCount])
    return (
       <div className='reviewTile'>
          <StarRating rating={review.rating} reviewId={review.review_id} />

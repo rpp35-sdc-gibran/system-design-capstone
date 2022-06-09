@@ -1,0 +1,1 @@
+ssh -i "/Users/shengnanhuang/Desktop/HR/rpp35/fec-capstone/FEC-HackReactor.pem" ubuntu@ec2-54-210-10-52.compute-1.amazonaws.com
