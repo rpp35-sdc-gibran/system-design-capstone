@@ -22,6 +22,7 @@
 .searchBar {
   order: 2;
   display: flex;
+
 //   align-self: center;
 //   @include set-size(85vh, 85vw);
 //   // gap: 10px 20px;
@@ -43,19 +44,36 @@
   height: fit-content;
   // overflow: hidden; //set to hide any contents greater than the height of total view height
   overflow-y: scroll;
+  align-self: center;
+
 }
 
 
 .questionsButtons {
   display: flex;
   order: 4;
+  margin-left: 1rem;
+  gap: 5px;
+  margin-bottom: 1rem;
 }
 
 .addQuestionButton {
-
+  gap: 5px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .moreQuestionsButton {
-
+  gap: 5px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
 }
 

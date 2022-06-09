@@ -5,6 +5,9 @@
   flex-direction: column;
   margin: 1rem;
   overflow-y: scroll;
+  width: 75vw;
+  align-self: center;
+  max-height: 50%;
 }
 
 .questionRow_1 {
@@ -14,12 +17,12 @@
 }
 
 .questionRow_2 {
-  max-height: 25%;
+  // max-height: 25%;
   display: flex;
   order: 2;
   justify-content: flex-start;
   margin-left: 10px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 }
 .questionBody {
   display: flex;
