@@ -4,4 +4,4 @@
 /server/config/CristiansKeyPair.pem
 /coverage
 /coverage/lcov-report
-.env
+./.env

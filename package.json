@@ -6,7 +6,7 @@
    "scripts": {
       "test": "jest",
       "cypress": "cypress open",
-      "dev": "nodemon server/server.js & npx webpack serve --open --config webpack.dev.js",
+      "dev": " npx webpack serve --open --config webpack.dev.js && nodemon server/server.js",
       "start": "webpack --config webpack.prod.js && nodemon server/server.js"
    },
    "repository": {
