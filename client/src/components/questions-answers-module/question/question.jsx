@@ -13,7 +13,7 @@ import AnswerList from '../answer-list/answersList.jsx';
 class Question extends React.Component {
    reportQuestion() {
       axios
-         .put('/api/questionsAnswers/reportQuestion', {
+         .put('/questionsAnswers/reportQuestion', {
             question_id: this.props.question.question_id,
          })
          .then((results) => {
@@ -32,7 +32,7 @@ class Question extends React.Component {
 
    isHelpful() {
       axios
-         .put('/api/questionsAnswers/markQuestionHelpful', {
+         .put('/questionsAnswers/markQuestionHelpful', {
             question_id: this.props.question.question_id,
          })
          .then((results) => {
@@ -82,7 +82,8 @@ class Question extends React.Component {
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                   onClick={(event) => {
                      this.props.handleInteraction(event);
-                     let question_id = this.props.question.question_id.toString();
+                     let question_id =
+                        this.props.question.question_id.toString();
                      // check if localStorage is empty
                      if (!Boolean(localStorage.getItem(question_id))) {
                         // mark helpful

@@ -19,10 +19,10 @@ const reducer = (starFilters, action) => {
    }
 };
 
-
 const RatingsAndReviews = ({ currentProductId }) => {
    const [currentReviews, SetCurrentReviews] = useState(sampleReviews.results);
-   const [currentReviewsMeta, SetCurrentReviewsMeta] = useState(sampleReviewsMeta);
+   const [currentReviewsMeta, SetCurrentReviewsMeta] =
+      useState(sampleReviewsMeta);
    const [starFilters, dispatch] = useReducer(reducer, []);
    const [productName, setProductName] = useState('');
    const [report, SetReport] = useState(false);
@@ -33,15 +33,15 @@ const RatingsAndReviews = ({ currentProductId }) => {
             .all([
                axios({
                   method: 'get',
-                  url: '/api/reviews/',
+                  url: '/reviews/',
                   headers: { product_id: currentProductId },
                }),
                axios({
                   method: 'get',
-                  url: '/api/reviews/meta',
+                  url: '/reviews/meta',
                   headers: { product_id: currentProductId },
                }),
-               axios.get(`/api/products/${currentProductId}`)
+               axios.get(`/products/${currentProductId}`),
             ])
             .then(
                axios.spread((reviews, reviewsMeta, productData) => {
@@ -50,7 +50,8 @@ const RatingsAndReviews = ({ currentProductId }) => {
                      reviews,
                      'reviewsMeta',
                      reviewsMeta,
-                     'productName: ', productData.data.name
+                     'productName: ',
+                     productData.data.name
                   );
                   SetCurrentReviews(reviews.data.results);
                   SetCurrentReviewsMeta(reviewsMeta.data);
@@ -58,38 +59,45 @@ const RatingsAndReviews = ({ currentProductId }) => {
                })
             );
       }
-   }
+   };
    const handleReport = (review_id) => {
       SetReport(!report);
       axios({
          method: 'post',
-         url: '/api/reviews/report',
-         data: { review_id: review_id }
-      })
-   }
+         url: '/reviews/report',
+         data: { review_id: review_id },
+      });
+   };
    useEffect(renderReviewsAndRatings, [currentProductId, report]);
    const postReview = (newReview) => {
       console.log('sending to serer newReview', newReview);
-      axios.post('/api/reviews/', { ...newReview, product_id: currentProductId })
+      axios
+         .post('/reviews/', { ...newReview, product_id: currentProductId })
          .then((response) => {
             console.log('after posting review response:', response);
             renderReviewsAndRatings();
-         }).
-         catch((error) => {
-            console.log(error)
          })
-   }
+         .catch((error) => {
+            console.log(error);
+         });
+   };
    console.log(
       'current product ID in RatingsAndReviews.jsx: ',
       currentProductId
    );
    console.log('starFilters', starFilters);
    return (
-         <div>
-            <link rel='stylesheet' type='css' href='reviewsStyle.css' />
-            <Ratings reviewsMeta={currentReviewsMeta} dispatch={dispatch} />
-            <ReviewsList reviews={currentReviews} starFilters={starFilters} productName={productName} postReview={postReview} handleReport={handleReport} />
-         </div>
+      <div>
+         <link rel='stylesheet' type='css' href='reviewsStyle.css' />
+         <Ratings reviewsMeta={currentReviewsMeta} dispatch={dispatch} />
+         <ReviewsList
+            reviews={currentReviews}
+            starFilters={starFilters}
+            productName={productName}
+            postReview={postReview}
+            handleReport={handleReport}
+         />
+      </div>
    );
 };
 

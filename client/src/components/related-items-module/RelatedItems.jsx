@@ -11,19 +11,19 @@ const RelatedItems = ({ currentProductId }) => {
 
    useEffect(() => {
       axios
-         .get(`/api/products/${currentProductId}/related`)
+         .get(`/products/${currentProductId}/related`)
          .then((relatedProductIds) => {
             //! limit call for styles and product info to only first three related items to prevent too many calls error
             if (relatedProductIds) {
                let currentRelatedProducts = relatedProductIds.data.slice(0, 6);
                let promises = currentRelatedProducts.map((currentId) => {
-                  return axios.get(`/api/products/${currentId}`);
+                  return axios.get(`/products/${currentId}`);
                });
                Promise.all(promises).then((productInfo) => {
                   setRelatedProducts(productInfo);
                });
                let stylePromises = currentRelatedProducts.map((id) => {
-                  return axios.get(`/api/products/${id}/styles`);
+                  return axios.get(`/products/${id}/styles`);
                });
                Promise.all(stylePromises).then((productStyles) => {
                   setProductPhotos(productStyles);

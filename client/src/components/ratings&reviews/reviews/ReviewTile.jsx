@@ -26,27 +26,27 @@ const ReviewTile = ({ review, handleReport }) => {
    var year = review.date.slice(0, 4);
    //! removed key from div, instead added to reviewlist file when calling review tile
    const handleHelpful = (e) => {
-      console.log('clicked helpful', review.review_id)
+      console.log('clicked helpful', review.review_id);
       e.preventDefault();
       SetClickCount(clickCount + 1);
-   }
+   };
    const handleReporClicked = (e) => {
       e.preventDefault();
       handleReport(review.review_id);
-   }
+   };
    useEffect(() => {
       if (clickCount <= 1) {
          axios({
-            url: '/api/reviews/helpful',
+            url: '/reviews/helpful',
             method: 'post',
             data: {
-               review_id: review.review_id
-            }
+               review_id: review.review_id,
+            },
          }).then((response) => {
-            SetHelpfulCount(helpfulCount + 1)
-         })
+            SetHelpfulCount(helpfulCount + 1);
+         });
       }
-   }, [clickCount])
+   }, [clickCount]);
    return (
       <div className='reviewTile'>
          <StarRating rating={review.rating} reviewId={review.review_id} />
@@ -72,8 +72,15 @@ const ReviewTile = ({ review, handleReport }) => {
          )}
          <span className='body'>{review.body}</span>
          <br />
-         <span>Helpful?</span><span className='helpful' onClick={handleHelpful}> Yes </span><span>({helpfulCount})</span>
-         <span className='report' onClick={handleReporClicked}>Report</span>
+         <span>Helpful?</span>
+         <span className='helpful' onClick={handleHelpful}>
+            {' '}
+            Yes{' '}
+         </span>
+         <span>({helpfulCount})</span>
+         <span className='report' onClick={handleReporClicked}>
+            Report
+         </span>
       </div>
    );
 };

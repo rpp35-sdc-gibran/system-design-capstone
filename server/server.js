@@ -10,18 +10,19 @@ const questionsAnswers = require('./routes/questionsAnswers');
 const reviews = require('./routes/ratingsAndReviews');
 const cart = require('./routes/cart');
 const interactions = require('./routes/interactions');
+const compression = require('compression');
 
+app.use(compression());
 //MIDDLEWARE
 app.use(cors());
 
 console.log('process.env:', process.env.NODE_ENV);
 // if (process.env.NODE_ENV !== 'production') {
 
-if (process.env.NODE_ENV !== 'production') {
-   app.use(express.static(path.join(__dirname, '/client/dist')));
-} else {
-   app.use(express.static(path.join(__dirname, '../client/dist')));
-}
+app.use(express.static(path.join(__dirname, '../client/dist')));
+// } else {
+//    app.use(express.static(path.join(__dirname, '/client/dist')));
+// }
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

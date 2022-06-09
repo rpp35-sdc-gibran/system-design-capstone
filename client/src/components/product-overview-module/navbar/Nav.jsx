@@ -1,7 +1,7 @@
 import React from 'react';
-import '../navbar/Nav.scss';
+import './Nav.scss';
 import { NavLink } from 'react-router-dom';
-import AppBar from '@mui/material/Appbar';
+import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
@@ -19,6 +19,7 @@ const Nav = () => {
             <TextField
                size='small'
                variant='filled'
+               label='search'
                InputProps={{
                   startAdornment: (
                      <InputAdornment position='start'>
