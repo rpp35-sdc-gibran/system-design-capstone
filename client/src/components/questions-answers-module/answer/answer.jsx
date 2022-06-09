@@ -69,11 +69,11 @@ class Answer extends React.Component {
                   className='helpful'
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                   onClick={(event) => {
-                     this.props.handleInteraction(event);
                      let answer_id = this.props.answer.answer_id.toString();
                      if (!Boolean(localStorage.getItem(answer_id))) {
                         this.isHelpful();
                         localStorage.setItem(answer_id, true);
+                        this.props.handleInteraction(event);
                      }
                   }}
                >
@@ -83,10 +83,10 @@ class Answer extends React.Component {
                <a
                   className='report'
                   onClick={(event) => {
-                     this.props.handleInteraction(event);
                      this.reportAnswer.bind(this)();
                      // change inner html text to reported
                      event.target.innerHTML = 'Reported';
+                     this.props.handleInteraction(event);
                   }}
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                >

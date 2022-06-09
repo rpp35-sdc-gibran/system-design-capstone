@@ -130,7 +130,7 @@ class QuestionsAnswers extends React.Component {
         onClick={(event) => {
           this.addShownQuestions();
           this.handleInteraction(event);
-      }}><Typography variant='body1'><strong>More Answered Questions</strong></Typography></button>;
+      }}><Typography variant='body1'><strong>MORE ANSWERED QUESTIONS</strong></Typography></button>;
     } else {
       // add collapse answers button??
       moreQuestions = null;
@@ -187,7 +187,7 @@ class QuestionsAnswers extends React.Component {
           onClick={(event) => {
             this.changeQAState('addQuestionModal', true);
             this.handleInteraction(event);
-          }}><Typography variant='body1'><strong>Add a Question +</strong> </Typography></button>
+          }}><Typography variant='body1'><strong>ADD A QUESTION +</strong> </Typography></button>
       </Paper>
     );
   }

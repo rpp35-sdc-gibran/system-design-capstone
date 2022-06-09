@@ -11,10 +11,12 @@ const getQuestionsByProductID = (req, res) => {
          params: { product_id: req.query.product_id, count: 100 },
       })
       .then((results) => {
+         console.log('Success getQuestionsByProductID');
          res.send(results.data);
       })
       .catch((error) => {
-         res.status(404).send('Error getting questions', error);
+         console.log('Error getQuestionsByProductID', error);
+         res.end();
       });
 };
 
@@ -25,11 +27,12 @@ const markQuestionHelpfulByQuestionID = (req, res) => {
       headers: { Authorization: GITHUB_API_TOKEN },
    })
       .then((results) => {
-         console.log('Success marking question heplful');
-         res.status(201);
+         console.log('Success markQuestionHelpfulByQuestionID');
+         res.end();
       })
       .catch((error) => {
-         console.log('Error marking question helpful', error);
+         console.log('Error markQuestionHelpfulByQuestionID', error);
+         res.end();
       });
 };
 
@@ -40,11 +43,12 @@ const reportQuestionByQuestionID = (req, res) => {
       headers: { Authorization: GITHUB_API_TOKEN },
    })
       .then((results) => {
-         console.log('Success reporting question', req.body.question_id);
-         res.status(201);
+         console.log('Success reportQuestionByQuestionID');
+         res.end();
       })
       .catch((error) => {
-         console.log('Error reporting answer', error);
+         console.log('Error reportQuestionByQuestionID', error);
+         res.end();
       });
 };
 
@@ -61,11 +65,12 @@ const postQuestionByProductID = (req, res) => {
          }
       })
       .then((results) => {
-         console.log('Success POSTING question');
-         res.status(201)
+         console.log('Success postQuestionByProductID');
+         res.end();
       })
       .catch((error) => {
-         console.log('Error POSTING question', error);
+         console.log('Error postQuestionByProductID', error);
+         res.end();
       });
 };
 
@@ -81,10 +86,12 @@ const getAnswersByQuestionID = (req, res) => {
        }
       )
       .then((results) => {
+         console.log('Success getAnswersByQuestionID');
          res.send(results.data);
       })
       .catch((error) => {
-         res.status(404).send('Error getting answers', error);
+         console.log('Error getAnswersByQuestionID', error);
+         res.end();
       });
 };
 
@@ -95,27 +102,27 @@ const markAnswerHelpfulByAnswerID = (req, res) => {
       headers: { Authorization: GITHUB_API_TOKEN },
    })
       .then((results) => {
-         console.log('Success marking answer heplful');
-         res.status(201);
+         console.log('Success markAnswerHelpfulByAnswerID');
+         res.end();
       })
       .catch((error) => {
-         console.log('Error marking answer helpful', error);
+         console.log('Error markAnswerHelpfulByAnswerID', error);
+         res.end();
       });
 };
 
 const reportAnswerByAnswerID = (req, res) => {
-   console.log('report answer requested', req.body.answer_id);
    axios({
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.answer_id}/report`,
       headers: { Authorization: GITHUB_API_TOKEN },
    })
       .then((results) => {
-         console.log('Success reporting answer');
-         res.status(201);
+         console.log('Success reportAnswerByAnswerID');
+         res.end();
       })
       .catch((error) => {
-         console.log('Error reporting answer', error);
+         console.log('Error reportAnswerByAnswerID', error);
       });
 };
 
@@ -132,11 +139,11 @@ const postAnswerByQuestionID = (req, res) => {
       },
    })
       .then((results) => {
-         console.log('Success POSTING answer!');
-         res.status(201);
+         console.log('Success postAnswerByQuestionID');
+         res.end();
       })
       .catch((error) => {
-         console.log('Error POSTING answer ', error);
+         console.log('Error postAnswerByQuestionID', error);
       });
 };
 
@@ -151,11 +158,11 @@ const getProductInfoByProductID = (req, res) => {
      headers: { Authorization: GITHUB_API_TOKEN }
     })
     .then((results) => {
-      console.log('Success getting product info');
+      console.log('Success getProductInfoByProductID');
       res.send(results.data.name);
     })
     .catch((error) => {
-      console.log('Error getting product info', error);
+      console.log('Error getProductInfoByProductID', error);
     });
 };
 
@@ -171,10 +178,12 @@ const postInteraction = (req, res) => {
       }
    })
    .then((results) => {
-     console.log('Success posting interaction!');
+     console.log('Success postInteraction');
+     res.end()
    })
    .catch((error) => {
-     console.log('Error posting interaction', error);
+     console.log('Error postInteraction', error);
+     res.end()
    });
 }
 
