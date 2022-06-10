@@ -6,9 +6,8 @@ exports[`renders correctly 1`] = `
   onClick={[Function]}
 >
   <img
-    alt="main product image "
+    alt="main product image"
     className="default-img"
-    loading="lazy"
     src="test-file-stub"
   />
 </div>

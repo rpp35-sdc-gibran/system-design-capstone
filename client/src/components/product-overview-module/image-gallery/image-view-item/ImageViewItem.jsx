@@ -99,7 +99,7 @@ const ImageViewItem = ({
       return (
          <div className='default' onClick={handleClick}>
             <img
-               alt='main product image '
+               alt='main product image'
                className='default-img'
                src={image || DefaultImage}
             ></img>
