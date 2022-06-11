@@ -90,13 +90,13 @@ let getProductReviewsResponse = {
 };
 
 const server = setupServer(
-   rest.get('/api/products/:product_id', (req, res, ctx) => {
+   rest.get('/products/:product_id', (req, res, ctx) => {
       return res(ctx.json(getProductInfoResponse));
    }),
-   rest.get('api/products/123/styles', (req, res, ctx) => {
+   rest.get('/products/123/styles', (req, res, ctx) => {
       return res(ctx.json(getProductStylesResponse));
    }),
-   rest.get('api/products/123/reviews', (req, res, ctx) => {
+   rest.get('/products/123/reviews', (req, res, ctx) => {
       return res(ctx.json(getProductReviewsResponse));
    })
 );
@@ -131,6 +131,7 @@ test('Images can change into different view modes', async () => {
    await waitFor(() => {
       expect(screen.getByAltText('main product image')).toBeDefined();
    });
+   screen.debug();
    await user.click(screen.getByAltText('main product image'));
    expect(screen.getByAltText('main image enlarged view')).toBeDefined();
    await user.click(screen.getByTestId('enlarged-checkbox'));
