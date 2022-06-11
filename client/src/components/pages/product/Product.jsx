@@ -74,7 +74,10 @@ const Product = (props) => {
          >
             {isQuestionsAnswersSectionVisible && (
                <Suspense fallback={<div>Loading...</div>}>
-                  <QuestionsAnswers currentProductId={productId} />
+                  <QuestionsAnswers
+                    className='questionsAnswers'
+                    currentProductId={productId}
+                  />
                </Suspense>
             )}
          </section>
@@ -84,11 +87,11 @@ const Product = (props) => {
          >
             {isRatingsAndReviewSectionVisible && (
                <Suspense fallback={<div>Loading...</div>}>
-                  <EnhancedRatingsAndReviews
+                  {/* <EnhancedRatingsAndReviews
                      currentProductId={productId}
                      reviews={currentReviews}
                      {...props}
-                  />
+                  /> */}
                </Suspense>
             )}
          </section>

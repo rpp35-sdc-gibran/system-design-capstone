@@ -1,1 +1,40 @@
 @use '../../App.scss' as *;
+
+.questionCard {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  overflow-y: auto;
+  width: 75vw;
+  align-self: center;
+  max-height: 50%;
+}
+
+.questionRow_1 {
+  display: flex;
+  order: 1;
+  justify-content: space-between;
+}
+
+.questionRow_2 {
+  // max-height: 25%;
+  display: flex;
+  order: 2;
+  justify-content: flex-start;
+  margin-left: 10px;
+  // overflow-y: scroll;
+}
+.questionBody {
+  display: flex;
+  order: 1;
+  align-content: flex-start;
+  margin-left: 10px;
+}
+
+.questionDetails {
+  display: flex;
+  order: 2;
+  align-content: flex-end;
+  gap: 5px;
+  margin-right: 10px;
+}

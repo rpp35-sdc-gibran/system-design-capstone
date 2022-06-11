@@ -1,3 +1,4 @@
+ *.cer
 /node_modules
 /server/config/config.js
 /server/config/Tylersconfig.js
@@ -5,3 +6,4 @@
 /coverage
 /coverage/lcov-report
 .env
+/client/dist
