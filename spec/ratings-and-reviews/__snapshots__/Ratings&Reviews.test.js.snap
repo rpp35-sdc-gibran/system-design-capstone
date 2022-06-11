@@ -1,0 +1,1241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<div>
+  <link
+    href="reviewsStyle.css"
+    rel="stylesheet"
+    type="css"
+  />
+  <div
+    className="rating-box"
+  >
+    <p
+      id="ratingtitle"
+    >
+      RATINGS & REVIEWS
+    </p>
+    <div>
+      <span
+        id="avgrating"
+      >
+        3.5
+      </span>
+      <span
+        id="avgstars"
+      >
+        <div
+          className="starContainer"
+        >
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <div
+            className="starsOverlay"
+            style={
+              Object {
+                "width": "30%",
+              }
+            }
+          />
+        </div>
+        <br />
+      </span>
+      <div
+        id="recommendrate"
+      >
+        50% of the reviews recommend this product
+      </div>
+      <div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            5 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={1}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            1
+          </span>
+        </div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            4 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={1}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            1
+          </span>
+        </div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            3 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={1}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            1
+          </span>
+        </div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            2 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={1}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            1
+          </span>
+        </div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            1 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={0}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            0
+          </span>
+        </div>
+        <button
+          className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-sghohy-MuiButtonBase-root-MuiButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          Reset Filter
+          <span
+            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        className="chara-section"
+      >
+        <div>
+          Fit
+        </div>
+        <div
+          className="chara-box"
+        >
+          <div
+            className="progressbar"
+          >
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Too Small
+            </span>
+          </div>
+          <div
+            className="progressbar"
+          >
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Perfect
+            </span>
+          </div>
+          <div
+            className="progressbar"
+          >
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Too large
+            </span>
+          </div>
+          <span
+            className="triangelicon"
+            style={
+              Object {
+                "left": "80%",
+              }
+            }
+          >
+            ▼
+          </span>
+        </div>
+        <div>
+          Length
+        </div>
+        <div
+          className="chara-box"
+        >
+          <div>
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Too Small
+            </span>
+          </div>
+          <div>
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Perfect
+            </span>
+          </div>
+          <div>
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Too large
+            </span>
+          </div>
+          <span
+            className="triangelicon"
+            style={
+              Object {
+                "left": "70%",
+              }
+            }
+          >
+            ▼
+          </span>
+        </div>
+        <div>
+          Comfort
+        </div>
+        <div
+          className="chara-box"
+        >
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span>
+              Poor
+            </span>
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span
+              style={
+                Object {
+                  "marginBottom": "20px",
+                }
+              }
+            />
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span
+              style={
+                Object {
+                  "marginBottom": "20px",
+                }
+              }
+            />
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span>
+              Perfect
+            </span>
+          </div>
+          <span
+            className="triangelicon"
+            style={
+              Object {
+                "left": "85%",
+              }
+            }
+          >
+            ▼
+          </span>
+        </div>
+        <div>
+          Quality
+        </div>
+        <div
+          className="chara-box"
+        >
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span>
+              Poor
+            </span>
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span
+              style={
+                Object {
+                  "marginBottom": "20px",
+                }
+              }
+            />
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span
+              style={
+                Object {
+                  "marginBottom": "20px",
+                }
+              }
+            />
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span>
+              Perfect
+            </span>
+          </div>
+          <span
+            className="triangelicon"
+            style={
+              Object {
+                "left": "75%",
+              }
+            }
+          >
+            ▼
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="review-box"
+  >
+    <div
+      className="review-box-inner"
+    >
+      <h1>
+        Reviews
+      </h1>
+      <div
+        className="reviewlistheader"
+      >
+        <h3>
+          1
+           reviews, sorted by
+        </h3>
+        <select
+          defaultValue="relevant"
+          onChange={[Function]}
+        >
+          <option
+            value="helpfulness"
+          >
+            helpfulness 
+          </option>
+          <option
+            value="newest"
+          >
+            newest
+          </option>
+          <option
+            value="relevant"
+          >
+            relevant 
+          </option>
+        </select>
+        <button
+          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root searchreview css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onContextMenu={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span>
+            <svg
+              className="DocSearch-Search-Icon"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+            >
+              <path
+                d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
+                fill="none"
+                fillRule="evenodd"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <input
+            onChange={[Function]}
+            placeholder="Search"
+          />
+          <span
+            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        className="reviewtiles"
+      >
+        <div
+          className="reviewTile"
+        >
+          <div
+            className="starContainer"
+          >
+            <svg
+              className="star"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <svg
+              className="star"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <svg
+              className="star"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <svg
+              className="star"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <svg
+              className="star"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <div
+              className="starsOverlay"
+              style={
+                Object {
+                  "width": "0%",
+                }
+              }
+            />
+          </div>
+          <span
+            className="nameanddate"
+          >
+            funtime,  January 01, 2019
+          </span>
+          <br />
+          <span
+            className="summary"
+          >
+            This product was great!
+          </span>
+          <br />
+          <span>
+            ✓ I recommend this product
+            <br />
+          </span>
+          <span
+            className="body"
+          >
+            I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.
+          </span>
+          <br />
+          <span>
+            Helpful?
+          </span>
+          <span
+            className="helpful"
+            onClick={[Function]}
+          >
+             Yes 
+          </span>
+          <span>
+            (
+            8
+            )
+          </span>
+          <span
+            className="report"
+            onClick={[Function]}
+          >
+            Report
+          </span>
+        </div>
+      </div>
+      <button
+        className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-sghohy-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "padding": "1px",
+          }
+        }
+        tabIndex={0}
+        type="button"
+      >
+        ADD A REVIEW +
+        <span
+          className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders correctly 1`] = `
+<div>
+  <link
+    href="reviewsStyle.css"
+    rel="stylesheet"
+    type="css"
+  />
+  <div
+    className="rating-box"
+  >
+    <p
+      id="ratingtitle"
+    >
+      RATINGS & REVIEWS
+    </p>
+    <div>
+      <span
+        id="avgrating"
+      >
+        3.5
+      </span>
+      <span
+        id="avgstars"
+      >
+        <div
+          className="starContainer"
+        >
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <svg
+            className="star"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <div
+            className="starsOverlay"
+            style={
+              Object {
+                "width": "30%",
+              }
+            }
+          />
+        </div>
+        <br />
+      </span>
+      <div
+        id="recommendrate"
+      >
+        50% of the reviews recommend this product
+      </div>
+      <div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            5 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={1}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            1
+          </span>
+        </div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            4 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={1}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            1
+          </span>
+        </div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            3 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={1}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            1
+          </span>
+        </div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            2 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={1}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            1
+          </span>
+        </div>
+        <div
+          className="ratingsBreakdown"
+        >
+          <span>
+            1 stars
+          </span>
+          <progress
+            className="ratingprog"
+            max={4}
+            value={0}
+          />
+          <span
+            className="starFilter"
+            onClick={[Function]}
+          >
+            0
+          </span>
+        </div>
+        <button
+          className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-sghohy-MuiButtonBase-root-MuiButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          Reset Filter
+        </button>
+      </div>
+      <div
+        className="chara-section"
+      >
+        <div>
+          Fit
+        </div>
+        <div
+          className="chara-box"
+        >
+          <div
+            className="progressbar"
+          >
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Too Small
+            </span>
+          </div>
+          <div
+            className="progressbar"
+          >
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Perfect
+            </span>
+          </div>
+          <div
+            className="progressbar"
+          >
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Too large
+            </span>
+          </div>
+          <span
+            className="triangelicon"
+            style={
+              Object {
+                "left": "80%",
+              }
+            }
+          >
+            ▼
+          </span>
+        </div>
+        <div>
+          Length
+        </div>
+        <div
+          className="chara-box"
+        >
+          <div>
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Too Small
+            </span>
+          </div>
+          <div>
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Perfect
+            </span>
+          </div>
+          <div>
+            <progress
+              className="characteristics big"
+              value="0"
+            />
+            <span>
+              Too large
+            </span>
+          </div>
+          <span
+            className="triangelicon"
+            style={
+              Object {
+                "left": "70%",
+              }
+            }
+          >
+            ▼
+          </span>
+        </div>
+        <div>
+          Comfort
+        </div>
+        <div
+          className="chara-box"
+        >
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span>
+              Poor
+            </span>
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span
+              style={
+                Object {
+                  "marginBottom": "20px",
+                }
+              }
+            />
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span
+              style={
+                Object {
+                  "marginBottom": "20px",
+                }
+              }
+            />
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span>
+              Perfect
+            </span>
+          </div>
+          <span
+            className="triangelicon"
+            style={
+              Object {
+                "left": "85%",
+              }
+            }
+          >
+            ▼
+          </span>
+        </div>
+        <div>
+          Quality
+        </div>
+        <div
+          className="chara-box"
+        >
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span>
+              Poor
+            </span>
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span
+              style={
+                Object {
+                  "marginBottom": "20px",
+                }
+              }
+            />
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span
+              style={
+                Object {
+                  "marginBottom": "20px",
+                }
+              }
+            />
+          </div>
+          <div>
+            <progress
+              className="characteristics small"
+              value="0"
+            />
+            <span>
+              Perfect
+            </span>
+          </div>
+          <span
+            className="triangelicon"
+            style={
+              Object {
+                "left": "75%",
+              }
+            }
+          >
+            ▼
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="review-box"
+  >
+    <div
+      className="review-box-inner"
+    >
+      <h1>
+        Reviews
+      </h1>
+      <div
+        className="reviewlistheader"
+      >
+        <h3>
+          0
+           reviews, sorted by
+        </h3>
+        <select
+          defaultValue="relevant"
+          onChange={[Function]}
+        >
+          <option
+            value="helpfulness"
+          >
+            helpfulness 
+          </option>
+          <option
+            value="newest"
+          >
+            newest
+          </option>
+          <option
+            value="relevant"
+          >
+            relevant 
+          </option>
+        </select>
+        <button
+          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root searchreview css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onContextMenu={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span>
+            <svg
+              className="DocSearch-Search-Icon"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+            >
+              <path
+                d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
+                fill="none"
+                fillRule="evenodd"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <input
+            onChange={[Function]}
+            placeholder="Search"
+          />
+        </button>
+      </div>
+      <button
+        className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-sghohy-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "padding": "1px",
+          }
+        }
+        tabIndex={0}
+        type="button"
+      >
+        ADD A REVIEW +
+      </button>
+    </div>
+  </div>
+</div>
+`;

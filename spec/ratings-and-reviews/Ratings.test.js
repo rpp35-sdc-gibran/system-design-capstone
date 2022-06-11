@@ -42,7 +42,7 @@ it('renders reviewsMeta data', async () => {
    });
 
    expect(container.querySelector('span').textContent).toBe('3.5');
-   expect(container.querySelector('h5').textContent).toBe('RATINGS & REVIEWS');
+   expect(container.querySelector('p').textContent).toBe('RATINGS & REVIEWS');
 
    // remove the mock to ensure tests are completely isolated
    //global.fetch.mockRestore();

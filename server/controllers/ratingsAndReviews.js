@@ -1,4 +1,5 @@
-const GITHUB_API_TOKEN = require('../config/config').GITHUB_API_TOKEN.token;
+//const GITHUB_API_TOKEN = require('../config/config').GITHUB_API_TOKEN.token;
+const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN;
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/';
 const axios = require('axios');
 const path = require('path');
@@ -115,7 +116,7 @@ module.exports = {
         },
       })
         .then((response) => {
-          console.log(response.status)
+          console.log('reported! with response', response.status)
           res.send(response.status);
         })
         .catch((error) => {

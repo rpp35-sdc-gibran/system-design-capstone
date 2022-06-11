@@ -12,7 +12,7 @@ let InteractionAnalytics = (Component) => {
       }
 
       // make axios request to interactions api
-      axios.post('/api/reviews/interactions',{
+      axios.post('/reviews/interactions',{
         interaction: data
         })
         .then((results) => {

@@ -9,7 +9,6 @@ import { useParams } from 'react-router-dom';
 import WithAnalytics from '../../../WithAnalytics.jsx';
 
 import { useIntersectionObserver } from '../../../Hooks/useIntersectionObserver.jsx';
-
 import InteractionAnalytics from '../../ratings&reviews/interactionAnalytics.jsx';
 
 // pass down module to this higher order component which will add on click to our module
@@ -87,11 +86,8 @@ const Product = (props) => {
          >
             {isRatingsAndReviewSectionVisible && (
                <Suspense fallback={<div>Loading...</div>}>
-                  {/* <EnhancedRatingsAndReviews
-                     currentProductId={productId}
-                     reviews={currentReviews}
-                     {...props}
-                  /> */}
+                  <RatingsAndReviews
+                     currentProductId={productId}/>
                </Suspense>
             )}
          </section>
