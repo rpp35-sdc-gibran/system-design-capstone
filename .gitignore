@@ -2,5 +2,5 @@ node_modules/
 /server/config/config.js
 /server/config/Tylersconfig.js
 coverage/
-*.env
-*.pem
+.env
+FEC-HackReactor.pem

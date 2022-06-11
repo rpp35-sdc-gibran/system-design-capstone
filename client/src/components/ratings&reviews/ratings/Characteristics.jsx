@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 
 const Characteristics = ({ characteristics }) => {
-  const getPercentage = (key) => {
-
-    return Math.round(((Number(characteristics[key].value) - 1) / 4 ) * 100);
+  const getTriangleIcon = (key) => {
+    if(characteristics[key].value){
+      let percentage = Math.round(((Number(characteristics[key].value) - 1) / 4 ) * 100);
+    return (
+      <span className='triangelicon' style={{ 'left': `${percentage}%`}}>&#9660;</span>
+    )
+    } else {
+      return <></>;
+    }
   }
-  console.log(getPercentage('Fit'))
   return (
     <div className="chara-section">
       <div>Fit</div>
@@ -23,7 +28,7 @@ const Characteristics = ({ characteristics }) => {
           <progress className='characteristics big' value='0'></progress>
           <span>Too large</span>
         </div>
-        <span className='triangelicon' style={{ left: `${getPercentage('Fit')}%` }}>&#9660;</span>
+        {getTriangleIcon('Fit')}
       </div>
       <div>Length</div>
       <div className="chara-box">
@@ -39,7 +44,7 @@ const Characteristics = ({ characteristics }) => {
           <progress className='characteristics big' value='0'></progress>
           <span>Too large</span>
         </div>
-        <span className='triangelicon' style={{ left: `${getPercentage('Length')}%` }}>&#9660;</span>
+        {getTriangleIcon('Length')}
       </div>
 
       <div>Comfort</div>
@@ -60,7 +65,7 @@ const Characteristics = ({ characteristics }) => {
           <progress className='characteristics small' value='0'></progress>
           <span>Perfect</span>
         </div>
-        <span className='triangelicon' style={{ left: `${getPercentage('Comfort')}%` }}>&#9660;</span>
+        {getTriangleIcon('Comfort')}
       </div>
 
       <div>Quality</div>
@@ -81,7 +86,7 @@ const Characteristics = ({ characteristics }) => {
           <progress className='characteristics small' value='0'></progress>
           <span>Perfect</span>
         </div>
-        <span className='triangelicon' style={{ left: `${getPercentage('Quality')}%` }}>&#9660;</span>
+       {getTriangleIcon('Quality')}
       </div>
     </div >
   )
