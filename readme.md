@@ -68,6 +68,12 @@ npm start
 
 Then navigate to port 1128 in your browser to view your application.
 
+If you are seeing errors with your node.js server, try killing all nodemon servers:
+
+```bash
+pkill -f nodemon
+```
+
 -Run unit tests with Jest/React Testing Library:
 
 ```bash

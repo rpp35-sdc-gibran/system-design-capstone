@@ -7,7 +7,7 @@
       "test": "jest",
       "cypress": "cypress open",
       "dev": "nodemon server/server.js & npx webpack serve --open --config webpack.dev.js ",
-      "start": "webpack --config webpack.prod.js && nodemon server/server.js"
+      "start": "nodemon server/server.js & webpack --config webpack.prod.js"
    },
    "repository": {
       "type": "git",
@@ -51,6 +51,7 @@
       "babel-jest": "^28.1.0",
       "babel-loader": "^8.2.5",
       "css-loader": "^6.7.1",
+      "css-minimizer-webpack-plugin": "^4.0.0",
       "cypress": "^10.0.2",
       "file-loader": "^6.2.0",
       "html-webpack-plugin": "^5.5.0",
@@ -64,7 +65,9 @@
       "sass-loader": "^12.6.0",
       "style-loader": "^3.3.1",
       "webpack": "^5.72.1",
+      "webpack-bundle-analyzer": "^4.5.0",
       "webpack-cli": "^4.9.2",
+      "webpack-dashboard": "^3.3.7",
       "webpack-dev-server": "^4.9.0",
       "webpack-merge": "^5.8.0"
    },

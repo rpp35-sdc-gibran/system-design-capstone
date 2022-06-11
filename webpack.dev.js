@@ -7,6 +7,7 @@ const DIST_DIR = path.join(__dirname, '/client/dist');
 module.exports = merge(common, {
    mode: 'development',
    devtool: 'inline-source-map',
+   hot: true,
    devServer: {
       static: DIST_DIR,
       allowedHosts: 'auto',
