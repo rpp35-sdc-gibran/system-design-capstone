@@ -1,1 +1,0 @@
-//! limit call for styles and product info to only first three related items to prevent too many calls error

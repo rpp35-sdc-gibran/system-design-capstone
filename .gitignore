@@ -1,6 +1,10 @@
-node_modules/
+ *.cer
+/node_modules
 /server/config/config.js
 /server/config/Tylersconfig.js
-coverage/
+/server/config/CristiansKeyPair.pem
+/coverage
+/coverage/lcov-report
 .env
-FEC-HackReactor.pem
+/client/dist
+/FEC-HackReactor.pem

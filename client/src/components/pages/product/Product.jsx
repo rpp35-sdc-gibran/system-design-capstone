@@ -73,7 +73,10 @@ const Product = (props) => {
          >
             {isQuestionsAnswersSectionVisible && (
                <Suspense fallback={<div>Loading...</div>}>
-                  <QuestionsAnswers currentProductId={productId} />
+                  <QuestionsAnswers
+                    className='questionsAnswers'
+                    currentProductId={productId}
+                  />
                </Suspense>
             )}
          </section>

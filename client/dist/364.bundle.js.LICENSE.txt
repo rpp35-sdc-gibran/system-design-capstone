@@ -1,3 +1,0 @@
-//! or StarRating.StarIcon
-
-//! starRating returns two components since two are being exported, so use StarRating.StarRating

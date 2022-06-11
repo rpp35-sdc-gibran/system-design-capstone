@@ -75,7 +75,7 @@ class AnswersList extends React.Component {
 
    componentDidMount() {
       this.getAnswers();
-      this.sortAnswers();
+      // this.sortAnswers();
       this.addShownAnswers();
    }
 
@@ -84,30 +84,30 @@ class AnswersList extends React.Component {
       let answersButton;
       if (this.state.allAnswers.length) {
          answersButton = (
-            <button
+            <a
                onClick={(event) => {
                   this.addShownAnswers();
                   this.props.handleInteraction(event);
                }}
             >
-               <Typography variant='body1'>See More Answers</Typography>
-            </button>
+               <Typography variant='body1'><strong>LOAD MORE ANSWERS</strong></Typography>
+            </a>
          );
       } else if (this.state.shownAnswers.length) {
          answersButton = (
-            <button
+            <a
                onClick={(event) => {
                   this.removeShownAnswers();
                   this.props.handleInteraction(event);
                }}
             >
-               <Typography variant='body1'>Collapse Answers</Typography>
-            </button>
+               <Typography variant='body1'><strong>COLLAPSE ANSWERS</strong></Typography>
+            </a>
          );
       }
 
       return (
-         <Card>
+         <div className='answersList'>
             {this.state.shownAnswers.map((answer, index) => {
                return (
                   <Answer
@@ -119,7 +119,7 @@ class AnswersList extends React.Component {
                );
             })}
             {answersButton}
-         </Card>
+         </div>
       );
    }
 }
