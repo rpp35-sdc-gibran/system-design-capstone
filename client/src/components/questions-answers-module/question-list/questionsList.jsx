@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './questionList.scss';
+import './questionList.scss'
 
 import Card from '@mui/material/Card';
 import Question from '../question/question.jsx';

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import './addAnswer.scss';
+import './addAnswer.scss'
 
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -24,7 +24,7 @@ class AddAnswer extends React.Component {
 
    postAnswer(answer) {
       axios
-         .post('/questionsAnswers/addAnswer', {
+         .post('api/questionsAnswers/addAnswer', {
             answer: answer,
          })
          .then((results) => {
@@ -41,7 +41,7 @@ class AddAnswer extends React.Component {
          });
    }
 
-   previewImages(event) {
+   previewImages (event) {
       // set variable to file list
       const images = event.target.files;
       // create an hmtl element
@@ -53,21 +53,17 @@ class AddAnswer extends React.Component {
          const preview = document.createElement('img');
          preview.className = 'preview';
          // create a URL.createObjectURL() for each image
-<<<<<<< HEAD
-         preview.src = URL.createObjectURL(image);
-         // append to previews element
-         console.log('preview', preview);
-=======
          preview.src = URL.createObjectURL(images[i])
          // append to previews element
->>>>>>> 63cf983619a31a48733a3c0c81b7d951115cf58b
          previews.append(preview);
       }
       // select div w/ gallery id & append previews to html element
       document.getElementsByClassName('gallery')[0].append(previews);
    }
 
-   componentDidMount() {}
+   componentDidMount() {
+
+   }
 
    render() {
       return (
