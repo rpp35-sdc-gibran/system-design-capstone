@@ -1,27 +1,12 @@
 const path = require('path');
 const DIST_DIR = path.join(__dirname, '/client/dist');
-// const webpack = require('webpack');
-// require('dotenv').config({ path: './.env' });
 
 module.exports = {
-   //change mode to production when deploying
-   mode: 'development',
    entry: `${path.join(__dirname, '/client/src')}/index.jsx`,
    output: {
       filename: 'bundle.js',
       path: DIST_DIR,
       publicPath: '/',
-   },
-   devServer: {
-      static: DIST_DIR,
-      allowedHosts: 'auto',
-      proxy: {
-         '/api': {
-            //rewrites request calls to /api/dest, so all requests to server must be made to /api/dest
-            target: 'http://localhost:1128',
-            pathRewrite: { '^/api': '' },
-         },
-      },
    },
    module: {
       rules: [

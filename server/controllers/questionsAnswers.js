@@ -6,7 +6,8 @@ const axios = require('axios');
 // QUESTIONS:
 //=============================//
 const getQuestionsByProductID = (req, res) => {
-   axios.get(url, {
+   axios
+      .get(url, {
          headers: { Authorization: GITHUB_API_TOKEN },
          params: { product_id: req.query.product_id, count: 100 },
       })
@@ -54,16 +55,16 @@ const reportQuestionByQuestionID = (req, res) => {
 
 const postQuestionByProductID = (req, res) => {
    axios({
-         method: 'post',
-         url: url,
-         headers: { Authorization: GITHUB_API_TOKEN },
-         data: {
-            body: req.body.question.body,
-            name: req.body.question.name,
-            email: req.body.question.email,
-            product_id: req.body.question.product_id
-         }
-      })
+      method: 'post',
+      url: url,
+      headers: { Authorization: GITHUB_API_TOKEN },
+      data: {
+         body: req.body.question.body,
+         name: req.body.question.name,
+         email: req.body.question.email,
+         product_id: req.body.question.product_id,
+      },
+   })
       .then((results) => {
          console.log('Success postQuestionByProductID');
          res.end();
@@ -74,16 +75,17 @@ const postQuestionByProductID = (req, res) => {
       });
 };
 
-
 //=============================//
 // ANSWERS
 //=============================//
 const getAnswersByQuestionID = (req, res) => {
-   axios.get(
+   axios
+      .get(
          `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.query.question_id}/answers`,
-         { headers: { Authorization: GITHUB_API_TOKEN },
-         params: { count: 100 },
-       }
+         {
+            headers: { Authorization: GITHUB_API_TOKEN },
+            params: { count: 100 },
+         }
       )
       .then((results) => {
          console.log('Success getAnswersByQuestionID');
@@ -148,7 +150,6 @@ const postAnswerByQuestionID = (req, res) => {
       });
 };
 
-
 //=============================//
 // OTHER
 //=============================//
@@ -191,7 +192,8 @@ const postInteraction = (req, res) => {
 module.exports.getQuestionsByProductID = getQuestionsByProductID;
 module.exports.getAnswersByQuestionID = getAnswersByQuestionID;
 module.exports.markAnswerHelpfulByAnswerID = markAnswerHelpfulByAnswerID;
-module.exports.markQuestionHelpfulByQuestionID = markQuestionHelpfulByQuestionID;
+module.exports.markQuestionHelpfulByQuestionID =
+   markQuestionHelpfulByQuestionID;
 module.exports.reportAnswerByAnswerID = reportAnswerByAnswerID;
 module.exports.reportQuestionByQuestionID = reportQuestionByQuestionID;
 module.exports.postQuestionByProductID = postQuestionByProductID;

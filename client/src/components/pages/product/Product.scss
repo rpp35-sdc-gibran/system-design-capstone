@@ -2,10 +2,12 @@
 
 .product-productoverview {
    @include set-size(100vh, 100vw);
+   overflow: auto;
 }
 
 .product-related-items {
    @include set-size(50vh, 100vw);
+   overflow: auto;
 }
 
 .product-questions-answers {
@@ -22,5 +24,5 @@
 
 .product-ratings-reviews {
    @include set-size(100vh, 100vw);
-   overflow: hidden; //set to hide any contents greater than the height of total view height
+   overflow: auto; //set to hide any contents greater than the height of total view height
 }

@@ -7,7 +7,9 @@ import sampleReviews from '../../ratings&reviews/reviews/reviewsForProductId7169
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import WithAnalytics from '../../../WithAnalytics.jsx';
-import useIntersectionObserver from '../../../Hooks/useIntersectionObserver.jsx';
+
+import { useIntersectionObserver } from '../../../Hooks/useIntersectionObserver.jsx';
+
 import InteractionAnalytics from '../../ratings&reviews/interactionAnalytics.jsx';
 
 // pass down module to this higher order component which will add on click to our module
@@ -51,18 +53,12 @@ const Product = (props) => {
       questionsAnswersSection
    );
 
-   console.log(
-      'isQuestionsAnswersSectionVisible:',
-      isQuestionsAnswersSectionVisible
-   );
-   console.log(
-      'isRatingsAndReviewSectionVisible:',
-      isRatingsAndReviewSectionVisible
-   );
-
    return (
       <>
-         <section className='product-productoverview'>
+         <section
+            className='product-productoverview'
+            data-testid='product-overview'
+         >
             <EnhancedProductOverview currentProductId={productId} />
          </section>
          <section ref={relatedItemsSection} className='product-related-items'>

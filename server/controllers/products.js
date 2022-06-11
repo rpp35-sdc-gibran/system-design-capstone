@@ -1,4 +1,4 @@
-const GITHUB_API_TOKEN = require('../config/config').GITHUB_API_TOKEN.token;
+const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN;
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products';
 const axios = require('axios');
 
@@ -45,7 +45,6 @@ module.exports = {
             res.send(response.data);
          });
          promise.catch((err) => {
-            console.log('err:', err);
             res.status(400).send('Error getting product information');
          });
       },
@@ -56,7 +55,6 @@ module.exports = {
             },
          });
          promise.then((response) => {
-            console.log('response:', response);
             res.send(response.data);
          });
          promise.catch((err) => {
@@ -82,7 +80,6 @@ module.exports = {
             res.send(reviews.data);
          });
          promise.catch((err) => {
-            console.log('err:', err);
             res.status(400).send('Error getting reviews');
          });
       },
