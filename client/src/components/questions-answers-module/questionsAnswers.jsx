@@ -41,6 +41,13 @@ class QuestionsAnswers extends React.Component {
     this.setState({shownQuestions: currShownQuestions, allQuestions: currAllQuestions});
   }
 
+  removeShownAnswers () {
+   let currShownQuestions = this.state.shownQuestions;
+   let currAllQuestions = this.state.allQuestions;
+   currAllQuestions = currAllQuestions.concat(currShownQuestions.splice(2));
+   this.setState({shownQuestions: currShownQuestions, allQuestions: currAllQuestions});
+  }
+
   getDerivedStateFromProps(props, state) {
     if (props.currQuestion_id !== state.currProductID) {
       console.log('getDerivedStateFromProps invoked');
@@ -52,7 +59,7 @@ class QuestionsAnswers extends React.Component {
   }
 
   getQuestions () {
-    axios.get('/api/questionsAnswers/questions', { params: {product_id: this.props.currentProductId}})
+    axios.get('/questionsAnswers/questions', { params: {product_id: this.props.currentProductId}})
       .then((results) => {
         this.setState({shownQuestions: results.data.results.splice(0,2), allQuestions: results.data.results});
       })
@@ -62,7 +69,7 @@ class QuestionsAnswers extends React.Component {
   }
 
   getProductInfo () {
-    axios.get('/api/questionsAnswers/productInfo', {params: {product_id: this.props.currentProductId}})
+    axios.get('/questionsAnswers/productInfo', {params: {product_id: this.props.currentProductId}})
       .then((results) => {
         this.setState({currProductName: results.data})
       })
@@ -110,7 +117,7 @@ class QuestionsAnswers extends React.Component {
       time: Date().toLocaleString()
     };
     // make axios request to interactions api
-    axios.post('/api/questionsAnswers/interactions',{
+    axios.post('/questionsAnswers/interactions',{
       interaction: data
       })
       .then((results) => {

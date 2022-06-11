@@ -17,6 +17,8 @@ Includes common retail shopping features such as search, browse, add to cart, cr
 ![](diagrams/home-page.gif)
 ![](diagrams/product-overview.gif)
 ![](diagrams/related-items.gif)
+![](diagrams/Q&A_main.gif)
+![](diagrams/Q&A_modal.gif)
 
 ## Tech Stack
 

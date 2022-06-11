@@ -13,18 +13,18 @@ import AnswerList from '../answer-list/answersList.jsx';
 class Question extends React.Component {
    reportQuestion() {
       axios
-         .put('/api/questionsAnswers/reportQuestion', {
+         .put('/questionsAnswers/reportQuestion', {
             question_id: this.props.question.question_id,
          })
          .then((results) => {
             console.log(
-               'SUCCESS PUT /api/questionsAnswers/reportQuestion ',
+               'SUCCESS PUT /questionsAnswers/reportQuestion ',
                this.props.question.question_id
             );
          })
          .catch((error) => {
             console.log(
-               'ERROR PUT /api/questionsAnswers/reportQuestion ',
+               'ERROR PUT /questionsAnswers/reportQuestion ',
                error
             );
          });
@@ -33,18 +33,18 @@ class Question extends React.Component {
    isHelpful() {
       console.log()
       axios
-         .put('/api/questionsAnswers/markQuestionHelpful', {
+         .put('/questionsAnswers/markQuestionHelpful', {
             question_id: this.props.question.question_id,
          })
          .then((results) => {
             console.log(
-               'SUCCESS PUT /api/questionsAnswers/markQuestionHelpful'
+               'SUCCESS PUT /questionsAnswers/markQuestionHelpful'
             );
             // reload questions to update page
          })
          .catch((error) => {
             console.log(
-               'ERROR PUT /api/questionsAnswers/markQuestionHelpful',
+               'ERROR PUT /questionsAnswers/markQuestionHelpful',
                error
             );
          });

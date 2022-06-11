@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 class Answer extends React.Component {
    reportAnswer() {
       axios
-         .put('/api/questionsAnswers/reportAnswer', {
+         .put('/questionsAnswers/reportAnswer', {
             answer_id: this.props.answer.answer_id,
          })
          .then((results) => {
@@ -30,16 +30,16 @@ class Answer extends React.Component {
 
    isHelpful() {
       axios
-         .put('/api/questionsAnswers/markAnswerHelpful', {
+         .put('/questionsAnswers/markAnswerHelpful', {
             answer_id: this.props.answer.answer_id,
          })
          .then((results) => {
-            console.log('SUCCESS PUT /api/questionsAnswers/markAnswerHelpful');
+            console.log('SUCCESS PUT /questionsAnswers/markAnswerHelpful');
             // reload questions to update page
          })
          .catch((error) => {
             console.log(
-               'ERROR PUT /api/questionsAnswers/markAnswerHelpful',
+               'ERROR PUT /questionsAnswers/markAnswerHelpful',
                error
             );
          });

@@ -39,7 +39,7 @@ class AnswersList extends React.Component {
 
    getAnswers() {
       axios
-         .get('/api/questionsAnswers/answers', {
+         .get('/questionsAnswers/answers', {
             params: { question_id: this.props.question_id },
          })
          .then((results) => {
@@ -93,6 +93,8 @@ class AnswersList extends React.Component {
                <Typography variant='body1'><strong>LOAD MORE ANSWERS</strong></Typography>
             </a>
          );
+      } else if (this.state.allAnswers.length === 0 && this.state.shownAnswers.length === 0) {
+        answersButton = null;
       } else if (this.state.shownAnswers.length) {
          answersButton = (
             <a
