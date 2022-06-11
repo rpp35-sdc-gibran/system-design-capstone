@@ -127,7 +127,7 @@ const reportAnswerByAnswerID = (req, res) => {
 };
 
 const postAnswerByQuestionID = (req, res) => {
-   console.log('postAnswerByQuestionID/req.body.answer: ', req.body.answer)
+   // console.log('postAnswerByQuestionID/req.body.answer: ', req.body.answer)
    axios({
       method: 'post',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.answer.question_id}/answers`,
