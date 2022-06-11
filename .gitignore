@@ -6,3 +6,4 @@
 /coverage
 /coverage/lcov-report
 .env
+/client/dist
