@@ -41,4 +41,10 @@ module.exports = {
          },
       ],
    },
+   plugins: [
+      new HtmlWebpackPlugin({
+         title: 'Frontend Capstone',
+         template: 'template.html',
+      }),
+   ],
 };
