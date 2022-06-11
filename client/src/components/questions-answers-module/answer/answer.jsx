@@ -54,6 +54,7 @@ class Answer extends React.Component {
          answerer = this.props.answer.answerer_name;
       }
       return (
+<<<<<<< HEAD
          <Card variant='outlined'>
             <Typography align='left' variant='h6'>
                A: {this.props.answer.body}
@@ -62,16 +63,29 @@ class Answer extends React.Component {
                {' '}
                by {answerer}, {this.props.convertDate(this.props.answer.date)}{' '}
                Helpful?{' '}
+=======
+         <>
+            <Typography align='left' variant='body1'>
+               <strong>A:</strong>{' '}
+               {this.props.answer.body}
+            </Typography>
+            <Typography variant='body2'>
+               {' '}by {answerer},{' '}
+               {this.props.convertDate(this.props.answer.date)}
+               {' '}Helpful?{' '}
+>>>>>>> 63cf983619a31a48733a3c0c81b7d951115cf58b
                <a
                   className='helpful'
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                   onClick={(event) => {
-                     this.props.handleInteraction(event);
                      let answer_id = this.props.answer.answer_id.toString();
                      if (!Boolean(localStorage.getItem(answer_id))) {
                         this.isHelpful();
                         localStorage.setItem(answer_id, true);
+                     } else {
+                        console.log('Answer previously marked helpful');
                      }
+                     this.props.handleInteraction(event);
                   }}
                >
                   Yes
@@ -80,17 +94,17 @@ class Answer extends React.Component {
                <a
                   className='report'
                   onClick={(event) => {
-                     this.props.handleInteraction(event);
                      this.reportAnswer.bind(this)();
                      // change inner html text to reported
                      event.target.innerHTML = 'Reported';
+                     this.props.handleInteraction(event);
                   }}
                   style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
                >
                   Report
                </a>
             </Typography>
-         </Card>
+         </>
       );
    }
 }

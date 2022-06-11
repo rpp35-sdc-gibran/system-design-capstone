@@ -112,8 +112,8 @@ class AddQuestion extends React.Component {
                   </div>
                   <button>Sumbit</button>
                   <button
-                     onClick={() => {
-                        this.props.handleInteraction(event);
+                     onClick={(event) => {
+                        // this.props.handleInteraction(event);
                         this.props.changeQAState('addQuestionModal', false);
                      }}
                   >
