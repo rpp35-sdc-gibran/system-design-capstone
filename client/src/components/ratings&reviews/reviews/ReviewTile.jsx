@@ -29,8 +29,26 @@ const ReviewTile = ({ review, handleReport }) => {
       console.log('clicked helpful', review.review_id);
       e.preventDefault();
       SetClickCount(clickCount + 1);
+<<<<<<< HEAD
    };
+=======
+      SetHelpfulCount(helpfulCount + 1)
+      // if (clickCount < 1) {
+      //    console.log('clicked helpful', clickCount)
+      //    axios({
+      //       url: '/reviews/helpful',
+      //       method: 'post',
+      //       data: {
+      //          review_id: review.review_id
+      //       }
+      //    }).then((response) => {
+      //       SetHelpfulCount(helpfulCount + 1)
+      //    })
+      // }
+   }
+>>>>>>> 4514a1d651135ad4510a925f38a8a8ae7cc80d6e
    const handleReporClicked = (e) => {
+      console.log('report clicked')
       e.preventDefault();
       handleReport(review.review_id);
    };
@@ -43,10 +61,17 @@ const ReviewTile = ({ review, handleReport }) => {
                review_id: review.review_id,
             },
          }).then((response) => {
+<<<<<<< HEAD
             SetHelpfulCount(helpfulCount + 1);
          });
       }
    }, [clickCount]);
+=======
+           console.log(`Successfully set ${review.review_id} as helpful`)
+         })
+      }
+   }, [helpfulCount])
+>>>>>>> 4514a1d651135ad4510a925f38a8a8ae7cc80d6e
    return (
       <div className='reviewTile'>
          <StarRating rating={review.rating} reviewId={review.review_id} />
@@ -72,6 +97,7 @@ const ReviewTile = ({ review, handleReport }) => {
          )}
          <span className='body'>{review.body}</span>
          <br />
+<<<<<<< HEAD
          <span>Helpful?</span>
          <span className='helpful' onClick={handleHelpful}>
             {' '}
@@ -81,6 +107,14 @@ const ReviewTile = ({ review, handleReport }) => {
          <span className='report' onClick={handleReporClicked}>
             Report
          </span>
+=======
+         {review.photos.length ? review.photos.map((photo) => (
+            <img src={photo}></img>
+         )) : <></>
+         }
+         <span>Helpful?</span><span className='helpful' onClick={handleHelpful}> Yes </span><span style={{"padding": "3px"}}>{helpfulCount}</span>
+         <span className='report' onClick={handleReporClicked}>Report</span>
+>>>>>>> 4514a1d651135ad4510a925f38a8a8ae7cc80d6e
       </div>
    );
 };

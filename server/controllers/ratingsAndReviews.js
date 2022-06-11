@@ -1,3 +1,4 @@
+//const GITHUB_API_TOKEN = require('../config/config').GITHUB_API_TOKEN.token;
 const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN;
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/';
 const axios = require('axios');
@@ -56,6 +57,7 @@ module.exports = {
             });
       },
 
+<<<<<<< HEAD
       postProductReviews: function (req, res) {
          console.log('req.body', req.body.characteristics);
          axios({
@@ -146,4 +148,93 @@ module.exports = {
             });
       },
    },
+=======
+    postProductReviews: function (req, res) {
+      console.log('req.body', req.body.characteristics)
+      axios({
+        method: 'post',
+        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews',
+        headers: { Authorization: GITHUB_API_TOKEN, },
+        data: {
+          "product_id": Number(req.body.product_id),
+          "rating": req.body.rating,
+          "summary": req.body.summary,
+          "body": req.body.body,
+          "recommend": req.body.recommend,
+          "name": req.body.name,
+          "email": req.body.email,
+          "photos": req.body.photos,
+          "characteristics": req.body.characteristics
+        }
+      })
+        .then((response) => {
+          console.log('successed! posting')
+          res.send(response.status);
+        })
+        .catch((error) => {
+          console.log('something wrong when posting new review', error)
+        });
+    },
+    markReviewAsHelpful: function (req, res) {
+      let urlMarkHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.body.review_id}/helpful`;
+      console.log(`marking ${req.body.review_id} as helpful`)
+      axios({
+        method: 'put',
+        url: urlMarkHelpful,
+        headers: {
+          Authorization: GITHUB_API_TOKEN,
+        },
+        data: {
+          reveiw_id: req.body.reveiw_id,
+        },
+      })
+        .then((response) => {
+          console.log(response.status)
+          res.send(response.status);
+        })
+        .catch((error) => {
+          console.log('failed marking helpful', error)
+        });
+    },
+    reportReview: function (req, res) {
+      let urlReport = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.body.review_id}/report`;
+      axios({
+        method: 'put',
+        url: urlReport,
+        headers: {
+          Authorization: GITHUB_API_TOKEN,
+        },
+        data: {
+          reveiw_id: req.body.reveiw_id,
+        },
+      })
+        .then((response) => {
+          console.log('reported! with response', response.status)
+          res.send(response.status);
+        })
+        .catch((error) => {
+          console.log('failed reporting review', error)
+        });
+    },
+    postInteraction: (req, res) => {
+      console.log('req.body', req.body);
+      axios({
+        method: 'post',
+        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions',
+        headers: { Authorization: GITHUB_API_TOKEN },
+        data: {
+          element: req.body.interaction.element,
+          widget: req.body.interaction.widget,
+          time: req.body.interaction.time
+        }
+      })
+        .then((results) => {
+          console.log('Success posting reviews and Ratings interaction!');
+        })
+        .catch((error) => {
+          console.log('Error posting reviews and Ratings interaction', error);
+        });
+    }
+  },
+>>>>>>> 4514a1d651135ad4510a925f38a8a8ae7cc80d6e
 };

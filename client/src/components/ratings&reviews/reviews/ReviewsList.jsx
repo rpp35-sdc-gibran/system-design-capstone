@@ -22,16 +22,11 @@ const ReviewsList = ({
    const [search, SetSearch] = useState('');
 
    const addStarFilter = () => {
-      if (starFilters.length) {
-         console.log('starFilters: ', starFilters);
-         let filteredReviews = reviews.filter((review) =>
-            starFilters.includes(review.rating.toString())
-         );
-         SetReviewsToRender([...filteredReviews]);
-         console.log(
-            'ReviewsList after applying starFilters: ',
-            reviewsToRender
-         );
+      if (starFilters&&starFilters.length) {
+         console.log('starFilters: ', starFilters)
+         let filteredReviews = reviews.filter((review) => starFilters.includes(review.rating.toString()))
+         SetReviewsToRender([...filteredReviews])
+         console.log('ReviewsList after applying starFilters: ', reviewsToRender);
       }
    };
    function moreReviewsOnClick() {
@@ -65,7 +60,7 @@ const ReviewsList = ({
       }
       if (sortWith === 'helpfulness') {
          reviews.sort((a, b) => b.helpfulness - a.helpfulness);
-         SetReviewsToRender([...reviews]);
+         SetReviewsToRender(reviews);
       }
       console.log('reviews after sorted by change: ', reviews);
    };
@@ -80,10 +75,8 @@ const ReviewsList = ({
       SetReviewsToRender(reviews);
       addStarFilter();
       if (search.length >= 3) {
-         let filteredReviews = reviewsToRender.filter((review) =>
-            review.body.includes(search)
-         );
-         SetReviewsToRender(filteredReviews);
+         let filteredReviews = reviewsToRender.filter(review => review.body.includes(search) || review.summary.includes(search) || review.reviewer_name.includes(search))
+         SetReviewsToRender(filteredReviews)
       }
    }, [reviews, starFilters, search]);
    return (
@@ -101,23 +94,7 @@ const ReviewsList = ({
                   <option value='relevant'>relevant </option>
                </select>
                <Button className='searchreview'>
-                  <span>
-                     <svg
-                        width='20'
-                        height='20'
-                        class='DocSearch-Search-Icon'
-                        viewBox='0 0 20 20'
-                     >
-                        <path
-                           d='M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z'
-                           stroke='currentColor'
-                           fill='none'
-                           fill-rule='evenodd'
-                           stroke-linecap='round'
-                           stroke-linejoin='round'
-                        ></path>
-                     </svg>
-                  </span>
+                  <span><svg width="20" height="20" className="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round"></path></svg></span>
                   <input placeholder='Search' onChange={handleSearch}></input>
                </Button>
             </div>

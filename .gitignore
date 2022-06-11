@@ -7,3 +7,4 @@
 /coverage/lcov-report
 .env
 /client/dist
+/FEC-HackReactor.pem

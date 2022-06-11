@@ -50,13 +50,6 @@ const AddNewReview = (props) => {
     props.SetTrigger(false)
   }
 
-
-   const handelSize = (e) => {
-    //SetCharacteristcs({ ...characteristics, size: Number(e.target.value) })
-  }
-  const handelWidth = (e) => {
-   // SetCharacteristcs({ ...characteristics, width: Number(e.target.value) })
-  }
   const handelComfort = (e) => { SetCharacteristcs({ ...characteristics, 240584: Number(e.target.value) }) }
   const handelQuality = (e) => { SetCharacteristcs({ ...characteristics, 240585: Number(e.target.value) }) }
   const handelLength = (e) => { SetCharacteristcs({ ...characteristics, 240583: Number(e.target.value) }) }
@@ -91,7 +84,7 @@ const AddNewReview = (props) => {
     if (images.length < 1) return;
     const newImageURLs = [];
     images.forEach(image => newImageURLs.push(URL.createObjectURL(image)))
-    SetImageURLs([...imageURLs, newImageURLs]);
+    SetImageURLs(imageURLs.concat(newImageURLs));
   }, [images]);
 
   const ratingRef = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
@@ -126,11 +119,11 @@ const AddNewReview = (props) => {
               <input className='recommendRadio' type="radio" value="No" name="recommend" onChange={handleRecommend} checked={selectedRadioBtn === 'No'} /> No
             </div>
           </label>
-          <label>Size<Characteristics handleChara={handelSize} name='Size' meanings={['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide']} /></label>
-          <label>
+          {/* <label>Size<Characteristics handleChara={handelSize} name='Size' meanings={['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide']} /></label> */}
+          {/* <label>
             Width
             <Characteristics handleChara={handelWidth} name='Width' meanings={['Too narrow', 'Slightly narrow', 'Ok', 'Slightly wide', 'Too wide']} />
-          </label>
+          </label> */}
           <label>
             Comfort
             <Characteristics handleChara={handelComfort} name='Comfort' meanings={['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect']} />

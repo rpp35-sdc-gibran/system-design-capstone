@@ -13,8 +13,9 @@
   float: right;
   width: 65%;
 }
-
-
+.review-box h1 {
+  color: #867fd3
+}
 #starrating-box {
 float: right;
 margin-right: 20%;
@@ -131,6 +132,8 @@ div.ratingsBreakdown:hover {
 .reviewTile {
   position: relative;
   margin-bottom: 10px;
+  padding: 12px;
+  box-shadow: 0 4px 4px 0px #867fd3;
 }
 .nameanddate{
   float: right;
