@@ -19,7 +19,9 @@ Includes common retail shopping features such as search, browse, add to cart, cr
 ![](diagrams/related-items.gif)
 ![](diagrams/Q&A_main.gif)
 ![](diagrams/Q&A_modal.gif)
-
+![](diagrams/showMoreReview.gif)
+![](diagrams/reviewSearch.gif)
+![](diagrams/addNewReview.gif)
 ## Tech Stack
 
 This project was built with the following technologies:
