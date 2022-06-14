@@ -12,8 +12,6 @@ import Search from './search/search.jsx';
 import AddQuestion from './add-question/addQuestion.jsx';
 import AddAnswer from './add-answer/addAnswer.jsx';
 
-// condition && component
-
 class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
@@ -46,12 +44,6 @@ class QuestionsAnswers extends React.Component {
    let currAllQuestions = this.state.allQuestions;
    currAllQuestions = currAllQuestions.concat(currShownQuestions.splice(2));
    this.setState({shownQuestions: currShownQuestions, allQuestions: currAllQuestions});
-  }
-
-  getDerivedStateFromProps(props, state) {
-    if (props.currQuestion_id !== state.currProductID) {
-      console.log('getDerivedStateFromProps invoked');
-    }
   }
 
   changeQAState (prop, value) {
@@ -116,7 +108,6 @@ class QuestionsAnswers extends React.Component {
       widget: 'QuestionsAnswers',
       time: Date().toLocaleString()
     };
-    // make axios request to interactions api
     axios.post('/questionsAnswers/interactions',{
       interaction: data
       })
@@ -128,28 +119,14 @@ class QuestionsAnswers extends React.Component {
       });
   }
 
-  getProductIDfromURL () {
-    // get product id as string from url
-    let url = window.location.href.split('/').slice(-1)[0];
-    // set currProductID to url value
-    this.setState({currProductID: url});
-    console.log('url and state should be set: ', url);
-  }
-
   componentDidMount() {
     this.getQuestions();
     this.getProductInfo();
-    this.getProductIDfromURL();
   }
-
-
-
-
-
 
   render() {
     // conditionally render 'show additional questions' button
-    var moreQuestions;
+    var moreQuestions = null;
     if (this.state.allQuestions.length) {
       moreQuestions = <button
         className='moreQuestionsButton'
@@ -157,9 +134,6 @@ class QuestionsAnswers extends React.Component {
           this.addShownQuestions();
           this.handleInteraction(event);
       }}><Typography variant='body1'><strong>MORE ANSWERED QUESTIONS</strong></Typography></button>;
-    } else {
-      // add collapse answers button??
-      moreQuestions = null;
     }
 
     // conditionally render addQuestion modal
@@ -187,11 +161,10 @@ class QuestionsAnswers extends React.Component {
           product_name={this.state.currProductName}
         />
       )
-
     }
 
     return (
-      <Paper elevation={24} rounded={true} outlined={true} className='questionsAnwers'>
+      <Paper elevation={24} rounded='true' outlined='true' className='questionsAnwers'>
         <Typography align='center' variant='h3' className='questionsAnswersTile'>Questions & Answers</Typography>
         <Search
           className='searchBar'

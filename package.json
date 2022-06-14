@@ -5,6 +5,7 @@
    "main": "server.js",
    "scripts": {
       "test": "jest",
+      "test:QA": "jest --watchAll --testPathPattern=client/src/components/questions-answers-module",
       "cypress": "cypress open",
       "dev": "nodemon server/server.js & npx webpack serve --open --config webpack.dev.js ",
       "start": "nodemon server/server.js & webpack --config webpack.prod.js"
