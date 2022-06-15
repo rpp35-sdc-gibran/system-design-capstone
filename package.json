@@ -6,8 +6,8 @@
    "scripts": {
       "test": "jest",
       "cypress": "cypress open",
-      "dev": "nodemon server/server.js & npx webpack serve --open --config webpack.dev.js ",
-      "start": "nodemon server/server.js & webpack --config webpack.prod.js"
+      "dev": "concurrently -n 'webpack,server' -c 'bgBlue.bold,bgGreen.bold' \"npx webpack serve --open --config webpack.dev.js\" \"nodemon server/server.js\"",
+      "start": " webpack --config webpack.prod.js & nodemon server/server.js "
    },
    "repository": {
       "type": "git",
@@ -31,6 +31,7 @@
       "body-parser": "^1.20.0",
       "cdk-ec2-key-pair": "^3.3.1",
       "compression": "^1.7.4",
+      "concurrently": "^7.2.2",
       "cors": "^2.8.5",
       "dotenv": "^16.0.1",
       "express": "^4.18.1",
