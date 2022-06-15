@@ -11,11 +11,11 @@ const Home = () => {
 
    useEffect(() => {
       axios
-         .get('/products')
+         .get(`${__API__}/products`)
          .then((products) => {
             setProducts(products.data);
             let promises = products.data.map((item) => {
-               return axios.get(`/products/${item.id}/styles`);
+               return axios.get(`${__API__}/products/${item.id}/styles`);
             });
             Promise.all(promises).then((allProducts) => {
                setProductPhotos(allProducts);

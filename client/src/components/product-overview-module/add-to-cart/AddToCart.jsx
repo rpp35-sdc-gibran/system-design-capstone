@@ -46,7 +46,7 @@ const AddToCart = ({ currentStyle }) => {
       if (!currentSku) {
          return;
       } else {
-         let promise = axios.post('/cart', { sku_id: currentSku });
+         let promise = axios.post(`${__API__}/cart`, { sku_id: currentSku });
          promise.then((response) => {
             setOpenAlert(true);
          });

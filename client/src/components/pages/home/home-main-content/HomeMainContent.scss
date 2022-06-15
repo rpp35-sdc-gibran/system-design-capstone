@@ -8,9 +8,14 @@
    padding: 2rem 12rem 2rem 12rem;
    color: $text-color-light;
    .home-main-content-left {
+      .home-main-content-left-title {
+         position: relative;
+      }
       @include flex-column();
-      @include set-size(100%, 30%);
+      @include set-size(100%, 50%);
       gap: 1rem;
+      justify-content: center;
+      max-width: fit-content;
       .main-content-button {
          width: 50%;
       }

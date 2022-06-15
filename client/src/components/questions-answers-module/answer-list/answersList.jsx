@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import  './answerList.scss';
+import './answerList.scss';
 
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -32,14 +32,14 @@ class AnswersList extends React.Component {
             console.log('answer', answer);
             return answer;
          }
-      })
+      });
       // update allAnswers state to new array concatinated with remaining answers
-      this.setState({allAnswers: sellerAnswers.concat(currAllAnswers)});
+      this.setState({ allAnswers: sellerAnswers.concat(currAllAnswers) });
    }
 
    getAnswers() {
       axios
-         .get('/questionsAnswers/answers', {
+         .get(`${__API__}/questionsAnswers/answers`, {
             params: { question_id: this.props.question_id },
          })
          .then((results) => {
@@ -54,7 +54,7 @@ class AnswersList extends React.Component {
    }
 
    addShownAnswers() {
-      let currShownAnswers = this.state.shownAnswers
+      let currShownAnswers = this.state.shownAnswers;
       let currAllAnswers = this.state.allAnswers;
       currShownAnswers = currShownAnswers.concat(currAllAnswers.splice(0, 2));
       this.setState({
@@ -66,7 +66,7 @@ class AnswersList extends React.Component {
    removeShownAnswers() {
       let currShownAnswers = this.state.shownAnswers;
       let currAllAnswers = this.state.allAnswers;
-      currAllAnswers = currAllAnswers.concat(currShownAnswers.splice(2))
+      currAllAnswers = currAllAnswers.concat(currShownAnswers.splice(2));
       this.setState({
          shownAnswers: currShownAnswers,
          allAnswers: currAllAnswers,
@@ -80,7 +80,6 @@ class AnswersList extends React.Component {
    }
 
    render() {
-
       let answersButton;
       if (this.state.allAnswers.length) {
          answersButton = (
@@ -90,11 +89,16 @@ class AnswersList extends React.Component {
                   this.props.handleInteraction(event);
                }}
             >
-               <Typography variant='body1'><strong>LOAD MORE ANSWERS</strong></Typography>
+               <Typography variant='body1'>
+                  <strong>LOAD MORE ANSWERS</strong>
+               </Typography>
             </a>
          );
-      } else if (this.state.allAnswers.length === 0 && this.state.shownAnswers.length === 0) {
-        answersButton = null;
+      } else if (
+         this.state.allAnswers.length === 0 &&
+         this.state.shownAnswers.length === 0
+      ) {
+         answersButton = null;
       } else if (this.state.shownAnswers.length) {
          answersButton = (
             <a
@@ -103,7 +107,9 @@ class AnswersList extends React.Component {
                   this.props.handleInteraction(event);
                }}
             >
-               <Typography variant='body1'><strong>COLLAPSE ANSWERS</strong></Typography>
+               <Typography variant='body1'>
+                  <strong>COLLAPSE ANSWERS</strong>
+               </Typography>
             </a>
          );
       }

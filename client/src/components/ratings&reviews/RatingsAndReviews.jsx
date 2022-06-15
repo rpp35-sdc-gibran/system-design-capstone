@@ -33,12 +33,12 @@ const RatingsAndReviews = ({ currentProductId }) => {
             .all([
                axios({
                   method: 'get',
-                  url: '/reviews/',
+                  url: `${__API__}/reviews/`,
                   headers: { product_id: currentProductId },
                }),
                axios({
                   method: 'get',
-                  url: '/reviews/meta',
+                  url: `${__API__}/reviews/meta`,
                   headers: { product_id: currentProductId },
                }),
                axios.get(`/products/${currentProductId}`),
@@ -64,7 +64,7 @@ const RatingsAndReviews = ({ currentProductId }) => {
       SetReport(!report);
       axios({
          method: 'post',
-         url: '/reviews/report',
+         url: `${__API__}/reviews/report`,
          data: { review_id: review_id },
       });
    };
@@ -72,7 +72,10 @@ const RatingsAndReviews = ({ currentProductId }) => {
    const postReview = (newReview) => {
       console.log('sending to serer newReview', newReview);
       axios
-         .post('/reviews/', { ...newReview, product_id: currentProductId })
+         .post(`${__API__}/reviews/`, {
+            ...newReview,
+            product_id: currentProductId,
+         })
          .then((response) => {
             console.log('after posting review response:', response);
             renderReviewsAndRatings();

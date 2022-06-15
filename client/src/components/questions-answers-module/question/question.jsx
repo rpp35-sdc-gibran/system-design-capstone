@@ -13,7 +13,7 @@ import AnswerList from '../answer-list/answersList.jsx';
 class Question extends React.Component {
    reportQuestion() {
       axios
-         .put('/questionsAnswers/reportQuestion', {
+         .put(`${__API__}/questionsAnswers/reportQuestion`, {
             question_id: this.props.question.question_id,
          })
          .then((results) => {
@@ -23,23 +23,18 @@ class Question extends React.Component {
             );
          })
          .catch((error) => {
-            console.log(
-               'ERROR PUT /questionsAnswers/reportQuestion ',
-               error
-            );
+            console.log('ERROR PUT /questionsAnswers/reportQuestion ', error);
          });
    }
 
    isHelpful() {
-      console.log()
+      console.log();
       axios
-         .put('/questionsAnswers/markQuestionHelpful', {
+         .put(`${__API__}/questionsAnswers/markQuestionHelpful`, {
             question_id: this.props.question.question_id,
          })
          .then((results) => {
-            console.log(
-               'SUCCESS PUT /questionsAnswers/markQuestionHelpful'
-            );
+            console.log('SUCCESS PUT /questionsAnswers/markQuestionHelpful');
             // reload questions to update page
          })
          .catch((error) => {
@@ -74,16 +69,28 @@ class Question extends React.Component {
       return (
          <Card outlined={true} className='questionCard'>
             <div className='questionRow_1'>
-               <Typography align='left' variant='body1'  className='questionBody'>
+               <Typography
+                  align='left'
+                  variant='body1'
+                  className='questionBody'
+               >
                   <strong>Q: {this.props.question.question_body}</strong>
                </Typography>
-               <Typography align='right' variant='body1'  className='questionDetails'>
+               <Typography
+                  align='right'
+                  variant='body1'
+                  className='questionDetails'
+               >
                   Helpful?{' '}
                   <a
                      className='helpful'
-                     style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
+                     style={{
+                        cursor: 'pointer',
+                        textDecorationLine: 'underline',
+                     }}
                      onClick={(event) => {
-                        let question_id = this.props.question.question_id.toString();
+                        let question_id =
+                           this.props.question.question_id.toString();
                         // check if localStorage is empty
                         if (!Boolean(localStorage.getItem(question_id))) {
                            // mark helpful
@@ -107,7 +114,10 @@ class Question extends React.Component {
                         event.target.innerHTML = 'Reported';
                         this.props.handleInteraction(event);
                      }}
-                     style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
+                     style={{
+                        cursor: 'pointer',
+                        textDecorationLine: 'underline',
+                     }}
                   >
                      Report
                   </a>{' '}
@@ -117,7 +127,10 @@ class Question extends React.Component {
                         this.handleQuestionModal.bind(this)();
                         this.props.handleInteraction(event);
                      }}
-                     style={{ cursor: 'pointer', textDecorationLine: 'underline' }}
+                     style={{
+                        cursor: 'pointer',
+                        textDecorationLine: 'underline',
+                     }}
                   >
                      Add an Answer
                   </a>
