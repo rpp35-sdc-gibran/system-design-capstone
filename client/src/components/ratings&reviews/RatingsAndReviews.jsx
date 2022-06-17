@@ -41,18 +41,10 @@ const RatingsAndReviews = ({ currentProductId }) => {
                   url: `${__API__}/reviews/meta`,
                   headers: { product_id: currentProductId },
                }),
-               axios.get(`/products/${currentProductId}`),
+               axios.get(`${__API__}/products/${currentProductId}`),
             ])
             .then(
                axios.spread((reviews, reviewsMeta, productData) => {
-                  console.log(
-                     'reviews from server Ratings&Reviews.jsx',
-                     reviews,
-                     'reviewsMeta',
-                     reviewsMeta,
-                     'productName: ',
-                     productData.data.name
-                  );
                   SetCurrentReviews(reviews.data.results);
                   SetCurrentReviewsMeta(reviewsMeta.data);
                   setProductName(productData.data.name);
@@ -70,25 +62,19 @@ const RatingsAndReviews = ({ currentProductId }) => {
    };
    useEffect(renderReviewsAndRatings, [currentProductId, report]);
    const postReview = (newReview) => {
-      console.log('sending to serer newReview', newReview);
       axios
          .post(`${__API__}/reviews/`, {
             ...newReview,
             product_id: currentProductId,
          })
          .then((response) => {
-            console.log('after posting review response:', response);
             renderReviewsAndRatings();
          })
          .catch((error) => {
             console.log(error);
          });
    };
-   console.log(
-      'current product ID in RatingsAndReviews.jsx: ',
-      currentProductId
-   );
-   console.log('starFilters', starFilters);
+
    return (
       <div>
          <link rel='stylesheet' type='css' href='reviewsStyle.css' />

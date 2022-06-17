@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,7 +12,7 @@ let apiHost;
 let setupAPI = function () {
    console.log('process.env:', process.env);
    if (process.env.NODE_ENV === 'production') {
-      apiHost = JSON.stringify('http://localhost:1128');
+      apiHost = JSON.stringify('');
    } else if (process.env.NODE_ENV === 'development') {
       apiHost = JSON.stringify('/api');
    }

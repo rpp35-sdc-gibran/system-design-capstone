@@ -53,8 +53,22 @@ npm install
 -  Obtain [Github](https://github.com/) API key and then create .env file (view sample.env in root directory for template):
 
 ```env
-GITHUB_API_TOKEN="enter-api-token-here"
-NODE_ENV="development" || "production"
+GITHUB_API_TOKEN=enter-api-token-here
+
+```
+
+-If using dev server, change NODE_ENV in .env to:
+
+```env
+NODE_ENV=development
+
+```
+
+Otherwise, set NODE_ENV like so for production:
+
+```env
+NODE_ENV=production
+
 ```
 
 -  Then, if environment is set to development, run the application like so:
