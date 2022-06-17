@@ -8,16 +8,16 @@
    gap: 1.5rem;
    padding-left: 2rem;
    .product-overview-image-view {
-      @include set-size(75vh, 50vw);
+      @include set-size(60%, 50vw);
    }
    .product-overview-info-style-container {
       @include flex-column();
       justify-content: flex-start;
       padding: 1rem 0 0 0;
-      @include set-size(100%, 40vw);
+      @include set-size(60vh, 40vw);
 
       .product-overview-product-info {
-         @include set-size(100%, 100%);
+         @include set-size(85%, 100%);
          margin: 0;
          padding: 0;
       }
