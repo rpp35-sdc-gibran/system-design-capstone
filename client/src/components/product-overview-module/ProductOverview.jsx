@@ -17,13 +17,14 @@ const ProductOverview = ({ currentProductId }) => {
    const [reviews, setReviews] = useState(0);
    const [reviewList, setReviewList] = useState([]);
    const [isEnlargedView, setIsEnlargedView] = useState(false);
+   const url = "http://localhost:8000"
 
    useEffect(() => {
       axios
          .all([
-            axios.get(`${__API__}/products/${currentProductId}`),
-            axios.get(`${__API__}/products/${currentProductId}/styles`),
-            axios.get(`${__API__}/products/${currentProductId}/reviews`),
+            axios.get(`${url}/products/${currentProductId}`),
+            axios.get(`${url}/products/${currentProductId}/styles`),
+           // axios.get(`${__API__}/products/${currentProductId}/reviews`),
          ])
          .then(
             axios.spread(function (productData, productStyles, productReviews) {

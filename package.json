@@ -33,14 +33,17 @@
       "compression": "^1.7.4",
       "concurrently": "^7.2.2",
       "cors": "^2.8.5",
+      "csv-parser": "^3.0.0",
       "dotenv": "^16.0.1",
       "express": "^4.18.1",
       "import-lazy": "^4.0.0",
+      "mysql2": "^2.3.3",
       "nodemon": "^2.0.16",
       "react": "^18.1.0",
       "react-dom": "^18.1.0",
       "react-router-dom": "^6.3.0",
-      "regenerator-runtime": "^0.13.9"
+      "regenerator-runtime": "^0.13.9",
+      "sequelize": "^6.21.0"
    },
    "devDependencies": {
       "@babel/core": "^7.17.10",

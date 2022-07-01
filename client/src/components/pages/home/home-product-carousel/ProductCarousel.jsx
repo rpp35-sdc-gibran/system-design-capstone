@@ -63,7 +63,7 @@ const ProductCarousel = ({ products, productPhotos }) => {
                            products[index].data.default_price
                         }
                         image={
-                           productPhotos[index].data.results[0].photos[0].url
+                           productPhotos[index].results[0].photos[0].url
                         }
                      />
                   </section>
