@@ -62,9 +62,12 @@ const ProductCarousel = ({ products, productPhotos }) => {
                            products[index].default_price ||
                            products[index].data.default_price
                         }
+
                         image={
-                           productPhotos[index].results[0].photos[0].url
+
+                           productPhotos[index].data.results[0].photos.length > 0 ? productPhotos[index].data.results[0].photos[0].url : null
                         }
+
                      />
                   </section>
                </Slide>

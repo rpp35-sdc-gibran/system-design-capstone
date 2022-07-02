@@ -142,4 +142,4 @@ const AddToCart = ({ currentStyle }) => {
    );
 };
 
-export default AddToCart;
+//export default AddToCart;

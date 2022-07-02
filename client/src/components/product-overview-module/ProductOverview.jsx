@@ -3,7 +3,7 @@ import './ProductOverview.scss';
 import ImageView from './image-gallery/image-view/ImageView.jsx';
 import ProductInformation from './product-information/ProductInformation.jsx';
 import StyleSelector from './style-selector/style-select/StyleSelect.jsx';
-import AddToCart from './add-to-cart/AddToCart.jsx';
+//import AddToCart from './add-to-cart/AddToCart.jsx';
 import CheckIcon from '@mui/icons-material/Check';
 import Nav from './navbar/Nav.jsx';
 import axios from 'axios';
@@ -28,6 +28,7 @@ const ProductOverview = ({ currentProductId }) => {
          ])
          .then(
             axios.spread(function (productData, productStyles, productReviews) {
+               console.log('product info', productData.data, 'productStyles', productStyles.data)
                setProductInfo(productData.data);
                setStyles(productStyles.data);
                setCurrentStyle(productStyles.data.results[0]);
@@ -80,7 +81,7 @@ const ProductOverview = ({ currentProductId }) => {
                      className='product-overview-image-view'
                   >
                      <ImageView
-                        currentStylePhotos={currentStyle.photos}
+                        currentStylePhotos={currentStyle.photos ? currentStyle.photos : []}
                         handleChildScale={handleChildScale}
                         isScaled={isScaled}
                         isEnlargedView={isEnlargedView}
@@ -111,9 +112,9 @@ const ProductOverview = ({ currentProductId }) => {
                                  currentStyle={currentStyle}
                               />
                            </div>
-                           <div className='product-overview-add-to-cart'>
+                           {/* <div className='product-overview-add-to-cart'>
                               <AddToCart currentStyle={currentStyle} />
-                           </div>
+                           </div> */}
                         </div>
                         <div className='product-overview-slogan-features'>
                            <div className='product-overview-slogan'>

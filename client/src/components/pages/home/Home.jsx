@@ -20,15 +20,8 @@ const Home = () => {
                return axios.get(`${url}/products/${item.id}/styles`);
             });
             Promise.all(promises).then((allProducts) => {
-               var productsWithData = []
-               for (var i = 0; i < allProducts.length; i++) {
-                  console.log('what is allproducts at i', allProducts[i].data)
-                  if ('results' in allProducts[i].data ) {
-                     productsWithData.push(allProducts[i].data);
-                  }
-               }
-               console.log('what are products with data', productsWithData)
-               setProductPhotos(productsWithData);
+               console.log(allProducts, 'what are all products')
+               setProductPhotos(allProducts);
             });
          })
          .catch((err) => {
