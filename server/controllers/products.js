@@ -1,6 +1,6 @@
 const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN;
 //const GITHUB_API_TOKEN = require('../config/config').GITHUB_API_TOKEN.token;
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products';
+const url = 'http://localhost:3000/products';
 const axios = require('axios');
 
 module.exports = {

@@ -9,7 +9,7 @@ const StyleSelect = ({ styleList, handleStyleClick, currentStyle }) => {
       <div className='style-list-title'>
         <Typography variant='h6'>STYLE > </Typography>
         <Typography data-testid='styleContainer' variant='subtitle1'>
-          {currentStyle.name.toUpperCase()}
+          {currentStyle.name ? currentStyle.name.toUpperCase() : ''}
         </Typography>
       </div>
       <div className='style-list-images'>
@@ -18,7 +18,7 @@ const StyleSelect = ({ styleList, handleStyleClick, currentStyle }) => {
             style_id={style.style_id}
             key={index}
             index={index}
-            image={style.photos[0].thumbnail_url}
+            image={style.photos.length > 0 ? style.photos[0].thumbnail_url : []}
             handleStyleClick={handleStyleClick}
             currentStyle={currentStyle}
             data-testid='style-select-item'

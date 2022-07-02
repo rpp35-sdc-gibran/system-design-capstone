@@ -56,7 +56,7 @@ const ImageView = ({
          )}
          <div className='image-view-item'>
             <ImageViewItem
-               image={currentStylePhotos[currentIndex].url}
+               image={currentStylePhotos.length > 0 ? currentStylePhotos[currentIndex].url : []}
                handleChildZoom={handleChildZoom}
                currentIndex={currentIndex}
                isEnlargedView={isEnlargedView}
